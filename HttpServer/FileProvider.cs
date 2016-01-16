@@ -9,9 +9,9 @@ using System.Web;
 
 namespace HttpServer
 {
-    public class Images : IController
+    public class FileProvider : IController
     {
-        public void HandleRequest(int index, HttpListenerContext context)
+        public bool HandleRequest(int index, HttpListenerContext context)
         {
             string path = Path.Combine(context.Request.Url.Segments.SubArray(1));
 
@@ -22,10 +22,12 @@ namespace HttpServer
                 byte[] buffer = File.ReadAllBytes(path);
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
                 context.Response.OutputStream.Flush();
+
+                return true;
             }
             else
             {
-                context.Response.StatusCode = 404;
+                return false;
             }
         }
     }

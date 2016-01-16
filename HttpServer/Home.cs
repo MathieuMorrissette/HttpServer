@@ -10,12 +10,14 @@ namespace HttpServer
 {
     public class Home : IController
     {
-        public void HandleRequest(int index, HttpListenerContext context)
+        public bool HandleRequest(int index, HttpListenerContext context)
         {
             context.Response.ContentType = null;
             StreamWriter sw = new StreamWriter(context.Response.OutputStream);
-            sw.Write(@"<html>Bonjour je mappelle bob <img src=""images/pci.jpeg""/></html>");
+            sw.Write(File.ReadAllText("index.html"));
             sw.Flush();
+
+            return true;
         }
     }
 }
