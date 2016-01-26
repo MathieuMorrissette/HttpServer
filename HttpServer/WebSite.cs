@@ -11,7 +11,7 @@ namespace HttpServer
     {
         const string DEFAULT_ROUTE = "home";
 
-        HttpListenerContext context;
+        Client client;
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
@@ -24,11 +24,11 @@ namespace HttpServer
 
         IController controller;
 
-        public WebSite(HttpListenerContext context)
+        public WebSite(Client client)
         {
-            this.context = context;
+            this.client = client;
 
-            string[] parsedArgs = WebHelper.GetUrlArguments(this.context.Request.Url.Segments);
+            string[] parsedArgs = WebHelper.GetUrlArguments(this.client.Context.Request.Url.Segments);
 
             string controller = string.Empty;
 
@@ -58,21 +58,21 @@ namespace HttpServer
 
         private void Error()
         {
-            this.context.Response.StatusCode = 404;
-            this.context.Response.OutputStream.Close();
+            this.client.Context.Response.StatusCode = 404;
+            this.client.Context.Response.OutputStream.Close();
         }
 
         public void HandleRequest()
         {
             if (controller == null)
             {
-                this.context.Response.OutputStream.Close();
+                this.client.Context.Response.OutputStream.Close();
                 return;
             }
 
-            controller.HandleRequest(0, this.context);
+            controller.HandleRequest(0, this.client);
 
-            this.context.Response.Close();
+            this.client.Context.Response.Close();
         }
     }
 }

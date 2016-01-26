@@ -11,17 +11,17 @@ namespace HttpServer
 {
     public class FileProvider : IController
     {
-        public bool HandleRequest(int index, HttpListenerContext context)
+        public bool HandleRequest(int index, Client client)
         {
-            string path = Path.Combine(context.Request.Url.Segments.SubArray(1));
+            string path = Path.Combine(client.Context.Request.Url.Segments.SubArray(1));
 
             if (File.Exists(path))
             {
-                context.Response.ContentType = MimeMapping.GetMimeMapping(path);
+                client.Context.Response.ContentType = MimeMapping.GetMimeMapping(path);
 
                 byte[] buffer = File.ReadAllBytes(path);
-                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
-                context.Response.OutputStream.Flush();
+                client.Context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+                client.Context.Response.OutputStream.Flush();
 
                 return true;
             }

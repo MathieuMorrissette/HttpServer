@@ -12,6 +12,12 @@ namespace HttpServer
         private HttpListener httpListener;
         private bool stop = false;
 
+        private const string COOKIE_SESSION_ID = "SESSID";
+        public const bool DEBUG = true;
+
+        // Don't forget to delete them after a while.
+        private static List<Client> Clients = new List<Client>();
+
         public Server()
         {
             this.httpListener = new HttpListener();
@@ -28,10 +34,47 @@ namespace HttpServer
             while (!stop)
             {
                 HttpListenerContext httpListenerContext = this.httpListener.GetContext();
+                CookieCollection cookies = httpListenerContext.Request.Cookies;
+                Client client = null;
+
+                // Try to find a session with the cookie provided
+                for (int i = 0; i < cookies.Count; i++)
+                {
+                    Cookie cookie = cookies[i];
+
+                    if (cookie.Name == COOKIE_SESSION_ID)
+                    {
+                        Guid cookieSessionId = Guid.Empty;
+                        if (Guid.TryParse(cookie.Value, out cookieSessionId))
+                        {
+                            for (int j = 0; j < Server.Clients.Count; j++)
+                            {
+                                Client serverClients = Server.Clients[j];
+                                if (serverClients.ID == cookieSessionId)
+                                {
+                                    client = serverClients;
+                                    break;
+                                }
+                            }
+                        }
+
+                        break;
+                    }
+                }
+
+                //If no client found, create one.
+                if (client == null)
+                {
+                    client = new Client(Guid.NewGuid());
+                    Server.Clients.Add(client);
+                    httpListenerContext.Response.SetCookie(new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddMinutes(60) });
+                }
+
+                client.Context = httpListenerContext;
 
                 Task.Run(() =>
                 {
-                    var siteWeb = new WebSite(httpListenerContext);
+                    var siteWeb = new WebSite(client);
                     siteWeb.HandleRequest();
                 });
             }
