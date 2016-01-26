@@ -15,6 +15,7 @@ namespace HttpServer
             client.Context.Response.ContentType = null;
             StreamWriter sw = new StreamWriter(client.Context.Response.OutputStream);
             sw.Write(File.ReadAllText("index.html"));
+            sw.Write(client.Dictionary["index"]);
             sw.Flush();
 
             return true;
