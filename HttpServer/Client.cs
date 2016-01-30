@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace HttpServer
 {
@@ -37,22 +32,6 @@ namespace HttpServer
                 return HttpMethod.NONE;
             }
         }
-
-        /*public Dictionary<string, string> RequestData
-        {
-            get
-            {
-                NameValueCollection collection = HttpUtility.ParseQueryString(data);
-
-                Dictionary<string, string> dictData = new Dictionary<string, string>(collection.Count);
-                foreach (string key in collection.AllKeys)
-                {
-                    dictData.Add(key, collection.Get(key));
-                }
-
-                return dictData;
-            }
-        }*/
 
         public Dictionary<string, string> GetData()
         {
