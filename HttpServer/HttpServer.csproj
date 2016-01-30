@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Home.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Extensions.cs" />

@@ -9,13 +9,13 @@ namespace HttpServer
 {
     public class WebSite
     {
-        const string DEFAULT_ROUTE = "home";
+        const string DEFAULT_ROUTE = "login";
 
         Client client;
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
-            { "home", () => new Home()},
+            { "login", () => new Home()},
             { "images", () => new FileProvider()},
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},
