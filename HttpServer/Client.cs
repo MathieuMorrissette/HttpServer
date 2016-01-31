@@ -57,5 +57,18 @@ namespace HttpServer
             streamwriter.Write(data);
             streamwriter.Flush();
         }
+
+        public bool Connected
+        {
+            get
+            {
+                return this.Dictionary.ContainsKey("UID") && ((Guid)this.Dictionary["UID"]) == this.ID;
+            }
+        }
+
+        public void Redirect(string url)
+        {
+            this.Context.Response.Redirect(url);
+        }
     }
 }

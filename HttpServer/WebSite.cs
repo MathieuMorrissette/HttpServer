@@ -15,7 +15,8 @@ namespace HttpServer
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
-            { "login", () => new Home()},
+            { "login", () => new Login()},
+            { "home", () =>  new Home()},
             { "images", () => new FileProvider()},
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},

@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HttpServer
 {
-    public class Home : IController
+    class Home : IController
     {
         public bool HandleRequest(int index, Client client)
         {
-            if (client.HttpMethod == HttpMethod.GET)
+            if (!client.Connected)
             {
-                StreamWriter sw = new StreamWriter(client.Context.Response.OutputStream);
-                client.Send(File.ReadAllText("login.html"));
+                client.Redirect("login");
+                return true;
             }
-            else if(client.HttpMethod == HttpMethod.POST)
-            {
-                Dictionary<string, string> requestData = client.GetData();
-            }
+
+            client.Send(File.ReadAllText("home.html"));
 
             return true;
         }

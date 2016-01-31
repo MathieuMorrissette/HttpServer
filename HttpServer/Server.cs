@@ -101,7 +101,7 @@ namespace HttpServer
                 client = new Client(Guid.NewGuid());
                 Server.Clients.Add(client);
                 client.Dictionary.Add("index", Server.Clients.IndexOf(client));
-                httpListenerContext.Response.SetCookie(new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddMinutes(60) });
+                httpListenerContext.Response.SetCookie(new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddHours(Server.SESSION_EXPIRE_TIME) });
             }
 
             client.Context = httpListenerContext;
