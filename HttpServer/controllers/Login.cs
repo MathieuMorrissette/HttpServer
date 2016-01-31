@@ -29,9 +29,9 @@ namespace HttpServer
 
                     if (username == "toto" && password == "")
                     {
-                        client.Send("Success!");
                         // this means that the client is connected;
                         client.Dictionary.Add("UID", client.ID);
+                        client.Redirect("home");
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace HttpServer
                 return;
             }
 
-            client.Send(File.ReadAllText("login.html"));
+            client.Send(File.ReadAllText(Server.SERVER_ROOT_PATH + "login.html"));
         }
     }
 }

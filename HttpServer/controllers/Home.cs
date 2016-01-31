@@ -17,7 +17,7 @@ namespace HttpServer
                 return true;
             }
 
-            client.Send(File.ReadAllText("home.html"));
+            client.Send(File.ReadAllText(Server.SERVER_ROOT_PATH + "home.html"));
 
             return true;
         }

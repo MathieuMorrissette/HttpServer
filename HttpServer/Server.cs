@@ -14,6 +14,7 @@ namespace HttpServer
 
         private const string COOKIE_SESSION_ID = "SESSID";
         private const int SESSION_EXPIRE_TIME = 168; // Hours
+        public const string SERVER_ROOT_PATH = "../../html/"; // The root path from the executable
         public const bool DEBUG = true;
 
         // Don't forget to delete them after a while.
