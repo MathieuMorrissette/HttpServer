@@ -15,7 +15,7 @@ namespace HttpServer
 
         Client client;
 
-        public Database Database { get; private set; }
+        public static DatabaseManager Database { get; private set; }
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
@@ -31,8 +31,10 @@ namespace HttpServer
 
         public WebSite(Client client)
         {
-            this.Database = new Database(CONNECTION_STRING);
-            this.Database.ExecuteNonQuery("INSERT INTO users (Username, Password) VALUES ('bob', 'ross')");
+            WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
+            //this.Database.ExecuteNonQuery("INSERT INTO users (Username, Password) VALUES ('bob', 'ross')");
+            //var table = this.Database.ExecuteQuery("SELECT * FROM users");
+            UserManager.GetUser("Bob");
 
             this.client = client;
 

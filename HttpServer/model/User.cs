@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.model
+namespace HttpServer
 {
-    class User
+    public class User
     {
         public User(string username, string password)
         {
