@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HttpServer.managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,8 +11,11 @@ namespace HttpServer
     public class WebSite
     {
         const string DEFAULT_ROUTE = "login";
+        const string CONNECTION_STRING = @"Server=127.0.0.1;Database=test;Uid=root;Pwd=root;";
 
         Client client;
+
+        public Database Database { get; private set; }
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
@@ -27,6 +31,9 @@ namespace HttpServer
 
         public WebSite(Client client)
         {
+            this.Database = new Database(CONNECTION_STRING);
+            this.Database.ExecuteNonQuery("INSERT INTO users (Username, Password) VALUES ('bob', 'ross')");
+
             this.client = client;
 
             string[] parsedArgs = WebHelper.GetUrlArguments(this.client.Context.Request.Url.Segments);
