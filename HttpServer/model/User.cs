@@ -8,6 +8,9 @@ namespace HttpServer
 {
     public class User
     {
+        public const string USERNAME_FIELD = "Username";
+        public const string PASSWORD_FIELD = "Password";
+
         public User(string username, string password)
         {
             this.Username = username;

@@ -42,6 +42,52 @@ namespace HttpServer.managers
             return rowsAffected;
         }
 
+        public int ExecuteNonQuery(string query, params IDbDataParameter[] parameters)
+        {
+            int rowsAffected = -1;
+
+            using (IDbConnection connection = this.DatabaseType.CreateConnection(this.connectionString))
+            {
+                using (IDbCommand command = this.DatabaseType.CreateCommand(query))
+                {
+                    command.Connection = connection;
+                    connection.Open();
+
+                    foreach (IDbDataParameter param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+            }
+
+            return rowsAffected;
+        }
+
+        public object ExecuteScalar(string query, params IDbDataParameter[] parameters)
+        {
+            object result = null;
+
+            using (IDbConnection connection = this.DatabaseType.CreateConnection(this.connectionString))
+            {
+                using (IDbCommand command = this.DatabaseType.CreateCommand(query))
+                {
+                    command.Connection = connection;
+                    connection.Open();
+
+                    foreach (IDbDataParameter param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+
+                    result = command.ExecuteScalar();
+                }
+            }
+
+            return result;
+        }
+
         public DataTable ExecuteQuery(string query, params IDbDataParameter[] parameters)
         {
             DataTable dataTable = new DataTable();

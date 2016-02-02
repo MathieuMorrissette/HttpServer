@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controllers\Register.cs" />
     <Compile Include="interfaces\IDatabase.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Database.MySql.cs" />
