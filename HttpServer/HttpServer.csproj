@@ -60,6 +60,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="controllers\FileProvider.cs" />
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="managers\PasswordManager.cs" />
     <Compile Include="managers\UserManager.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="Program.cs" />

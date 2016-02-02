@@ -62,7 +62,7 @@ namespace HttpServer
         {
             get
             {
-                return this.Dictionary.ContainsKey("UID") && ((Guid)this.Dictionary["UID"]) == this.ID;
+                return this.Dictionary.ContainsKey("User");
             }
         }
 
