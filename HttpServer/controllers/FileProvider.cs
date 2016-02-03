@@ -11,7 +11,7 @@ namespace HttpServer
 {
     public class FileProvider : IController
     {
-        public bool HandleRequest(int index, Client client)
+        public bool HandleRequest(Client client, params string[] args)
         {
             string path = Path.Combine(client.Context.Request.Url.Segments.SubArray(1));
 

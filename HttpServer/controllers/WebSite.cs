@@ -34,6 +34,9 @@ namespace HttpServer
         {
             WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
 
+            //Create tables if they don't exists
+            WebSite.Database.CreateDatabase();
+
             this.Client = client;
 
             string[] parsedArgs = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
@@ -78,7 +81,7 @@ namespace HttpServer
                 return;
             }
 
-            controller.HandleRequest(0, this.Client);
+            controller.HandleRequest(this.Client, WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments));
 
             this.Client.Context.Response.Close();
         }

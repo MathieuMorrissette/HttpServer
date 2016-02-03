@@ -113,5 +113,19 @@ namespace HttpServer.managers
 
             return dataTable;
         }
+
+        public void CreateDatabase()
+        {
+            WebSite.Database.ExecuteNonQuery(
+                @"
+                    CREATE TABLE IF NOT EXISTS `users` (
+                        `Id` int(11) NOT NULL AUTO_INCREMENT,
+                        `Username` varchar(50) DEFAULT NULL,
+                        `Password` varchar(150) NOT NULL,
+                        PRIMARY KEY (`Id`)
+                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+                "
+            );
+        }
     }
 }

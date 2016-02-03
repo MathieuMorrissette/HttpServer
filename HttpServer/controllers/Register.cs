@@ -9,7 +9,7 @@ namespace HttpServer
 {
     public class Register : IController
     {
-        public bool HandleRequest(int index, Client client)
+        public bool HandleRequest(Client client, params string[] args)
         {
             if (client.Connected)
             {
