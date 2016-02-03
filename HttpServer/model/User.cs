@@ -8,16 +8,19 @@ namespace HttpServer
 {
     public class User
     {
+        public const string ID_FIELD = "Id";
         public const string USERNAME_FIELD = "Username";
         public const string PASSWORD_FIELD = "Password";
 
-        public User(string username, string password)
+        public User(int id, string username, string hash)
         {
+            this.ID = id;
             this.Username = username;
-            this.Password = password;
+            this.Hash = hash;
         }
         
+        public int ID { get; private set; }
         public string Username { get; private set; }
-        public string Password { get; private set; }
+        public string Hash { get; private set;  }
     }
 }

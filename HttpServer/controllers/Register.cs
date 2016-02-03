@@ -28,21 +28,21 @@ namespace HttpServer
                 if (requestData.ContainsKey("username") && requestData.ContainsKey("password"))
                 {
                     string username = requestData["username"];
-                    string password = PasswordManager.Hash(requestData["password"], 10000);
+                    string password = PasswordManager.Hash(requestData["password"]);
 
-                    User user = new User(username, password);
-
-                    if (UserManager.CreateUser(user))
+                    User user = UserManager.CreateUser(username, password);
+                    if (user != null)
                     {
-                        client.Dictionary.Add("User", user);
-                        client.Redirect("home");
-                    }
-                    else
-                    {
-                        this.ShowRegister(client);
-                        client.Send("Something wrong happened there!");
+                        if (UserManager.Login(username, requestData["password"], client))
+                        {
+                            client.Redirect("home");
+                            return true;
+                        }
                     }
                 }
+
+                this.ShowRegister(client);
+                client.Send("Something wrong happened there!");
             }
 
             return true;

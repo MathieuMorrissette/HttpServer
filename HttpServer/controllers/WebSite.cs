@@ -13,7 +13,7 @@ namespace HttpServer
         const string DEFAULT_ROUTE = "login";
         const string CONNECTION_STRING = @"Server=127.0.0.1;Database=test;Uid=root;Pwd=root;";
 
-        Client client;
+        public Client Client { get; private set; }
 
         public static DatabaseManager Database { get; private set; }
 
@@ -34,9 +34,9 @@ namespace HttpServer
         {
             WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
 
-            this.client = client;
+            this.Client = client;
 
-            string[] parsedArgs = WebHelper.GetUrlArguments(this.client.Context.Request.Url.Segments);
+            string[] parsedArgs = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
 
             string controller = string.Empty;
 
@@ -66,21 +66,21 @@ namespace HttpServer
 
         private void Error()
         {
-            this.client.Context.Response.StatusCode = 404;
-            this.client.Context.Response.OutputStream.Close();
+            this.Client.Context.Response.StatusCode = 404;
+            this.Client.Context.Response.OutputStream.Close();
         }
 
         public void HandleRequest()
         {
             if (controller == null)
             {
-                this.client.Context.Response.OutputStream.Close();
+                this.Client.Context.Response.OutputStream.Close();
                 return;
             }
 
-            controller.HandleRequest(0, this.client);
+            controller.HandleRequest(0, this.Client);
 
-            this.client.Context.Response.Close();
+            this.Client.Context.Response.Close();
         }
     }
 }

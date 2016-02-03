@@ -27,16 +27,14 @@ namespace HttpServer
                     string username = requestData["username"];
                     string password = requestData["password"];
 
-                    if (username == "toto" && password == "")
+                    if (UserManager.Login(username, password, client))
                     {
-                        // this means that the client is connected;
-                        client.Dictionary.Add("UID", client.ID);
                         client.Redirect("home");
                     }
                     else
                     {
                         this.ShowLogin(client);
-                        client.Send("Invalidusername or password");
+                        client.Send("Invalid username or password");
                     }
                 }
                 else

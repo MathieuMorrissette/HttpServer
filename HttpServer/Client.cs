@@ -62,7 +62,7 @@ namespace HttpServer
         {
             get
             {
-                return this.Dictionary.ContainsKey("User");
+                return this.Dictionary.ContainsKey("UID");
             }
         }
 
