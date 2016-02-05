@@ -13,7 +13,7 @@ namespace HttpServer
         {
             if (!client.Connected)
             {
-                client.Redirect("login");
+                client.Redirect("../login");
                 return true;
             }
 

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="controllers\API.cs" />
     <Compile Include="controllers\Register.cs" />
+    <Compile Include="controllers\UserController.cs" />
     <Compile Include="interfaces\IDatabase.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Database.MySql.cs" />
@@ -58,7 +59,6 @@
     <Compile Include="controllers\Home.cs" />
     <Compile Include="controllers\Login.cs" />
     <Compile Include="interfaces\IController.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="controllers\FileProvider.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="managers\PasswordManager.cs" />

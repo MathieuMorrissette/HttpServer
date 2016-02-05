@@ -13,7 +13,7 @@ namespace HttpServer
     {
         public bool HandleRequest(Client client, params string[] args)
         {
-            string path = Path.Combine(client.Context.Request.Url.Segments.SubArray(1));
+            string path = Path.Combine(client.Context.Request.Url.Segments);
 
             if (File.Exists(path))
             {

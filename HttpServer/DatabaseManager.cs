@@ -123,7 +123,7 @@ namespace HttpServer.managers
                         `Username` varchar(50) DEFAULT NULL,
                         `Password` varchar(150) NOT NULL,
                         PRIMARY KEY (`Id`)
-                    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+                    )
                 "
             );
         }

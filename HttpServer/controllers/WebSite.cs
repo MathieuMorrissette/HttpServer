@@ -81,7 +81,12 @@ namespace HttpServer
                 return;
             }
 
-            controller.HandleRequest(this.Client, WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments));
+            string[] arguments = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
+
+            // Remove the first arguments since it is the controller name.
+            arguments = arguments.Skip(1).ToArray();
+
+            controller.HandleRequest(this.Client, arguments);
 
             this.Client.Context.Response.Close();
         }

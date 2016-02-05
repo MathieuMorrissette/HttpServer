@@ -10,7 +10,7 @@ namespace HttpServer
         {
             if (client.Connected)
             {
-                client.Redirect("home");
+                client.Redirect("../home");
                 return true;
             }   
 
@@ -29,7 +29,7 @@ namespace HttpServer
 
                     if (UserManager.Login(username, password, client))
                     {
-                        client.Redirect("home");
+                        client.Redirect("../home");
                     }
                     else
                     {
