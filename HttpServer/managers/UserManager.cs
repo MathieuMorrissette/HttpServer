@@ -13,6 +13,11 @@ namespace HttpServer
     {
         public static User CreateUser(string username, string password)
         {
+            if (username == string.Empty || password == string.Empty)
+            {
+                return null;
+            }
+
             if (UserManager.Exists(username))
             {
                 return null;
@@ -56,6 +61,22 @@ namespace HttpServer
             int.TryParse(result.ToString(), out count);
 
             return (count > 0);
+        }
+
+        public static bool Logout(Client client)
+        {
+            if (client == null)
+            {
+                return false;
+            }
+
+            if (client.Dictionary.ContainsKey("UID"))
+            {
+                client.Dictionary.Remove("UID");
+                return true;
+            }
+
+            return false;
         }
 
         public static bool Login(string username, string password, Client client)

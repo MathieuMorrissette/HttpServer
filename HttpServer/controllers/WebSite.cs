@@ -25,7 +25,8 @@ namespace HttpServer
             { "images", () => new FileProvider()},
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},
-            { "font", () => new FileProvider()}
+            { "font", () => new FileProvider()},
+            { "user", () => new UserController()}
         };
 
         IController controller;

@@ -33,28 +33,37 @@ namespace HttpServer
                     }
                     else
                     {
-                        this.ShowLogin(client);
-                        client.Send("Invalid username or password");
+                        this.ShowLogin(client, "Invalid username or password");
                     }
                 }
                 else
                 {
-                    this.ShowLogin(client);
-                    client.Send("Error");
+                    this.ShowLogin(client, "Error");
                 }
             }
 
             return true;
         }
 
-        private void ShowLogin(Client client)
+        private void ShowLogin(Client client, string error = "")
         {
             if (client == null)
             {
                 return;
             }
 
-            client.Send(File.ReadAllText(Server.SERVER_ROOT_PATH + "login.html"));
+            string data = File.ReadAllText(Server.SERVER_ROOT_PATH + "login.html");
+
+            string error_panel = string.Empty;
+            if (error != string.Empty)
+            {
+                error_panel = File.ReadAllText(Server.SERVER_ROOT_PATH + "error_panel.html");
+                error_panel = error_panel.Replace("__ErrorMessage__", error);
+            }
+
+            data = data.Replace("__Error__", error_panel);
+
+            client.Send(data);
         }
     }
 }
