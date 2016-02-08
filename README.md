@@ -1,5 +1,3 @@
-# HttpServer
-My simple http server
+# Simple HTTP Server
 
-TODO :
-Add support for sub-controllers.
+This is a simple http server made to be very simple and lightweight.
