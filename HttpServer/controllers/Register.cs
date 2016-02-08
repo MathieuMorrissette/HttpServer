@@ -41,36 +41,27 @@ namespace HttpServer
                     }
                     else
                     {
-                        this.ShowRegister(client, "Couldn't create the user!");
+                        this.ShowRegister(client, new Error("Couldn't create the user!"));
                         return false;
                     }
                 }
 
-                this.ShowRegister(client, "Something wrong happened there!");
+                this.ShowRegister(client, new Error("Something wrong happened there!"));
             }
 
             return true;
         }
 
-        private void ShowRegister(Client client, string error = "")
+        private void ShowRegister(Client client, Error error = null)
         {
             if (client == null)
             {
                 return;
             }
 
-           string data = File.ReadAllText(Server.SERVER_ROOT_PATH + "register.html");
-
-            string error_panel = string.Empty;
-            if (error != string.Empty)
-            {
-                error_panel = File.ReadAllText(Server.SERVER_ROOT_PATH + "error_panel.html");
-                error_panel = error_panel.Replace("__ErrorMessage__", error);
-            }
-
-            data = data.Replace("__Error__", error_panel);
-
-            client.Send(data);
+            Register_Template registerTemplate = new Register_Template();
+            registerTemplate.Errors = new Error[] { error };
+            client.Send(registerTemplate.Render());
         }
     }
 }

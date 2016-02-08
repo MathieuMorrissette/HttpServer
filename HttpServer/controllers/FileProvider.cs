@@ -14,7 +14,7 @@ namespace HttpServer
         public bool HandleRequest(Client client, params string[] args)
         {
             string path = Path.Combine(client.Context.Request.Url.Segments);
-
+            path = Server.SERVER_ROOT_PATH + path;
             if (File.Exists(path))
             {
                 client.Context.Response.ContentType = MimeMapping.GetMimeMapping(path);

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.interfaces
+namespace HttpServer
 {
-    interface ITemplate
+    public interface ITemplate
     {
         string Render();
     }
