@@ -33,7 +33,6 @@ namespace HttpServer
 
             this.httpListener.Prefixes.Add("http://localhost:8080/");
             this.httpListener.Prefixes.Add("http://127.0.0.1:8080/");
-            // this.httpListener.Prefixes.Add("http://192.168.1.120:8080/");
             this.httpListener.Prefixes.Add("http://test.localhost:8080/");
         }
 
