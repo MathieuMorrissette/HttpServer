@@ -1,11 +1,14 @@
-﻿using System;
+﻿using HttpServer.websites.mathieu_morrissette.managers;
+using HttpServer.websites.mathieu_morrissette.model;
+using HttpServer.websites.mathieu_morrissette.templates;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     public class Register : IController
     {

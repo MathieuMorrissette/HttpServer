@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.controllers
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     class API : IController
     {

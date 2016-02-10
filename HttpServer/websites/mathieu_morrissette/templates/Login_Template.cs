@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HttpServer.websites.mathieu_morrissette.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.templates
 {
     public class Login_Template : ITemplate
     {
@@ -16,7 +17,7 @@ namespace HttpServer
             Header_Template headerTemplate = new Header_Template();
             Footer_Template footerTemplate = new Footer_Template();
 
-            string content = File.ReadAllText(Server.SERVER_ROOT_PATH + "html/login.html");
+            string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/login.html");
 
             string error_data = string.Empty;
 

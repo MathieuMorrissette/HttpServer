@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     class Home : IController
     {
@@ -17,7 +17,7 @@ namespace HttpServer
                 return true;
             }
 
-            client.Send(File.ReadAllText(Server.SERVER_ROOT_PATH + "html/home.html"));
+            client.Send(File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/home.html"));
 
             return true;
         }

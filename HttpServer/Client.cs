@@ -1,4 +1,6 @@
-﻿using System;
+﻿// TODO : Separate client from the first website.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -58,6 +60,7 @@ namespace HttpServer
             streamwriter.Flush();
         }
 
+        // This should not be in this class. Some website can use other things to verify if the user is connected.
         public bool Connected
         {
             get

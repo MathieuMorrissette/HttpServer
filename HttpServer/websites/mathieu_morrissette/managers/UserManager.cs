@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using HttpServer.websites.mathieu_morrissette;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.managers
 {
     public static class UserManager
     {

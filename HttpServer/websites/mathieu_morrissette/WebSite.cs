@@ -1,4 +1,5 @@
 ﻿using HttpServer.managers;
+using HttpServer.websites.mathieu_morrissette.controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette
 {
-    public class WebSite
+    public class WebSite : BaseWebsite
     {
         const string DEFAULT_ROUTE = "login";
         const string CONNECTION_STRING = @"Server=127.0.0.1;Database=test;Uid=root;Pwd=root;";
-
-        public Client Client { get; private set; }
+        public const string WEBSITE_ROOT_PATH = "../../websites/mathieu_morrissette/public/";
 
         public static DatabaseManager Database { get; private set; }
 
@@ -31,14 +31,12 @@ namespace HttpServer
 
         IController controller;
 
-        public WebSite(Client client)
+        public WebSite(Client client) : base (client)
         {
             WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
 
             //Create tables if they don't exists
             WebSite.Database.CreateDatabase();
-
-            this.Client = client;
 
             string[] parsedArgs = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
 
@@ -74,7 +72,7 @@ namespace HttpServer
             this.Client.Context.Response.OutputStream.Close();
         }
 
-        public void HandleRequest()
+        public override void HandleRequest()
         {
             if (controller == null)
             {
@@ -88,8 +86,6 @@ namespace HttpServer
             arguments = arguments.Skip(1).ToArray();
 
             controller.HandleRequest(this.Client, arguments);
-
-            this.Client.Context.Response.Close();
         }
     }
 }

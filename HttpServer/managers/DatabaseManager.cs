@@ -116,7 +116,7 @@ namespace HttpServer.managers
 
         public void CreateDatabase()
         {
-            WebSite.Database.ExecuteNonQuery(
+            this.ExecuteNonQuery(
                 @"
                     CREATE TABLE IF NOT EXISTS `users` (
                         `Id` int(11) NOT NULL AUTO_INCREMENT,

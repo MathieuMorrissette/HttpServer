@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HttpServer.websites.mathieu_morrissette.managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     class UserController : IController
     {

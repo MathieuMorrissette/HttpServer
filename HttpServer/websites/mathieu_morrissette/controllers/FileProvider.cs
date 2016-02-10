@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     public class FileProvider : IController
     {
         public bool HandleRequest(Client client, params string[] args)
         {
             string path = Path.Combine(client.Context.Request.Url.Segments);
-            path = Server.SERVER_ROOT_PATH + path;
+            path = WebSite.WEBSITE_ROOT_PATH + path;
             if (File.Exists(path))
             {
                 client.Context.Response.ContentType = MimeMapping.GetMimeMapping(path);

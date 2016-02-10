@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HttpServer.websites.mathieu_morrissette.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.templates
 {
     public class Error_Template : ITemplate
     {
@@ -23,7 +24,7 @@ namespace HttpServer
                 return string.Empty;
             }
 
-            string data = File.ReadAllText(Server.SERVER_ROOT_PATH + "html/error_alert.html");
+            string data = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/error_alert.html");
             data = data.Replace("__ErrorMessage__", error.Message);
             return data;
         }

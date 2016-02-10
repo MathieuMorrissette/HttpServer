@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HttpServer.websites;
+using HttpServer.websites.mathieu_morrissette;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,11 +13,16 @@ namespace HttpServer
     {
         private HttpListener httpListener;
         private bool stop = false;
-
+        
         private const string COOKIE_SESSION_ID = "SESSID";
         private const int SESSION_EXPIRE_TIME = 168; // Hours
-        public const string SERVER_ROOT_PATH = "../../public/"; // The root path from the executable
         public const bool DEBUG = true;
+
+        private static Dictionary<string, Func<Client, BaseWebsite>> websites = new Dictionary<string, Func<Client, BaseWebsite>>
+        {
+            { "localhost", (client) => new HttpServer.websites.mathieu_morrissette.WebSite(client)},
+            { "test.localhost", (client) => new HttpServer.websites.test.WebSite(client)}
+        };
 
         // Don't forget to delete them after a while.
         private static List<Client> Clients = new List<Client>();
@@ -27,6 +34,7 @@ namespace HttpServer
             this.httpListener.Prefixes.Add("http://localhost:8080/");
             this.httpListener.Prefixes.Add("http://127.0.0.1:8080/");
             // this.httpListener.Prefixes.Add("http://192.168.1.120:8080/");
+            this.httpListener.Prefixes.Add("http://test.localhost:8080/");
         }
 
         public void Start()
@@ -41,8 +49,20 @@ namespace HttpServer
                 Task.Run(() =>
                 {
                     Client client = this.GetClient(httpListenerContext);
-                    var siteWeb = new WebSite(client);
-                    siteWeb.HandleRequest();
+
+                    string hostName = client.Context.Request.Url.Host;
+
+                    if (Server.websites.ContainsKey(hostName))
+                    {
+                        var siteWeb = websites[hostName](client);
+                        siteWeb.HandleRequest();
+                    }
+                    else
+                    {
+                        client.Send("error");
+                    }
+                    
+                    client.Context.Response.Close();
                 });
             }
         }

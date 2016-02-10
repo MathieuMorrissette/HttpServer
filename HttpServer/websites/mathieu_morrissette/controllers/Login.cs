@@ -1,8 +1,11 @@
-﻿using System;
+﻿using HttpServer.websites.mathieu_morrissette.managers;
+using HttpServer.websites.mathieu_morrissette.model;
+using HttpServer.websites.mathieu_morrissette.templates;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace HttpServer
+namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     public class Login : IController
     {
