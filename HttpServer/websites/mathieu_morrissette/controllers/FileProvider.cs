@@ -11,17 +11,19 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     public class FileProvider : IController
     {
-        public bool HandleRequest(Client client, params string[] args)
+        public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
-            string path = Path.Combine(client.Context.Request.Url.Segments);
+            List<string> segments = context.Request.Url.Segments.ToList();
+            segments.RemoveAt(0);
+            string path = Path.Combine(segments.ToArray());
             path = WebSite.WEBSITE_ROOT_PATH + path;
             if (File.Exists(path))
             {
-                client.Context.Response.ContentType = MimeMapping.GetMimeMapping(path);
+                context.Response.ContentType = MimeMapping.GetMimeMapping(path);
 
                 byte[] buffer = File.ReadAllBytes(path);
-                client.Context.Response.OutputStream.Write(buffer, 0, buffer.Length);
-                client.Context.Response.OutputStream.Flush();
+                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+                context.Response.OutputStream.Flush();
 
                 return true;
             }

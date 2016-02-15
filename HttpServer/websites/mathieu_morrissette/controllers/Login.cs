@@ -4,26 +4,31 @@ using HttpServer.websites.mathieu_morrissette.templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 
 namespace HttpServer.websites.mathieu_morrissette.controllers
 {
     public class Login : IController
     {
-        public bool HandleRequest(Client client, params string[] args)
+        private HttpListenerContext context;
+
+        public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
+            this.context = context;
+
             if (client.Connected)
             {
-                client.Redirect("../home");
+                context.Redirect("../home");
                 return true;
             }   
 
-            if (client.HttpMethod == HttpMethod.GET)
+            if (context.GetMethod() == HttpMethod.GET)
             {
                 this.ShowLogin(client);
             }
-            else if(client.HttpMethod == HttpMethod.POST)
+            else if(context.GetMethod() == HttpMethod.POST)
             {
-                Dictionary<string, string> requestData = client.GetData();
+                Dictionary<string, string> requestData = context.GetData();
 
                 if (requestData.ContainsKey("username") && requestData.ContainsKey("password"))
                 {
@@ -32,7 +37,7 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
 
                     if (UserManager.Login(username, password, client))
                     {
-                        client.Redirect("../home");
+                        context.Redirect("../home");
                     }
                     else
                     {
@@ -57,7 +62,7 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
 
             Login_Template login_template = new Login_Template();
             login_template.Errors = new Error[] { error };
-            client.Send(login_template.Render());
+            this.context.Send(login_template.Render());
         }
     }
 }

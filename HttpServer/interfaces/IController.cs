@@ -9,6 +9,6 @@ namespace HttpServer
 {
     interface IController
     {
-        bool HandleRequest(Client client, params string[] args);
+        bool HandleRequest(Client client, HttpListenerContext context, params string[] args);
     }
 }

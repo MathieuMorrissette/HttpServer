@@ -18,10 +18,10 @@ namespace HttpServer
         private const int SESSION_EXPIRE_TIME = 168; // Hours
         public const bool DEBUG = true;
 
-        private static Dictionary<string, Func<Client, BaseWebsite>> websites = new Dictionary<string, Func<Client, BaseWebsite>>
+        private static Dictionary<string, Func<Client, HttpListenerContext, BaseWebsite>> websites = new Dictionary<string, Func<Client, HttpListenerContext, BaseWebsite>>
         {
-            { "localhost", (client) => new HttpServer.websites.mathieu_morrissette.WebSite(client)},
-            { "test.localhost", (client) => new HttpServer.websites.test.WebSite(client)}
+            { "localhost", (client, context) => new HttpServer.websites.mathieu_morrissette.WebSite(client, context)},
+            { "test.localhost", (client, context) => new HttpServer.websites.test.WebSite(client, context)}
         };
 
         // Don't forget to delete them after a while.
@@ -49,19 +49,19 @@ namespace HttpServer
                 {
                     Client client = this.GetClient(httpListenerContext);
 
-                    string hostName = client.Context.Request.Url.Host;
+                    string hostName = httpListenerContext.Request.Url.Host;
 
                     if (Server.websites.ContainsKey(hostName))
                     {
-                        var siteWeb = websites[hostName](client);
+                        var siteWeb = websites[hostName](client, httpListenerContext);
                         siteWeb.HandleRequest();
                     }
                     else
                     {
-                        client.Send("error");
+                        httpListenerContext.Send("error");
                     }
                     
-                    client.Context.Response.Close();
+                    httpListenerContext.Response.Close();
                 });
             }
         }
@@ -124,7 +124,6 @@ namespace HttpServer
                 httpListenerContext.Response.SetCookie(new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddHours(Server.SESSION_EXPIRE_TIME) });
             }
 
-            client.Context = httpListenerContext;
             return client;
         }
 

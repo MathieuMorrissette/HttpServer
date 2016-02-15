@@ -31,14 +31,14 @@ namespace HttpServer.websites.mathieu_morrissette
 
         IController controller;
 
-        public WebSite(Client client) : base (client)
+        public WebSite(Client client, HttpListenerContext context) : base(client, context)
         {
             WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
 
             //Create tables if they don't exists
             WebSite.Database.CreateDatabase();
 
-            string[] parsedArgs = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
+            string[] parsedArgs = WebHelper.GetUrlArguments(this.Context.Request.Url.Segments);
 
             string controller = string.Empty;
 
@@ -68,24 +68,24 @@ namespace HttpServer.websites.mathieu_morrissette
 
         private void Error()
         {
-            this.Client.Context.Response.StatusCode = 404;
-            this.Client.Context.Response.OutputStream.Close();
+            this.Context.Response.StatusCode = 404;
+            this.Context.Response.OutputStream.Close();
         }
 
         public override void HandleRequest()
         {
             if (controller == null)
             {
-                this.Client.Context.Response.OutputStream.Close();
+                this.Context.Response.OutputStream.Close();
                 return;
             }
 
-            string[] arguments = WebHelper.GetUrlArguments(this.Client.Context.Request.Url.Segments);
+            string[] arguments = WebHelper.GetUrlArguments(this.Context.Request.Url.Segments);
 
             // Remove the first arguments since it is the controller name.
             arguments = arguments.Skip(1).ToArray();
 
-            controller.HandleRequest(this.Client, arguments);
+            controller.HandleRequest(this.Client, this.Context, arguments);
         }
     }
 }
