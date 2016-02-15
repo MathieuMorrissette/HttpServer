@@ -77,6 +77,8 @@
     <Compile Include="websites\mathieu_morrissette\templates\Register_Template.cs" />
     <Compile Include="helpers\WebHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\WebSite.cs" />
+    <Compile Include="websites\test\FileProvider.cs" />
+    <Compile Include="websites\test\Home.cs" />
     <Compile Include="websites\test\WebSite.cs" />
   </ItemGroup>
   <ItemGroup>
