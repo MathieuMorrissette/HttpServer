@@ -73,6 +73,7 @@
     <Compile Include="websites\mathieu_morrissette\templates\Error_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Footer_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Header_Template.cs" />
+    <Compile Include="websites\mathieu_morrissette\templates\Home_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Login_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Register_Template.cs" />
     <Compile Include="helpers\WebHelper.cs" />

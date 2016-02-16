@@ -16,7 +16,7 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
         {
             this.context = context;
 
-            if (client.Connected)
+            if (client.Connected())
             {
                 context.Redirect("../home");
                 return true;

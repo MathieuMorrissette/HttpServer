@@ -19,14 +19,5 @@ namespace HttpServer
         public Guid ID { get; private set; }
         public Dictionary<string, object> Dictionary { get; private set; }
         public DateTime DateCreated { get; private set; }
-
-        // This should not be in this class. Some website can use other things to verify if the user is connected.
-        public bool Connected
-        {
-            get
-            {
-                return this.Dictionary.ContainsKey("UID");
-            }
-        }
     }
 }

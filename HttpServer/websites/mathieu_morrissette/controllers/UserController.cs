@@ -39,7 +39,7 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
 
             return false;
         }
-
+        
         public void Logout()
         {
             if (UserManager.Logout(this.client))
