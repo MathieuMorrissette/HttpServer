@@ -1,4 +1,6 @@
-﻿using HttpServer.websites;
+﻿using HttpServer.classes;
+using HttpServer.managers;
+using HttpServer.websites;
 using HttpServer.websites.mathieu_morrissette;
 using System;
 using System.Collections.Generic;
@@ -18,12 +20,6 @@ namespace HttpServer
         private const int SESSION_EXPIRE_TIME = 168; // Hours
         public const bool DEBUG = true;
 
-        private static Dictionary<string, Func<Client, HttpListenerContext, BaseWebsite>> websites = new Dictionary<string, Func<Client, HttpListenerContext, BaseWebsite>>
-        {
-            { "localhost", (client, context) => new HttpServer.websites.mathieu_morrissette.WebSite(client, context)},
-            { "test.localhost", (client, context) => new HttpServer.websites.test.WebSite(client, context)}
-        };
-
         // Don't forget to delete them after a while.
         private static List<Client> Clients = new List<Client>();
 
@@ -31,9 +27,12 @@ namespace HttpServer
         {
             this.httpListener = new HttpListener();
 
-            this.httpListener.Prefixes.Add("http://localhost:8080/");
-            this.httpListener.Prefixes.Add("http://127.0.0.1:8080/");
-            this.httpListener.Prefixes.Add("http://test.localhost:8080/");
+            ConfigurationManager.LoadConfiguration();
+
+            foreach (string url in ConfigurationManager.ServerConfig.listen)
+            {
+                this.httpListener.Prefixes.Add(url);
+            }
         }
 
         public void Start()
@@ -51,16 +50,26 @@ namespace HttpServer
 
                     string hostName = httpListenerContext.Request.Url.Host;
 
-                    if (Server.websites.ContainsKey(hostName))
+                    bool handled = false;
+
+                    foreach (Route route in ConfigurationManager.ServerConfig.routes)
                     {
-                        var siteWeb = websites[hostName](client, httpListenerContext);
-                        siteWeb.HandleRequest();
+                        if (route.value.Contains(hostName))
+                        {
+                            Type type = Type.GetType(route.type);
+
+                            BaseWebsite website = (BaseWebsite)Activator.CreateInstance(type, client, httpListenerContext);
+                            website.HandleRequest();
+                            handled = true;
+                            break;
+                        }
                     }
-                    else
+
+                    if (!handled)
                     {
                         httpListenerContext.Send("error");
                     }
-                    
+
                     httpListenerContext.Response.Close();
                 });
             }

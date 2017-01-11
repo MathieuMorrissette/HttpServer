@@ -1,6 +1,4 @@
-﻿// TODO : Separate client from the first website.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
