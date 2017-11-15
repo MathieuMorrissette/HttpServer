@@ -11,7 +11,7 @@ namespace HttpServer.websites.mathieu_morrissette.templates
     {
         public string Render()
         {
-            string data = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/footer.html");
+            string data = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/footer.html");
             return data;
         }
     }

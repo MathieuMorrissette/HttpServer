@@ -17,7 +17,7 @@ namespace HttpServer.websites.mathieu_morrissette.templates
             Header_Template headerTemplate = new Header_Template();
             Footer_Template footerTemplate = new Footer_Template();
 
-            string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/register.html");
+            string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/register.html");
 
             string error_data = string.Empty;
 

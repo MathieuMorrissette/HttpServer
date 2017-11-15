@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace HttpServer
+namespace HttpServer.databases
 {
-    class DatabaseMySql : IDatabase
+    class DatabaseMySql : BaseDatabase
     {
-        public IDbConnection CreateConnection(string connectionString)
+        public DatabaseMySql(string connectionString) : base(connectionString)
         {
-            return new MySqlConnection(connectionString);
         }
 
-        public IDbDataParameter CreateParameter(string parameterName, object value)
+        public override IDbConnection CreateConnection()
+        {
+            return new MySqlConnection(this.ConnectionString);
+        }
+
+        public override IDbDataParameter CreateParameter(string parameterName, object value)
         {
             return new MySqlParameter(parameterName, value);
         }
 
-        public IDbCommand CreateCommand(string query)
+        public override IDbCommand CreateCommand(string query)
         {
             return new MySqlCommand(query);
         }

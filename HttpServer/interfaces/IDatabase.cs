@@ -9,7 +9,7 @@ namespace HttpServer
 {
     public interface IDatabase
     {
-        IDbConnection CreateConnection(string connectionString);
+        IDbConnection CreateConnection();
         IDbDataParameter CreateParameter(string parameterName, object value);
         IDbCommand CreateCommand(string query);
     }

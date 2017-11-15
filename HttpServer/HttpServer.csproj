@@ -55,9 +55,12 @@
   <ItemGroup>
     <Compile Include="classes\Route.cs" />
     <Compile Include="classes\ServerConfig.cs" />
+    <Compile Include="databases\BaseDatabase.cs" />
+    <Compile Include="helpers\DatabaseHelper.cs" />
     <Compile Include="managers\ConfigurationManager.cs" />
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
+    <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Register.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\UserController.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="managers\DatabaseManager.cs" />
     <Compile Include="interfaces\ITemplate.cs" />
     <Compile Include="managers\PasswordManager.cs" />
+    <Compile Include="websites\mathieu_morrissette\database\DatabaseInitialiser.cs" />
     <Compile Include="websites\mathieu_morrissette\managers\UserManager.cs" />
     <Compile Include="websites\mathieu_morrissette\model\Error.cs" />
     <Compile Include="websites\mathieu_morrissette\model\User.cs" />
@@ -96,6 +100,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="websites\mathieu_morrissette\configs\config.cfg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />

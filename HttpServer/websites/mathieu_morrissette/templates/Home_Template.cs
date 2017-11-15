@@ -18,7 +18,7 @@ namespace HttpServer.websites.mathieu_morrissette.templates
 
         public string Render()
         {
-            string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/home.html");
+            string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/home.html");
             content = content.Replace("__Username__", this.user.Username);
             content = content.Replace("__ID__", this.user.ID.ToString());
             content = content.Replace("__PasswordHash__", this.user.Hash);

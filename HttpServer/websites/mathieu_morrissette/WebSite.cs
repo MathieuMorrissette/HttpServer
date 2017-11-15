@@ -1,7 +1,12 @@
-﻿using HttpServer.managers;
+﻿using HttpServer.databases;
+using HttpServer.managers;
+using HttpServer.websites.mathieu_morrissette.classes;
 using HttpServer.websites.mathieu_morrissette.controllers;
+using HttpServer.websites.mathieu_morrissette.database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -12,10 +17,11 @@ namespace HttpServer.websites.mathieu_morrissette
     public class WebSite : BaseWebsite
     {
         const string DEFAULT_ROUTE = "login";
-        const string CONNECTION_STRING = @"Server=127.0.0.1;Database=test;Uid=root;Pwd=root;";
-        public const string WEBSITE_ROOT_PATH = "../../websites/mathieu_morrissette/public/";
+        public const string WEBSITE_ROOT_PATH = "../../websites/mathieu_morrissette/";
 
-        public static DatabaseManager Database { get; private set; }
+        public static BaseDatabase Database { get; private set; }
+
+        private string connectionString;
 
         private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
@@ -31,12 +37,21 @@ namespace HttpServer.websites.mathieu_morrissette
 
         IController controller;
 
+        private void LoadConfiguration()
+        {
+            MathieuMorrissetteConfig config = JsonConvert.DeserializeObject<MathieuMorrissetteConfig>(File.ReadAllText(WEBSITE_ROOT_PATH + "configs/config.cfg"));
+
+            this.connectionString = config.database_connection_string;
+        }
+
         public WebSite(Client client, HttpListenerContext context) : base(client, context)
         {
-            WebSite.Database = new DatabaseManager(CONNECTION_STRING, new DatabaseMySql());
+            this.LoadConfiguration();
+
+            WebSite.Database = new DatabaseMySql(this.connectionString);
 
             //Create tables if they don't exists
-            WebSite.Database.CreateDatabase();
+            DatabaseInitialiser.CreateDatabase(WebSite.Database);
 
             string[] parsedArgs = WebHelper.GetUrlArguments(this.Context.Request.Url.Segments);
 

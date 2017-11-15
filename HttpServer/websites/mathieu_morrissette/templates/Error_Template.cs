@@ -24,7 +24,7 @@ namespace HttpServer.websites.mathieu_morrissette.templates
                 return string.Empty;
             }
 
-            string data = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "html/error_alert.html");
+            string data = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/error_alert.html");
             data = data.Replace("__ErrorMessage__", error.Message);
             return data;
         }
