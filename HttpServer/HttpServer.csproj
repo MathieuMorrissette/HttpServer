@@ -108,6 +108,7 @@
     <Content Include="websites\mathieu_morrissette\public\html\footer.html" />
     <Content Include="websites\mathieu_morrissette\public\html\header.html" />
     <Content Include="websites\mathieu_morrissette\public\html\home.html" />
+    <Content Include="websites\mathieu_morrissette\public\html\home_design.html" />
     <Content Include="websites\mathieu_morrissette\public\html\login.html" />
     <Content Include="websites\mathieu_morrissette\public\html\register.html" />
   </ItemGroup>
