@@ -111,6 +111,7 @@
     <Content Include="websites\mathieu_morrissette\public\html\home_design.html" />
     <Content Include="websites\mathieu_morrissette\public\html\login.html" />
     <Content Include="websites\mathieu_morrissette\public\html\register.html" />
+    <Content Include="websites\mathieu_morrissette\public\images\banner.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
