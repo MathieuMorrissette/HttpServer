@@ -14,12 +14,12 @@ namespace HttpServer
 
         public User(int id, string username, string hash)
         {
-            this.ID = id;
+            this.Id = id;
             this.Username = username;
             this.Hash = hash;
         }
         
-        public int ID { get; private set; }
+        public int Id { get; private set; }
         public string Username { get; private set; }
         public string Hash { get; private set;  }
     }

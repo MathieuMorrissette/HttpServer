@@ -23,6 +23,18 @@ namespace HttpServer.websites.mathieu_morrissette.database
                     )
                 "
             );
+
+            database.ExecuteNonQuery(
+                @"
+                    CREATE TABLE IF NOT EXISTS `posts` (
+	                    `Id` INT(11) NOT NULL AUTO_INCREMENT,
+	                    `UserId` INT(11) NULL DEFAULT NULL,
+	                    `Date` DATETIME NULL DEFAULT NULL,
+	                    `Data` TEXT NULL,
+	                    PRIMARY KEY (`Id`)
+                    )
+                "
+            );
         }        
     }
 }

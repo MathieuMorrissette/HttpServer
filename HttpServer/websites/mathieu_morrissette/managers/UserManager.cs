@@ -50,9 +50,14 @@ namespace HttpServer.websites.mathieu_morrissette.managers
             return UserManager.GetUser(username);
         }
 
-        public static User GetUser(int ID)
+        public static User GetUser(int id)
         {
-            IDbDataParameter parameter = WebSite.Database.CreateParameter("@ID", ID);
+            if (id == -1)
+            {
+                return null;
+            }
+
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@ID", id);
             DataTable table = WebSite.Database.ExecuteQuery("SELECT Id, Username, Password FROM users WHERE Id=@ID", parameter);
 
             if (table == null)
@@ -129,7 +134,7 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 
             if (PasswordManager.Verify(password, user.Hash))
             {
-                client.Dictionary.Add("UID", user.ID);
+                client.Dictionary.Add("UID", user.Id);
                 return true;
             }
             else

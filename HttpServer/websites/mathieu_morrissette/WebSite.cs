@@ -32,7 +32,8 @@ namespace HttpServer.websites.mathieu_morrissette
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},
             { "font", () => new FileProvider()},
-            { "user", () => new UserController()}
+            { "user", () => new UserController()},
+            { "api", () => new API()}
         };
 
         IController controller;

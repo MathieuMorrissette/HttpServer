@@ -61,6 +61,7 @@
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
+    <Compile Include="websites\mathieu_morrissette\classes\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Register.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\UserController.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="interfaces\ITemplate.cs" />
     <Compile Include="managers\PasswordManager.cs" />
     <Compile Include="websites\mathieu_morrissette\database\DatabaseInitialiser.cs" />
+    <Compile Include="websites\mathieu_morrissette\managers\PostManager.cs" />
     <Compile Include="websites\mathieu_morrissette\managers\UserManager.cs" />
     <Compile Include="websites\mathieu_morrissette\model\Error.cs" />
     <Compile Include="websites\mathieu_morrissette\model\User.cs" />
@@ -113,7 +115,9 @@
     <Content Include="websites\mathieu_morrissette\public\html\register.html" />
     <Content Include="websites\mathieu_morrissette\public\images\banner.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="websites\mathieu_morrissette\api\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

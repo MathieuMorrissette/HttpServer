@@ -22,6 +22,12 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
 
             User user = UserManager.GetUser(UserManager.GetUserID(client));
 
+            if (user == null)
+            {
+                context.Redirect("../login");
+                return true;
+            }
+
             Home_Template template = new Home_Template(user);
             context.Send(template.Render());
 
