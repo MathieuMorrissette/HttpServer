@@ -16,7 +16,7 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
             List<string> segments = context.Request.Url.Segments.ToList();
             segments.RemoveAt(0);
             string path = Path.Combine(segments.ToArray());
-            path = WebSite.WEBSITE_ROOT_PATH + path;
+            path = WebSite.WEBSITE_ROOT_PATH + "public/" + path;
             if (File.Exists(path))
             {
                 context.Response.ContentType = MimeMapping.GetMimeMapping(path);

@@ -60,6 +60,7 @@
     <Compile Include="managers\ConfigurationManager.cs" />
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
@@ -115,9 +116,7 @@
     <Content Include="websites\mathieu_morrissette\public\html\register.html" />
     <Content Include="websites\mathieu_morrissette\public\images\banner.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="websites\mathieu_morrissette\api\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

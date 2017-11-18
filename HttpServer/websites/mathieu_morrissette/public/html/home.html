@@ -1,7 +1,111 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<p>Bonjour __Username__, your id in the database is __ID__ and your password hash is __PasswordHash__</p>
-		<a href="../user/logout">Logout</a>
-	</body>	
-</html>
+
+	<div class="container">
+<div class="row">
+  <div class="col-9">
+
+
+<div class="card">
+  <div class="card-header">
+    Post
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Special title treatment</h4>
+      <form>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
+    <a href="#" class="btn btn-primary float-right">Go somewhere</a>
+  </div>
+</div>
+
+
+
+<div id="posts_container">
+
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+  </div>
+  </div>
+
+
+  <div class="col-3 ">
+  	<div class="card position-fixed" style="width: 20rem;">
+		<img class="card-img-top" src="../images/banner.png" alt="UserBanner">
+		<div class="card-body">
+			<h4 class="card-title">__Username__</h4>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-primary">My Profile</a>
+			<a href="../user/logout" class="btn btn-primary float-right">Logout</a>
+		</div>
+	</div>
+  </div>
+</div>
+</div>
+	<script>
+	function sendHttpGetRequest(theUrl, callback)
+	{
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() { 
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+				callback(xmlHttp.responseText);
+		}
+		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+		xmlHttp.send(null);
+	}
+
+	sendHttpGetRequest("/api/posts", function(response) 
+	{
+		console.log(response);
+	});
+
+	function displayPosts(posts)
+	{
+		var postHtml = "<div class=\"card\">\
+							<div class=\"card-header\">\
+							Featured\
+							</div>\
+							<div class=\"card-body\">\
+								<p class=\"card-text\">__POST_DATA__</p>\
+								<a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\
+							</div>\
+						</div>";
+
+		var htmlToDisplay;
+
+		for(var i = 0; i < post.L)
+
+		postHtml.replace("__POST_DATA__", )
+
+	}
+
+	</script>

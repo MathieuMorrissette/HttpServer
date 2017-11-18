@@ -23,12 +23,12 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 
             if (table == null)
             {
-                return null;
+                return new Post[0];
             }
 
             if (table.Rows.Count < 1)
             {
-                return null;
+                return new Post[0];
             }
 
             List<Post> posts = new List<Post>();
