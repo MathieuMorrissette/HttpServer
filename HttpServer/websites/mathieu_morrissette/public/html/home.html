@@ -54,10 +54,10 @@
 	{
 		var postHtmlTemplate = "<div class=\"card\">\
 							<div class=\"card-header\">\
-							__Username__\
+							$$POST_USERNAME$$ - $$POST_DATE$$\
 							</div>\
 							<div class=\"card-body\">\
-								<p class=\"card-text\">__POST_DATA__</p>\
+								<p class=\"card-text\">$$POST_DATA$$</p>\
 							</div>\
 						</div>";
 
@@ -67,7 +67,9 @@
 		{
 			var post = posts[i];
 
-			var postHtml = postHtmlTemplate.replace("__POST_DATA__", post.Data);
+			var postHtml = postHtmlTemplate.replace("$$POST_DATA$$", post.data);
+			postHtml = postHtml.replace("$$POST_USERNAME$$", post.username);
+			postHtml = postHtml.replace("$$POST_DATE$$", post.date);
 
 			htmlToDisplay = htmlToDisplay + postHtml;
 		}

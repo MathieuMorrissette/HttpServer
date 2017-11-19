@@ -1,5 +1,6 @@
 ﻿using HttpServer.helpers;
 using HttpServer.websites.mathieu_morrissette.classes;
+using HttpServer.websites.mathieu_morrissette.model;
 using System;
 using System.Collections.Generic;
 using System.Data;

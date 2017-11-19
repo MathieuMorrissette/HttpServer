@@ -1,5 +1,7 @@
-﻿using HttpServer.websites.mathieu_morrissette.classes;
+﻿using HttpServer.websites.mathieu_morrissette.api.helpers;
+using HttpServer.websites.mathieu_morrissette.classes;
 using HttpServer.websites.mathieu_morrissette.managers;
+using HttpServer.websites.mathieu_morrissette.model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
             {
                 Post[] posts = PostManager.GetUserPosts(user);
 
-                string output = JsonConvert.SerializeObject(posts);
+                string output = JsonConvert.SerializeObject(posts.ToResponse());
 
                 context.Send(output);
             }

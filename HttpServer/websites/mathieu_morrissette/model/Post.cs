@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.websites.mathieu_morrissette.classes
+namespace HttpServer.websites.mathieu_morrissette.model
 {
     public class Post
     {

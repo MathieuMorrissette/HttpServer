@@ -62,8 +62,10 @@
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\UsersHandler.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\helpers\PostsHelper.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
-    <Compile Include="websites\mathieu_morrissette\classes\Post.cs" />
+    <Compile Include="websites\mathieu_morrissette\model\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Register.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\UserController.cs" />
