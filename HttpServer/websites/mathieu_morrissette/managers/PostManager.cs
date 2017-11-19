@@ -11,6 +11,22 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 {
     public static class PostManager
     {
+        public static void CreatePost(User user, string data)
+        {
+            if (user == null)
+            {
+                return;
+            }
+
+            IDbDataParameter paramUserId = WebSite.Database.CreateParameter("@UserId", user.Id);
+            IDbDataParameter paramData = WebSite.Database.CreateParameter("@Data", data);
+            IDbDataParameter paramDate = WebSite.Database.CreateParameter("@Date", DateTime.Now);
+
+            WebSite.Database.ExecuteNonQuery("INSERT INTO posts (UserId, Data, Date) VALUES (@UserId, @Data, @Date)", paramUserId, paramData, paramDate);
+
+            return;
+        }
+
         public static Post[] GetUserPosts(User user)
         {
             if (user == null)

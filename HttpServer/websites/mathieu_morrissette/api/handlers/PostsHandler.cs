@@ -3,10 +3,12 @@ using HttpServer.websites.mathieu_morrissette.managers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HttpServer.websites.mathieu_morrissette.api.handlers
 {
@@ -28,13 +30,51 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
                 return true;
             }
 
-            Post[] posts = PostManager.GetUserPosts(user);
+            if (context.Request.HttpMethod == "GET")
+            {
+                Post[] posts = PostManager.GetUserPosts(user);
 
-            string output = JsonConvert.SerializeObject(posts);
+                string output = JsonConvert.SerializeObject(posts);
 
-            context.Send(output);
+                context.Send(output);
+            }
+
+            if (context.Request.HttpMethod == "POST")
+            {
+                string data = string.Empty;
+
+                using (StreamReader reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                {
+                    data = reader.ReadToEnd();
+                }
+
+                Dictionary<string, string> formData = GetPostDataFromForm(data);
+
+                if (formData.ContainsKey("data") && !string.IsNullOrEmpty(formData["data"]))
+                {
+                    PostManager.CreatePost(user, formData["data"]);
+                }                
+
+                // context.Response.StatusCode = 204; // prevent page refresh by returning no content code
+                context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+            }
 
             return true;
+        }
+
+        private Dictionary<string, string> GetPostDataFromForm(string data)
+        {
+            Dictionary<string, string> postParams = new Dictionary<string, string>();
+            string[] rawParams = data.Split('&');
+            foreach (string param in rawParams)
+            {
+                string[] kvPair = param.Split('=');
+                string key = kvPair[0];
+                string value = HttpUtility.UrlDecode(kvPair[1]);
+                postParams.Add(key, value);
+            }
+
+            return postParams;
         }
     }
 }
