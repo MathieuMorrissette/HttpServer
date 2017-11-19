@@ -61,6 +61,7 @@
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\handlers\UsersHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />

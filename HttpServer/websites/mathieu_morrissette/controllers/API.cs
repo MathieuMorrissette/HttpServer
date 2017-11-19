@@ -13,7 +13,8 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
     {
         public Dictionary<string, Func<IController>> handlersDictionary = new Dictionary<string, Func<IController>>
         {
-            { "posts", () => new PostsHandler() }
+            { "posts", () => new PostsHandler() },
+            { "users", () => new UsersHandler() }
         };
 
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
