@@ -65,6 +65,7 @@
     <Compile Include="websites\mathieu_morrissette\api\helpers\PostsHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
+    <Compile Include="websites\mathieu_morrissette\controllers\Friends.cs" />
     <Compile Include="websites\mathieu_morrissette\model\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Register.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Error_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Footer_Template.cs" />
+    <Compile Include="websites\mathieu_morrissette\templates\Friends_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Header_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Home_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Login_Template.cs" />
@@ -112,6 +114,7 @@
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />
     <Content Include="websites\mathieu_morrissette\public\html\error_alert.html" />
     <Content Include="websites\mathieu_morrissette\public\html\footer.html" />
+    <Content Include="websites\mathieu_morrissette\public\html\friends.html" />
     <Content Include="websites\mathieu_morrissette\public\html\header.html" />
     <Content Include="websites\mathieu_morrissette\public\html\home.html" />
     <Content Include="websites\mathieu_morrissette\public\html\home_design.html" />

@@ -45,6 +45,18 @@ namespace HttpServer.websites.mathieu_morrissette.database
                     )
                 "
             );
+
+            database.ExecuteNonQuery(
+                @"
+                    CREATE TABLE IF NOT EXISTS `friend_requests` (
+	                    `Id` INT(11) NOT NULL,
+	                    `UserId` INT(11) NOT NULL,
+	                    `RequestedUserId` INT(11) NOT NULL,
+	                    `Message` TEXT NULL,
+	                    PRIMARY KEY (`Id`)
+                    )
+                "
+            );
         }        
     }
 }

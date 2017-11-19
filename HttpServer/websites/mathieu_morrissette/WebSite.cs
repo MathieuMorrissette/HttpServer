@@ -33,6 +33,7 @@ namespace HttpServer.websites.mathieu_morrissette
             { "css", () => new FileProvider()},
             { "font", () => new FileProvider()},
             { "user", () => new UserController()},
+            { "friends", () => new Friends()},
             { "api", () => new API()}
         };
 

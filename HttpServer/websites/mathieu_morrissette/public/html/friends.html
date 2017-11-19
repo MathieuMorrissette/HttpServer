@@ -1,0 +1,34 @@
+﻿
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="card">
+				<div class="card-header">
+				Send Request
+				</div>
+				<div class="card-body">
+					<form id="post_form" action="/api/friend-requests" method="POST">
+						<div class="form-group">
+							<textarea class="form-control" name="data" rows="3"></textarea>
+						</div>						
+						<button type="submit" class="btn btn-primary float-right">Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 20px;">	
+		<div class="col-md-6 offset-md-3">
+			<div class="card">
+				<div class="card-header">
+				Friends
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Cras justo odio <a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
+					<li class="list-group-item">Dapibus ac facilisis in<a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
+					<li class="list-group-item">Vestibulum at eros<a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

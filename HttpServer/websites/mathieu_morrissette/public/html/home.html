@@ -34,6 +34,7 @@
 				<div class="card-body">
 					<h4 class="card-title">Friends</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="../friends" class="btn btn-primary float-right">View All Friends</a>
 				</div>
 			</div>
 		</div>
@@ -59,14 +60,16 @@
 
 	function displayPosts(posts)
 	{
-		var postHtmlTemplate = "<div class=\"card\">\
-							<div class=\"card-header\">\
-							$$POST_USERNAME$$ - $$POST_DATE$$\
-							</div>\
-							<div class=\"card-body\">\
-								<p class=\"card-text\">$$POST_DATA$$</p>\
-							</div>\
-						</div>";
+		var postHtmlTemplate = "\
+<div class=\"card\" style=\"margin-top: 20px;\">\
+	<div class=\"card-header\">\
+		$$POST_USERNAME$$ - $$POST_DATE$$\
+	</div>\
+	<div class=\"card-body\">\
+		<p class=\"card-text\">$$POST_DATA$$</p>\
+	</div>\
+</div>\
+";
 
 		var htmlToDisplay = "";
 
