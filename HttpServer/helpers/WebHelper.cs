@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HttpServer
 {
@@ -34,6 +35,20 @@ namespace HttpServer
         public static void Redirect(this HttpListenerContext context, string url)
         {
             context.Response.Redirect(url);
+        }
+
+        public static Dictionary<string, string> ParsePostData(string data)
+        {
+            Dictionary<string, string> postParams = new Dictionary<string, string>();
+            string[] rawParams = data.Split('&');
+            foreach (string param in rawParams)
+            {
+                string[] kvPair = param.Split('=');
+                string key = kvPair[0];
+                string value = HttpUtility.UrlDecode(kvPair[1]);
+                postParams.Add(key, value);
+            }
+            return postParams;
         }
 
         public static void Send(this HttpListenerContext context, string data)

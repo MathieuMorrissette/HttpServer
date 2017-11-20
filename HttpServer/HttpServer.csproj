@@ -60,12 +60,19 @@
     <Compile Include="managers\ConfigurationManager.cs" />
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\handlers\FriendRequestsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\UsersHandler.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\helpers\FriendRequestsHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\PostsHelper.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\responses\FriendReponse.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\responses\FriendRequestResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Friends.cs" />
+    <Compile Include="websites\mathieu_morrissette\managers\FriendManager.cs" />
+    <Compile Include="websites\mathieu_morrissette\managers\FriendRequestsManager.cs" />
+    <Compile Include="websites\mathieu_morrissette\model\FriendRequest.cs" />
     <Compile Include="websites\mathieu_morrissette\model\Post.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\API.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Register.cs" />
@@ -122,7 +129,9 @@
     <Content Include="websites\mathieu_morrissette\public\html\register.html" />
     <Content Include="websites\mathieu_morrissette\public\images\banner.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="websites\mathieu_morrissette\helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

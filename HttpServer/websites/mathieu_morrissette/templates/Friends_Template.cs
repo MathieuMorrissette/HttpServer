@@ -22,6 +22,7 @@ namespace HttpServer.websites.mathieu_morrissette.templates
             Footer_Template footerTemplate = new Footer_Template();
 
             string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/friends.html");
+            content = content.Replace("__Username__", this.user.Username);
             return headerTemplate.Render() + content + footerTemplate.Render();
         }
     }

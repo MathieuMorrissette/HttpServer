@@ -9,8 +9,13 @@
 				<div class="card-body">
 					<form id="post_form" action="/api/friend-requests" method="POST">
 						<div class="form-group">
-							<textarea class="form-control" name="data" rows="3"></textarea>
-						</div>						
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="username" name="username">
+						</div>
+						<div class="form-group">
+							<label for="message">Message (Optional)</label>
+							<textarea class="form-control" id="message" name="message" rows="3"></textarea>
+						</div>			
 						<button type="submit" class="btn btn-primary float-right">Send</button>
 					</form>
 				</div>
@@ -22,12 +27,31 @@
 		<div class="col-md-6 offset-md-3">
 			<div class="card">
 				<div class="card-header">
-				Pending Requests
+				Sent Requests
 				</div>
-				<ul class="list-group list-group-flush">
+				<ul class="list-group list-group-flush" id="sentRequestContainer">
 					<li class="list-group-item">Cras justo odio <a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
 					<li class="list-group-item">Dapibus ac facilisis in<a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
 					<li class="list-group-item">Vestibulum at eros<a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 20px;">	
+		<div class="col-md-6 offset-md-3">
+			<div class="card">
+				<div class="card-header">
+				Received Requests
+				</div>
+				<ul class="list-group list-group-flush" id="receivedRequestContainer">
+					<li class="list-group-item">
+						Cras justo odio
+						<div class="btn-group float-right" role="group" aria-label="Basic example">
+						  <a href="#" type="btn" class="btn btn-primary">Accept</a>
+						  <a href="#" type="btn" class="btn btn-primary">Deny</a>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -48,3 +72,49 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function sendHttpGetRequest(theUrl, callback)
+	{
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() { 
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+				callback(xmlHttp.responseText);
+		}
+		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+		xmlHttp.send(null);
+	}
+
+	sendHttpGetRequest("/api/friend-requests", function(response) 
+	{
+		var sentRequestTemplate = "<li class=\"list-group-item\">$$REQUESTED_USER$$ <a href=\"../user/logout\" class=\"btn btn-primary float-right\">Cancel</a></li>";
+		var receivedRequestTemplate ="<li class=\"list-group-item\">\
+						$$USERNAME$$\
+						<div class=\"btn-group float-right\" role=\"group\" aria-label=\"Basic example\">\
+						  <a href=\"#\" type=\"btn\" class=\"btn btn-primary\">Accept</a>\
+						  <a href=\"#\" type=\"btn\" class=\"btn btn-primary\">Deny</a>\
+						</div>\
+					</li>";
+
+
+		var sentRequestContainer = document.getElementById("sentRequestContainer");
+		var receivedRequestContainer = document.getElementById("receivedRequestContainer");
+
+		var requests = JSON.parse(response);
+
+		for(var i = 0; i < requests.length; i++)
+		{
+			var request = requests[i];
+
+			if(request.username == "__Username__")
+			{
+				sentRequestContainer.innerHTML = sentRequestContainer.innerHTML  + sentRequestTemplate.replace("$$REQUESTED_USER$$", request.requestedUsername);
+			}
+			else
+			{
+				receivedRequestContainer.innerHTML = receivedRequestContainer.innerHTML + receivedRequestTemplate.replace("$$USERNAME$$", request.username);
+			}
+		}
+	});
+
+</script>

@@ -1,5 +1,4 @@
 ﻿using HttpServer.websites.mathieu_morrissette.api.helpers;
-using HttpServer.websites.mathieu_morrissette.classes;
 using HttpServer.websites.mathieu_morrissette.managers;
 using HttpServer.websites.mathieu_morrissette.model;
 using Newtonsoft.Json;
@@ -10,11 +9,10 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace HttpServer.websites.mathieu_morrissette.api.handlers
 {
-    public class PostsHandler : IController
+    public class FriendRequestsHandler : IController
     {
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
@@ -34,9 +32,9 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (context.Request.HttpMethod == "GET")
             {
-                Post[] posts = PostManager.GetUserPosts(user);
+               FriendRequest[] requests = FriendRequestsManager.GetUserFriendRequests(user);
 
-                string output = JsonConvert.SerializeObject(posts.ToResponse());
+                string output = JsonConvert.SerializeObject(requests.ToResponse());
 
                 context.Send(output);
             }
@@ -52,12 +50,23 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
                 Dictionary<string, string> formData = WebHelper.ParsePostData(data);
 
-                if (formData.ContainsKey("data") && !string.IsNullOrEmpty(formData["data"]))
+                if (formData.ContainsKey("username") && !string.IsNullOrEmpty(formData["username"]))
                 {
-                    PostManager.CreatePost(user, formData["data"]);
-                }                
+                   User requestedUser = UserManager.GetUser(formData["username"]);
 
-                // context.Response.StatusCode = 204; // prevent page refresh by returning no content code
+                    if (requestedUser != null)
+                    {
+                        string message = null;
+
+                        if (formData.ContainsKey("message"))
+                        {
+                            message = formData["message"];
+                        }
+
+                        FriendRequestsManager.CreateFriendRequests(user, requestedUser, message);
+                    }
+                }
+
                 context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
             }
 
