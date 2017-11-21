@@ -48,7 +48,7 @@ namespace HttpServer.websites.mathieu_morrissette.managers
             WebSite.Database.ExecuteNonQuery("INSERT INTO users (Username, Password) VALUES (@Username, @Password)", paramUsername, paramPassword);
             
             return UserManager.GetUser(username);
-        }
+        }        
 
         public static User GetUser(int id)
         {

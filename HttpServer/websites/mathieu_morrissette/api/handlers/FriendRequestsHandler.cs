@@ -32,11 +32,50 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (context.Request.HttpMethod == "GET")
             {
-               FriendRequest[] requests = FriendRequestsManager.GetUserFriendRequests(user);
+                if (args.Length == 0)
+                {
+                    FriendRequest[] requests = FriendRequestsManager.GetUserFriendRequests(user);
 
-                string output = JsonConvert.SerializeObject(requests.ToResponse());
+                    string output = JsonConvert.SerializeObject(requests.ToResponse());
 
-                context.Send(output);
+                    context.Send(output);
+
+                    return true;
+                }
+
+                int requestId = 0;
+
+                if (int.TryParse(args[0], out requestId))
+                {
+                    FriendRequest request = FriendRequestsManager.GetFriendRequest(requestId);
+
+                    if (request == null)
+                    {
+                        return true;
+                    }
+
+                    if (args.Length == 1)
+                    {
+                        context.Send(JsonConvert.SerializeObject(new FriendRequest[] { request }.ToResponse()));
+                    }
+                    else
+                    {
+                        switch (args[1])
+                        {
+                            case "accept":
+                                FriendRequestsManager.AcceptFriendRequest(request);
+                                break;
+                            case "deny":
+                                FriendRequestsManager.DenyFriendRequest(request);
+                                break;
+                            case "cancel":
+                                FriendRequestsManager.CancelFriendRequest(request);
+                                break;
+                        }
+
+                        context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+                    }
+                }
             }
 
             if (context.Request.HttpMethod == "POST")

@@ -30,9 +30,6 @@
 				Sent Requests
 				</div>
 				<ul class="list-group list-group-flush" id="sentRequestContainer">
-					<li class="list-group-item">Cras justo odio <a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
-					<li class="list-group-item">Dapibus ac facilisis in<a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
-					<li class="list-group-item">Vestibulum at eros<a href="../user/logout" class="btn btn-primary float-right">Cancel</a></li>
 				</ul>
 			</div>
 		</div>
@@ -45,13 +42,6 @@
 				Received Requests
 				</div>
 				<ul class="list-group list-group-flush" id="receivedRequestContainer">
-					<li class="list-group-item">
-						Cras justo odio
-						<div class="btn-group float-right" role="group" aria-label="Basic example">
-						  <a href="#" type="btn" class="btn btn-primary">Accept</a>
-						  <a href="#" type="btn" class="btn btn-primary">Deny</a>
-						</div>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -85,14 +75,17 @@
 		xmlHttp.send(null);
 	}
 
+
+
+
 	sendHttpGetRequest("/api/friend-requests", function(response) 
 	{
-		var sentRequestTemplate = "<li class=\"list-group-item\">$$REQUESTED_USER$$ <a href=\"../user/logout\" class=\"btn btn-primary float-right\">Cancel</a></li>";
+		var sentRequestTemplate = "<li class=\"list-group-item\">$$REQUESTED_USER$$ <a href=\"/api/friend-requests/$$ID$$/cancel\" class=\"btn btn-primary float-right\">Cancel</a></li>";
 		var receivedRequestTemplate ="<li class=\"list-group-item\">\
 						$$USERNAME$$\
 						<div class=\"btn-group float-right\" role=\"group\" aria-label=\"Basic example\">\
-						  <a href=\"#\" type=\"btn\" class=\"btn btn-primary\">Accept</a>\
-						  <a href=\"#\" type=\"btn\" class=\"btn btn-primary\">Deny</a>\
+						  <a href=\"/api/friend-requests/$$ID$$/accept\" type=\"btn\" class=\"btn btn-primary\">Accept</a>\
+						  <a href=\"/api/friend-requests/$$ID$$/deny\" type=\"btn\" class=\"btn btn-primary\">Deny</a>\
 						</div>\
 					</li>";
 
@@ -108,11 +101,17 @@
 
 			if(request.username == "__Username__")
 			{
-				sentRequestContainer.innerHTML = sentRequestContainer.innerHTML  + sentRequestTemplate.replace("$$REQUESTED_USER$$", request.requestedUsername);
+				var dataToDisplay = sentRequestTemplate.replace("$$REQUESTED_USER$$", request.requestedUsername);
+				dataToDisplay = dataToDisplay.replace("$$ID$$", request.id);
+
+				sentRequestContainer.innerHTML = sentRequestContainer.innerHTML  + dataToDisplay;
 			}
 			else
 			{
-				receivedRequestContainer.innerHTML = receivedRequestContainer.innerHTML + receivedRequestTemplate.replace("$$USERNAME$$", request.username);
+				var dataToDisplay = receivedRequestTemplate.replace("$$USERNAME$$", request.username);
+				dataToDisplay = dataToDisplay.replace("$$ID$$", request.id);
+
+				receivedRequestContainer.innerHTML = receivedRequestContainer.innerHTML + dataToDisplay;
 			}
 		}
 	});

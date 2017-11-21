@@ -61,11 +61,13 @@
     <Compile Include="websites\BaseWebsite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendRequestsHandler.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\handlers\FriendsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\UsersHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\FriendRequestsHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\PostsHelper.cs" />
-    <Compile Include="websites\mathieu_morrissette\api\responses\FriendReponse.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\helpers\UserHelper.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\responses\UserResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\api\responses\FriendRequestResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />

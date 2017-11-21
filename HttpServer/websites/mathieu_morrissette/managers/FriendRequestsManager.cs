@@ -11,6 +11,70 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 {
     public static class FriendRequestsManager
     {
+        public static FriendRequest GetFriendRequest(int id)
+        {
+            if (id == -1)
+            {
+                return null;
+            }
+
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@ID", id);
+            DataTable table = WebSite.Database.ExecuteQuery("SELECT Id, UserId, RequestedUserId, Message FROM friend_requests WHERE Id=@ID", parameter);
+
+            if (table == null)
+            {
+                return null;
+            }
+
+            if (table.Rows.Count < 1)
+            {
+                return null;
+            }
+
+            DataRow dataRow = table.Rows[0];
+
+            return new FriendRequest((int)dataRow[FriendRequest.ID_FIELD], (int)dataRow[FriendRequest.USER_ID_FIELD], (int)dataRow[FriendRequest.REQUESTED_USER_ID_FIELD], (string)dataRow[FriendRequest.MESSAGE_FIELD]);
+        }
+
+        public static void AcceptFriendRequest(FriendRequest request)
+        {
+            if (request == null)
+            {
+                return;
+            }
+
+            DeleteRequest(request);
+
+            User requestingUser = UserManager.GetUser(request.UserId);
+            User requestedUser = UserManager.GetUser(request.RequestedUserId);
+
+            FriendManager.AddFriend(requestingUser, requestedUser);
+        }
+
+        public static void DenyFriendRequest(FriendRequest request)
+        {
+            DeleteRequest(request);
+        }
+
+        public static void CancelFriendRequest(FriendRequest request)
+        {
+            DeleteRequest(request);
+        }
+
+        public static void DeleteRequest(FriendRequest request)
+        {
+            if (request == null)
+            {
+                return;
+            }
+
+            IDbDataParameter paramId = WebSite.Database.CreateParameter("@Id", request.Id);
+
+            WebSite.Database.ExecuteNonQuery("DELETE FROM friend_requests WHERE Id=@Id", paramId);
+
+            return;
+        }
+
         public static bool CreateFriendRequests(User requestingUser, User requestedUser, string message)
         {
             if (requestingUser == null || requestedUser == null)
