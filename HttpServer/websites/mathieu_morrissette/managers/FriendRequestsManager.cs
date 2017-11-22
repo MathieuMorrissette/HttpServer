@@ -87,6 +87,8 @@ namespace HttpServer.websites.mathieu_morrissette.managers
                 return false;
             }
 
+            // TODO : check if both users sent friend requests to each others
+
             IDbDataParameter paramUserId = WebSite.Database.CreateParameter("@UserId", requestingUser.Id);
             IDbDataParameter paramRequestedUserId = WebSite.Database.CreateParameter("@RequestedUserId", requestedUser.Id);
             IDbDataParameter paramMessage = WebSite.Database.CreateParameter("@Message", message);
