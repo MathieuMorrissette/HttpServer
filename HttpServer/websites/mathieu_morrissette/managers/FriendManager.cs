@@ -24,6 +24,37 @@ namespace HttpServer.websites.mathieu_morrissette.managers
             return (count > 0);
         }
 
+        public static User[] GetFriends(User user)
+        {
+            if (user == null)
+            {
+                return new User[0];
+            }
+
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@UserId", user.Id);
+
+            DataTable table = WebSite.Database.ExecuteQuery("SELECT FirstUserId AS UserId FROM friends WHERE SecondUserId=@UserId UNION SELECT SecondUserId AS UserId FROM friends WHERE FirstUserId=@UserId", parameter);
+
+            if (table == null)
+            {
+                return new User[0];
+            }
+
+            if (table.Rows.Count < 1)
+            {
+                return new User[0];
+            }
+
+            List<User> friends = new List<User>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                friends.Add(UserManager.GetUser((int)row["UserId"]));
+            }
+
+            return friends.ToArray();
+        }
+
         public static void RemoveFriend(User user, User friend)
         {
             if (user == null || friend == null)
@@ -31,7 +62,7 @@ namespace HttpServer.websites.mathieu_morrissette.managers
                 return;
             }
 
-            if (user.IsFriendWith(friend))
+            if (!user.IsFriendWith(friend))
             {
                 return;
             }

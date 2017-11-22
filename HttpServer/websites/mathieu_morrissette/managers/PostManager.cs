@@ -28,15 +28,29 @@ namespace HttpServer.websites.mathieu_morrissette.managers
             return;
         }
 
-        public static Post[] GetUserPosts(User user)
+        public static Post[] GetHomeFeedPosts(User user)
         {
             if (user == null)
             {
                 return new Post[0];
             }
 
-            IDbDataParameter parameter = WebSite.Database.CreateParameter("@UserId", user.Id);
-            DataTable table = WebSite.Database.ExecuteQuery("SELECT Id, Date, Data FROM posts WHERE UserId=@UserId", parameter);
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@UserId", user.Id);            
+
+            DataTable table = WebSite.Database.ExecuteQuery(
+                "" +
+                "SELECT Id, UserId, Date, Data " +
+                "FROM posts " +
+                "WHERE UserId=@UserId OR " +
+                "UserId IN (" +
+                "               SELECT FirstUserId AS UserId " +
+                "               FROM friends " +
+                "               WHERE SecondUserId=@UserId " +
+                "               UNION SELECT SecondUserId AS UserId " +
+                "               FROM friends " +
+                "               WHERE FirstUserId=@UserId" +
+                "           ) " +
+                "ORDER BY Date DESC", parameter);
 
             if (table == null)
             {
@@ -52,7 +66,37 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 
             foreach (DataRow row in table.Rows)
             {
-                posts.Add(new Post((int)row[Post.ID_FIELD], user.Id, (DateTime)row[Post.DATE_FIELD], (string)row[Post.DATA_FIELD]));
+                posts.Add(new Post((int)row[Post.ID_FIELD], (int)row[Post.USER_ID_FIELD], (DateTime)row[Post.DATE_FIELD], (string)row[Post.DATA_FIELD]));
+            }
+
+            return posts.ToArray();
+        }
+
+        public static Post[] GetUserPosts(User user)
+        {
+            if (user == null)
+            {
+                return new Post[0];
+            }
+
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@UserId", user.Id);
+            DataTable table = WebSite.Database.ExecuteQuery("SELECT Id, UserId, Date, Data FROM posts WHERE UserId=@UserId", parameter);
+
+            if (table == null)
+            {
+                return new Post[0];
+            }
+
+            if (table.Rows.Count < 1)
+            {
+                return new Post[0];
+            }
+
+            List<Post> posts = new List<Post>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                posts.Add(new Post((int)row[Post.ID_FIELD], (int)row[Post.USER_ID_FIELD], (DateTime)row[Post.DATE_FIELD], (string)row[Post.DATA_FIELD]));
             }
 
             return posts.ToArray();

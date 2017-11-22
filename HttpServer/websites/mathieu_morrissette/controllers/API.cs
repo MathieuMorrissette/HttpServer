@@ -15,7 +15,8 @@ namespace HttpServer.websites.mathieu_morrissette.controllers
         {
             { "posts", () => new PostsHandler() },
             { "users", () => new UsersHandler() },
-            { "friend-requests", () => new FriendRequestsHandler() }
+            { "friend-requests", () => new FriendRequestsHandler() },
+            { "friends", () => new FriendsHandler() }
         };
 
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)

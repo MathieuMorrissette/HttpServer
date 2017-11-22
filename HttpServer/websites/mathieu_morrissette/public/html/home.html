@@ -33,9 +33,12 @@
 			<div class="card" style="width: 20rem; margin-top: 20px;">
 				<div class="card-body">
 					<h4 class="card-title">Friends</h4>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="../friends" class="btn btn-primary float-right">View All Friends</a>
 				</div>
+				<ul class="list-group list-group-flush" id="friendsContainer">
+				</ul>
+				<div class="card-body">				
+					<a href="../friends" class="btn btn-primary float-right">View All Friends</a>
+				</div>				
 			</div>
 		</div>
 	</div>
@@ -52,6 +55,25 @@
 		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
 		xmlHttp.send(null);
 	}
+
+	sendHttpGetRequest("/api/friends", function(response) 
+	{
+		var friendTemplate = "<li class=\"list-group-item\">$$USERNAME$$</li>";
+
+		var friendsContainer = document.getElementById("friendsContainer");
+
+		var friends = JSON.parse(response);
+
+		for(var i = 0; i < friends.length; i++)
+		{
+			var friend = friends[i];
+
+			var dataToDisplay = friendTemplate.replace("$$USERNAME$$", friend.username);
+
+			friendsContainer.innerHTML = friendsContainer.innerHTML  + dataToDisplay;
+		}
+	});
+
 
 	sendHttpGetRequest("/api/posts", function(response) 
 	{

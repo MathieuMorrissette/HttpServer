@@ -53,10 +53,7 @@
 				<div class="card-header">
 				Friends
 				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Cras justo odio <a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
-					<li class="list-group-item">Dapibus ac facilisis in<a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
-					<li class="list-group-item">Vestibulum at eros<a href="../user/logout" class="btn btn-primary float-right">Remove</a></li>
+				<ul class="list-group list-group-flush" id="friendsContainer">
 				</ul>
 			</div>
 		</div>
@@ -73,10 +70,26 @@
 		}
 		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
 		xmlHttp.send(null);
-	}
+	}	
 
+	sendHttpGetRequest("/api/friends", function(response) 
+	{
+		var friendTemplate = "<li class=\"list-group-item\">$$USERNAME$$<a href=\"/api/friends/$$ID$$/remove\" class=\"btn btn-primary float-right\">Remove</a></li>";
 
+		var friendsContainer = document.getElementById("friendsContainer");
 
+		var friends = JSON.parse(response);
+
+		for(var i = 0; i < friends.length; i++)
+		{
+			var friend = friends[i];
+
+			var dataToDisplay = friendTemplate.replace("$$USERNAME$$", friend.username);
+			dataToDisplay = dataToDisplay.replace("$$ID$$", friend.id);
+
+			friendsContainer.innerHTML = friendsContainer.innerHTML  + dataToDisplay;
+		}
+	});
 
 	sendHttpGetRequest("/api/friend-requests", function(response) 
 	{

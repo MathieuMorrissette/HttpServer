@@ -34,7 +34,7 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (context.Request.HttpMethod == "GET")
             {
-                Post[] posts = PostManager.GetUserPosts(user);
+                Post[] posts = PostManager.GetHomeFeedPosts(user);
 
                 string output = JsonConvert.SerializeObject(posts.ToResponse());
 
