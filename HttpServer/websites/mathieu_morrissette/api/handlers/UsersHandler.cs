@@ -1,4 +1,6 @@
-﻿using HttpServer.websites.mathieu_morrissette.managers;
+﻿using HttpServer.websites.mathieu_morrissette.api.responses;
+using HttpServer.websites.mathieu_morrissette.managers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,13 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (args.Length > 0)
             {
+                switch(args[0])
+                {
+                    case "me":
+                        context.Send(JsonConvert.SerializeObject(UserResponse.FromUser(user)));
+                        break;
 
+                }
             }
 
             return true;

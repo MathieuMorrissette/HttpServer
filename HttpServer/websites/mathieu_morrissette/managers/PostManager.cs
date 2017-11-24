@@ -12,6 +12,45 @@ namespace HttpServer.websites.mathieu_morrissette.managers
 {
     public static class PostManager
     {
+        public static void DeletePost(Post post)
+        {
+            if (post == null)
+            {
+                return;
+            }
+
+            IDbDataParameter paramPostId = WebSite.Database.CreateParameter("@Id", post.Id);
+
+            WebSite.Database.ExecuteNonQuery("DELETE FROM posts WHERE Id=@Id", paramPostId);
+
+            return;
+        }
+
+        public static Post GetPost(int id)
+        {
+            if (id == -1)
+            {
+                return null;
+            }
+
+            IDbDataParameter parameter = WebSite.Database.CreateParameter("@ID", id);
+            DataTable table = WebSite.Database.ExecuteQuery("SELECT Id, UserId, Date, Data FROM posts WHERE Id=@ID", parameter);
+
+            if (table == null)
+            {
+                return null;
+            }
+
+            if (table.Rows.Count < 1)
+            {
+                return null;
+            }
+
+            DataRow dataRow = table.Rows[0];
+
+            return new Post((int)dataRow[Post.ID_FIELD], (int)dataRow[Post.USER_ID_FIELD], (DateTime)dataRow[Post.DATE_FIELD], (string)dataRow[Post.DATA_FIELD]);
+        }
+
         public static void CreatePost(User user, string data)
         {
             if (user == null)

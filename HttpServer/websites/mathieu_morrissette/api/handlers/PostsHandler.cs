@@ -34,11 +34,47 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (context.Request.HttpMethod == "GET")
             {
-                Post[] posts = PostManager.GetHomeFeedPosts(user);
+                if (args.Length == 0)
+                {
+                    Post[] posts = PostManager.GetHomeFeedPosts(user);
 
-                string output = JsonConvert.SerializeObject(posts.ToResponse());
+                    string output = JsonConvert.SerializeObject(posts.ToResponse());
 
-                context.Send(output);
+                    context.Send(output);
+
+                    return true;
+                }
+
+                int postId = 0;
+
+                if (int.TryParse(args[0], out postId))
+                {
+                    Post post = PostManager.GetPost(postId);
+
+                    if (post == null)
+                    {
+                        return true;
+                    }
+
+                    if (args.Length == 1)
+                    {
+                        context.Send(JsonConvert.SerializeObject(new Post[] { post }.ToResponse()));
+                    }
+                    else
+                    {
+                        switch (args[1])
+                        {
+                            case "delete":
+                                if (post.UserId == user.Id)
+                                {
+                                    PostManager.DeletePost(post);
+                                }
+                                break;
+                        }
+
+                        context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+                    }
+                }
             }
 
             if (context.Request.HttpMethod == "POST")

@@ -74,18 +74,29 @@
 		}
 	});
 
+	var currentUser;
 
-	sendHttpGetRequest("/api/posts", function(response) 
+	sendHttpGetRequest("/api/users/me", function(response) 
 	{
-		displayPosts(JSON.parse(response));
+		currentUser = JSON.parse(response);
+
+		sendHttpGetRequest("/api/posts", function(response) 
+		{
+			displayPosts(JSON.parse(response));
+		});
 	});
 
 	function displayPosts(posts)
 	{
+		var editButtonTemplate = "<a href=\"#\" class=\"btn btn-primary float-right\" style=\"margin-right:5px;\">Edit</a>";
+		var deleteButtonTemplate = "<a href=\"/api/posts/$$POST_ID$$/delete\" class=\"btn btn-primary float-right\">Delete</a>";
+
+
 		var postHtmlTemplate = "\
 <div class=\"card\" style=\"margin-top: 20px;\">\
 	<div class=\"card-header\">\
 		$$POST_USERNAME$$ - $$POST_DATE$$\
+		 $$DELETE_BUTTON$$ $$EDIT_BUTTON$$\
 	</div>\
 	<div class=\"card-body\">\
 		<p class=\"card-text\">$$POST_DATA$$</p>\
@@ -102,6 +113,17 @@
 			var postHtml = postHtmlTemplate.replace("$$POST_DATA$$", post.data);
 			postHtml = postHtml.replace("$$POST_USERNAME$$", post.username);
 			postHtml = postHtml.replace("$$POST_DATE$$", post.date);
+
+			if(post.username == currentUser.username)
+			{
+				postHtml = postHtml.replace("$$EDIT_BUTTON$$", editButtonTemplate);
+				postHtml = postHtml.replace("$$DELETE_BUTTON$$", deleteButtonTemplate.replace("$$POST_ID$$", post.id));
+			}
+			else
+			{
+				postHtml = postHtml.replace("$$EDIT_BUTTON$$", "");
+				postHtml = postHtml.replace("$$DELETE_BUTTON$$", "");
+			}
 
 			htmlToDisplay = htmlToDisplay + postHtml;
 		}

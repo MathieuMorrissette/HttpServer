@@ -64,6 +64,7 @@
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\UsersHandler.cs" />
+    <Compile Include="websites\mathieu_morrissette\api\helpers\CensorshipHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\FriendRequestsHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\PostsHelper.cs" />
     <Compile Include="websites\mathieu_morrissette\api\helpers\UserHelper.cs" />

@@ -1,4 +1,5 @@
-﻿using HttpServer.websites.mathieu_morrissette.managers;
+﻿using HttpServer.websites.mathieu_morrissette.api.helpers;
+using HttpServer.websites.mathieu_morrissette.managers;
 using HttpServer.websites.mathieu_morrissette.model;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace HttpServer.websites.mathieu_morrissette.api.responses
 {
     public class PostResponse
     {
+        public int id { get; set; }
+
         public string data { get; set; }
 
         public string username { get; set; }
@@ -20,7 +23,8 @@ namespace HttpServer.websites.mathieu_morrissette.api.responses
         {
             PostResponse response = new PostResponse();
 
-            response.data = post.Data;
+            response.id = post.Id;
+            response.data = CensorshipHelper.Censor(post.Data);
             response.date = post.Date.ToString();
             response.username = UserManager.GetUser(post.UserId).Username;
 
