@@ -58,7 +58,7 @@
 
 	sendHttpGetRequest("/api/friends", function(response) 
 	{
-		var friendTemplate = "<li class=\"list-group-item\">$$USERNAME$$</li>";
+		var friendTemplate = "<li class=\"list-group-item\">__USERNAME__</li>";
 
 		var friendsContainer = document.getElementById("friendsContainer");
 
@@ -68,7 +68,7 @@
 		{
 			var friend = friends[i];
 
-			var dataToDisplay = friendTemplate.replace("$$USERNAME$$", friend.username);
+			var dataToDisplay = friendTemplate.replace("__USERNAME__", friend.username);
 
 			friendsContainer.innerHTML = friendsContainer.innerHTML  + dataToDisplay;
 		}
@@ -88,18 +88,18 @@
 
 	function displayPosts(posts)
 	{
-		var editButtonTemplate = "<a href=\"#\" class=\"btn btn-primary float-right\" style=\"margin-right:5px;\">Edit</a>";
-		var deleteButtonTemplate = "<a href=\"/api/posts/$$POST_ID$$/delete\" class=\"btn btn-primary float-right\">Delete</a>";
+		var editButtonTemplate = "<a href=\"#\" onclick=\"EditPost(\__POST_ID\__);\" class=\"btn btn-primary float-right\" style=\"margin-right:5px;\">Edit</a>";
+		var deleteButtonTemplate = "<a href=\"/api/posts/__POST_ID__/delete\" class=\"btn btn-primary float-right\">Delete</a>";
 
 
 		var postHtmlTemplate = "\
 <div class=\"card\" style=\"margin-top: 20px;\">\
 	<div class=\"card-header\">\
-		$$POST_USERNAME$$ - $$POST_DATE$$\
-		 $$DELETE_BUTTON$$ $$EDIT_BUTTON$$\
+		__POST_USERNAME__ - __POST_DATE__\
+		 <div id=\"buttonContainer__POST_ID__\">__DELETE_BUTTON__ __EDIT_BUTTON__</div>\
 	</div>\
 	<div class=\"card-body\">\
-		<p class=\"card-text\">$$POST_DATA$$</p>\
+		<p id=\"__POST_ID__\">__POST_DATA__</p>\
 	</div>\
 </div>\
 ";
@@ -110,19 +110,20 @@
 		{
 			var post = posts[i];
 
-			var postHtml = postHtmlTemplate.replace("$$POST_DATA$$", post.data);
-			postHtml = postHtml.replace("$$POST_USERNAME$$", post.username);
-			postHtml = postHtml.replace("$$POST_DATE$$", post.date);
+			var postHtml = postHtmlTemplate.replace("__POST_DATA__", post.data);
+			postHtml = postHtml.replace("__POST_USERNAME__", post.username);
+			postHtml = postHtml.replace("__POST_DATE__", post.date);
+			postHtml = postHtml.replace(/__POST_ID__/g, post.id);
 
 			if(post.username == currentUser.username)
 			{
-				postHtml = postHtml.replace("$$EDIT_BUTTON$$", editButtonTemplate);
-				postHtml = postHtml.replace("$$DELETE_BUTTON$$", deleteButtonTemplate.replace("$$POST_ID$$", post.id));
+				postHtml = postHtml.replace("__EDIT_BUTTON__", editButtonTemplate.replace("__POST_ID__", post.id));
+				postHtml = postHtml.replace("__DELETE_BUTTON__", deleteButtonTemplate.replace("__POST_ID__", post.id));
 			}
 			else
 			{
-				postHtml = postHtml.replace("$$EDIT_BUTTON$$", "");
-				postHtml = postHtml.replace("$$DELETE_BUTTON$$", "");
+				postHtml = postHtml.replace("__EDIT_BUTTON__", "");
+				postHtml = postHtml.replace("__DELETE_BUTTON__", "");
 			}
 
 			htmlToDisplay = htmlToDisplay + postHtml;
@@ -130,6 +131,31 @@
 
 		document.getElementById("posts_container").innerHTML = htmlToDisplay;
 
+	}
+
+	var editPostFormTemplate = "\
+	<form id=\"editPostForm__POST_ID__\" action=\"/api/posts/__POST_ID__\" method=\"POST\">\
+	<div class=\"form-group\">\
+		<textarea class=\"form-control\" name=\"data\" rows=\"3\">__CONTENT__</textarea>\
+	</div>\
+</form>";
+
+	var doneEditButtonTemplate = "<a onclick=\"document.forms['editPostForm__POST_ID__'].submit(); return false;\" href=\"#\" class=\"btn btn-primary float-right\" style=\"margin-right:5px;\">Done</a>";
+
+	function EditPost(postId)
+	{	
+
+		var paragraph = document.getElementById(postId);
+
+		var value = unescape(paragraph.innerHTML);
+
+		var htmlToDisplay = editPostFormTemplate.replace(/__POST_ID__/g, postId);
+		htmlToDisplay = htmlToDisplay.replace("__CONTENT__", value);
+
+		paragraph.parentNode.innerHTML = htmlToDisplay;
+
+
+		document.getElementById("buttonContainer"+postId).innerHTML = doneEditButtonTemplate.replace(/__POST_ID__/g, postId);
 	}
 
 </script>

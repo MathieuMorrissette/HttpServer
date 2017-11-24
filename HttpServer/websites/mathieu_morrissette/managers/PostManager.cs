@@ -51,6 +51,21 @@ namespace HttpServer.websites.mathieu_morrissette.managers
             return new Post((int)dataRow[Post.ID_FIELD], (int)dataRow[Post.USER_ID_FIELD], (DateTime)dataRow[Post.DATE_FIELD], (string)dataRow[Post.DATA_FIELD]);
         }
 
+        public static void UpdatePost(Post post)
+        {
+            if (post == null)
+            {
+                return;
+            }
+
+            IDbDataParameter paramId = WebSite.Database.CreateParameter("@Id", post.Id);
+            IDbDataParameter paramData = WebSite.Database.CreateParameter("@Data", post.Data);
+
+            WebSite.Database.ExecuteNonQuery("UPDATE posts SET Data=@Data WHERE Id=@Id", paramId, paramData);
+
+            return;
+        }
+
         public static void CreatePost(User user, string data)
         {
             if (user == null)

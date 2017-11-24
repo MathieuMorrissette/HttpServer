@@ -79,22 +79,54 @@ namespace HttpServer.websites.mathieu_morrissette.api.handlers
 
             if (context.Request.HttpMethod == "POST")
             {
-                string data = string.Empty;
-
-                using (StreamReader reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                if (args.Length == 0)
                 {
-                    data = reader.ReadToEnd();
+                    string data = string.Empty;
+
+                    using (StreamReader reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                    {
+                        data = reader.ReadToEnd();
+                    }
+
+                    Dictionary<string, string> formData = WebHelper.ParsePostData(data);
+
+                    if (formData.ContainsKey("data") && !string.IsNullOrEmpty(formData["data"]))
+                    {
+                        PostManager.CreatePost(user, formData["data"]);
+                    }
+
+                    context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+
+                    return true;
                 }
 
-                Dictionary<string, string> formData = WebHelper.ParsePostData(data);
+                int postId = 0;
 
-                if (formData.ContainsKey("data") && !string.IsNullOrEmpty(formData["data"]))
+                if (int.TryParse(args[0], out postId))
                 {
-                    PostManager.CreatePost(user, formData["data"]);
-                }                
+                    Post post = PostManager.GetPost(postId);
 
-                // context.Response.StatusCode = 204; // prevent page refresh by returning no content code
-                context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+                    string data = string.Empty;
+
+                    using (StreamReader reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                    {
+                        data = reader.ReadToEnd();
+                    }
+
+                    Dictionary<string, string> formData = WebHelper.ParsePostData(data);
+
+                    if (formData.ContainsKey("data") && !string.IsNullOrEmpty(formData["data"]))
+                    {
+                        post.Data = formData["data"];
+
+                        if (user.Id == post.UserId)
+                        {
+                            PostManager.UpdatePost(post);
+                        }
+                    }
+                    // context.Response.StatusCode = 204; // prevent page refresh by returning no content code
+                    context.Redirect(context.Request.UrlReferrer.AbsoluteUri);
+                }
             }
 
             return true;
