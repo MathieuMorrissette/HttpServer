@@ -73,6 +73,7 @@
     <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Friends.cs" />
+    <Compile Include="websites\mathieu_morrissette\controllers\Profile.cs" />
     <Compile Include="websites\mathieu_morrissette\managers\FriendManager.cs" />
     <Compile Include="websites\mathieu_morrissette\managers\FriendRequestsManager.cs" />
     <Compile Include="websites\mathieu_morrissette\model\FriendRequest.cs" />

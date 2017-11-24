@@ -28,6 +28,7 @@ namespace HttpServer.websites.mathieu_morrissette
             { "login", () => new Login()},
             { "register", () => new Register()},
             { "home", () =>  new Home()},
+            {"profile", () => new Profile() },
             { "images", () => new FileProvider()},
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},
