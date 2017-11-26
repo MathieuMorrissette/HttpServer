@@ -46,31 +46,38 @@ namespace HttpServer
                 this.CheckExpiredClient();
                 Task.Run(() =>
                 {
-                    Client client = this.GetClient(httpListenerContext);
-
-                    string hostName = httpListenerContext.Request.Url.Host;
-
-                    bool handled = false;
-
-                    foreach (Route route in ConfigurationManager.ServerConfig.routes)
+                    try
                     {
-                        if (route.value.Contains(hostName))
+                        Client client = this.GetClient(httpListenerContext);
+
+                        string hostName = httpListenerContext.Request.Url.Host;
+
+                        bool handled = false;
+
+                        foreach (Route route in ConfigurationManager.ServerConfig.routes)
                         {
-                            Type type = Type.GetType(route.type);
+                            if (route.value.Contains(hostName))
+                            {
+                                Type type = Type.GetType(route.type);
 
-                            BaseWebsite website = (BaseWebsite)Activator.CreateInstance(type, client, httpListenerContext);
-                            website.HandleRequest();
-                            handled = true;
-                            break;
+                                BaseWebsite website = (BaseWebsite)Activator.CreateInstance(type, client, httpListenerContext);
+                                website.HandleRequest();
+                                handled = true;
+                                break;
+                            }
                         }
-                    }
 
-                    if (!handled)
+                        if (!handled)
+                        {
+                            httpListenerContext.Send("error");
+                        }
+
+                        httpListenerContext.Response.Close();
+                    }
+                    catch (Exception ex)
                     {
-                        httpListenerContext.Send("error");
+                        Console.WriteLine(ex.Message + " - " + ex.StackTrace);
                     }
-
-                    httpListenerContext.Response.Close();
                 });
             }
         }

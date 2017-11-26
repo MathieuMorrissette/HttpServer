@@ -56,6 +56,10 @@
 		xmlHttp.send(null);
 	}
 
+	function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 	sendHttpGetRequest("/api/friends", function(response) 
 	{
 		var friendTemplate = "<li class=\"list-group-item\">__USERNAME__</li>";
@@ -110,7 +114,7 @@
 		{
 			var post = posts[i];
 
-			var postHtml = postHtmlTemplate.replace("__POST_DATA__", post.data);
+			var postHtml = postHtmlTemplate.replace("__POST_DATA__", htmlEntities(post.data));
 			postHtml = postHtml.replace("__POST_USERNAME__", post.username);
 			postHtml = postHtml.replace("__POST_DATE__", post.date);
 			postHtml = postHtml.replace(/__POST_ID__/g, post.id);

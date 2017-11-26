@@ -35,6 +35,7 @@ namespace HttpServer.websites.mathieu_morrissette
             { "font", () => new FileProvider()},
             { "user", () => new UserController()},
             { "friends", () => new Friends()},
+            { "chat", () => new Chat()},
             { "api", () => new API()}
         };
 

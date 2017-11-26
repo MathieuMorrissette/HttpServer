@@ -11,7 +11,7 @@ namespace HttpServer.websites.mathieu_morrissette.api.helpers
     {
         public static string Censor(string html)
         {
-            return HttpUtility.HtmlEncode(html);
+            return html;
         }
     }
 }

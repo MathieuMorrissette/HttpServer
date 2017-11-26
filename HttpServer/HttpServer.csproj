@@ -72,6 +72,7 @@
     <Compile Include="websites\mathieu_morrissette\api\responses\FriendRequestResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\api\responses\PostResponse.cs" />
     <Compile Include="websites\mathieu_morrissette\classes\MathieuMorrissetteConfig.cs" />
+    <Compile Include="websites\mathieu_morrissette\controllers\Chat.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Friends.cs" />
     <Compile Include="websites\mathieu_morrissette\controllers\Profile.cs" />
     <Compile Include="websites\mathieu_morrissette\managers\FriendManager.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="websites\mathieu_morrissette\templates\Chat_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Error_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Footer_Template.cs" />
     <Compile Include="websites\mathieu_morrissette\templates\Friends_Template.cs" />
@@ -123,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />
+    <Content Include="websites\mathieu_morrissette\public\html\chat.html" />
     <Content Include="websites\mathieu_morrissette\public\html\error_alert.html" />
     <Content Include="websites\mathieu_morrissette\public\html\footer.html" />
     <Content Include="websites\mathieu_morrissette\public\html\friends.html" />
