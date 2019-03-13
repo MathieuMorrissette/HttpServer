@@ -59,6 +59,30 @@
     <Compile Include="helpers\DatabaseHelper.cs" />
     <Compile Include="managers\ConfigurationManager.cs" />
     <Compile Include="websites\BaseWebsite.cs" />
+    <Compile Include="websites\exalted\api\handlers\CharacterHandler.cs" />
+    <Compile Include="websites\exalted\api\handlers\CharactersHandler.cs" />
+    <Compile Include="websites\exalted\api\responses\CharacterResponse.cs" />
+    <Compile Include="websites\exalted\classes\ExaltedConfig.cs" />
+    <Compile Include="websites\exalted\controllers\API.cs" />
+    <Compile Include="websites\exalted\controllers\Characters.cs" />
+    <Compile Include="websites\exalted\controllers\Home.cs" />
+    <Compile Include="websites\exalted\controllers\Login.cs" />
+    <Compile Include="websites\exalted\controllers\Register.cs" />
+    <Compile Include="websites\exalted\database\DatabaseInitialiser.cs" />
+    <Compile Include="websites\exalted\helpers\CharacterHelper.cs" />
+    <Compile Include="websites\exalted\managers\CharacterManager.cs" />
+    <Compile Include="websites\exalted\managers\UserManager.cs" />
+    <Compile Include="websites\exalted\model\Error.cs" />
+    <Compile Include="websites\exalted\model\Character.cs" />
+    <Compile Include="websites\exalted\model\User.cs" />
+    <Compile Include="websites\exalted\templates\Error_Template.cs" />
+    <Compile Include="websites\exalted\templates\Footer_Template.cs" />
+    <Compile Include="websites\exalted\templates\Header_Template.cs" />
+    <Compile Include="websites\exalted\templates\Characters_Template.cs" />
+    <Compile Include="websites\exalted\templates\Home_Template.cs" />
+    <Compile Include="websites\exalted\templates\Login_Template.cs" />
+    <Compile Include="websites\exalted\templates\Register_Template.cs" />
+    <Compile Include="websites\exalted\WebSite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendRequestsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendsHandler.cs" />
@@ -121,9 +145,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="websites\exalted\configs\config.cfg" />
     <None Include="websites\mathieu_morrissette\configs\config.cfg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="websites\exalted\public\html\characters.html" />
+    <Content Include="websites\exalted\public\html\error_alert.html" />
+    <Content Include="websites\exalted\public\html\footer.html" />
+    <Content Include="websites\exalted\public\html\header.html" />
+    <Content Include="websites\exalted\public\html\home.html" />
+    <Content Include="websites\exalted\public\html\login.html" />
+    <Content Include="websites\exalted\public\html\register.html" />
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />
     <Content Include="websites\mathieu_morrissette\public\html\chat.html" />
     <Content Include="websites\mathieu_morrissette\public\html\error_alert.html" />

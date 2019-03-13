@@ -1,0 +1,63 @@
+
+<div class="">
+	<div class="row">
+		<div class="col-10">
+			<div class="card">
+				<div class="card-header">
+				TODO SHOW STATS HERE
+				</div>
+				<div class="card-body">
+					<form id="post_form" action="/api/posts" method="POST">
+						<div class="form-group">
+							<textarea class="form-control" name="data" rows="3"></textarea>
+						</div>						
+						<button type="submit" class="btn btn-primary float-right">Post</button>
+					</form>
+				</div>
+			</div>
+			<div id="posts_container">
+			</div>
+		</div>
+
+		<div class="col-2 ">
+			<div class="card" >
+				<img class="card-img-top" src="https://rfclipart.com/image/big/33-84-be/greedy-dragon-holding-a-heart-Download-Royalty-free-Vector-File-EPS-88940.jpg" alt="UserBanner">
+				<div class="card-body">
+					<h4 class="card-title">__Username__</h4>
+					<p class="card-text">It's over 9000!</p>
+					<a href="/profile" class="btn btn-primary">My Profile</a>
+					<a href="../user/logout" class="btn btn-primary float-right">Logout</a>
+				</div>
+			</div>
+
+			<div class="card" style="margin-top: 20px;">
+				<div class="card-body">
+					<h4 class="card-title">Characters</h4>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Glimpse of the First Star - Essence 2</li>
+					<li class="list-group-item">Morsure du desert - Deceased</li>
+				</ul>
+				<div class="card-body">				
+					<a href="../characters" class="btn btn-primary float-right">Manage</a>
+				</div>				
+			</div>
+
+			<div class="card" style="margin-top: 20px;">
+				<div class="card-body">
+					<h4 class="card-title">Games</h4>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">The scavenger lords</li>
+					<li class="list-group-item">The plebs of the desert - Done</li>
+				</ul>
+				<div class="card-body">				
+					<a href="../characters" class="btn btn-primary float-right">Manage</a>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+</script>
