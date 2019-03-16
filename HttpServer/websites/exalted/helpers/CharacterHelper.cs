@@ -17,7 +17,7 @@ namespace HttpServer.websites.exalted.managers
     {
         public static Character FromDataRow(DataRow dataRow)
         {
-            return new Character((int)dataRow[Character.ID_FIELD], (int)dataRow[Character.USER_ID_FIELD], (string)dataRow[Character.NAME_FIELD], (string)dataRow[Character.DATA_FIELD]);
+            return new Character((int)dataRow[Character.ID_FIELD], (int)dataRow[Character.USER_ID_FIELD], (string)dataRow[Character.DATA_FIELD]);
         }
 
         public static CharacterResponse[] ToResponse(Character[] characters)

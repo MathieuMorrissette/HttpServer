@@ -10,20 +10,17 @@ namespace HttpServer.websites.exalted.model
     {
         public const string ID_FIELD = "Id";
         public const string USER_ID_FIELD = "UserId";
-        public const string NAME_FIELD = "Name";
         public const string DATA_FIELD = "Data";
 
-        public Character(int id, int userId, string name, string data)
+        public Character(int id, int userId, string data)
         {
             this.Id = id;
             this.UserId = userId;
-            this.Name = name;
             this.Data = data;
         }
         
         public int Id { get; private set; }
         public int UserId { get; private set; }
-        public string Name { get; private set; }
         public string Data { get; private set;  }
     }
 }

@@ -15,8 +15,6 @@ namespace HttpServer.websites.exalted.api.responses
 
         public string owner { get; set; }
 
-        public string name { get; set; }
-
         public string data { get; set; }
 
         public static CharacterResponse FromCharacter(Character character)
@@ -25,7 +23,6 @@ namespace HttpServer.websites.exalted.api.responses
 
             response.id = character.Id;
             response.owner = character.UserId.ToString();
-            response.name = character.Name;
             response.data = character.Data;
 
             return response;
