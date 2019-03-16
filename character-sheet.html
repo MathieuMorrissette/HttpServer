@@ -21,13 +21,13 @@
 			<div class="card col-sm-12" style="margin-top: 20px;">
 				<div class="card-body">
 					<h4 class="card-title">General</h4>
-					<form>
+					<form id="general">
 						<div class=" row">
 							<div class="input-group mb-3 col-sm-6">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Name</span>
 								</div>
-								<input type="text" name="name" class="form-control text-right">
+								<input type="text" name="name" class="form-control text-right" disabled>
 							</div>
 
 							<div class="input-group mb-3 col-sm-6">
@@ -44,7 +44,8 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">Player</span>
 								</div>
-								<input type="text" name="player" class="form-control text-right">
+								<input type="text" name="owner"
+									class="form-control text-right" disabled>
 							</div>
 
 							<div class="input-group mb-3 col-sm-6">
@@ -62,18 +63,17 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">Caste</span>
 								</div>
-								<input type="text" name="player" class="form-control text-right">
+								<input type="text" name="caste" class="form-control text-right">
 							</div>
 
 							<div class="input-group mb-3 col-sm-6">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Supernal Ability</span>
 								</div>
-								<input type="text" name="supernal" class="form-control text-right">
+								<input type="text" name="supernalAbility"
+									class="form-control text-right">
 							</div>
 						</div>
-
-
 					</form>
 				</div>
 			</div>
@@ -83,7 +83,7 @@
 			<div class="card col-sm-12" style="margin-top: 20px;">
 				<div class="card-body">
 					<h4 class="card-title">Attributes</h4>
-					<form>
+					<form id="attributes">
 						<div class=" row">
 							<div class="input-group mb-3 col-sm-4">
 								<div class="input-group-prepend">
@@ -164,7 +164,7 @@
 					<div class="card col-sm-12" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Abilities</h4>
-							<form>
+							<form id="abilities">
 								<div class="form-row">
 									<div class="col-12">
 										<div class="input-group">
@@ -369,14 +369,14 @@
 									<div class="col-12">
 										<div class="input-group">
 											<div class="input-group-text">
-												<input name="martialarts-favorite"
+												<input name="martialArts-favorite"
 													type="checkbox">
 											</div>
 											<div class="input-group-prepend">
 												<span class="input-group-text">Martial
 													Arts</span>
 											</div>
-											<input type="text" name="martialarts"
+											<input type="text" name="martialArts"
 												class="form-control text-right">
 										</div>
 									</div>
@@ -548,7 +548,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Stealth</span>
 											</div>
-											<input type="text" name="socialize"
+											<input type="text" name="stealth"
 												class="form-control text-right">
 										</div>
 									</div>
@@ -610,7 +610,7 @@
 					<div class="card col-sm-12" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Additionnal Abilities</h4>
-							<form>
+							<form id="additionalAbilities">
 								<div class="form-row">
 									<div class="col-12">
 										<div class="input-group">
@@ -656,7 +656,7 @@
 												<input type="text" name="additional3-name"
 													class="form-control">
 											</div>
-											<input type="text" name="additional4"
+											<input type="text" name="additional3"
 												class="form-control text-right">
 										</div>
 									</div>
@@ -672,7 +672,7 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Specializations</h4>
-							<form>
+							<form id="specializations">
 								<div class="form-row">
 									<input type="text" name="specialization1" class="form-control">
 								</div>
@@ -698,64 +698,66 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Merits</h4>
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit1-name">
+							<form id="merits">
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit1-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit1-value">
+									</div>
 								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit1-value">
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit2-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit2-value">
+									</div>
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit2-name">
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit3-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit3-value">
+									</div>
 								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit2-value">
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit3-name">
-								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit3-value">
-								</div>
-							</div>
 
 
 
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit4-name">
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit4-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit4-value">
+									</div>
 								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit4-value">
+
+
+
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit5-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit5-value">
+									</div>
 								</div>
-							</div>
 
 
 
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit5-name">
+
+								<div class="form-row">
+									<div class="col-10">
+										<input type="text" class="form-control" name="merit6-name">
+									</div>
+									<div class="col-2">
+										<input type="text" class="form-control" name="merit6-value">
+									</div>
 								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit5-value">
-								</div>
-							</div>
-
-
-
-
-							<div class="form-row">
-								<div class="col-10">
-									<input type="text" class="form-control" name="merit6-name">
-								</div>
-								<div class="col-2">
-									<input type="text" class="form-control" name="merit6-value">
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -765,14 +767,14 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Willpower</h4>
-							<form>
+							<form id="willpower">
 								<div class="form-row">
 									<div class="col-6">
 										<input type="text" class="form-control"
 											name="current-willpower" placeholder="current">
 									</div>
 									<div class="col-6">
-										<input type="text" class="form-control" name="max-willpower"
+										<input type="text" class="form-control" name="max"
 											placeholder="max">
 									</div>
 								</div>
@@ -783,9 +785,15 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Limit Break</h4>
-							<form>
+							<form id="limitBreak">
 								<div class="form-row">
-									<input type="text" class="form-control" name="current-limitbreak">
+									<input type="text" class="form-control" name="current"
+										placeholder="Current">
+
+								</div>
+								<div class="form-row">
+									<input type="text" class="form-control" name="max"
+										placeholder="Max">
 
 								</div>
 							</form>
@@ -798,14 +806,14 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Essence</h4>
-							<form>
+							<form id="essence">
 								<div class=" row">
 									<div class="input-group col-sm-12">
 										<div class="input-group-prepend">
 											<span class="input-group-text">Essence
 												Level</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="essenceLevel"
 											class="form-control text-right">
 									</div>
 								</div>
@@ -851,18 +859,18 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Limit Trigger</h4>
-							<form>
+							<form id="limitTrigger">
 								<div class="form-row">
-									<input type="text" name="limittrigger1" class="form-control">
+									<input type="text" name="limit-trigger1" class="form-control">
 								</div>
 								<div class="form-row">
-									<input type="text" name="limittrigger2" class="form-control">
+									<input type="text" name="limit-trigger2" class="form-control">
 								</div>
 								<div class="form-row">
-									<input type="text" name="limittrigger3" class="form-control">
+									<input type="text" name="limit-trigger3" class="form-control">
 								</div>
 								<div class="form-row">
-									<input type="text" name="limittrigger4" class="form-control">
+									<input type="text" name="limit-trigger4" class="form-control">
 								</div>
 							</form>
 						</div>
@@ -874,13 +882,12 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Experience</h4>
-							<form>
-
+							<form id="normal-experience">
 								<div class=" row">
 
-									<input type="text" name="current-experience"
+									<input type="text" name="current"
 										class="form-control text-right col-6" placeholder="Current">
-									<input type="text" name="total-experience"
+									<input type="text" name="total"
 										class="form-control text-right col-6" placeholder="Max">
 
 								</div>
@@ -892,13 +899,13 @@
 					<div class="card col-sm-6" style="margin-top: 20px;">
 						<div class="card-body">
 							<h4 class="card-title">Solar Experience</h4>
-							<form>
+							<form id="solar-experience">
 
 								<div class=" row">
 
-									<input type="text" name="current-solar-experience"
+									<input type="text" name="current"
 										class="form-control text-right col-6" placeholder="Current">
-									<input type="text" name="total-solar-experience"
+									<input type="text" name="total"
 										class="form-control text-right col-6" placeholder="Max">
 
 								</div>
@@ -912,42 +919,48 @@
 						<div class="card-body">
 							<h4 class="card-title">Weapons</h4>
 
-							<form>
+							<form id="weapons">
 								<div class="form-row">
 									<div class=" col-md-4">
 										<label for="weapon-name">Weapon Name</label>
 										<input type="text" class="form-control" id="weapon-name"
-											placeholder="Weapon">
+											placeholder="Weapon" name="name1">
 									</div>
 									<div class=" col-md-1">
 										<label for="accuracy">ACC</label>
-										<input type="text" class="form-control" id="accuracy">
+										<input type="text" class="form-control" id="accuracy"
+											name="accuracy1">
 									</div>
 									<div class=" col-md-1">
 										<label for="damage">DMG</label>
-										<input type="text" class="form-control" id="damage">
+										<input type="text" class="form-control" id="damage"
+											name="damage1">
 									</div>
 
 									<div class=" col-md-1">
 										<label for="defence">DEF</label>
-										<input type="text" class="form-control" id="defence">
+										<input type="text" class="form-control" id="defence"
+											name="defense1">
 									</div>
 
 
 									<div class=" col-md-1">
-										<label for="overwelm">OVW</label>
-										<input type="text" class="form-control" id="overwelm">
+										<label for="overwhelming">OVW</label>
+										<input type="text" class="form-control" id="overwhelming"
+											name="overwhelming1">
 									</div>
 
 									<div class=" col-md-3">
 										<label for="tags">Tags</label>
-										<input type="text" class="form-control" id="tags">
+										<input type="text" class="form-control" id="tags"
+											name="tags1">
 									</div>
 
 
 									<div class=" col-md-1">
 										<label for="dices">Dice</label>
-										<input type="text" class="form-control" id="dices">
+										<input type="text" class="form-control" id="dices"
+											name="dicePool1">
 									</div>
 								</div>
 
@@ -955,25 +968,26 @@
 
 								<div class="form-row">
 									<div class=" col-md-4">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="name2">
 									</div>
 									<div class=" col-md-1">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="accuracy2">
 									</div>
 									<div class=" col-md-1">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="damage2">
 									</div>
 									<div class=" col-md-1">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="defense2">
 									</div>
 									<div class=" col-md-1">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control"
+											name="overwhelming2">
 									</div>
 									<div class=" col-md-3">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="tags2">
 									</div>
 									<div class=" col-md-1">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="dicePool2">
 									</div>
 								</div>
 
@@ -1137,63 +1151,75 @@
 			<div class="card col-sm-12" style="margin-top: 20px;">
 				<div class="card-body">
 					<h4 class="card-title">Health & Defense</h4>
-					<form>
+					<form id="armors-defense">
 						<div class="row">
 							<div class="col-7">
 								<div class="row">
 									<div class=" col-md-3">
 										<label for="armor">Armor</label>
-										<input type="text" class="form-control" id="armor">
+										<input type="text" class="form-control" id="armor"
+											name="name1">
 									</div>
 									<div class=" col-md-2">
 										<label for="soak">Soak</label>
-										<input type="text" class="form-control" id="soak">
+										<input type="text" class="form-control" id="soak"
+											name="soak1">
 									</div>
 									<div class=" col-md-2">
 										<label for="hardness">Hard</label>
-										<input type="text" class="form-control" id="hardness">
+										<input type="text" class="form-control" id="hardness"
+											name="hardness1">
 									</div>
 
 									<div class=" col-md-2">
 										<label for="mp">MP</label>
-										<input type="text" class="form-control" id="mp">
+										<input type="text" class="form-control" id="mp"
+											name="mobilityPenalty1">
 									</div>
 
 
 									<div class=" col-md-3">
 										<label for="tags">Tags</label>
-										<input type="text" class="form-control" id="tags">
+										<input type="text" class="form-control" id="tags"
+											name="tags1">
 									</div>
 								</div>
 								<div class="row">
 									<div class=" col-md-3">
-										<input type="text" class="form-control" id="armor">
+										<input type="text" class="form-control" id="armor"
+											name="name2">
 									</div>
 									<div class=" col-md-2">
-										<input type="text" class="form-control" id="soak">
+										<input type="text" class="form-control" id="soak"
+											name="soak2">
 									</div>
 									<div class=" col-md-2">
-										<input type="text" class="form-control" id="hardness">
+										<input type="text" class="form-control" id="hardness"
+											name="hardness2">
 									</div>
 
 									<div class=" col-md-2">
-										<input type="text" class="form-control" id="mp">
+										<input type="text" class="form-control" id="mp"
+											name="mobilityPenalty2">
 									</div>
 
 
 									<div class=" col-md-3">
-										<input type="text" class="form-control" id="tags">
+										<input type="text" class="form-control" id="tags"
+											name="tags2">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-5">
 										<label for="natural-soak">Natural Soak</label>
-										<input type="text" class="form-control" id="natural-soak">
+										<input type="text" class="form-control" id="natural-soak"
+											name="naturalSoak">
 									</div>
 									<div class="offset-3 col-md-4">
 										<label for="final-soak">Final Soak</label>
-										<input type="text" class="form-control" id="final-soak">
+										<input type="text" class="form-control" id="final-soak"
+											name="finalSoak">
 									</div>
 
 								</div>
@@ -1205,7 +1231,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Parry</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="parry"
 											class="form-control text-right">
 									</div>
 
@@ -1213,7 +1239,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Resolve</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="resolve"
 											class="form-control text-right">
 									</div>
 
@@ -1224,7 +1250,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Evasion</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="evasion"
 											class="form-control text-right">
 									</div>
 
@@ -1232,7 +1258,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Guile</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="guile"
 											class="form-control text-right">
 									</div>
 								</div>
@@ -1242,7 +1268,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Rush</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="rush"
 											class="form-control text-right">
 									</div>
 
@@ -1250,7 +1276,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Disengage</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="disengage"
 											class="form-control text-right">
 									</div>
 								</div>
@@ -1259,7 +1285,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Join Battle</span>
 										</div>
-										<input type="text" name="essence-level"
+										<input type="text" name="joinBattle"
 											class="form-control text-right">
 									</div>
 								</div>
@@ -1268,118 +1294,130 @@
 					</form>
 
 					<h3 class="card-title mt-1">Health</h3>
-					<form>
+					<form id="health">
 						<div class="row">
 							<div class="col-6">
 								<div class="row">
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value1">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value2">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value3">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value4">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value5">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value6">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value7">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value8">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value9">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value10">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value11">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value12">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit1">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit2">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit3">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit4">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit5">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit6">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit7">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit8">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit9">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit10">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit11">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit12">
 										</div>
 									</div>
 								</div>
@@ -1387,113 +1425,125 @@
 							<div class="col-6">
 								<div class="row">
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value13">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value14">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value15">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value16">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value17">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value18">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value19">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value20">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value21">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value22">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value23">
 									</div>
 									<div class="col-1 pr-0">
-										<input type="text" class="form-control p-0 text-center">
+										<input type="text" class="form-control p-0 text-center"
+											name="value24">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit13">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit14">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit15">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit16">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit17">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit18">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit19">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit20">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit21">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit22">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit23">
 										</div>
 									</div>
 									<div class="col-1 pr-0 text-center">
 										<div class="form-check">
 											<input class="form-check-input position-static"
-												type="checkbox">
+												type="checkbox" name="hit24">
 										</div>
 									</div>
 								</div>
@@ -1509,65 +1559,77 @@
 				<div class="card-body">
 					<h4 class="card-title">Intimacies</h4>
 
-					<form>
+					<form id="intimacies">
 
 						<div class="form-row">
 							<div class="col-5">
 								<div class="row">
 									<div class=" col-md-8">
 										<label for="charm-name">Intimacy</label>
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name1">
 									</div>
 									<div class=" col-md-4">
 										<label for="charm-type">Intensity</label>
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity1">
 									</div>
 								</div>
 
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name2">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity2">
 									</div>
 								</div>
 
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name3">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity3">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name4">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity4">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name5">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity5">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name6">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity6">
 									</div>
 								</div>
 							</div>
@@ -1575,56 +1637,68 @@
 								<div class="row ">
 									<div class=" col-md-8">
 										<label for="charm-name">Intimacy</label>
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name7">
 									</div>
 									<div class=" col-md-4">
 										<label for="charm-type">Intensity</label>
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity7">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name8">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity8">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name "
+											name="name9">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity9">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name10">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity10">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name11">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity11">
 									</div>
 								</div>
 
 								<div class="row">
 									<div class=" col-md-8">
-										<input type="text" class="form-control" id="charm-name">
+										<input type="text" class="form-control" id="charm-name"
+											name="name12">
 									</div>
 									<div class=" col-md-4">
-										<input type="text" class="form-control" id="charm-type">
+										<input type="text" class="form-control" id="charm-type"
+											name="intensity12">
 									</div>
 								</div>
 							</div>
@@ -1645,41 +1719,43 @@
 					<h4 class="card-title">Charms</h4>
 
 
-					<form>
+					<form id="charms">
 						<div class="form-row">
 							<div class=" col-md-3">
 								<label for="charm-name">Name</label>
-								<input type="text" class="form-control" id="charm-name">
+								<input type="text" class="form-control" id="charm-name" name="name1">
 							</div>
 							<div class=" col-md-2">
 								<label for="charm-type">Type</label>
-								<input type="text" class="form-control" id="charm-type">
+								<input type="text" class="form-control" id="charm-type" name="type1">
 							</div>
 							<div class=" col-md-1">
 								<label for="charm-duration">Duration</label>
-								<input type="text" class="form-control" id="charm-duration">
+								<input type="text" class="form-control" id="charm-duration"
+									name="duration1">
 							</div>
 
 							<div class=" col-md-1">
 								<label for="charm-cost">Cost</label>
-								<input type="text" class="form-control" id="charm-cost">
+								<input type="text" class="form-control" id="charm-cost" name="cost1">
 							</div>
 
 
 							<div class=" col-md-1">
 								<label for="book">Book</label>
-								<input type="text" class="form-control" id="book">
+								<input type="text" class="form-control" id="book" name="book1">
 							</div>
 
 							<div class=" col-md-1">
 								<label for="charm-page">Page #</label>
-								<input type="text" class="form-control" id="charm-page">
+								<input type="text" class="form-control" id="charm-page" name="page1">
 							</div>
 
 
 							<div class=" col-md-3">
 								<label for="charm-effects">Effects</label>
-								<input type="text" class="form-control" id="charm-effects">
+								<input type="text" class="form-control" id="charm-effects"
+									name="effects1">
 							</div>
 						</div>
 
@@ -1688,278 +1764,31 @@
 
 						<div class="form-row">
 							<div class=" col-md-3">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="name2">
 							</div>
 							<div class=" col-md-2">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="type2">
 							</div>
 							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="duration2">
 							</div>
 
 							<div class=" col-md-1">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="cost2">
+							</div>
+
+
+							<div class=" col-md-1">
+								<input type="text" class="form-control" name="book2">
+							</div>
+
+							<div class=" col-md-1">
+								<input type="text" class="form-control" name="page2">
 							</div>
 
 
 							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-
-
-						<div class="form-row">
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-2">
-								<input type="text" class="form-control">
-							</div>
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-							<div class=" col-md-1">
-								<input type="text" class="form-control">
-							</div>
-
-
-							<div class=" col-md-3">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="effects2">
 							</div>
 						</div>
 					</form>
@@ -1971,61 +1800,29 @@
 			<div class="card col-sm-12" style="margin-top: 20px;">
 				<div class="card-body">
 					<h4 class="card-title">Inventory</h4>
-					<form>
+					<form id="inventory">
 						<div class="form-row">
 							<div class="col-sm-6">
-								<input type="text" name="inventory1" class="form-control">
+								<input type="text" name="item1" class="form-control">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="inventory2" class="form-control">
+								<input type="text" name="item2" class="form-control">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-sm-6">
-								<input type="text" name="inventory3" class="form-control">
+								<input type="text" name="item3" class="form-control">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="inventory4" class="form-control">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-sm-6">
-								<input type="text" name="inventory5" class="form-control">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="inventory6" class="form-control">
+								<input type="text" name="item4" class="form-control">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-sm-6">
-								<input type="text" name="inventory7" class="form-control">
+								<input type="text" name="item5" class="form-control">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="inventory8" class="form-control">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-sm-6">
-								<input type="text" name="inventory9" class="form-control">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="inventory10" class="form-control">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-sm-6">
-								<input type="text" name="inventory11" class="form-control">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="inventory12" class="form-control">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-sm-6">
-								<input type="text" name="inventory13" class="form-control">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="inventory14" class="form-control">
+								<input type="text" name="item6" class="form-control">
 							</div>
 						</div>
 					</form>
@@ -2037,14 +1834,419 @@
 	</div>
 
 
-
-
-
-
-
-
-
 </body>
+
+
+
+<script>
+
+	var character = {
+		"id": 0,
+		"owner": 2,
+		"name": "John",
+
+		"data": {
+			"general": {
+				"name" : "glimpse",
+				"caste": "night",
+				"concept": "thief",
+				"anima": "pegasus",
+				"supernalAbility": "Athletics"
+			},
+
+			"attributes": {
+				"strength": 1,
+				"dexterity": 1,
+				"stamina": 1,
+				"charisma": 2,
+				"manipulation": 2,
+				"appearance": 2,
+				"perception": 3,
+				"intelligence": 3,
+				"wits": 3
+			},
+
+			"abilities": [
+				{
+					"name": "archery",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "athletics",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "awareness",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "brawl",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "bureaucracy",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "craft",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "dodge",
+					"value": 1,
+					"favorite": true
+				},
+				{
+					"name": "integrity",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "investigation",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "larceny",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "linguistics",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "lore",
+					"value": 2,
+					"favorite": true
+				},
+				{
+					"name": "martialArts",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "medecine",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "melee",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "occult",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "performance",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "presence",
+					"value": 1,
+					"favorite": true
+				},
+				{
+					"name": "resistance",
+					"value": 5,
+					"favorite": false
+				},
+				{
+					"name": "ride",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "sail",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "socialize",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "stealth",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "survival",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "thrown",
+					"value": 1,
+					"favorite": false
+				},
+				{
+					"name": "war",
+					"value": 1,
+					"favorite": false
+				}
+			],
+
+			"additionalAbilities": [
+				{
+					"name": "poop throwing",
+					"value": 5,
+					"favorite": true
+				}
+			],
+
+			"specializations": [
+				{ "value": "+1 larceny when gambling" },
+				{ "value": "+1 strength when brawling" }
+			],
+
+			"merits": [
+				{
+					"name": "eye of the serpent",
+					"value": 5
+				},
+				{
+					"name": "mouse of the speaker",
+					"value": 3
+				}
+			],
+
+			"willpower": {
+				"current": 3,
+				"max": 5
+			},
+
+			"limitBreak":
+			{
+				"current": 3,
+				"max": 5
+			},
+
+			"essence":
+			{
+				"essenceLevel": 5,
+				"motes": {
+					"personal":
+					{
+						"current": 30,
+						"max": 35
+					},
+					"peripherical":
+					{
+						"current": 16,
+						"max": 32
+					},
+
+					"commited": 10
+				}
+			},
+
+			"limitTrigger": [
+				{ "name": "trahison" },
+				{ "name": "rien" }
+			],
+
+			"experience": {
+				"normal": {
+					"current": 160,
+					"total": 200
+				},
+
+				"solar": {
+					"current": 20,
+					"total": 30
+				}
+			},
+
+			"weapons": [
+				{
+					"name": "heavenly typhoone",
+					"accuracy": 20,
+					"damage": 10,
+					"defense": 5,
+					"overwhelming": 2,
+					"tags": "ranged, heavy",
+					"dicePool": 20
+				},
+				{
+					"name": "volcanic hammer",
+					"accuracy": 30,
+					"damage": 100,
+					"defense": 50,
+					"overwhelming": 5,
+					"tags": "burning, heavy",
+					"dicePool": 40
+				}
+			],
+
+			"armors": [
+				{
+					"name": "buffed jacket",
+					"soak": 4,
+					"hardness": 5,
+					"mobilityPenalty": 2,
+					"tags": "cheap"
+				},
+				{
+					"name": "reinforced jacket",
+					"soak": 4,
+					"hardness": 5,
+					"mobilityPenalty": 2,
+					"tags": "expensive"
+				}
+			],
+
+			"defense": {
+				"naturalSoak": 2,
+				"finalSoak": 3,
+				"parry": 20,
+				"resolve": 2,
+				"evasion": 3,
+				"guile": 4,
+				"rush": 1,
+				"disengage": 3,
+				"joinBattle": 5
+			},
+
+			"health": [
+				{
+					"value": -0,
+					"hit": null // ticked if not null will be { type : "bashing||lethal||aggrave"}
+				},
+				{
+					"value": -0,
+					"hit": null
+				},
+				{
+					"value": -0,
+					"hit": null
+				},
+				{
+					"value": -0,
+					"hit": null
+				},
+				{
+					"value": -1,
+					"hit": null
+				},
+				{
+					"value": -1,
+					"hit": null
+				},
+				{
+					"value": -2,
+					"hit": null
+				},
+			],
+
+			"intimacies": [
+				{
+					"name": "protect the people",
+					"intensity": "major"
+				},
+				{
+					"name": "I hate bob",
+					"intensity": "defining"
+				}
+			],
+
+			"charms": [
+				{
+					"name": "summoner of typhoon",
+					"type": "magic",
+					"duration": "instant",
+					"cost": "1m, 1w", // will be one day { "motes" : 2, "willpower" : 2, "sorceryMotes" : 20}
+					"book": "core",
+					"page": 200,
+					"effects": "burns and blind everyone"
+				},
+
+				{
+					"name": "summoner of volcanoes",
+					"type": "magic",
+					"duration": "instant",
+					"cost": "1m, 1w",
+					"book": "core",
+					"page": 200,
+					"effects": "burns and blind everyone with volcanic dust"
+				}
+			],
+
+			"inventory": [
+				{ "item": "sword of magic" },
+				{ "item": "draconic concoction" }
+			]
+		}
+	};
+
+
+	function fillSingle(form, data)
+	{
+		var form = document.getElementById(form);
+
+		// Loop over the object keys
+		Object.keys(data).forEach(function(k){
+		
+			form.querySelector('[name="'+ k +'"]').value = data[k];
+		
+		});
+	}
+
+
+
+	fillSingle("general", character["data"]["general"]);
+	fillSingle("attributes", character["data"]["attributes"]);
+
+
+
+	function fillAbilities(abilities)
+	{
+		var form = document.getElementById("abilities");
+
+		abilities.forEach(ability => {
+			form.querySelector('[name="'+ ability["name"] +'"]').value = ability["value"];
+			form.querySelector('[name="'+ ability["name"] + '-favorite"]').checked = ability["favorite"]
+		});
+
+	}
+
+	fillAbilities(character["data"]["abilities"])
+
+
+	function fillMulti(form,data, start, finish)
+	{
+		var form = document.getElementById(form);
+		for(i = start; i < finish + 1; i++)
+		{
+			data.forEach(item => {
+
+
+					Object.keys(item).forEach(function(k){
+						form.querySelector('[name="'+ k + i.toString() + '"]').value = item[k]
+					});
+
+			});
+		
+		}
+	}
+
+	fillMulti("weapons", character["data"]["weapons"], 1, 2)
+	fillMulti("charms", character["data"]["charms"], 1, 2)
+
+</script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
