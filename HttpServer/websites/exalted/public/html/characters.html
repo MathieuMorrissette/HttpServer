@@ -1,3 +1,6 @@
+
+<script src="/javascript/network-helper.js" > </script>
+
 <div class="container">
 	<div class="card" style="margin-top: 20px;">
 		<div class="card-body">
@@ -79,39 +82,9 @@ function deleteCharacter(id)
 
 function viewCharacterSheet(id)
 {
+
+	location.href = "./character/" + id + "/sheet";
 	// TODO navigate to character sheet
-}
-
-function sendHttpGetRequest(theUrl, callback)
-{
-	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.onreadystatechange = function() { 
-		if (xmlHttp.readyState == XMLHttpRequest.DONE && xmlHttp.status == 200){
-			callback(xmlHttp.responseText);
-		}
-	}
-
-	xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-	xmlHttp.send(null);
-}
-
-function sendHttpPostRequest(theUrl, data, callback)
-{
-	var xmlHttp = new XMLHttpRequest();
-	
-		xmlHttp.onreadystatechange = function() { 
-			if (xmlHttp.readyState == XMLHttpRequest.DONE && xmlHttp.status == 200){
-				callback(xmlHttp.responseText);
-			}
-		}
-
-	xmlHttp.open("POST", theUrl, true);
-
-	xmlHttp.setRequestHeader("Content-Type", "application/json");
-
-	xmlHttp.send(data)
-
-
 }
 
 function htmlEntities(str) 
@@ -158,20 +131,25 @@ sendHttpGetRequest("./api/characters", function(response)
 	var charactersContainer = document.getElementById("charactersContainer");
 	var modalContainer = document.getElementById("modalContainer");
 
+	console.log(response)
 	var characters = JSON.parse(response);
 
 	for(var i = 0; i < characters.length; i++)
 	{
 		var character = characters[i];
 
+		characterdata = JSON.parse(character["data"])
+
 		var rowToDisplay = characterRowTemplate.split("__CHARACTER_ID__").join(character.id);
-		rowToDisplay = rowToDisplay.split("__CHARACTER_NAME__").join(character.name);
+		rowToDisplay = rowToDisplay.split("__CHARACTER_NAME__").join(characterdata["general"]["name"]);
 
 
 		charactersContainer.innerHTML = charactersContainer.innerHTML  + rowToDisplay;
 		
 		var modalToAdd = modalTemplate.split("__CHARACTER_ID__").join(character.id);
-		modalToAdd = modalToAdd.split("__CHARACTER_NAME__").join(character.name);
+		modalToAdd = modalToAdd.split("__CHARACTER_NAME__").join(characterdata["general"]["name"]);
+
+		console.log(character)
 
 		modalContainer.innerHTML = modalContainer.innerHTML + modalToAdd;
 	}

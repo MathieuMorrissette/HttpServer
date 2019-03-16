@@ -1,12 +1,16 @@
-﻿using HttpServer.websites.exalted.managers;
+﻿using HttpServer.websites.exalted.api.responses;
+using HttpServer.websites.exalted.helpers;
+using HttpServer.websites.exalted.managers;
 using HttpServer.websites.exalted.model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace HttpServer.websites.exalted.api.handlers
 {
@@ -34,7 +38,10 @@ namespace HttpServer.websites.exalted.api.handlers
                 {
                     Character[] characters = CharacterManager.GetCharacters(user);
 
-                    string output = JsonConvert.SerializeObject(CharacterHelper.ToResponse(characters));
+
+                    CharacterResponse[] responses = CharacterHelper.ToResponse(characters);
+
+                    string output = SerializationHelper.SerializeToJSON(responses);
 
                     context.Send(output);
 

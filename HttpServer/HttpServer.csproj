@@ -38,13 +38,13 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,11 +65,14 @@
     <Compile Include="websites\exalted\classes\ExaltedConfig.cs" />
     <Compile Include="websites\exalted\controllers\API.cs" />
     <Compile Include="websites\exalted\controllers\Characters.cs" />
+    <Compile Include="websites\exalted\controllers\FileProvider.cs" />
     <Compile Include="websites\exalted\controllers\Home.cs" />
     <Compile Include="websites\exalted\controllers\Login.cs" />
     <Compile Include="websites\exalted\controllers\Register.cs" />
+    <Compile Include="websites\exalted\controllers\Sheet.cs" />
     <Compile Include="websites\exalted\database\DatabaseInitialiser.cs" />
     <Compile Include="websites\exalted\helpers\CharacterHelper.cs" />
+    <Compile Include="websites\exalted\helpers\SerializationHelper.cs" />
     <Compile Include="websites\exalted\managers\CharacterManager.cs" />
     <Compile Include="websites\exalted\managers\UserManager.cs" />
     <Compile Include="websites\exalted\model\Error.cs" />
@@ -82,6 +85,8 @@
     <Compile Include="websites\exalted\templates\Home_Template.cs" />
     <Compile Include="websites\exalted\templates\Login_Template.cs" />
     <Compile Include="websites\exalted\templates\Register_Template.cs" />
+    <Compile Include="websites\exalted\templates\RightMenu_Template.cs" />
+    <Compile Include="websites\exalted\templates\Sheet_Template.cs" />
     <Compile Include="websites\exalted\WebSite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendRequestsHandler.cs" />
@@ -149,13 +154,17 @@
     <None Include="websites\mathieu_morrissette\configs\config.cfg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="websites\exalted\public\css\style.css" />
     <Content Include="websites\exalted\public\html\characters.html" />
     <Content Include="websites\exalted\public\html\error_alert.html" />
     <Content Include="websites\exalted\public\html\footer.html" />
     <Content Include="websites\exalted\public\html\header.html" />
+    <Content Include="websites\exalted\public\html\main_layout.html" />
+    <Content Include="websites\exalted\public\html\right_menu.html" />
     <Content Include="websites\exalted\public\html\home.html" />
     <Content Include="websites\exalted\public\html\login.html" />
     <Content Include="websites\exalted\public\html\register.html" />
+    <Content Include="websites\exalted\public\javascript\network-helper.js" />
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />
     <Content Include="websites\mathieu_morrissette\public\html\chat.html" />
     <Content Include="websites\mathieu_morrissette\public\html\error_alert.html" />

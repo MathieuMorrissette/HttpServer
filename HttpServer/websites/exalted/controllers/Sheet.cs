@@ -1,4 +1,5 @@
 ﻿using HttpServer.websites.exalted.managers;
+using HttpServer.websites.exalted.model;
 using HttpServer.websites.exalted.templates;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HttpServer.websites.exalted.controllers
 {
-    class Characters : IController
+    class Sheet : IController
     {
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
@@ -28,7 +29,21 @@ namespace HttpServer.websites.exalted.controllers
                 return true;
             }
 
-            Sheet_Template template = new Sheet_Template(user);
+            if (args.Length != 2 || args[1] != "sheet")
+            {
+                return false;
+            }
+
+            int characterid = Convert.ToInt32(args[0]);
+
+            Character character = CharacterManager.GetCharacter(characterid);
+
+            if (character.UserId != user.Id)
+            {
+                return false;
+            }
+
+            Sheet_Template template = new Sheet_Template();
             context.Send(template.Render());
 
             return true;

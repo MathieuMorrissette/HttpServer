@@ -43,7 +43,13 @@ namespace HttpServer.websites.exalted.api.handlers
 
                     JObject json = JObject.Parse(body);
 
-                    CharacterManager.CreateCharacter(user, json["charactername"].ToString(), string.Empty);
+                    JObject basedata = JObject.Parse("{ \"general\" : { \"name\" : null }}");
+
+                    // set name
+                    basedata["general"]["name"] = json["charactername"].ToString();
+
+
+                    CharacterManager.CreateCharacter(user, JsonConvert.SerializeObject(basedata));
                 }
 
 

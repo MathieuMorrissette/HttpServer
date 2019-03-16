@@ -14,27 +14,28 @@ namespace HttpServer.websites.exalted.managers
 {
     public static class CharacterManager
     {
-        public static Character CreateCharacter(User user, string name, string data)
+        public static Character CreateCharacter(User user, string data)
         {
-            if (name == string.Empty)
+            if (data == string.Empty)
             {
                 return null;
             }
-
-            if (CharacterManager.Exists(name))
+            Console.WriteLine(data);
+           /* if (CharacterManager.Exists(name))
             {
                 return null;
-            }
+            }*/
 
             string userId = user == null ? string.Empty : user.Id.ToString();
 
             IDbDataParameter paramUserID = WebSite.Database.CreateParameter("@UserId", userId);
-            IDbDataParameter paramName = WebSite.Database.CreateParameter("@Name", name);
             IDbDataParameter paramData = WebSite.Database.CreateParameter("@Data", data);
 
-            WebSite.Database.ExecuteNonQuery("INSERT INTO characters (UserId, Name, Data) VALUES (@UserId, @Name, @Data)", paramUserID, paramName, paramData);
-            
-            return CharacterManager.GetCharacter(name);
+            WebSite.Database.ExecuteNonQuery("INSERT INTO characters (UserId, Data) VALUES (@UserId, @Data)", paramUserID, paramData);
+
+            //return CharacterManager.GetCharacter();
+
+            return null;
         }        
 
         public static Character GetCharacter(int id)
