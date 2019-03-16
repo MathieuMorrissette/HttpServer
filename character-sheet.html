@@ -2225,25 +2225,22 @@
 	fillAbilities(character["data"]["abilities"])
 
 
-	function fillMulti(form,data, start, finish)
+	function fillMulti(form,data)
 	{
 		var form = document.getElementById(form);
-		for(i = start; i < finish + 1; i++)
-		{
-			data.forEach(item => {
+
+		data.forEach(function(item, i) {
 
 
-					Object.keys(item).forEach(function(k){
-						form.querySelector('[name="'+ k + i.toString() + '"]').value = item[k]
-					});
+				Object.keys(item).forEach(function(k){
+					form.querySelector('[name="'+ k + (i + 1).toString() + '"]').value = item[k]
+				});
 
-			});
-		
-		}
+		});
 	}
 
-	fillMulti("weapons", character["data"]["weapons"], 1, 2)
-	fillMulti("charms", character["data"]["charms"], 1, 2)
+	fillMulti("weapons", character["data"]["weapons"])
+	fillMulti("charms", character["data"]["charms"])
 
 </script>
 
