@@ -1,4 +1,5 @@
 ﻿using HttpServer.websites.mathieu_morrissette.api.responses;
+using HttpServer.websites.mathieu_morrissette.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

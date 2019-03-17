@@ -20,11 +20,6 @@ namespace HttpServer.websites.exalted.managers
             {
                 return null;
             }
-            Console.WriteLine(data);
-           /* if (CharacterManager.Exists(name))
-            {
-                return null;
-            }*/
 
             string userId = user == null ? string.Empty : user.Id.ToString();
 
@@ -33,10 +28,24 @@ namespace HttpServer.websites.exalted.managers
 
             WebSite.Database.ExecuteNonQuery("INSERT INTO characters (UserId, Data) VALUES (@UserId, @Data)", paramUserID, paramData);
 
-            //return CharacterManager.GetCharacter();
 
             return null;
-        }        
+        }
+
+        public static void UpdateCharacter(int id, string data)
+        {
+            if (data == string.Empty)
+            {
+                return;
+            }
+            
+            IDbDataParameter paramData = WebSite.Database.CreateParameter("@Data", data);
+            IDbDataParameter paramId = WebSite.Database.CreateParameter("@Id", id);
+
+            WebSite.Database.ExecuteNonQuery("UPDATE characters SET Data = @Data WHERE Id = @Id", paramData, paramId);
+            
+            return;
+        }
 
         public static Character GetCharacter(int id)
         {

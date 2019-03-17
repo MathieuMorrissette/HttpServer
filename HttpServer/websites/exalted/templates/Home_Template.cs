@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HttpServer.websites.exalted.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,12 +29,6 @@ namespace HttpServer.websites.exalted.templates
             content = content.Replace("__FOOTER__", footerTemplate.Render());
             content = content.Replace("__RIGHT_MENU__", rightMenuTemplate.Render());
             content = content.Replace("__CONTENT__", File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/home.html"));            
-
-            content = content.Replace("__Username__", this.user.Username);
-            content = content.Replace("__ID__", this.user.Id.ToString());
-            content = content.Replace("__PasswordHash__", this.user.Hash);
-
-
 
             return content;
         }

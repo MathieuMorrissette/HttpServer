@@ -22,6 +22,7 @@ namespace HttpServer.websites.exalted.templates
             string content = File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/main_layout.html");
 
             content = content.Replace("__RIGHT_MENU__", rightMenuTemplate.Render());
+            content = content.Replace("__LEFT_MENU__", File.ReadAllText(WebSite.WEBSITE_ROOT_PATH + "public/html/left_sheet_menu.html"));
             content = content.Replace("__HEADER__", headerTemplate.Render());
             content = content.Replace("__FOOTER__", footerTemplate.Render());
 

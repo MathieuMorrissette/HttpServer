@@ -1,5 +1,6 @@
 ﻿using HttpServer.websites.mathieu_morrissette.api.helpers;
 using HttpServer.websites.mathieu_morrissette.managers;
+using HttpServer.websites.mathieu_morrissette.model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,6 @@
-﻿using HttpServer.websites.exalted.managers;
+﻿using HttpServer.websites.exalted.api.responses;
+using HttpServer.websites.exalted.helpers;
+using HttpServer.websites.exalted.managers;
 using HttpServer.websites.exalted.model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -52,6 +54,18 @@ namespace HttpServer.websites.exalted.api.handlers
                     CharacterManager.CreateCharacter(user, JsonConvert.SerializeObject(basedata));
                 }
 
+                if ( args.Length == 2 && args[1] == "update")
+                {
+                    string body = new StreamReader(context.Request.InputStream).ReadToEnd();
+
+                    JObject json = JObject.Parse(body);
+
+                    // TODO add some validation here to make sure we don't receive junk
+                    int characterId = Convert.ToInt32(args[0]);
+
+                    CharacterManager.UpdateCharacter(characterId, JsonConvert.SerializeObject(json));
+                }
+
 
                 if (args.Length == 2)
                 {
@@ -75,8 +89,13 @@ namespace HttpServer.websites.exalted.api.handlers
                     }
                 }
             }
+            
 
+            int id = Convert.ToInt32(args[0]);
 
+            Character carac = CharacterManager.GetCharacter(id);
+
+            context.Send(SerializationHelper.SerializeToJSON(CharacterResponse.FromCharacter(carac)));
 
             return true;
         }

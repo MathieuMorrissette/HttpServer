@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using HttpServer.websites.mathieu_morrissette;
 using HttpServer.helpers;
+using HttpServer.websites.mathieu_morrissette.model;
 
 namespace HttpServer.websites.mathieu_morrissette.managers
 {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using HttpServer.websites.exalted;
 using HttpServer.helpers;
+using HttpServer.websites.exalted.model;
 
 namespace HttpServer.websites.exalted.managers
 {

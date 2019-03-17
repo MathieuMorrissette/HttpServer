@@ -29,7 +29,6 @@ namespace HttpServer.websites.exalted.database
                     CREATE TABLE IF NOT EXISTS `characters` (
                         `Id` int(11) NOT NULL AUTO_INCREMENT,
                         `UserId` int(11) DEFAULT NULL,
-                        `Name` varchar(50) DEFAULT NULL,
                         `Data` TEXT NULL,
                         PRIMARY KEY (`Id`)
                     )

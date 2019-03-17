@@ -20,7 +20,7 @@ namespace HttpServer.websites.exalted.controllers
                 return true;
             }
 
-            User user = UserManager.GetUser(UserManager.GetUserID(client));
+            HttpServer.websites.exalted.model.User user = UserManager.GetUser(UserManager.GetUserID(client));
 
             if (user == null)
             {

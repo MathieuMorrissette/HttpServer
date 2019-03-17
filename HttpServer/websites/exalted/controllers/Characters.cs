@@ -1,4 +1,5 @@
 ﻿using HttpServer.websites.exalted.managers;
+using HttpServer.websites.exalted.model;
 using HttpServer.websites.exalted.templates;
 using System;
 using System.Collections.Generic;

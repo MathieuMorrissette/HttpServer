@@ -13,7 +13,7 @@ namespace HttpServer.websites.exalted.api.responses
     {
         public int id { get; set; }
 
-        public string owner { get; set; }
+        public int owner { get; set; }
 
         public string data { get; set; }
 
@@ -22,7 +22,7 @@ namespace HttpServer.websites.exalted.api.responses
             CharacterResponse response = new CharacterResponse();
 
             response.id = character.Id;
-            response.owner = character.UserId.ToString();
+            response.owner = character.UserId;
             response.data = character.Data;
 
             return response;
