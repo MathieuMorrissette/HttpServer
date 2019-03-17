@@ -64,7 +64,7 @@
     <Compile Include="websites\exalted\api\responses\CharacterResponse.cs" />
     <Compile Include="websites\exalted\classes\ExaltedConfig.cs" />
     <Compile Include="websites\exalted\controllers\API.cs" />
-    <Compile Include="websites\exalted\controllers\User.cs" />
+    <Compile Include="websites\exalted\controllers\UserController.cs" />
     <Compile Include="websites\exalted\controllers\Characters.cs" />
     <Compile Include="websites\exalted\controllers\FileProvider.cs" />
     <Compile Include="websites\exalted\controllers\Home.cs" />
@@ -167,6 +167,7 @@
     <Content Include="websites\exalted\public\html\login.html" />
     <Content Include="websites\exalted\public\html\register.html" />
     <Content Include="websites\exalted\public\html\sheet.html" />
+    <Content Include="websites\exalted\public\javascript\character-helper.js" />
     <Content Include="websites\exalted\public\javascript\user-helper.js" />
     <Content Include="websites\exalted\public\javascript\network-helper.js" />
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />

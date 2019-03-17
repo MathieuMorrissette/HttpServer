@@ -39,7 +39,7 @@ namespace HttpServer.websites.exalted
             { "javascript", () => new FileProvider()},
             { "css", () => new FileProvider()},
            // { "font", () => new FileProvider()},
-            //{ "user", () => new UserController()},
+            { "user", () => new UserController()},
            // { "friends", () => new Friends()},
          //   { "chat", () => new Chat()},
             { "api", () => new API()}

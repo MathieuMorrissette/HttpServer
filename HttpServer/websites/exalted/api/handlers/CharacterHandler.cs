@@ -52,6 +52,8 @@ namespace HttpServer.websites.exalted.api.handlers
 
 
                     CharacterManager.CreateCharacter(user, JsonConvert.SerializeObject(basedata));
+
+                    return true;
                 }
 
                 if ( args.Length == 2 && args[1] == "update")
@@ -87,6 +89,8 @@ namespace HttpServer.websites.exalted.api.handlers
                     {
                         CharacterManager.DeleteCharacter(characterId);
                     }
+
+                    return true; 
                 }
             }
             

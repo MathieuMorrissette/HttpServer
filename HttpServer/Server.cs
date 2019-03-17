@@ -46,8 +46,8 @@ namespace HttpServer
                 this.CheckExpiredClient();
                 Task.Run(() =>
                 {
-                    /*try
-                    {*/
+                    try
+                    {
                         Client client = this.GetClient(httpListenerContext);
 
                         string hostName = httpListenerContext.Request.Url.Host;
@@ -73,11 +73,11 @@ namespace HttpServer
                         }
 
                         httpListenerContext.Response.Close();
-                    /*}
+                    }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message + " - " + ex.StackTrace);
-                    }*/
+                    }
                 });
             }
         }

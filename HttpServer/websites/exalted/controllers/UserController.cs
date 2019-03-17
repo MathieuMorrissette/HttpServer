@@ -1,4 +1,5 @@
-﻿using HttpServer.websites.exalted.managers;
+﻿using HttpServer.websites.exalted.helpers;
+using HttpServer.websites.exalted.managers;
 using HttpServer.websites.exalted.model;
 using HttpServer.websites.exalted.templates;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HttpServer.websites.exalted.controllers
 {
-    class UserData : IController
+    class UserController : IController
     {
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
@@ -28,9 +29,8 @@ namespace HttpServer.websites.exalted.controllers
                 context.Redirect("../login");
                 return true;
             }
-
-            Characters_Template template = new Characters_Template(user);
-            context.Send(template.Render());
+            
+            context.Send("{ \"id\" : \"" + user.Id + "\", \"name\" : \"" + user.Username + "\" }");
 
             return true;
         }
