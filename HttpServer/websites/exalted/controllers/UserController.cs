@@ -14,6 +14,16 @@ namespace HttpServer.websites.exalted.controllers
 {
     class UserController : IController
     {
+        Dictionary<string, Action> methods = new Dictionary<string, Action>();
+        private string[] args;
+        private Client client;
+        private HttpListenerContext context;
+
+        public UserController()
+        {
+            methods.Add("logout", new Action(Logout));
+        }
+
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
             if (!UserManager.Connected(client))
@@ -29,10 +39,36 @@ namespace HttpServer.websites.exalted.controllers
                 context.Redirect("../login");
                 return true;
             }
-            
+
+            this.client = client;
+            this.context = context;
+
+            if (args.Length <= 0)
+            {
+                return false;
+            }
+
+            this.args = args;
+
+            if (methods.ContainsKey(args[0]))
+            {
+                methods[args[0]].Invoke();
+                return true;
+            }            
+
             context.Send("{ \"id\" : \"" + user.Id + "\", \"name\" : \"" + user.Username + "\" }");
 
             return true;
+        }
+
+
+
+        public void Logout()
+        {
+            if (UserManager.Logout(this.client))
+            {
+                this.context.Redirect("../login");
+            }
         }
     }
 }

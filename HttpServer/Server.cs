@@ -43,6 +43,7 @@ namespace HttpServer
             while (!stop)
             {
                 HttpListenerContext httpListenerContext = this.httpListener.GetContext();
+
                 this.CheckExpiredClient();
                 Task.Run(() =>
                 {
