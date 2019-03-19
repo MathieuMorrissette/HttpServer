@@ -59,9 +59,11 @@ namespace HttpServer.websites.exalted.controllers
             context.Send("{ \"id\" : \"" + user.Id + "\", \"name\" : \"" + user.Username + "\" }");
 
             return true;
+
+
         }
 
-
+        
 
         public void Logout()
         {
