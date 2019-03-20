@@ -45,7 +45,8 @@ namespace HttpServer.websites.exalted.controllers
 
             if (args.Length <= 0)
             {
-                return false;
+                context.Send("{ \"id\" : \"" + user.Id + "\", \"name\" : \"" + user.Username + "\" }");
+                return true;
             }
 
             this.args = args;
@@ -55,8 +56,6 @@ namespace HttpServer.websites.exalted.controllers
                 methods[args[0]].Invoke();
                 return true;
             }            
-
-            context.Send("{ \"id\" : \"" + user.Id + "\", \"name\" : \"" + user.Username + "\" }");
 
             return true;
 

@@ -1,7 +1,7 @@
 <script src="/javascript/network-helper.js"> </script>
 <script src="/javascript/character-helper.js"> </script>
 
-<div>
+<div class="container-fluid mb-2 mt-2">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#sheet" role="tab">Sheet</a>
@@ -15,8 +15,26 @@
             <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#tab-inventory" role="tab">Inventory</a>
             </li>
+            <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-notes" role="tab">Notes</a>
+            </li>
       </ul>
       <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="tab-notes" role="tabpanel">
+                  <div class="row">
+                        <div class="card col-sm-12">
+                              <div class="card-body">
+                                    <h4 class="card-title">Notes</h4>
+                                    <form>
+                                          <textarea class="form-control" id="notes" rows="30" onchange="setControlStates()"></textarea>
+                                    </form>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+
+
             <div class="tab-pane fade" id="tab-intimacies" role="tabpanel">
                   <div class="row">
                         <div class="card col-sm-12">
@@ -654,6 +672,20 @@
                         </div>
 
                         <div class="col-sm-8">
+
+                              <div class="row mt-3">
+                                    <div class="card col-12">
+                                          <div class="card-body">
+                                                <h4 class="card-title">Health</h4>
+                                                <form id="health">
+
+                                                </form>
+                                                <hr />
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                          </div>
+                                    </div>
+                              </div>
+
                               <div class="row">
                                     <div class="card col-sm-6" style="margin-top: 20px;">
                                           <div class="card-body">
@@ -841,7 +873,7 @@
                   <div class="row">
                         <div class="card col-sm-12" style="margin-top: 20px;">
                               <div class="card-body">
-                                    <h4 class="card-title">Health & Defense</h4>
+                                    <h4 class="card-title">Defense</h4>
 
                                     <div class="row">
                                           <div class="col-7">
@@ -872,9 +904,9 @@
 
                                                 </div>
                                           </div>
-                                          
-                                                <div class="col-5">
-                                                            <form id="defense">
+
+                                          <div class="col-5">
+                                                <form id="defense">
                                                       <div class="row">
                                                             <div class=" col-6 input-group">
                                                                   <div class="input-group-prepend">
@@ -931,221 +963,10 @@
                                                                   <input type="text" name="joinBattle" class="form-control text-right" onchange="setControlStates()">
                                                             </div>
                                                       </div>
-                                                      
-                                          </form>
-                                                </div>
-                                    </div>
 
-
-                                    <h3 class="card-title mt-1">Health</h3>
-                                    <form id="health">
-                                          <div class="row">
-                                                <div class="col-6">
-                                                      <div class="row">
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health1-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health2-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health3-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health4-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health5-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health6-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health7-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health8-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health9-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health10-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health11-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health12-value" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                      <div class="row">
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health1-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health2-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health3-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health4-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health5-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health6-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health7-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health8-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health9-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health10-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health11-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health12-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-                                                </div>
-                                                <div class="col-6">
-                                                      <div class="row">
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health13-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health14-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health15-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health16-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health17-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health18-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health19-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health20-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health21-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health22-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health23-value" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-1 pr-0">
-                                                                  <input type="text" class="form-control p-0 text-center" name="health24-value" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                      <div class="row">
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health13-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health14-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health15-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health16-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health17-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health18-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health19-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health20-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health21-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health22-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health23-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                            <div class="col-1 pr-0 text-center">
-                                                                  <div class="form-check">
-                                                                        <input class="form-check-input position-static" type="checkbox" name="health24-hit" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-                                                </div>
+                                                </form>
                                           </div>
-                                    </form>
+                                    </div>
                               </div>
                         </div>
                   </div>
@@ -1507,17 +1328,44 @@
                   "inventory": [
                         { "item": "sword of magic" },
                         { "item": "draconic concoction" }
-                  ]
+                  ],
+
+                  "notes": "this is my note"
             }
       };
 
+      var healthTemplate = `
+      <div class="row" id="health__ID__">
+            <div class="col-1">
+                  <div class="form-check">
+                        <input class="form-check-input" onchange="setControlStates()" name="health__ID__-hit" type="checkbox" value="">
+                  </div>
+            </div>
+            <div class="col-3">
+                  <input type="text" name="health__ID__-name" class="form-control" onchange="setControlStates()" placeholder="Value (-0, -1, -2)...">
+            </div>
+            <div class="col-6">
+                  <select name="health__ID__-type"  onchange="setControlStates()" class="form-control">
+                        <option></option>
+                        <option>Bashing</option>
+                        <option>Aggrave</option>
+                        <option>Lethal</option>
+                  </select>
+
+            </div>
+            <div class="col-2">
+                        <button type="button" class="btn btn-primary float-right" onclick="deleteRow('health__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+            </div>
+      </div>
+      `;
+
 
       var inventoryTemplate = `
-<div class="form-row"  id="inventory__ID__">
-      <div class="col-sm-11">
+<div class="form-row mt-2"  id="inventory__ID__">
+      <div class="col-9 col-sm-11 col-md-10 col-lg-11">
             <input type="text" name="inventory__ID__-item" class="form-control" onchange="setControlStates()">
       </div>
-      <div class="col-sm-1">
+      <div class="col-3 col-sm-1 col-md-2 col-lg-1">
             <button type="button" class="btn btn-primary float-right" onclick="deleteRow('inventory__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
       </div>
 </div>
@@ -1813,7 +1661,6 @@
                   fillMulti("inventory", character["data"]["inventory"], "inventory");
             }
 
-            // fillMulti("health", character["data"]["health"], "health"); need to rework health
             fillSingle("willpower", character["data"]["willpower"]);
             fillSingle("limitBreak", character["data"]["limitBreak"]);
 
@@ -1850,6 +1697,24 @@
 
                   fillSingle("normal-experience", character["data"]["experience"]["normal"])
                   fillSingle("solar-experience", character["data"]["experience"]["solar"])
+
+            }
+
+            if (character["data"]["notes"] != null) {
+                  document.getElementById("notes").value = character["data"]["notes"];
+            }
+
+            if(character["data"]["health"] != null)
+            {
+                  document.getElementById("health").innerHTML = ""
+
+                  var healthLength = character["data"]["health"].length;
+
+                  for (var i = 0; i < healthLength; i++) {
+                        addRow(healthTemplate, "health", "health")
+                  }
+
+                  fillMulti("health", character["data"]["health"], "health")
 
             }
 
@@ -2040,12 +1905,16 @@
       var healthFields = {
             "fields": [
                   {
-                        "value": "value",
+                        "value": "hit",
+                        "type": "checkbox"
+                  },
+                  {
+                        "value": "name",
                         "type": "input"
                   },
                   {
-                        "value": "hit",
-                        "type": "checkbox"
+                        "value": "type",
+                        "type": "combo"
                   }
             ]
       }
@@ -2221,10 +2090,12 @@
             data["weapons"] = getJSONMulti("weapons", weaponsFields, "weapon");
             data["armors"] = getJSONMulti("armors", armorsFields, "armor");
             data["defense"] = getJSONSingle("defense", "armor");
-            data["health"] = getJSONMulti("health", healthFields, "health", true);
+            data["health"] = getJSONMulti("health", healthFields, "health");
             data["intimacies"] = getJSONMulti("intimacies", intimaciesFields, "intimacy")
             data["charms"] = getJSONMulti("charms", charmsFields, "charm")
             data["inventory"] = getJSONMulti("inventory", inventoryFields, "inventory")
+
+            data["notes"] = document.getElementById("notes").value;
 
             var t1 = performance.now();
 
