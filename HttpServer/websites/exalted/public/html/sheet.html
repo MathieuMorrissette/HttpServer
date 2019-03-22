@@ -10,6 +10,9 @@
                   <a class="nav-link" data-toggle="tab" href="#tab-charms" role="tab">Charms</a>
             </li>
             <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-weparm" role="tab">Weapons & Armors</a>
+            </li>
+            <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#tab-intimacies" role="tab">Intimacies</a>
             </li>
             <li class="nav-item">
@@ -18,8 +21,245 @@
             <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#tab-notes" role="tab">Notes</a>
             </li>
+            <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-quick" role="tab">Quick View</a>
+            </li>
       </ul>
       <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="tab-quick" role="tabpanel">
+                  <div class="row">
+                        <div class="card col-sm-12">
+                              <div class="card-body">
+                                    <h4 class="card-title">Quick View</h4>
+                                    <div class="row">
+                                          <div class="col-3">
+                                                <div class="form-group">
+                                                      <label for="currentWeapon">Current Weapon </label>
+                                                      <select class="form-control" id="currentWeapon" name="currentWeapon" onchange="calculateStats()">
+
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="col-3">
+                                                <div class="form-group">
+                                                      <label for="currentRange">Range NOT IMPLEMENTED </label>
+                                                      <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
+
+                                                      </select>
+                                                </div>
+                                          </div>
+                                          <div class="col-6">
+                                                <div class="form-group">
+                                                      <label for="currentArmor">Current Armor </label>
+                                                      <select class="form-control" id="currentArmor" name="currentArmor" onchange="calculateStats()">
+
+                                                      </select>
+                                                </div>
+                                          </div>
+
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-6">
+                                                <b>Join Battle :</b> <span id="joinBattle"></span>
+                                          </div>
+                                          <div class="col-6">
+                                                <b>Resolve :</b> <span id="resolve"></span>
+                                                <div class="form-check form-check-inline">
+                                                      <input class="form-check-input" type="checkbox" id="resolveSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="resolveSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-6">
+                                          </div>
+                                          <div class="col-6">
+                                                <b>Guile :</b> <span id="guile"></span>
+                                                <div class="form-check form-check-inline">
+                                                      <input class="form-check-input" type="checkbox" id="guileSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="guileSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Withering Attack Roll :</b> <span id="witheringAttackRoll"></span>
+                                                <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
+                                                            <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                      </div>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Withering Damage Roll :</b> <span id="witheringDamageRoll"></span>
+                                          </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                          <div class="">
+                                                <b>Decisive Attack Roll :</b> <span id="decisiveAttackRoll"></span>
+                                                <div class="form-check form-check-inline">
+                                                      <input class="form-check-input" type="checkbox" id="decisiveAttackRollSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="decisiveAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Decisive Damage Roll :</b> Your Initiative
+                                          </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                          <div class="">
+                                                <b>Natural Soak :</b> <span id="naturalSoakCalc"></span>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Soak :</b> <span id="soakCalc"></span>
+                                          </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                          <div class="">
+                                                <b>Hardness : </b> <span id="hardnessCalc"></span>
+                                          </div>
+                                    </div>
+
+
+                                    <div class="row mt-3">
+                                          <div class="">
+                                                <b>Parry : </b> <span id="parryCalc"></span>
+                                          </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                          <b>Evasion : </b> <span id="evasionCalc"></span>
+                                    </div>
+                                    <div class="row">
+                                          <b>Defense : </b> <span id="defenseCalc"></span>
+                                    </div>
+                                    <div class="row">
+                                          <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn.
+                                    </div>
+
+                                    <div class="row mt-3">
+                                          <div class="">
+                                                <b>Rush : </b> <span id="rushCalc"></span>
+                                          </div>
+                                    </div>
+
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Withdraw : </b> <span id="withdrawCalc"></span>
+                                          </div>
+                                    </div>
+
+                                    <div class="row">
+                                          <div class="">
+                                                <b>Disengage : </b> <span id="disengageCalc"></span>
+                                          </div>
+                                    </div>
+
+
+                              </div>
+                        </div>
+                  </div>
+
+
+
+
+
+                  <div class="row mt-5">
+                        <div class="card col-sm-12">
+                              <div class="card-body">
+                                    <h4 class="card-title">Reminders</h4>
+                                    • <b>Join Battle:</b> Wits + Awareness (plus 3 successes) <br><br>
+
+                                    • <b>Withering attack roll:</b> Dexterity + (Combat Ability) + weapon’s accuracy<br>
+                                    • <b>Withering damage roll:</b> weapon’s damage + (Strength or 4 for firewand/crossbow) + threshold successes (successes on the attack roll - enemy’s Defence) - Enemy Soak<br><br>
+
+                                    • <b>Decisive attack roll:</b> Dexterity + (Combat Ability)<br>
+                                    • <b>Decisive damage roll:</b> roll your current initiative in dice. If you have less initiative than the enemy has hardness and the enemy is not crashed, damage is always 0.<br><br>
+
+                                    • <b>Natural Soak:</b> (Stamina if Exalted) or (0 if Mortal)<br>
+                                    • <b>Soak:</b> Stamina + Charms + Armor Soak, defends against Withering attacks<br><br>
+
+                                    • <b>Hardness:</b> Best hardness value from Charm or Armor, if higher than a Decisive attack dice pool, the attack fails. <br><br>
+
+                                    • <b>Parry:</b> ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s defense<br>
+                                    • <b>Evasion:</b> ([Dexterity + Dodge)] / 2, round up) - armor’s mobility penalty<br>
+                                    • <b>Defense:</b> Higher of Parry or Evasion<br>
+                                    • <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn. <br><br>
+
+                                    • <b>Rush:</b> Dexterity + Athletics - armor’s mobility penalty<br>
+                                    • <b>Withdraw:</b> Dexterity + Athletics - armor’s mobility penalty<br>
+                                    • <b>Disengage:</b> Dexterity + Dodge - armor’s mobility penalty<br><br>
+
+                                    • <b>Resolve:</b> ([Wits + Integrity + (1 if specialty applies)] / 2, round up)<br>
+                                    • <b>Guile:</b> ([Manipulation + Socialize + (1 if specialty applies)] / 2, round up)<br>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-weparm" role="tabpanel">
+                  <div class="row">
+                        <div class="card col-sm-12" style="margin-top: 20px;">
+                              <div class="card-body">
+                                    <h4 class="card-title">Weapons</h4>
+
+                                    <div class="row">
+                                          <div class=" col-md-2">Weapon Name</div>
+                                          <div class=" col-md-2">Combat Ability</div>
+                                          <div class=" col-md-1">With</div>
+                                          <div class=" col-md-1">ACC</div>
+                                          <div class=" col-md-1">DMG</div>
+                                          <div class=" col-md-1">DEF</div>
+                                          <div class=" col-md-1">OVW</div>
+                                          <div class=" col-md-1">Tags</div>
+                                          <div class=" col-md-1">Dice</div>
+                                    </div>
+
+                                    <form id="weapons">
+
+                                    </form>
+
+                                    <hr />
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates();">Add</button>
+
+                              </div>
+                        </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="card col-sm-12" style="margin-top: 20px;">
+                              <div class="card-body">
+                                    <h4 class="card-title">Armors</h4>
+                                    <div class="row">
+                                          <div class=" col-md-3">Armor</div>
+                                          <div class=" col-md-2">Soak</div>
+                                          <div class=" col-md-2">Hard</div>
+                                          <div class=" col-md-2">MP</div>
+                                          <div class=" col-md-2">Tags</div>
+                                    </div>
+                                    <form id="armors">
+
+                                    </form>
+                                    <hr />
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
+
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+
+
             <div class="tab-pane fade" id="tab-notes" role="tabpanel">
                   <div class="row">
                         <div class="card col-sm-12">
@@ -254,403 +494,7 @@
                                           <div class="card-body">
                                                 <h4 class="card-title">Abilities</h4>
                                                 <form id="abilities">
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="archery-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Archery</span>
-                                                                        </div>
-                                                                        <input type="text" name="archery" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
 
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="athletics-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Athletics</span>
-                                                                        </div>
-                                                                        <input type="text" name="athletics" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="awareness-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Awareness</span>
-                                                                        </div>
-                                                                        <input type="text" name="awareness" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="brawl-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Brawl</span>
-                                                                        </div>
-                                                                        <input type="text" name="brawl" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="bureaucracy-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Bureaucracy</span>
-                                                                        </div>
-                                                                        <input type="text" name="bureaucracy" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="craft-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Craft</span>
-                                                                        </div>
-                                                                        <input type="text" name="craft" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="dodge-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Dodge</span>
-                                                                        </div>
-                                                                        <input type="text" name="dodge" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="integrity-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Integrity</span>
-                                                                        </div>
-                                                                        <input type="text" name="integrity" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="investigation-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Investigation</span>
-                                                                        </div>
-                                                                        <input type="text" name="investigation" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="larceny-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Larceny</span>
-                                                                        </div>
-                                                                        <input type="text" name="larceny" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="linguistics-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Linguistics</span>
-                                                                        </div>
-                                                                        <input type="text" name="linguistics" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="lore-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Lore</span>
-                                                                        </div>
-                                                                        <input type="text" name="lore" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="martialArts-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Martial
-                                                                                    Arts</span>
-                                                                        </div>
-                                                                        <input type="text" name="martialArts" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="medecine-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Medecine</span>
-                                                                        </div>
-                                                                        <input type="text" name="medecine" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="melee-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Melee</span>
-                                                                        </div>
-                                                                        <input type="text" name="melee" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="occult-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Occult</span>
-                                                                        </div>
-                                                                        <input type="text" name="occult" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="performance-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Performance</span>
-                                                                        </div>
-                                                                        <input type="text" name="performance" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="presence-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Presence</span>
-                                                                        </div>
-                                                                        <input type="text" name="presence" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="resistance-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Resistance</span>
-                                                                        </div>
-                                                                        <input type="text" name="resistance" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="ride-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Ride</span>
-                                                                        </div>
-                                                                        <input type="text" name="ride" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="sail-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Sail</span>
-                                                                        </div>
-                                                                        <input type="text" name="sail" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="socialize-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Socialize</span>
-                                                                        </div>
-                                                                        <input type="text" name="socialize" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="stealth-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Stealth</span>
-                                                                        </div>
-                                                                        <input type="text" name="stealth" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="survival-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Survival</span>
-                                                                        </div>
-                                                                        <input type="text" name="survival" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="thrown-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Thrown</span>
-                                                                        </div>
-                                                                        <input type="text" name="thrown" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-
-
-                                                      <div class="form-row">
-                                                            <div class="col-12">
-                                                                  <div class="input-group">
-                                                                        <div class="input-group-text">
-                                                                              <input name="war-favorite" type="checkbox" onchange="setControlStates()">
-                                                                        </div>
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">War</span>
-                                                                        </div>
-                                                                        <input type="text" name="war" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </div>
                                                 </form>
                                           </div>
                                     </div>
@@ -839,34 +683,7 @@
                                     </div>
                               </div>
 
-                              <div class="row">
-                                    <div class="card col-sm-12" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Weapons</h4>
 
-                                                <div class="row">
-                                                      <div class=" col-md-3">Weapon Name</div>
-                                                      <div class=" col-md-1">ACC</div>
-                                                      <div class=" col-md-1">DMG</div>
-                                                      <div class=" col-md-1">DEF</div>
-                                                      <div class=" col-md-1">OVW</div>
-                                                      <div class=" col-md-3">Tags</div>
-                                                      <div class=" col-md-1">Dice</div>
-                                                </div>
-
-                                                <form id="weapons">
-
-
-
-
-                                                </form>
-
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates();">Add</button>
-
-                                          </div>
-                                    </div>
-                              </div>
                         </div>
                   </div>
 
@@ -878,18 +695,6 @@
                                     <div class="row">
                                           <div class="col-7">
 
-                                                <div class="row">
-                                                      <div class=" col-md-3">Armor</div>
-                                                      <div class=" col-md-2">Soak</div>
-                                                      <div class=" col-md-2">Hard</div>
-                                                      <div class=" col-md-2">MP</div>
-                                                      <div class=" col-md-2">Tags</div>
-                                                </div>
-                                                <form id="armors">
-
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
 
 
                                                 <div class="row">
@@ -1214,6 +1019,8 @@
                   "weapons": [
                         {
                               "name": "heavenly typhoone",
+                              "combatAbility": "strength",
+                              "withering": 4, //or "strength",
                               "accuracy": 20,
                               "damage": 10,
                               "defense": 5,
@@ -1223,6 +1030,7 @@
                         },
                         {
                               "name": "volcanic hammer",
+                              "combatAbility": "larceny",
                               "accuracy": 30,
                               "damage": 100,
                               "defense": 50,
@@ -1264,7 +1072,7 @@
                   "health": [
                         {
                               "value": -0,
-                              "hit": false // ticked if not null will be { type : "bashing||lethal||aggrave"}
+                              "hit": false
                         },
                         {
                               "value": -0,
@@ -1333,6 +1141,89 @@
                   "notes": "this is my note"
             }
       };
+
+
+      var rangePenalties = {
+            "penalties" : {
+                  "close" : {
+                        "mortal" : 
+                        {
+                              "archery" : -2,
+                              "thrown" : 4
+                        },
+                        "artifact" :
+                        {
+                              "archery" : -1,
+                              "thrown" : 5
+                        },
+                  },
+                  "short" : {
+                        "mortal" : 
+                        {
+                              "archery" : 4,
+                              "thrown" : 3
+                        },
+                        "artifact" :
+                        {
+                              "archery" : 5,
+                              "thrown" : 4
+                        },
+                  },
+                  "medium" : {
+                        "mortal" : 
+                        {
+                              "archery" : 2,
+                              "thrown" : 2
+                        },
+                        "artifact" :
+                        {
+                              "archery" : 3,
+                              "thrown" : 3
+                        },
+                  },
+                  "long" : {
+                        "mortal" : 
+                        {
+                              "archery" : 0,
+                              "thrown" : -1
+                        },
+                        "artifact" :
+                        {
+                              "archery" : 1,
+                              "thrown" : 0
+                        },
+                  },
+                  "extreme" : {
+                        "mortal" : 
+                        {
+                              "archery" : -2,
+                              "thrown" : -3
+                        },
+                        "artifact" :
+                        {
+                              "archery" : -1,
+                              "thrown" : -2
+                        },
+                  }
+            }
+      }
+
+
+      var defaultAbilityTemplate = `
+      <div class="form-row">
+            <div class="col-12">
+                  <div class="input-group">
+                        <div class="input-group-text">
+                              <input name="__ABILITY_NAME__-favorite" type="checkbox" onchange="setControlStates()">
+                        </div>
+                        <div class="input-group-prepend">
+                              <span class="input-group-text">__ABILITY_LABEL__</span>
+                        </div>
+                        <input type="text" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()">
+                  </div>
+            </div>
+      </div>
+      `;
 
       var healthTemplate = `
       <div class="row" id="health__ID__">
@@ -1410,8 +1301,26 @@
 
       var weaponTemplate = `
 <div class="form-row" id="weapon__ID__">
-      <div class=" col-md-3">
+      <div class=" col-md-2">
             <input type="text" class="form-control" name="weapon__ID__-name" onchange="setControlStates()">
+      </div>
+      <div class="col-md-2">
+            <div class="form-group">
+                  <select class="form-control" name="weapon__ID__-combatAbility" onchange="setControlStates()">
+                        <option value="archery">Archery</option>
+                        <option value="brawl">Brawl</option>
+                        <option value="melee">Melee</option>                        
+                        <option value="thrown">Thrown</option>
+                  </select>
+            </div>
+      </div>
+      <div class="col-md-1">
+            <div class="form-group">
+                  <select class="form-control" name="weapon__ID__-withering" onchange="setControlStates()">
+                        <option value="strength">Strength</option>
+                        <option value="4">4 Dices</option>
+                  </select>
+            </div>
       </div>
       <div class=" col-md-1">
             <input type="text" class="form-control" name="weapon__ID__-accuracy" onchange="setControlStates()">
@@ -1425,7 +1334,7 @@
       <div class=" col-md-1">
             <input type="text" class="form-control" name="weapon__ID__-overwhelming" onchange="setControlStates()">
       </div>
-      <div class=" col-md-3">
+      <div class=" col-md-1">
             <input type="text" class="form-control" name="weapon__ID__-tags" onchange="setControlStates()">
       </div>
       <div class=" col-md-1">
@@ -1479,6 +1388,161 @@
       </div>
 </div>
       `;
+
+      // here we could add tag like : combat ability, social ability so we can sort their category
+      var defaultAbilities =
+      {
+            "abilities": [
+                  {
+                        "name": "archery",
+                        "label": "Archery",
+                        "type": "combat"
+                  },
+                  {
+                        "name": "athletics",
+                        "label": "Athletics",
+                        "type": ""
+                  },
+                  {
+                        "name": "awareness",
+                        "label": "Awareness",
+                        "type": ""
+                  },
+                  {
+                        "name": "brawl",
+                        "label": "Brawl",
+                        "type": "combat"
+                  },
+                  {
+                        "name": "bureaucracy",
+                        "label": "Bureaucracy",
+                        "type": ""
+                  },
+                  {
+                        "name": "craft",
+                        "label": "Craft",
+                        "type": ""
+                  },
+                  {
+                        "name": "dodge",
+                        "label": "Dodge",
+                        "type": ""
+                  },
+                  {
+                        "name": "integrity",
+                        "label": "Integrity",
+                        "type": ""
+                  },
+                  {
+                        "name": "investigation",
+                        "label": "Investigation",
+                        "type": ""
+                  },
+                  {
+                        "name": "larceny",
+                        "label": "Larceny",
+                        "type": ""
+                  },
+                  {
+                        "name": "linguistics",
+                        "label": "Linguistics",
+                        "type": ""
+                  },
+                  {
+                        "name": "lore",
+                        "label": "Lore",
+                        "type": ""
+                  },
+                  {
+                        "name": "martialArts",
+                        "label": "Martial Arts",
+                        "type": "combat"
+                  },
+                  {
+                        "name": "medecine",
+                        "label": "Medecine",
+                        "type": ""
+                  },
+                  {
+                        "name": "melee",
+                        "label": "Melee",
+                        "type": "combat"
+                  },
+                  {
+                        "name": "occult",
+                        "label": "Occult",
+                        "type": ""
+                  },
+                  {
+                        "name": "performance",
+                        "label": "Performance",
+                        "type": ""
+                  },
+                  {
+                        "name": "presence",
+                        "label": "Presence",
+                        "type": ""
+                  },
+                  {
+                        "name": "resistance",
+                        "label": "Resistance",
+                        "type": ""
+                  },
+                  {
+                        "name": "ride",
+                        "label": "Ride",
+                        "type": ""
+                  },
+                  {
+                        "name": "sail",
+                        "label": "Sail",
+                        "type": ""
+                  },
+                  {
+                        "name": "socialize",
+                        "label": "Socialize",
+                        "type": ""
+                  },
+                  {
+                        "name": "stealth",
+                        "label": "Stealth",
+                        "type": ""
+                  },
+                  {
+                        "name": "survival",
+                        "label": "Survival",
+                        "type": ""
+                  },
+                  {
+                        "name": "thrown",
+                        "label": "Thrown",
+                        "type": "combat"
+                  },
+                  {
+                        "name": "war",
+                        "label": "War",
+                        "type": ""
+                  }
+            ]
+      }
+
+      function createDefaultAbilities() {
+            abilitiesForm = document.getElementById("abilities");
+
+            abilitiesForm.innerHTML = ""
+
+            defaultAbilities["abilities"].forEach(ability => {
+
+                  var tmp = defaultAbilityTemplate.split("__ABILITY_NAME__").join(ability["name"]);
+                  tmp = tmp.split("__ABILITY_LABEL__").join(ability["label"]);
+
+                  abilitiesForm.innerHTML = abilitiesForm.innerHTML + tmp;
+
+            });
+
+      }
+
+      createDefaultAbilities();
 
       function fillSingle(form, data) {
             if (data == null) {
@@ -1566,6 +1630,9 @@
 
 
       function fillCharacter(character) {
+
+            charactar = character;
+
             fillSingle("general", character["data"]["general"]);
             fillSingle("attributes", character["data"]["attributes"]);
 
@@ -1704,8 +1771,7 @@
                   document.getElementById("notes").value = character["data"]["notes"];
             }
 
-            if(character["data"]["health"] != null)
-            {
+            if (character["data"]["health"] != null) {
                   document.getElementById("health").innerHTML = ""
 
                   var healthLength = character["data"]["health"].length;
@@ -1718,17 +1784,47 @@
 
             }
 
+            fillSpecial(character);
+
       }
 
+      function fillSpecial(character) {
+            if (character["data"]["weapons"] != null) {
+                  var currentWeaponTemplate = `
+                        <option>__WEAPON_NAME__</option>
+                  `;
 
-      //fillCharacter(charactar)
+                  currentWeaponElem = document.getElementById("currentWeapon");
 
-	/*
+                  currentWeaponElem.innerHTML = ""
 
-		GETTING JSON
+                  character["data"]["weapons"].forEach(item => {
+                        var tmp = currentWeaponTemplate.split("__WEAPON_NAME__").join(item["name"]);
 
-	*/
+                        currentWeaponElem.innerHTML = currentWeaponElem.innerHTML + tmp;
+                  });
+            }
 
+
+            if (character["data"]["armors"] != null) {
+                  var currentArmorTemplate = `
+                        <option>__ARMOR_NAME__</option>
+                  `;
+
+                  currentArmorElem = document.getElementById("currentArmor");
+
+                  currentArmorElem.innerHTML = ""
+
+                  character["data"]["armors"].forEach(item => {
+                        var tmp = currentArmorTemplate.split("__ARMOR_NAME__").join(item["name"]);
+
+                        currentArmorElem.innerHTML = currentArmorElem.innerHTML + tmp;
+                  });
+            }
+
+
+
+      }
 
 
       function getJSONSingle(form, removeContain) {
@@ -1849,6 +1945,14 @@
                   {
                         "value": "name",
                         "type": "input"
+                  },
+                  {
+                        "value": "combatAbility",
+                        "type": "combo"
+                  },
+                  {
+                        "value": "withering",
+                        "type": "combo"
                   },
                   {
                         "value": "accuracy",
@@ -2005,6 +2109,8 @@
             ]
       }
 
+
+
       function getJSONMulti(form, fields, prepend) {
             var form = document.getElementById(form);
 
@@ -2132,6 +2238,9 @@
                   isRefreshing = false;
 
                   document.getElementById("save-button").disabled = true;
+
+
+                  calculateStats();
             });
 
             getUserInfos(result => {
@@ -2182,7 +2291,6 @@
       <div class=" col-md-1">
             <input type="text" class="form-control" name="charm__ID__-duration" onchange="setControlStates()" placeholder="Duration">
       </div>
-
       <div class=" col-md-1">
             <input type="text" class="form-control" name="charm__ID__-cost" onchange="setControlStates()" placeholder="Cost">
       </div>
@@ -2232,6 +2340,242 @@
       }
 
 
+      function calculateStats() {
+
+            // TODO save current weapon and all the settings on this page
+            // TODO support ranged weapon ( check is ranged weapon and decrease accuracy if so)
+
+
+            /*
+
+•Parry: ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s defense
+• Evasion: ([Dexterity + Dodge)] / 2, round up) - armor’s mobility penalty
+• Defense: Higher of Parry or Evasion
+• Onslaught Penalty = Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn.    
+
+• Rush: Dexterity + Athletics - armor’s mobility penalty
+• Withdraw: Dexterity + Athletics - armor’s mobility penalty
+• Disengage: Dexterity + Dodge - armor’s mobility penalty
+
+• Resolve = ([Wits + Integrity + (1 if specialty applies)] / 2, round up)
+• Guile = ([Manipulation + Socialize + (1 if specialty applies)] / 2, round up)
+            
+            */
+
+            // JOIN BATTLE ============
+
+            joinBattleElement = document.getElementById("joinBattle")
+
+            joinBattle = charactar["data"]["attributes"]["wits"] + getAttribute(charactar, "awareness").value;
+
+            joinBattleElement.innerHTML = joinBattle + " + 3 successes"
+
+            // =======================
+
+
+            // RESOLVE ============
+            resolveElement = document.getElementById("resolve");
+            resolveElementCheck = document.getElementById("resolveSpeciality");
+
+            resolve = charactar["data"]["attributes"]["wits"] + getAttribute(charactar, "integrity").value;
+
+            if (resolveElementCheck.checked) {
+                  resolve = resolve + 1;
+            }
+
+            resolve = Math.ceil(resolve / 2);
+
+            resolveElement.innerHTML = resolve;
+            // =============================
+
+
+            // GUILE ===================
+            guileElement = document.getElementById("guile");
+            guileElementCheck = document.getElementById("guileSpeciality");
+
+            guile = charactar["data"]["attributes"]["manipulation"] + getAttribute(charactar, "socialize").value;
+
+            if (guileElementCheck.checked) {
+                  guile = guile + 1;
+            }
+
+            guile = Math.ceil(guile / 2)
+
+            guileElement.innerHTML = guile;
+            // =============
+
+
+            // WITHERING ATTACK ROLL ===============
+            witheringAttackRollSpecialityElem = document.getElementById("witheringAttackRollSpeciality")
+
+            witheringAttackRollElem = document.getElementById("witheringAttackRoll");
+            currentWeaponElem = document.getElementById("currentWeapon");
+
+            currentWeapon = charactar["data"]["weapons"].filter(function (elem) { return elem.name == currentWeaponElem.value })[0]
+
+            dexterity = charactar["data"]["attributes"]["dexterity"];
+
+            witheringAttackRoll = dexterity + getAttribute(charactar, currentWeapon["combatAbility"]).value + currentWeapon["accuracy"];
+
+            if(witheringAttackRollSpecialityElem.checked)
+            {
+            witheringAttackRoll = witheringAttackRoll +1;
+            }
+
+            witheringAttackRollElem.innerHTML = witheringAttackRoll;
+
+            //======================================
+
+
+            // WITHERING DAMAGE ROLL =======
+
+            witheringDamageRollElem = document.getElementById("witheringDamageRoll");
+
+            witheringDamageRoll = currentWeapon["damage"];
+
+            if (currentWeapon["withering"] == 4 || currentWeapon["withering"] == "4") {
+                  witheringDamageRoll = witheringDamageRoll + 4;
+            }
+            else {
+                  witheringDamageRoll = witheringDamageRoll + charactar["data"]["attributes"]["strength"];
+            }
+
+            // TODO make something interactive that ask the user for the remaining infos
+            witheringDamageRollElem.innerHTML = witheringDamageRoll + "+  threshold successes (successes on the withering attack roll - enemy’s Defence) - Enemy Soak"
+
+            // NATURAL SOAK =============================
+
+            naturalSoakElem = document.getElementById("naturalSoakCalc");
+
+            // not sure how I want to handle mortal sheet so not yet supported 
+
+            naturalSoakElem.innerHTML = charactar["data"]["attributes"]["stamina"];
+
+
+            //
+
+
+
+            // SOAK ===========================
+
+            soakElem = document.getElementById("soakCalc");
+
+            currentArmorElem = document.getElementById("currentArmor");
+
+            currentArmor = charactar["data"]["armors"].filter(function (elem) { return elem.name == currentArmorElem.value })[0]
+
+
+            soak = charactar["data"]["attributes"]["stamina"] + currentArmor["soak"];
+
+            soakElem.innerHTML = soak + " + charms, defends against Withering attacks"
+
+
+
+            // ===============================
+
+
+
+            // DECISIVE ATTACK ROLL=========
+            decisiveAttackRollSpecialityElem = document.getElementById("decisiveAttackRollSpeciality")
+            decisiveAttackRollElem = document.getElementById("decisiveAttackRoll");
+
+            decisiveAttackRoll = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, currentWeapon["combatAbility"]).value
+
+            if(decisiveAttackRollSpecialityElem.checked)
+            {
+                  decisiveAttackRoll  = decisiveAttackRoll + 1;
+            }
+
+            decisiveAttackRollElem.innerHTML = decisiveAttackRoll;
+
+            // ===============================
+
+
+            // HARDNESS ======================
+
+            hardnessElem = document.getElementById("hardnessCalc");
+
+            hardness = currentArmor["hardness"];
+
+            hardnessElem.innerHTML = "Best hardness value from Charm or Armor (" + hardness + "), if higher than a Decisive attack dice pool, the attack fails."
+
+            // ===============================
+
+
+
+            // PARRY ====================
+
+            parryElem = document.getElementById("parryCalc");
+
+            parry = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, currentWeapon["combatAbility"]).value) / 2) + currentWeapon["defense"]
+
+            parryElem.innerHTML = parry;
+
+            // =========================
+
+
+            // EVASION ==================
+
+            evasionElem = document.getElementById("evasionCalc");
+
+            evasion = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value) / 2) - currentArmor["mobilityPenalty"]
+
+            evasionElem.innerHTML = evasion;
+
+            // =========================
+
+
+            // DEFENSE ================
+
+            defenseElem = document.getElementById("defenseCalc");
+
+            defense = 0;
+
+            if (evasion >= parry) {
+                  defense = evasion;
+            }
+            else {
+                  defense = parry;
+            }
+
+            defenseElem.innerHTML = defense
+
+            //==========================
+
+
+            //RUSH ===============
+            rushElem = document.getElementById("rushCalc");
+
+            rush =  charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
+
+            rushElem.innerHTML = rush;
+
+            // ===================
+
+            // WITHDRAW ==============
+
+            withdrawElem = document.getElementById("withdrawCalc");
+
+            withdraw = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
+           
+            withdrawElem.innerHTML = withdraw;
+
+            //========================
+
+            // DISENGAGE ===============
+
+            disengageElem = document.getElementById("disengageCalc");
+
+            disengage = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value - currentArmor["mobilityPenalty"]
+
+            disengageElem.innerHTML = disengage
+            //==========================
+
+      }
+
+      function getAttribute(character, attributeName) {
+            return character["data"]["abilities"].filter(function (i) { if (i.name == attributeName) { return i } })[0]
+      }
 
       function uniqueID() {
 
