@@ -155,6 +155,7 @@
     <None Include="websites\mathieu_morrissette\configs\config.cfg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="websites\exalted\api\default_character_json.txt" />
     <Content Include="websites\exalted\public\css\style.css" />
     <Content Include="websites\exalted\public\html\characters.html" />
     <Content Include="websites\exalted\public\html\error_alert.html" />

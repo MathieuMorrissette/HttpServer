@@ -45,13 +45,11 @@ namespace HttpServer.websites.exalted.api.handlers
 
                     JObject json = JObject.Parse(body);
 
-                    JObject basedata = JObject.Parse("{ \"general\" : { \"name\" : null }}");
+                    string replaced = CharacterManager.DefaultCharacterJSON.Replace("__NAME__", json["charactername"].ToString());
 
-                    // set name
-                    basedata["general"]["name"] = json["charactername"].ToString();
+                    JObject data = JObject.Parse(replaced); 
 
-
-                    CharacterManager.CreateCharacter(user, JsonConvert.SerializeObject(basedata));
+                    CharacterManager.CreateCharacter(user, JsonConvert.SerializeObject(data));
 
                     return true;
                 }

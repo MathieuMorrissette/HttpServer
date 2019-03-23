@@ -35,7 +35,8 @@
                                           <div class="col-3">
                                                 <div class="form-group">
                                                       <label for="currentWeapon">Current Weapon </label>
-                                                      <select class="form-control" id="currentWeapon" name="currentWeapon" onchange="calculateStats()">
+                                                      <select class="form-control" id="currentWeapon"
+                                                            name="currentWeapon" onchange="calculateStats()">
 
                                                       </select>
                                                 </div>
@@ -43,7 +44,8 @@
                                           <div class="col-3">
                                                 <div class="form-group" id="currentRangeDiv" hidden>
                                                       <label for="currentRange">Range :</label>
-                                                      <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
+                                                      <select class="form-control" id="currentRange" name="currentRange"
+                                                            onchange="calculateStats()">
                                                             <option>close</option>
                                                             <option>short</option>
                                                             <option>medium</option>
@@ -55,7 +57,8 @@
                                           <div class="col-6">
                                                 <div class="form-group">
                                                       <label for="currentArmor">Current Armor </label>
-                                                      <select class="form-control" id="currentArmor" name="currentArmor" onchange="calculateStats()">
+                                                      <select class="form-control" id="currentArmor" name="currentArmor"
+                                                            onchange="calculateStats()">
 
                                                       </select>
                                                 </div>
@@ -69,8 +72,10 @@
                                           <div class="col-6">
                                                 <b>Resolve :</b> <span id="resolve"></span>
                                                 <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox" id="resolveSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="resolveSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                      <input class="form-check-input" type="checkbox"
+                                                            id="resolveSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="resolveSpeciality"><i>Tick If
+                                                                  Speciality Applies</i></label>
                                                 </div>
                                           </div>
                                     </div>
@@ -80,8 +85,10 @@
                                           <div class="col-6">
                                                 <b>Guile :</b> <span id="guile"></span>
                                                 <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox" id="guileSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="guileSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                      <input class="form-check-input" type="checkbox"
+                                                            id="guileSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="guileSpeciality"><i>Tick If
+                                                                  Speciality Applies</i></label>
                                                 </div>
                                           </div>
                                     </div>
@@ -90,8 +97,12 @@
                                           <div class="">
                                                 <b>Withering Attack Roll :</b> <span id="witheringAttackRoll"></span>
                                                 <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                      <input class="form-check-input" type="checkbox"
+                                                            id="witheringAttackRollSpeciality"
+                                                            onchange="calculateStats()">
+                                                      <label class="form-check-label"
+                                                            for="witheringAttackRollSpeciality"><i>Tick If Speciality
+                                                                  Applies</i></label>
                                                 </div>
                                           </div>
                                     </div>
@@ -105,8 +116,12 @@
                                           <div class="">
                                                 <b>Decisive Attack Roll :</b> <span id="decisiveAttackRoll"></span>
                                                 <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox" id="decisiveAttackRollSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="decisiveAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                      <input class="form-check-input" type="checkbox"
+                                                            id="decisiveAttackRollSpeciality"
+                                                            onchange="calculateStats()">
+                                                      <label class="form-check-label"
+                                                            for="decisiveAttackRollSpeciality"><i>Tick If Speciality
+                                                                  Applies</i></label>
                                                 </div>
                                           </div>
                                     </div>
@@ -148,7 +163,8 @@
                                           <b>Defense : </b> <span id="defenseCalc"></span>
                                     </div>
                                     <div class="row">
-                                          <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn.
+                                          <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that
+                                          character suffers a cumulative -1 Defense penalty until his next turn.
                                     </div>
 
                                     <div class="row mt-3">
@@ -185,27 +201,37 @@
                                     • <b>Join Battle:</b> Wits + Awareness (plus 3 successes) <br><br>
 
                                     • <b>Withering attack roll:</b> Dexterity + (Combat Ability) + weapon’s accuracy<br>
-                                    • <b>Withering damage roll:</b> weapon’s damage + (Strength or 4 for firewand/crossbow) + threshold successes (successes on the attack roll - enemy’s Defence) - Enemy Soak<br><br>
+                                    • <b>Withering damage roll:</b> weapon’s damage + (Strength or 4 for
+                                    firewand/crossbow) + threshold successes (successes on the attack roll - enemy’s
+                                    Defence) - Enemy Soak<br><br>
 
                                     • <b>Decisive attack roll:</b> Dexterity + (Combat Ability)<br>
-                                    • <b>Decisive damage roll:</b> roll your current initiative in dice. If you have less initiative than the enemy has hardness and the enemy is not crashed, damage is always 0.<br><br>
+                                    • <b>Decisive damage roll:</b> roll your current initiative in dice. If you have
+                                    less initiative than the enemy has hardness and the enemy is not crashed, damage is
+                                    always 0.<br><br>
 
                                     • <b>Natural Soak:</b> (Stamina if Exalted) or (0 if Mortal)<br>
-                                    • <b>Soak:</b> Stamina + Charms + Armor Soak, defends against Withering attacks<br><br>
+                                    • <b>Soak:</b> Stamina + Charms + Armor Soak, defends against Withering
+                                    attacks<br><br>
 
-                                    • <b>Hardness:</b> Best hardness value from Charm or Armor, if higher than a Decisive attack dice pool, the attack fails. <br><br>
+                                    • <b>Hardness:</b> Best hardness value from Charm or Armor, if higher than a
+                                    Decisive attack dice pool, the attack fails. <br><br>
 
-                                    • <b>Parry:</b> ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s defense<br>
-                                    • <b>Evasion:</b> ([Dexterity + Dodge)] / 2, round up) - armor’s mobility penalty<br>
+                                    • <b>Parry:</b> ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s
+                                    defense<br>
+                                    • <b>Evasion:</b> ([Dexterity + Dodge)] / 2, round up) - armor’s mobility
+                                    penalty<br>
                                     • <b>Defense:</b> Higher of Parry or Evasion<br>
-                                    • <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn. <br><br>
+                                    • <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that
+                                    character suffers a cumulative -1 Defense penalty until his next turn. <br><br>
 
                                     • <b>Rush:</b> Dexterity + Athletics - armor’s mobility penalty<br>
                                     • <b>Withdraw:</b> Dexterity + Athletics - armor’s mobility penalty<br>
                                     • <b>Disengage:</b> Dexterity + Dodge - armor’s mobility penalty<br><br>
 
                                     • <b>Resolve:</b> ([Wits + Integrity + (1 if specialty applies)] / 2, round up)<br>
-                                    • <b>Guile:</b> ([Manipulation + Socialize + (1 if specialty applies)] / 2, round up)<br>
+                                    • <b>Guile:</b> ([Manipulation + Socialize + (1 if specialty applies)] / 2, round
+                                    up)<br>
                               </div>
                         </div>
                   </div>
@@ -218,7 +244,8 @@
 
                                     <h4 class="card-title">Weapons</h4>
                                     <div class="input-group mb-3">
-                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                          <input type="text" class="form-control"
+                                                placeholder="Search (not implemented)">
                                           <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button">Search</button>
                                           </div>
@@ -228,7 +255,8 @@
                                     </form>
 
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right"
+                                          onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates();">Add</button>
 
                               </div>
                         </div>
@@ -249,7 +277,8 @@
 
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right"
+                                          onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
 
                               </div>
                         </div>
@@ -264,7 +293,8 @@
                               <div class="card-body">
                                     <h4 class="card-title">Notes</h4>
                                     <form>
-                                          <textarea class="form-control" id="notes" rows="30" onchange="setControlStates()"></textarea>
+                                          <textarea class="form-control" id="notes" rows="30"
+                                                onchange="setControlStates()"></textarea>
                                     </form>
                               </div>
                         </div>
@@ -285,7 +315,8 @@
                                     <form id="intimacies">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right"
+                                          onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
@@ -300,7 +331,8 @@
                                     <form id="inventory">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right"
+                                          onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
 
                               </div>
                         </div>
@@ -314,11 +346,12 @@
                               <div class="card-body">
                                     <h4 class="card-title">Charms</h4>
                                     <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Search (not implemented)">
-                                                <div class="input-group-append">
-                                                      <button class="btn btn-outline-secondary" type="button">Search</button>
-                                                </div>
+                                          <input type="text" class="form-control"
+                                                placeholder="Search (not implemented)">
+                                          <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button">Search</button>
                                           </div>
+                                    </div>
                                     <div class="row">
                                           <div class=" col-md-3">
                                                 Name
@@ -346,7 +379,8 @@
                                     <form id="charms">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right"
+                                          onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
@@ -362,14 +396,16 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Name</span>
                                                       </div>
-                                                      <input type="text" name="name" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="name" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Concept</span>
                                                       </div>
-                                                      <input type="text" name="concept" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="concept" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -379,14 +415,16 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Player</span>
                                                       </div>
-                                                      <input type="text" name="owner" class="form-control text-right" disabled onchange="setControlStates()">
+                                                      <input type="text" name="owner" class="form-control text-right"
+                                                            disabled onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Anima</span>
                                                       </div>
-                                                      <input type="text" name="anima" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="anima" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -397,14 +435,17 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Caste</span>
                                                       </div>
-                                                      <input type="text" name="caste" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="caste" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Supernal Ability</span>
                                                       </div>
-                                                      <input type="text" name="supernalAbility" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="supernalAbility"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
                                     </form>
@@ -422,21 +463,25 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Strength</span>
                                                       </div>
-                                                      <input type="text" name="strength" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="strength" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Charisma</span>
                                                       </div>
-                                                      <input type="text" name="charisma" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="charisma" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Perception</span>
                                                       </div>
-                                                      <input type="text" name="perception" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="perception"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -445,21 +490,27 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Dexterity</span>
                                                       </div>
-                                                      <input type="text" name="dexterity" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="dexterity"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Manipulation</span>
                                                       </div>
-                                                      <input type="text" name="manipulation" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="manipulation"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Intelligence</span>
                                                       </div>
-                                                      <input type="text" name="intelligence" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="intelligence"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -469,21 +520,25 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Stamina</span>
                                                       </div>
-                                                      <input type="text" name="stamina" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="stamina" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Appearance</span>
                                                       </div>
-                                                      <input type="text" name="appearance" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="appearance"
+                                                            class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Wits</span>
                                                       </div>
-                                                      <input type="text" name="wits" class="form-control text-right" onchange="setControlStates()">
+                                                      <input type="text" name="wits" class="form-control text-right"
+                                                            onchange="setControlStates()">
                                                 </div>
                                           </div>
                                     </form>
@@ -512,7 +567,8 @@
 
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right"
+                                                      onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -529,7 +585,8 @@
 
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right"
+                                                      onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
                                           </div>
                                     </div>
                               </div>
@@ -541,7 +598,8 @@
                                                 <form id="specializations">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right"
+                                                      onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -552,7 +610,8 @@
                                                 <form id="merits">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right"
+                                                      onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -566,10 +625,13 @@
                                                 <form id="willpower">
                                                       <div class="form-row">
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="current"
+                                                                        placeholder="current"
+                                                                        onchange="setControlStates()">
                                                             </div>
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="max"
+                                                                        placeholder="max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -582,10 +644,13 @@
                                                 <form id="limitBreak">
                                                       <div class="form-row">
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="current"
+                                                                        placeholder="current"
+                                                                        onchange="setControlStates()">
                                                             </div>
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="max"
+                                                                        placeholder="max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -605,7 +670,9 @@
                                                                         <span class="input-group-text">Essence
                                                                               Level</span>
                                                                   </div>
-                                                                  <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
+                                                                  <input type="text" name="essenceLevel"
+                                                                        class="form-control text-right"
+                                                                        onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
@@ -614,18 +681,29 @@
                                                                   <div class="input-group-prepend">
                                                                         <span class="input-group-text">Personal</span>
                                                                   </div>
-                                                                  <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  <input type="text" name="current-personal"
+                                                                        class="form-control text-right"
+                                                                        placeholder="Current"
+                                                                        onchange="setControlStates()">
+                                                                  <input type="text" name="max-personal"
+                                                                        class="form-control text-right"
+                                                                        placeholder="Max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
                                                       <div class=" row">
                                                             <div class="input-group col-sm-12">
                                                                   <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Peripherical</span>
+                                                                        <span
+                                                                              class="input-group-text">Peripherical</span>
                                                                   </div>
-                                                                  <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  <input type="text" name="current-peripherical"
+                                                                        class="form-control text-right"
+                                                                        placeholder="Current"
+                                                                        onchange="setControlStates()">
+                                                                  <input type="text" name="max-peripherical"
+                                                                        class="form-control text-right"
+                                                                        placeholder="Max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
@@ -634,7 +712,9 @@
                                                                   <div class="input-group-prepend">
                                                                         <span class="input-group-text">Commited</span>
                                                                   </div>
-                                                                  <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
+                                                                  <input type="text" name="commited"
+                                                                        class="form-control text-right"
+                                                                        onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -648,7 +728,8 @@
                                                 <form id="limitTrigger">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right"
+                                                      onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -662,8 +743,12 @@
                                                 <form id="normal-experience">
                                                       <div class=" row">
 
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+                                                            <input type="text" name="current"
+                                                                  class="form-control text-right col-6"
+                                                                  placeholder="Current" onchange="setControlStates()">
+                                                            <input type="text" name="total"
+                                                                  class="form-control text-right col-6"
+                                                                  placeholder="Max" onchange="setControlStates()">
 
                                                       </div>
                                                 </form>
@@ -678,8 +763,12 @@
 
                                                       <div class=" row">
 
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+                                                            <input type="text" name="current"
+                                                                  class="form-control text-right col-6"
+                                                                  placeholder="Current" onchange="setControlStates()">
+                                                            <input type="text" name="total"
+                                                                  class="form-control text-right col-6"
+                                                                  placeholder="Max" onchange="setControlStates()">
 
                                                       </div>
                                                 </form>
@@ -1527,31 +1616,38 @@
 
             var form = document.getElementById(form);
 
+            var formdata = new FormData(form);
+
+            var ids = [];
+
+            formdata.forEach(function (value, key) {
+
+                  isolatedKey = key.split("-")[0];
+
+                  if (ids.indexOf(isolatedKey) == -1 && isolatedKey.indexOf(prepend) != -1) {
+                        ids.push(isolatedKey);
+                  }
+            });
+
             data.forEach(function (item, i) {
-
-                  var elements = form.querySelectorAll('div[id^="' + prepend + '"]');
-
                   Object.keys(item).forEach(function (k) {
 
-                        var element = elements[i];
+                        var id = ids[i];
 
-                        var id = element.id.split(prepend)[1]
-
-                        input = form.querySelector('[name="' + prepend + id + "-" + k + '"]');
+                        input = form.querySelector('[name="' + id + "-" + k + '"]');
 
                         if (input == null) {
                               return;
                         }
 
                         if (input.type == "checkbox") {
-                              form.querySelector('[name="' + prepend + id + "-" + k + '"]').checked = item[k]
+                              form.querySelector('[name="' + id + "-" + k + '"]').checked = item[k]
                         }
                         else {
 
-                              form.querySelector('[name="' + prepend + id + "-" + k + '"]').value = item[k]
+                              form.querySelector('[name="' + id + "-" + k + '"]').value = item[k]
                         }
                   });
-
             });
       }
 
@@ -1733,41 +1829,50 @@
       }
 
       function fillSpecial(character) {
+            var currentWeaponTemplate = `
+                  <option>__WEAPON_NAME__</option>
+            `;
+
+            currentWeaponElem = document.getElementById("currentWeapon");
+
+            currentWeaponElem.innerHTML = ""
+
+            weapons = [{ "name": "Unarmed" }]
+
             if (character["data"]["weapons"] != null) {
-                  var currentWeaponTemplate = `
-                        <option>__WEAPON_NAME__</option>
-                  `;
-
-                  currentWeaponElem = document.getElementById("currentWeapon");
-
-                  currentWeaponElem.innerHTML = ""
-
                   character["data"]["weapons"].forEach(item => {
-                        var tmp = currentWeaponTemplate.split("__WEAPON_NAME__").join(item["name"]);
-
-                        currentWeaponElem.innerHTML = currentWeaponElem.innerHTML + tmp;
+                        weapons.push(item);
                   });
             }
 
+            weapons.forEach(item => {
+                  var tmp = currentWeaponTemplate.split("__WEAPON_NAME__").join(item["name"]);
 
-            if (character["data"]["armors"] != null) {
-                  var currentArmorTemplate = `
-                        <option>__ARMOR_NAME__</option>
-                  `;
-
-                  currentArmorElem = document.getElementById("currentArmor");
-
-                  currentArmorElem.innerHTML = ""
-
-                  character["data"]["armors"].forEach(item => {
-                        var tmp = currentArmorTemplate.split("__ARMOR_NAME__").join(item["name"]);
-
-                        currentArmorElem.innerHTML = currentArmorElem.innerHTML + tmp;
-                  });
-            }
+                  currentWeaponElem.innerHTML = currentWeaponElem.innerHTML + tmp;
+            });
 
 
 
+            var currentArmorTemplate = `
+                  <option>__ARMOR_NAME__</option>
+            `;
+
+            currentArmorElem = document.getElementById("currentArmor");
+
+            currentArmorElem.innerHTML = ""
+
+
+            armors = [{ "name": "Unarmored" }];
+
+            character["data"]["armors"].forEach(item => {
+                  armors.push(item);
+            });
+
+            armors.forEach(item => {
+                  var tmp = currentArmorTemplate.split("__ARMOR_NAME__").join(item["name"]);
+
+                  currentArmorElem.innerHTML = currentArmorElem.innerHTML + tmp;
+            });
       }
 
 
@@ -2299,6 +2404,16 @@
             currentArmorElem = document.getElementById("currentArmor");
 
             currentArmor = charactar["data"]["armors"].filter(function (elem) { return elem.name == currentArmorElem.value })[0]
+
+
+            if (currentArmor == null) {
+                  currentArmor = { "name": "", "soak": 0, "hardness": 0, "mobilityPenalty": 0, "tags": "" }
+            }
+
+
+            if (currentWeapon == null) {
+                  currentWeapon = { "name": "", "combatAbility": "melee", "withering": "strength", "accuracy": 4, "damage": 7, "defense": 0, "overwhelming": 1, "tags": "bashing, brawl, grappling, natural", "dicePool": 0 }
+            }
 
             currentRangeDivElem = document.getElementById("currentRangeDiv");
             if (currentWeapon["combatAbility"] == "archery" || currentWeapon["combatAbility"] == "thrown") {

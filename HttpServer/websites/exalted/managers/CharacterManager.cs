@@ -9,11 +9,29 @@ using MySql.Data.MySqlClient;
 using HttpServer.websites.exalted;
 using HttpServer.helpers;
 using HttpServer.websites.exalted.model;
+using System.Reflection;
+using System.IO;
 
 namespace HttpServer.websites.exalted.managers
 {
     public static class CharacterManager
     {
+        public static string DefaultCharacterJSON;
+
+        static CharacterManager()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "HttpServer.websites.exalted.api.default_character_json.txt";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    DefaultCharacterJSON = reader.ReadToEnd();
+                }
+            }
+        }
+
         public static Character CreateCharacter(User user, string data)
         {
             if (data == string.Empty)
