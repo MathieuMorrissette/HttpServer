@@ -41,10 +41,14 @@
                                                 </div>
                                           </div>
                                           <div class="col-3">
-                                                <div class="form-group">
-                                                      <label for="currentRange">Range NOT IMPLEMENTED </label>
+                                                <div class="form-group" id="currentRangeDiv" hidden>
+                                                      <label for="currentRange">Range :</label>
                                                       <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
-
+                                                            <option>close</option>
+                                                            <option>short</option>
+                                                            <option>medium</option>
+                                                            <option>long</option>
+                                                            <option>extreme</option>
                                                       </select>
                                                 </div>
                                           </div>
@@ -86,9 +90,9 @@
                                           <div class="">
                                                 <b>Withering Attack Roll :</b> <span id="witheringAttackRoll"></span>
                                                 <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
-                                                            <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
-                                                      </div>
+                                                      <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
+                                                      <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality Applies</i></label>
+                                                </div>
                                           </div>
                                     </div>
                                     <div class="row">
@@ -209,22 +213,16 @@
 
             <div class="tab-pane fade" id="tab-weparm" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12" style="margin-top: 20px;">
+                        <div class="card col-sm-12">
                               <div class="card-body">
+
                                     <h4 class="card-title">Weapons</h4>
-
-                                    <div class="row">
-                                          <div class=" col-md-2">Weapon Name</div>
-                                          <div class=" col-md-2">Combat Ability</div>
-                                          <div class=" col-md-1">With</div>
-                                          <div class=" col-md-1">ACC</div>
-                                          <div class=" col-md-1">DMG</div>
-                                          <div class=" col-md-1">DEF</div>
-                                          <div class=" col-md-1">OVW</div>
-                                          <div class=" col-md-1">Tags</div>
-                                          <div class=" col-md-1">Dice</div>
+                                    <div class="input-group mb-3">
+                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                          <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                                          </div>
                                     </div>
-
                                     <form id="weapons">
 
                                     </form>
@@ -315,6 +313,12 @@
                         <div class="card col-sm-12">
                               <div class="card-body">
                                     <h4 class="card-title">Charms</h4>
+                                    <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                                <div class="input-group-append">
+                                                      <button class="btn btn-outline-secondary" type="button">Search</button>
+                                                </div>
+                                          </div>
                                     <div class="row">
                                           <div class=" col-md-3">
                                                 Name
@@ -711,65 +715,7 @@
                                           </div>
 
                                           <div class="col-5">
-                                                <form id="defense">
-                                                      <div class="row">
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Parry</span>
-                                                                  </div>
-                                                                  <input type="text" name="parry" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
 
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Resolve</span>
-                                                                  </div>
-                                                                  <input type="text" name="resolve" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-
-                                                      </div>
-
-                                                      <div class="row">
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Evasion</span>
-                                                                  </div>
-                                                                  <input type="text" name="evasion" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Guile</span>
-                                                                  </div>
-                                                                  <input type="text" name="guile" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class="row">
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Rush</span>
-                                                                  </div>
-                                                                  <input type="text" name="rush" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-
-                                                            <div class=" col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Disengage</span>
-                                                                  </div>
-                                                                  <input type="text" name="disengage" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                      <div class="row">
-                                                            <div class="offset-3 col-6 input-group">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Join Battle</span>
-                                                                  </div>
-                                                                  <input type="text" name="joinBattle" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                </form>
                                           </div>
                                     </div>
                               </div>
@@ -1144,65 +1090,65 @@
 
 
       var rangePenalties = {
-            "penalties" : {
-                  "close" : {
-                        "mortal" : 
+            "penalties": {
+                  "close": {
+                        "mortal":
                         {
-                              "archery" : -2,
-                              "thrown" : 4
+                              "archery": -2,
+                              "thrown": 4
                         },
-                        "artifact" :
+                        "artifact":
                         {
-                              "archery" : -1,
-                              "thrown" : 5
-                        },
-                  },
-                  "short" : {
-                        "mortal" : 
-                        {
-                              "archery" : 4,
-                              "thrown" : 3
-                        },
-                        "artifact" :
-                        {
-                              "archery" : 5,
-                              "thrown" : 4
+                              "archery": -1,
+                              "thrown": 5
                         },
                   },
-                  "medium" : {
-                        "mortal" : 
+                  "short": {
+                        "mortal":
                         {
-                              "archery" : 2,
-                              "thrown" : 2
+                              "archery": 4,
+                              "thrown": 3
                         },
-                        "artifact" :
+                        "artifact":
                         {
-                              "archery" : 3,
-                              "thrown" : 3
-                        },
-                  },
-                  "long" : {
-                        "mortal" : 
-                        {
-                              "archery" : 0,
-                              "thrown" : -1
-                        },
-                        "artifact" :
-                        {
-                              "archery" : 1,
-                              "thrown" : 0
+                              "archery": 5,
+                              "thrown": 4
                         },
                   },
-                  "extreme" : {
-                        "mortal" : 
+                  "medium": {
+                        "mortal":
                         {
-                              "archery" : -2,
-                              "thrown" : -3
+                              "archery": 2,
+                              "thrown": 2
                         },
-                        "artifact" :
+                        "artifact":
                         {
-                              "archery" : -1,
-                              "thrown" : -2
+                              "archery": 3,
+                              "thrown": 3
+                        },
+                  },
+                  "long": {
+                        "mortal":
+                        {
+                              "archery": 0,
+                              "thrown": -1
+                        },
+                        "artifact":
+                        {
+                              "archery": 1,
+                              "thrown": 0
+                        },
+                  },
+                  "extreme": {
+                        "mortal":
+                        {
+                              "archery": -2,
+                              "thrown": -3
+                        },
+                        "artifact":
+                        {
+                              "archery": -1,
+                              "thrown": -2
                         },
                   }
             }
@@ -1300,48 +1246,83 @@
       `;
 
       var weaponTemplate = `
-<div class="form-row" id="weapon__ID__">
-      <div class=" col-md-2">
-            <input type="text" class="form-control" name="weapon__ID__-name" onchange="setControlStates()">
-      </div>
-      <div class="col-md-2">
-            <div class="form-group">
-                  <select class="form-control" name="weapon__ID__-combatAbility" onchange="setControlStates()">
-                        <option value="archery">Archery</option>
-                        <option value="brawl">Brawl</option>
-                        <option value="melee">Melee</option>                        
-                        <option value="thrown">Thrown</option>
-                  </select>
+<div class="form-row mb-2" id="weapon__ID__" >
+      <div class="container border border border-secondary rounded p-2">
+            <div class="row">
+                  <div class=" col-md-4">
+                        <div class="form-group">
+                              <label><b>Name</b></label>
+                              <input type="text" class="form-control" name="weapon__ID__-name" onchange="setControlStates()">
+                        </div>
+                  </div>
+                  <div class="col-md-4">
+                        <div class="form-group">
+                              <label>Combat Ability</label>
+                              <select class="form-control" name="weapon__ID__-combatAbility" onchange="setControlStates(); updateWeaponsDisplay();">
+                                    <option value="archery">Archery</option>
+                                    <option value="brawl">Brawl</option>
+                                    <option value="melee">Melee</option>                        
+                                    <option value="thrown">Thrown</option>
+                              </select>
+                        </div>
+                  </div>
+                  <div class="col-md-4">
+                        <div class="form-group">
+                              <label>Withering</label>
+                              <select class="form-control" name="weapon__ID__-withering" onchange="setControlStates()">
+                                    <option value="strength">Strength</option>
+                                    <option value="4">4 Dices</option>
+                              </select>
+                        </div>
+                  </div>
             </div>
-      </div>
-      <div class="col-md-1">
-            <div class="form-group">
-                  <select class="form-control" name="weapon__ID__-withering" onchange="setControlStates()">
-                        <option value="strength">Strength</option>
-                        <option value="4">4 Dices</option>
-                  </select>
+            <div class="row">                  
+                  <div class="col-md-2" >
+                        <div class="form-group">
+                              <div id="weapon__ID__-hideAccuracy">
+                                    <label>Accuracy</label>
+                                    <input type="text" class="form-control" name="weapon__ID__-accuracy" onchange="setControlStates()">
+                              </div>
+                              <div id="weapon__ID__-hideArtifact">
+                                    <label>Artifact</label><br>
+                                    <div class="text-center" >
+                                          <input name="weapon__ID__-artifact"  type="checkbox" onchange="setControlStates()">
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class=" col-md-2">
+                        <div class="form-group">
+                              <label>Damage</label>
+                              <input type="text" class="form-control" name="weapon__ID__-damage" onchange="setControlStates()">
+                        </div>
+                  </div>
+                  <div class=" col-md-2">
+                        <div class="form-group">
+                              <label>Defense</label>
+                              <input type="text" class="form-control" name="weapon__ID__-defense" onchange="setControlStates()">
+                        </div>
+                  </div>
+                  <div class=" col-md-2">
+                        <div class="form-group">
+                              <label>Overwhelming</label>
+                              <input type="text" class="form-control" name="weapon__ID__-overwhelming" onchange="setControlStates()">
+                        </div>
+                  </div>
+                  <div class=" col-md-2">
+                        <label>Tags</label>
+                        <input type="text" class="form-control" name="weapon__ID__-tags" onchange="setControlStates()">
+                  </div>
+                  <div class=" col-md-2" hidden>
+                        <label>Dice </label>
+                        <input type="text" class="form-control" name="weapon__ID__-dicePool" onchange="setControlStates()">
+                  </div>
             </div>
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-accuracy" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-damage" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-defense" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-overwhelming" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-tags" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="weapon__ID__-dicePool" onchange="setControlStates()">
-      </div>
-      <div class="col-sm-1">
-            <button type="button" class="btn btn-primary float-right" onclick="deleteRow('weapon__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+            <div class="row mt-2">     
+                  <div class="col-12 d-flex flex-row-reverse">
+                        <button type="button" class="btn btn-primary" onclick="deleteRow('weapon__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+            </div>
       </div>
 </div>
       `;
@@ -1756,8 +1737,6 @@
                   fillMulti("armors", character["data"]["armors"], "armor")
             }
 
-            fillSingle("defense", character["data"]["defense"])
-
             fillEssence(character["data"]["essence"])
 
             if (character["data"]["experience"] != null) {
@@ -1957,6 +1936,10 @@
                   {
                         "value": "accuracy",
                         "type": "input"
+                  },
+                  {
+                        "value": "artifact",
+                        "type": "checkbox"
                   },
                   {
                         "value": "damage",
@@ -2195,7 +2178,6 @@
             data["experience"]["solar"] = getJSONSingle("solar-experience");
             data["weapons"] = getJSONMulti("weapons", weaponsFields, "weapon");
             data["armors"] = getJSONMulti("armors", armorsFields, "armor");
-            data["defense"] = getJSONSingle("defense", "armor");
             data["health"] = getJSONMulti("health", healthFields, "health");
             data["intimacies"] = getJSONMulti("intimacies", intimaciesFields, "intimacy")
             data["charms"] = getJSONMulti("charms", charmsFields, "charm")
@@ -2239,8 +2221,9 @@
 
                   document.getElementById("save-button").disabled = true;
 
-
+                  updateWeaponsDisplay();
                   calculateStats();
+
             });
 
             getUserInfos(result => {
@@ -2342,25 +2325,48 @@
 
       function calculateStats() {
 
+            currentWeaponElem = document.getElementById("currentWeapon");
+
+            currentWeapon = charactar["data"]["weapons"].filter(function (elem) { return elem.name == currentWeaponElem.value })[0]
+
+            currentArmorElem = document.getElementById("currentArmor");
+
+            currentArmor = charactar["data"]["armors"].filter(function (elem) { return elem.name == currentArmorElem.value })[0]
+
+            currentRangeDivElem = document.getElementById("currentRangeDiv");
+            if (currentWeapon["combatAbility"] == "archery" || currentWeapon["combatAbility"] == "thrown") {
+                  currentRangeDivElem = document.getElementById("currentRangeDiv");
+                  currentRangeDivElem.hidden = false;
+            }
+            else {
+                  currentRangeDivElem.hidden = true;
+            }
+
+
+            // if ranged weapon accuracy is different
+            accuracy = currentWeapon["accuracy"]
+
+
+            if (!currentRangeDivElem.hidden) {
+
+                  currentRangeElem = document.getElementById("currentRange");
+
+                  var tt = rangePenalties["penalties"][currentRangeElem.value]
+
+                  if (currentWeapon["artifact"]) {
+                        tt = tt["artifact"];
+                  }
+                  else {
+                        tt = tt["mortal"]
+                  }
+
+
+                  accuracy = tt[currentWeapon["combatAbility"]]
+
+            }
+
             // TODO save current weapon and all the settings on this page
-            // TODO support ranged weapon ( check is ranged weapon and decrease accuracy if so)
 
-
-            /*
-
-•Parry: ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s defense
-• Evasion: ([Dexterity + Dodge)] / 2, round up) - armor’s mobility penalty
-• Defense: Higher of Parry or Evasion
-• Onslaught Penalty = Every time an opponent attacks a character, that character suffers a cumulative -1 Defense penalty until his next turn.    
-
-• Rush: Dexterity + Athletics - armor’s mobility penalty
-• Withdraw: Dexterity + Athletics - armor’s mobility penalty
-• Disengage: Dexterity + Dodge - armor’s mobility penalty
-
-• Resolve = ([Wits + Integrity + (1 if specialty applies)] / 2, round up)
-• Guile = ([Manipulation + Socialize + (1 if specialty applies)] / 2, round up)
-            
-            */
 
             // JOIN BATTLE ============
 
@@ -2409,17 +2415,14 @@
             witheringAttackRollSpecialityElem = document.getElementById("witheringAttackRollSpeciality")
 
             witheringAttackRollElem = document.getElementById("witheringAttackRoll");
-            currentWeaponElem = document.getElementById("currentWeapon");
 
-            currentWeapon = charactar["data"]["weapons"].filter(function (elem) { return elem.name == currentWeaponElem.value })[0]
 
             dexterity = charactar["data"]["attributes"]["dexterity"];
 
-            witheringAttackRoll = dexterity + getAttribute(charactar, currentWeapon["combatAbility"]).value + currentWeapon["accuracy"];
+            witheringAttackRoll = dexterity + getAttribute(charactar, currentWeapon["combatAbility"]).value + accuracy;
 
-            if(witheringAttackRollSpecialityElem.checked)
-            {
-            witheringAttackRoll = witheringAttackRoll +1;
+            if (witheringAttackRollSpecialityElem.checked) {
+                  witheringAttackRoll = witheringAttackRoll + 1;
             }
 
             witheringAttackRollElem.innerHTML = witheringAttackRoll;
@@ -2460,11 +2463,6 @@
 
             soakElem = document.getElementById("soakCalc");
 
-            currentArmorElem = document.getElementById("currentArmor");
-
-            currentArmor = charactar["data"]["armors"].filter(function (elem) { return elem.name == currentArmorElem.value })[0]
-
-
             soak = charactar["data"]["attributes"]["stamina"] + currentArmor["soak"];
 
             soakElem.innerHTML = soak + " + charms, defends against Withering attacks"
@@ -2481,9 +2479,8 @@
 
             decisiveAttackRoll = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, currentWeapon["combatAbility"]).value
 
-            if(decisiveAttackRollSpecialityElem.checked)
-            {
-                  decisiveAttackRoll  = decisiveAttackRoll + 1;
+            if (decisiveAttackRollSpecialityElem.checked) {
+                  decisiveAttackRoll = decisiveAttackRoll + 1;
             }
 
             decisiveAttackRollElem.innerHTML = decisiveAttackRoll;
@@ -2546,7 +2543,7 @@
             //RUSH ===============
             rushElem = document.getElementById("rushCalc");
 
-            rush =  charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
+            rush = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
 
             rushElem.innerHTML = rush;
 
@@ -2557,7 +2554,7 @@
             withdrawElem = document.getElementById("withdrawCalc");
 
             withdraw = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
-           
+
             withdrawElem.innerHTML = withdraw;
 
             //========================
@@ -2581,4 +2578,41 @@
 
             return Math.random().toString(36).substr(2, 9);
       };
+
+      function updateWeaponsDisplay() {
+            form = document.getElementById("weapons")
+
+            var data = new FormData(form);
+
+            var jsonArray = [];
+
+            var weapons = [];
+
+            data.forEach(function (value, key) {
+
+                  isolatedKey = key.split("-")[0];
+
+                  if (weapons.indexOf(isolatedKey) == -1 && isolatedKey.indexOf("weapon") != -1) {
+                        weapons.push(isolatedKey);
+                  }
+            });
+
+
+            weapons.forEach(function (weaponId, i) {
+
+                  combatAbilityElem = document.querySelector('[name="' + weaponId + "-combatAbility" + '"]');
+                  hideAccuracyElem = document.getElementById(weaponId + "-hideAccuracy");
+                  hideArtifactElem = document.getElementById(weaponId + "-hideArtifact");
+
+                  if (combatAbilityElem.value == "archery" || combatAbilityElem.value == "thrown") // ranged weapons don't have accuracy its based on range
+                  {
+                        hideAccuracyElem.hidden = true;
+                        hideArtifactElem.hidden = false;
+                  }
+                  else {
+                        hideAccuracyElem.hidden = false;
+                        hideArtifactElem.hidden = true;
+                  }
+            });
+      }
 </script>
