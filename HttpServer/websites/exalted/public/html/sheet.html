@@ -686,43 +686,8 @@
                                           </div>
                                     </div>
                               </div>
-
-
                         </div>
                   </div>
-
-                  <div class="row">
-                        <div class="card col-sm-12" style="margin-top: 20px;">
-                              <div class="card-body">
-                                    <h4 class="card-title">Defense</h4>
-
-                                    <div class="row">
-                                          <div class="col-7">
-
-
-
-                                                <div class="row">
-                                                      <div class=" col-md-5">
-                                                            <label for="natural-soak">Natural Soak</label>
-                                                            <input type="text" class="form-control" id="natural-soak" name="naturalSoak" onchange="setControlStates()">
-                                                      </div>
-                                                      <div class="offset-3 col-md-4">
-                                                            <label for="final-soak">Final Soak</label>
-                                                            <input type="text" class="form-control" id="final-soak" name="finalSoak" onchange="setControlStates()">
-                                                      </div>
-
-                                                </div>
-                                          </div>
-
-                                          <div class="col-5">
-
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-
-
             </div>
       </div>
 </div>
@@ -2222,6 +2187,8 @@
                   document.getElementById("save-button").disabled = true;
 
                   updateWeaponsDisplay();
+
+                  // at the end cuz it can explode if no weapons and shitzel
                   calculateStats();
 
             });
