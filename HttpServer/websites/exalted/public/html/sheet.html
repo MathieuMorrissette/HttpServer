@@ -31,12 +31,18 @@
                         <div class="card col-sm-12">
                               <div class="card-body">
                                     <h4 class="card-title">Quick View</h4>
+                                    <div class="row border p-2" id="incapacitatedLabel" hidden>
+                                          <div class=" col-12 text-center">
+                                                <span style="color: red;">
+                                                      <h3><b>INCAPACITATED</b></h3>
+                                                </span>
+                                          </div>
+                                    </div>
                                     <div class="row">
                                           <div class="col-3">
                                                 <div class="form-group">
                                                       <label for="currentWeapon">Current Weapon </label>
-                                                      <select class="form-control" id="currentWeapon"
-                                                            name="currentWeapon" onchange="calculateStats()">
+                                                      <select class="form-control" id="currentWeapon" name="currentWeapon" onchange="calculateStats()">
 
                                                       </select>
                                                 </div>
@@ -44,8 +50,7 @@
                                           <div class="col-3">
                                                 <div class="form-group" id="currentRangeDiv" hidden>
                                                       <label for="currentRange">Range :</label>
-                                                      <select class="form-control" id="currentRange" name="currentRange"
-                                                            onchange="calculateStats()">
+                                                      <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
                                                             <option>close</option>
                                                             <option>short</option>
                                                             <option>medium</option>
@@ -57,134 +62,208 @@
                                           <div class="col-6">
                                                 <div class="form-group">
                                                       <label for="currentArmor">Current Armor </label>
-                                                      <select class="form-control" id="currentArmor" name="currentArmor"
-                                                            onchange="calculateStats()">
+                                                      <select class="form-control" id="currentArmor" name="currentArmor" onchange="calculateStats()">
 
                                                       </select>
                                                 </div>
                                           </div>
 
                                     </div>
-                                    <div class="row">
-                                          <div class="col-6">
-                                                <b>Join Battle :</b> <span id="joinBattle"></span>
-                                          </div>
-                                          <div class="col-6">
-                                                <b>Resolve :</b> <span id="resolve"></span>
-                                                <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox"
-                                                            id="resolveSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="resolveSpeciality"><i>Tick If
-                                                                  Speciality Applies</i></label>
+
+                                    <div class="row border p-2">
+                                          <div class="col-4">
+                                                <div class="row">
+                                                      <b>Health Dice Penalty :</b>
+                                                </div> 
+                                                <div class="row">
+                                                      <div id="healthPenalty"></div>
                                                 </div>
                                           </div>
-                                    </div>
-                                    <div class="row">
-                                          <div class="col-6">
-                                          </div>
-                                          <div class="col-6">
-                                                <b>Guile :</b> <span id="guile"></span>
-                                                <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox"
-                                                            id="guileSpeciality" onchange="calculateStats()">
-                                                      <label class="form-check-label" for="guileSpeciality"><i>Tick If
-                                                                  Speciality Applies</i></label>
+                                          <div class="col-4">
+                                                <div class="row">
+                                                      <b>Dice Penalty :</b>
+                                                </div> 
+                                                <div class="row">
+                                                      <input type="text" class="form-control" id="globalDicePenalty" onchange="calculateStats()" value="0">
                                                 </div>
                                           </div>
                                     </div>
 
+
                                     <div class="row">
-                                          <div class="">
-                                                <b>Withering Attack Roll :</b> <span id="witheringAttackRoll"></span>
-                                                <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox"
-                                                            id="witheringAttackRollSpeciality"
-                                                            onchange="calculateStats()">
-                                                      <label class="form-check-label"
-                                                            for="witheringAttackRollSpeciality"><i>Tick If Speciality
-                                                                  Applies</i></label>
+
+                                          <div class="col-6">
+                                                <div class="row border p-2 mt-1">
+                                                      <b>Join Battle :</b> <span id="joinBattle"></span>
+                                                </div>
+
+
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Withering Attack Roll :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <div id="witheringAttackRoll"></div>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
+                                                                        <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality
+                                                                                    Applies</i></label>
+                                                                  </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                  <b>Withering Damage Roll :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="witheringDamageRoll"></span>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Natural Soak :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="naturalSoakCalc"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Soak :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="soakCalc"></span>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
+
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Parry : </b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="parryCalc"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Evasion : </b>
+                                                            </div>
+                                                            <div class="row"> 
+                                                                  <span id="evasionCalc"></span>
+                                                            </div>
+                                                            <div class="row"> 
+                                                                  <b>Defense : </b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="defenseCalc"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Onslaught Penalty:</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  Every time an opponent attacks a character, that
+                                                                  character suffers a cumulative -1 Defense penalty until his next turn.
+                                                            </div>
+                                                      </div>
                                                 </div>
                                           </div>
-                                    </div>
-                                    <div class="row">
-                                          <div class="">
-                                                <b>Withering Damage Roll :</b> <span id="witheringDamageRoll"></span>
-                                          </div>
-                                    </div>
-
-                                    <div class="row mt-3">
-                                          <div class="">
-                                                <b>Decisive Attack Roll :</b> <span id="decisiveAttackRoll"></span>
-                                                <div class="form-check form-check-inline">
-                                                      <input class="form-check-input" type="checkbox"
-                                                            id="decisiveAttackRollSpeciality"
-                                                            onchange="calculateStats()">
-                                                      <label class="form-check-label"
-                                                            for="decisiveAttackRollSpeciality"><i>Tick If Speciality
-                                                                  Applies</i></label>
+                                          <div class="col-6">
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Decisive Attack Roll :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="decisiveAttackRoll"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="decisiveAttackRollSpeciality" onchange="calculateStats()">
+                                                                        <label class="form-check-label" for="decisiveAttackRollSpeciality"><i>Tick If Speciality
+                                                                                    Applies</i></label>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Decisive Damage Roll :</b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  Your Initiative
+                                                            </div>
+                                                      </div>
                                                 </div>
+
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Hardness : </b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="hardnessCalc"></span>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="row border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Rush : </b>
+                                                            </div> 
+                                                            <div class="row">
+                                                                  <span id="rushCalc"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Withdraw : </b>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <span id="withdrawCalc"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Disengage : </b>
+                                                            </div> 
+                                                            <div class="row">
+                                                                  <span id="disengageCalc"></span>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
+
+                                                <div class="row  border p-2 mt-1">
+                                                      <div class="col-12">
+                                                            <div class="row">
+                                                                  <b>Resolve :</b>
+                                                            </div> 
+                                                            <div class="row">
+                                                                  <span id="resolve"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="resolveSpeciality" onchange="calculateStats()">
+                                                                        <label class="form-check-label" for="resolveSpeciality"><i>Tick If
+                                                                                    Speciality Applies</i></label>
+                                                                  </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <b>Guile :</b>
+                                                            </div> 
+                                                            <div class="row">
+                                                                  <span id="guile"></span>
+                                                            </div>
+                                                            <div class="row">
+                                                                  <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="guileSpeciality" onchange="calculateStats()">
+                                                                        <label class="form-check-label" for="guileSpeciality"><i>Tick If
+                                                                                    Speciality Applies</i></label>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                </div>
+
                                           </div>
                                     </div>
-                                    <div class="row">
-                                          <div class="">
-                                                <b>Decisive Damage Roll :</b> Your Initiative
-                                          </div>
-                                    </div>
-
-                                    <div class="row mt-3">
-                                          <div class="">
-                                                <b>Natural Soak :</b> <span id="naturalSoakCalc"></span>
-                                          </div>
-                                    </div>
-                                    <div class="row">
-                                          <div class="">
-                                                <b>Soak :</b> <span id="soakCalc"></span>
-                                          </div>
-                                    </div>
-
-                                    <div class="row mt-3">
-                                          <div class="">
-                                                <b>Hardness : </b> <span id="hardnessCalc"></span>
-                                          </div>
-                                    </div>
-
-
-                                    <div class="row mt-3">
-                                          <div class="">
-                                                <b>Parry : </b> <span id="parryCalc"></span>
-                                          </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                          <b>Evasion : </b> <span id="evasionCalc"></span>
-                                    </div>
-                                    <div class="row">
-                                          <b>Defense : </b> <span id="defenseCalc"></span>
-                                    </div>
-                                    <div class="row">
-                                          <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that
-                                          character suffers a cumulative -1 Defense penalty until his next turn.
-                                    </div>
-
-                                    <div class="row mt-3">
-                                          <div class="">
-                                                <b>Rush : </b> <span id="rushCalc"></span>
-                                          </div>
-                                    </div>
-
-                                    <div class="row">
-                                          <div class="">
-                                                <b>Withdraw : </b> <span id="withdrawCalc"></span>
-                                          </div>
-                                    </div>
-
-                                    <div class="row">
-                                          <div class="">
-                                                <b>Disengage : </b> <span id="disengageCalc"></span>
-                                          </div>
-                                    </div>
-
 
                               </div>
                         </div>
@@ -240,8 +319,7 @@
 
                                     <h4 class="card-title">Weapons</h4>
                                     <div class="input-group mb-3">
-                                          <input type="text" class="form-control"
-                                                placeholder="Search (not implemented)">
+                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
                                           <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button">Search</button>
                                           </div>
@@ -251,8 +329,7 @@
                                     </form>
 
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
 
                               </div>
                         </div>
@@ -273,8 +350,7 @@
 
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
 
                               </div>
                         </div>
@@ -289,8 +365,7 @@
                               <div class="card-body">
                                     <h4 class="card-title">Notes</h4>
                                     <form>
-                                          <textarea class="form-control" id="notes" rows="30"
-                                                onchange="setControlStates()"></textarea>
+                                          <textarea class="form-control" id="notes" rows="30" onchange="setControlStates()"></textarea>
                                     </form>
                               </div>
                         </div>
@@ -311,8 +386,7 @@
                                     <form id="intimacies">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
@@ -327,8 +401,7 @@
                                     <form id="inventory">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
 
                               </div>
                         </div>
@@ -342,8 +415,7 @@
                               <div class="card-body">
                                     <h4 class="card-title">Charms</h4>
                                     <div class="input-group mb-3">
-                                          <input type="text" class="form-control"
-                                                placeholder="Search (not implemented)">
+                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
                                           <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button">Search</button>
                                           </div>
@@ -375,8 +447,7 @@
                                     <form id="charms">
                                     </form>
                                     <hr />
-                                    <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
+                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
@@ -392,16 +463,14 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Name</span>
                                                       </div>
-                                                      <input type="text" name="name" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="name" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Concept</span>
                                                       </div>
-                                                      <input type="text" name="concept" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="concept" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -411,16 +480,14 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Player</span>
                                                       </div>
-                                                      <input type="text" name="owner" class="form-control text-right"
-                                                            disabled onchange="setControlStates()">
+                                                      <input type="text" name="owner" class="form-control text-right" disabled onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Anima</span>
                                                       </div>
-                                                      <input type="text" name="anima" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="anima" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -431,17 +498,14 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Caste</span>
                                                       </div>
-                                                      <input type="text" name="caste" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="caste" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-6">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Supernal Ability</span>
                                                       </div>
-                                                      <input type="text" name="supernalAbility"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="supernalAbility" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
                                     </form>
@@ -459,25 +523,21 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Strength</span>
                                                       </div>
-                                                      <input type="text" name="strength" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="strength" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Charisma</span>
                                                       </div>
-                                                      <input type="text" name="charisma" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="charisma" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Perception</span>
                                                       </div>
-                                                      <input type="text" name="perception"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="perception" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -486,27 +546,21 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Dexterity</span>
                                                       </div>
-                                                      <input type="text" name="dexterity"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="dexterity" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Manipulation</span>
                                                       </div>
-                                                      <input type="text" name="manipulation"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="manipulation" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Intelligence</span>
                                                       </div>
-                                                      <input type="text" name="intelligence"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="intelligence" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
 
@@ -516,25 +570,21 @@
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Stamina</span>
                                                       </div>
-                                                      <input type="text" name="stamina" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="stamina" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Appearance</span>
                                                       </div>
-                                                      <input type="text" name="appearance"
-                                                            class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="appearance" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
                                                 <div class="input-group mb-3 col-sm-4">
                                                       <div class="input-group-prepend">
                                                             <span class="input-group-text">Wits</span>
                                                       </div>
-                                                      <input type="text" name="wits" class="form-control text-right"
-                                                            onchange="setControlStates()">
+                                                      <input type="text" name="wits" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
                                           </div>
                                     </form>
@@ -563,8 +613,7 @@
 
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right"
-                                                      onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -587,8 +636,7 @@
 
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right"
-                                                      onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
                                           </div>
                                     </div>
                               </div>
@@ -600,8 +648,7 @@
                                                 <form id="specializations">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right"
-                                                      onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -612,8 +659,7 @@
                                                 <form id="merits">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right"
-                                                      onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -627,13 +673,10 @@
                                                 <form id="willpower">
                                                       <div class="form-row">
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current"
-                                                                        placeholder="current"
-                                                                        onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
                                                             </div>
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max"
-                                                                        placeholder="max" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -646,13 +689,10 @@
                                                 <form id="limitBreak">
                                                       <div class="form-row">
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current"
-                                                                        placeholder="current"
-                                                                        onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
                                                             </div>
                                                             <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max"
-                                                                        placeholder="max" onchange="setControlStates()">
+                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -672,9 +712,7 @@
                                                                         <span class="input-group-text">Essence
                                                                               Level</span>
                                                                   </div>
-                                                                  <input type="text" name="essenceLevel"
-                                                                        class="form-control text-right"
-                                                                        onchange="setControlStates()">
+                                                                  <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
@@ -683,29 +721,18 @@
                                                                   <div class="input-group-prepend">
                                                                         <span class="input-group-text">Personal</span>
                                                                   </div>
-                                                                  <input type="text" name="current-personal"
-                                                                        class="form-control text-right"
-                                                                        placeholder="Current"
-                                                                        onchange="setControlStates()">
-                                                                  <input type="text" name="max-personal"
-                                                                        class="form-control text-right"
-                                                                        placeholder="Max" onchange="setControlStates()">
+                                                                  <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
                                                       <div class=" row">
                                                             <div class="input-group col-sm-12">
                                                                   <div class="input-group-prepend">
-                                                                        <span
-                                                                              class="input-group-text">Peripherical</span>
+                                                                        <span class="input-group-text">Peripherical</span>
                                                                   </div>
-                                                                  <input type="text" name="current-peripherical"
-                                                                        class="form-control text-right"
-                                                                        placeholder="Current"
-                                                                        onchange="setControlStates()">
-                                                                  <input type="text" name="max-peripherical"
-                                                                        class="form-control text-right"
-                                                                        placeholder="Max" onchange="setControlStates()">
+                                                                  <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
                                                             </div>
                                                       </div>
 
@@ -714,9 +741,7 @@
                                                                   <div class="input-group-prepend">
                                                                         <span class="input-group-text">Commited</span>
                                                                   </div>
-                                                                  <input type="text" name="commited"
-                                                                        class="form-control text-right"
-                                                                        onchange="setControlStates()">
+                                                                  <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
                                                             </div>
                                                       </div>
                                                 </form>
@@ -730,8 +755,7 @@
                                                 <form id="limitTrigger">
                                                 </form>
                                                 <hr />
-                                                <button type="button" class="btn btn-primary float-right"
-                                                      onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
+                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
 
                                           </div>
                                     </div>
@@ -745,12 +769,8 @@
                                                 <form id="normal-experience">
                                                       <div class=" row">
 
-                                                            <input type="text" name="current"
-                                                                  class="form-control text-right col-6"
-                                                                  placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total"
-                                                                  class="form-control text-right col-6"
-                                                                  placeholder="Max" onchange="setControlStates()">
+                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
 
                                                       </div>
                                                 </form>
@@ -765,12 +785,8 @@
 
                                                       <div class=" row">
 
-                                                            <input type="text" name="current"
-                                                                  class="form-control text-right col-6"
-                                                                  placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total"
-                                                                  class="form-control text-right col-6"
-                                                                  placeholder="Max" onchange="setControlStates()">
+                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
 
                                                       </div>
                                                 </form>
@@ -1228,7 +1244,7 @@
       `;
 
       var healthTemplate = `
-      <div class="row border border border-secondary rounded p-2" id="health__ID__">
+      <div class="row border border rounded p-2 mt-2" id="health__ID__">
             <div class="col-12">
             <div class="row">
                   <div class="col-12">
@@ -1316,7 +1332,7 @@
 
       var weaponTemplate = `
 <div class="form-row mb-2" id="weapon__ID__" >
-      <div class="container border border border-secondary rounded p-2">
+      <div class="container border border border rounded p-2">
             <div class="row">
                   <div class=" col-md-4">
                         <div class="form-group">
@@ -1606,17 +1622,14 @@
 
                   input = form.querySelector('[name="' + k + '"]')
 
-                  if(input == null)
-                  {
+                  if (input == null) {
                         return;
                   }
-                  
-                  if(input.type == "checkbox")
-                  {
+
+                  if (input.type == "checkbox") {
                         input.checked = data[k];
                   }
-                  else
-                  {
+                  else {
                         input.value = data[k];
                   }
 
@@ -1663,45 +1676,37 @@
 
                         var id = ids[i];
 
-                        if(k["type"]== "input" || k["type"] == "combo")
-                        {
+                        if (k["type"] == "input" || k["type"] == "combo") {
                               input = form.querySelector('[name="' + id + "-" + k["value"] + '"]');
 
-                              if(input == null)
-                              {
+                              if (input == null) {
                                     return;
                               }
 
                               input.value = item[k["value"]];
                         }
 
-                        if(k["type"] == "radio")
-                        {
+                        if (k["type"] == "radio") {
                               inputs = form.querySelectorAll('[name="' + id + "-" + k["value"] + '"]');
 
-                              if(inputs == null)
-                              {
+                              if (inputs == null) {
                                     return;
                               }
 
                               inputs.forEach(radiobutton => {
-                                    if(radiobutton.value == item[k["value"]])
-                                    {
+                                    if (radiobutton.value == item[k["value"]]) {
                                           radiobutton.checked = true;
                                     }
-                                    else
-                                    {
+                                    else {
                                           radiobutton.checked = false;
                                     }
                               });
                         }
 
-                        if(k["type"] == "checkbox")
-                        {
+                        if (k["type"] == "checkbox") {
                               input = form.querySelector('[name="' + id + "-" + k["value"] + '"]')
-                              
-                              if(input == null)
-                              {
+
+                              if (input == null) {
                                     return;
                               }
 
@@ -1888,8 +1893,7 @@
 
       }
 
-      function getHealthIncapacitated()
-      {
+      function getHealthIncapacitated() {
             incapacitatedElement = document.getElementsByName("incapacitated")[0]
 
             return incapacitatedElement.checked;
@@ -2265,7 +2269,7 @@
 
                               return;
                         }
-  
+
 
                         var tryint = parseInt(data.get(realKey));
 
@@ -2295,10 +2299,10 @@
                         "solar": null
                   },
 
-                  "health" :
+                  "health":
                   {
-                        "healthPoints" : [],
-                        "incapacitated" : false
+                        "healthPoints": [],
+                        "incapacitated": false
                   }
             }
 
@@ -2465,8 +2469,39 @@
 
       }
 
-
+// TODO - never go under 0
       function calculateStats() {
+
+            globalDebuffElem = document.getElementById("globalDicePenalty");
+
+            globalDebuff = parseInt(globalDebuffElem.value);
+
+            if(isNaN(globalDebuff))
+            {
+                  globalDebuff = 0
+            }
+
+            
+
+
+            healthDebuff = getCharacterHealthDiceDebuff(charactar);
+
+            if (isNaN(healthDebuff)) {
+                  incapacitatedLabel = document.getElementById("incapacitatedLabel");
+
+                  incapacitatedLabel.hidden = false;
+                  
+            }
+            else {
+                  incapacitatedLabel.hidden = true;
+            }
+
+            healthPenaltyElem = document.getElementById("healthPenalty");
+
+
+            healthPenaltyElem.innerHTML = healthDebuff;
+
+            healthDebuff = healthDebuff + globalDebuff; // lazy
 
             currentWeaponElem = document.getElementById("currentWeapon");
 
@@ -2518,14 +2553,17 @@
 
             }
 
+            accuracy = accuracy;
+
             // TODO save current weapon and all the settings on this page
-            // TODO support no weapon and no armor
 
             // JOIN BATTLE ============
 
             joinBattleElement = document.getElementById("joinBattle")
 
             joinBattle = charactar["data"]["attributes"]["wits"] + getAttribute(charactar, "awareness").value;
+
+            joinBattle = joinBattle - healthDebuff;
 
             joinBattleElement.innerHTML = joinBattle + " + 3 successes"
 
@@ -2544,6 +2582,8 @@
 
             resolve = Math.ceil(resolve / 2);
 
+            resolve = resolve - healthDebuff;
+
             resolveElement.innerHTML = resolve;
             // =============================
 
@@ -2559,6 +2599,8 @@
             }
 
             guile = Math.ceil(guile / 2)
+
+            guile = guile - healthDebuff;
 
             guileElement.innerHTML = guile;
             // =============
@@ -2578,6 +2620,8 @@
                   witheringAttackRoll = witheringAttackRoll + 1;
             }
 
+            witheringAttackRoll = witheringAttackRoll - healthDebuff
+
             witheringAttackRollElem.innerHTML = witheringAttackRoll;
 
             //======================================
@@ -2596,6 +2640,8 @@
                   witheringDamageRoll = witheringDamageRoll + charactar["data"]["attributes"]["strength"];
             }
 
+            witheringDamageRoll = witheringDamageRoll - healthDebuff
+
             // TODO make something interactive that ask the user for the remaining infos
             witheringDamageRollElem.innerHTML = witheringDamageRoll + "+  threshold successes (successes on the withering attack roll - enemy’s Defence) - Enemy Soak"
 
@@ -2605,7 +2651,11 @@
 
             // not sure how I want to handle mortal sheet so not yet supported 
 
-            naturalSoakElem.innerHTML = charactar["data"]["attributes"]["stamina"];
+            naturalSoak = charactar["data"]["attributes"]["stamina"];
+
+            naturalSoak = naturalSoak - healthDebuff;
+
+            naturalSoakElem.innerHTML = naturalSoak;
 
 
             //
@@ -2617,6 +2667,8 @@
             soakElem = document.getElementById("soakCalc");
 
             soak = charactar["data"]["attributes"]["stamina"] + currentArmor["soak"];
+
+            soak = soak - healthDebuff;
 
             soakElem.innerHTML = soak + " + charms, defends against Withering attacks"
 
@@ -2636,6 +2688,8 @@
                   decisiveAttackRoll = decisiveAttackRoll + 1;
             }
 
+            decisiveAttackRoll = decisiveAttackRoll - healthDebuff;
+
             decisiveAttackRollElem.innerHTML = decisiveAttackRoll;
 
             // ===============================
@@ -2646,6 +2700,7 @@
             hardnessElem = document.getElementById("hardnessCalc");
 
             hardness = currentArmor["hardness"];
+            // TODO - SHOULD WE DEBUFF WITH HEALTH
 
             hardnessElem.innerHTML = "Best hardness value from Charm or Armor (" + hardness + "), if higher than a Decisive attack dice pool, the attack fails."
 
@@ -2659,6 +2714,8 @@
 
             parry = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, currentWeapon["combatAbility"]).value) / 2) + currentWeapon["defense"]
 
+            parry = parry - healthDebuff;
+
             parryElem.innerHTML = parry;
 
             // =========================
@@ -2669,6 +2726,8 @@
             evasionElem = document.getElementById("evasionCalc");
 
             evasion = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value) / 2) - currentArmor["mobilityPenalty"]
+
+            evasion = evasion - healthDebuff
 
             evasionElem.innerHTML = evasion;
 
@@ -2698,6 +2757,8 @@
 
             rush = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
 
+            rush = rush - healthDebuff;
+
             rushElem.innerHTML = rush;
 
             // ===================
@@ -2708,6 +2769,8 @@
 
             withdraw = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
 
+            withdraw = withdraw - healthDebuff;
+
             withdrawElem.innerHTML = withdraw;
 
             //========================
@@ -2717,6 +2780,8 @@
             disengageElem = document.getElementById("disengageCalc");
 
             disengage = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value - currentArmor["mobilityPenalty"]
+
+            disengage = disengage - healthDebuff;
 
             disengageElem.innerHTML = disengage
             //==========================
@@ -2767,5 +2832,39 @@
                         hideArtifactElem.hidden = true;
                   }
             });
+      }
+
+
+      // Returns the amount of dice to substract
+      function getCharacterHealthDiceDebuff(character) {
+            healthPoints = character["data"]["health"]["healthPoints"];
+            incapacitated = character["data"]["health"]["incapacitated"];
+
+            if (incapacitated) {
+                  return NaN;
+            }
+
+            lastDamagedHealthtPoint = null;
+
+            healthPoints.forEach(healthPoint => {
+
+                  if (healthPoint["type"] != "none") {
+                        lastDamagedHealthtPoint = healthPoint;
+                  }
+            });
+
+            if (lastDamagedHealthtPoint == null) {
+                  return 0;
+            }
+
+            value = parseInt(lastDamagedHealthtPoint["name"])
+
+            if(isNaN(value))
+            {
+                  return 0;
+            }
+
+            return Math.abs(value) // should change the name to a more significant one but too lazy
+
       }
 </script>
