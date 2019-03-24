@@ -2355,6 +2355,20 @@
 
       var isRefreshing = false;
 
+      function afterRefresh(dataJSON)
+      {
+            fillCharacter(dataJSON)
+
+            isRefreshing = false;
+
+            document.getElementById("save-button").disabled = true;
+
+            updateWeaponsDisplay();
+
+            // at the end cuz it can explode if no weapons and shitzel
+            calculateStats();
+      }
+
       function refresh() {
 
             isRefreshing = true;
@@ -2365,16 +2379,7 @@
 
                   dataJSON["data"] = JSON.parse(dataJSON["data"])
 
-                  fillCharacter(dataJSON)
-
-                  isRefreshing = false;
-
-                  document.getElementById("save-button").disabled = true;
-
-                  updateWeaponsDisplay();
-
-                  // at the end cuz it can explode if no weapons and shitzel
-                  calculateStats();
+                  afterRefresh(dataJSON);
 
             });
 
@@ -2541,7 +2546,7 @@
 
       }
 
-// TODO - never go under 0
+      // TODO ask for ini
       function calculateStats() {
 
             globalBonusDiceElem = document.getElementById("globalDiceBonus");
@@ -2957,4 +2962,63 @@
 
             return value;
       }
+
+      function exportCharacter()
+      {
+            download("character.txt", JSON.stringify(charactar["data"]));
+      }
+
+      function importCharacter()
+      {
+            var input = document.createElement('input');
+            input.type = 'file';
+
+            input.onchange = e => { 
+
+            // getting a hold of the file reference
+            var file = e.target.files[0]; 
+
+            // setting up the reader
+            var reader = new FileReader();
+            reader.readAsText(file,'UTF-8');
+
+            // here we tell the reader what to do when it's done reading...
+            reader.onload = readerEvent => {
+                  var content = readerEvent.target.result; // this is the content!
+                  //console.log( content );
+                  try
+                  {
+                        charactar["data"] = JSON.parse(content)
+
+                        afterRefresh(charactar);
+
+                        setControlStates();
+
+                  }
+                   catch(e) 
+                   {
+                        alert(e); // error in the above string (in this case, yes)!
+                  }
+            }
+
+            }
+
+            input.click();
+
+      }
+
+      function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
 </script>
