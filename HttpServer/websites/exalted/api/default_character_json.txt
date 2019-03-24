@@ -212,8 +212,11 @@
         "armors": [
         ],
 
-        "health": [
-        ],
+        "health": {
+			"incapacitated" : false,
+			"healthPoints" : []
+		
+		},
 
         "intimacies": [
         ],

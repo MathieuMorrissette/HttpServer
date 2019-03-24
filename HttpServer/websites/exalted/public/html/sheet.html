@@ -190,10 +190,6 @@
                         </div>
                   </div>
 
-
-
-
-
                   <div class="row mt-5">
                         <div class="card col-sm-12">
                               <div class="card-body">
@@ -256,7 +252,7 @@
 
                                     <hr />
                                     <button type="button" class="btn btn-primary float-right"
-                                          onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates();">Add</button>
+                                          onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
 
                               </div>
                         </div>
@@ -581,6 +577,12 @@
                                     <div class="card col-12">
                                           <div class="card-body">
                                                 <h4 class="card-title">Health</h4>
+                                                <hr>
+                                                <form id="incapacitated">
+                                                      <label>Incapacitated</label><br>
+                                                      <input name="incapacitated" type="checkbox" onchange="setControlStates()">
+                                                </form>
+                                                <hr>
                                                 <form id="health">
 
                                                 </form>
@@ -1226,26 +1228,39 @@
       `;
 
       var healthTemplate = `
-      <div class="row" id="health__ID__">
-            <div class="col-1">
-                  <div class="form-check">
-                        <input class="form-check-input" onchange="setControlStates()" name="health__ID__-hit" type="checkbox" value="">
+      <div class="row border border border-secondary rounded p-2" id="health__ID__">
+            <div class="col-12">
+            <div class="row">
+                  <div class="col-12">
+                        <label>Dice Value</label>
+                        <input type="text" name="health__ID__-name" class="form-control " onchange="setControlStates()" placeholder="" value="0">
                   </div>
             </div>
-            <div class="col-3">
-                  <input type="text" name="health__ID__-name" class="form-control" onchange="setControlStates()" placeholder="Value (-0, -1, -2)...">
+            <div class="row">
+                  <div class="col-12">
+                        <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="health__ID__-type" value="none" onchange="setControlStates()" checked>
+                              <label class="form-check-label">None</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="bashing">
+                              <label class="form-check-label">Bashing</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="lethal">
+                              <label class="form-check-label">Lethal</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="aggrave">
+                              <label class="form-check-label">Aggrave</label>
+                        </div>
+                  </div>
             </div>
-            <div class="col-6">
-                  <select name="health__ID__-type"  onchange="setControlStates()" class="form-control">
-                        <option></option>
-                        <option>Bashing</option>
-                        <option>Aggrave</option>
-                        <option>Lethal</option>
-                  </select>
-
+            <div class="row">
+                  <div class="col-12">
+                              <button type="button" class="btn btn-primary float-right" onclick="deleteRow('health__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                  </div>
             </div>
-            <div class="col-2">
-                        <button type="button" class="btn btn-primary float-right" onclick="deleteRow('health__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
             </div>
       </div>
       `;
@@ -1589,7 +1604,21 @@
             // Loop over the object keys
             Object.keys(data).forEach(function (k) {
 
-                  form.querySelector('[name="' + k + '"]').value = data[k];
+                  input = form.querySelector('[name="' + k + '"]')
+
+                  if(input == null)
+                  {
+                        return;
+                  }
+                  
+                  if(input.type == "checkbox")
+                  {
+                        input.checked = data[k];
+                  }
+                  else
+                  {
+                        input.value = data[k];
+                  }
 
             });
       }
@@ -1608,7 +1637,7 @@
 
       }
 
-      function fillMulti(form, data, prepend) {
+      function fillMulti(form, data, prepend, fields) {
 
             if (data == null) {
                   return
@@ -1630,27 +1659,57 @@
             });
 
             data.forEach(function (item, i) {
-                  Object.keys(item).forEach(function (k) {
+                  fields["fields"].forEach(function (k) {
 
                         var id = ids[i];
 
-                        input = form.querySelector('[name="' + id + "-" + k + '"]');
+                        if(k["type"]== "input" || k["type"] == "combo")
+                        {
+                              input = form.querySelector('[name="' + id + "-" + k["value"] + '"]');
 
-                        if (input == null) {
-                              return;
+                              if(input == null)
+                              {
+                                    return;
+                              }
+
+                              input.value = item[k["value"]];
                         }
 
-                        if (input.type == "checkbox") {
-                              form.querySelector('[name="' + id + "-" + k + '"]').checked = item[k]
-                        }
-                        else {
+                        if(k["type"] == "radio")
+                        {
+                              inputs = form.querySelectorAll('[name="' + id + "-" + k["value"] + '"]');
 
-                              form.querySelector('[name="' + id + "-" + k + '"]').value = item[k]
+                              if(inputs == null)
+                              {
+                                    return;
+                              }
+
+                              inputs.forEach(radiobutton => {
+                                    if(radiobutton.value == item[k["value"]])
+                                    {
+                                          radiobutton.checked = true;
+                                    }
+                                    else
+                                    {
+                                          radiobutton.checked = false;
+                                    }
+                              });
+                        }
+
+                        if(k["type"] == "checkbox")
+                        {
+                              input = form.querySelector('[name="' + id + "-" + k["value"] + '"]')
+                              
+                              if(input == null)
+                              {
+                                    return;
+                              }
+
+                              input.checked = item[k["value"]]
                         }
                   });
             });
       }
-
 
       function fillEssence(essence) {
             if (essence == null) {
@@ -1667,7 +1726,6 @@
 
             form.querySelector('[name="current-peripherical"]').value = essence["motes"]["peripherical"]["current"];
             form.querySelector('[name="max-peripherical"]').value = essence["motes"]["peripherical"]["max"];
-
       }
 
 
@@ -1689,7 +1747,7 @@
                         addRow(additionalTemplate, "additionalAbilities", "additional")
                   }
 
-                  fillMulti("additionalAbilities", character["data"]["additionalAbilities"], "additional")
+                  fillMulti("additionalAbilities", character["data"]["additionalAbilities"], "additional", additionalFields)
             }
 
 
@@ -1704,7 +1762,7 @@
                         addRow(meritTemplate, "merits", "merit")
                   }
 
-                  fillMulti("merits", character["data"]["merits"], "merit");
+                  fillMulti("merits", character["data"]["merits"], "merit", meritsFields);
             }
 
 
@@ -1717,7 +1775,7 @@
                         addRow(specializationTemplate, "specializations", "specialization")
                   }
 
-                  fillMulti("specializations", character["data"]["specializations"], "specialization")
+                  fillMulti("specializations", character["data"]["specializations"], "specialization", specializationFields)
             }
 
             if (character["data"]["weapons"] != null) {
@@ -1729,7 +1787,7 @@
                         addRow(weaponTemplate, "weapons", "weapon")
                   }
 
-                  fillMulti("weapons", character["data"]["weapons"], "weapon");
+                  fillMulti("weapons", character["data"]["weapons"], "weapon", weaponsFields);
             }
 
 
@@ -1742,7 +1800,7 @@
                         addRow(charmTemplate, "charms", "charm")
                   }
 
-                  fillMulti("charms", character["data"]["charms"], "charm");
+                  fillMulti("charms", character["data"]["charms"], "charm", charmsFields);
             }
 
             if (character["data"]["intimacies"] != null) {
@@ -1754,7 +1812,7 @@
                         addRow(intimacyTemplate, "intimacies", "intimacy")
                   }
 
-                  fillMulti("intimacies", character["data"]["intimacies"], "intimacy");
+                  fillMulti("intimacies", character["data"]["intimacies"], "intimacy", intimaciesFields);
             }
 
 
@@ -1783,7 +1841,7 @@
                         addRow(limitTriggerTemplate, "limitTrigger", "limitTrigger")
                   }
 
-                  fillMulti("limitTrigger", character["data"]["limitTrigger"], "limitTrigger");
+                  fillMulti("limitTrigger", character["data"]["limitTrigger"], "limitTrigger", limitTrigggerFields);
             }
 
             if (character["data"]["armors"] != null) {
@@ -1795,7 +1853,7 @@
                         addRow(armorTemplate, "armors", "armor")
                   }
 
-                  fillMulti("armors", character["data"]["armors"], "armor")
+                  fillMulti("armors", character["data"]["armors"], "armor", armorsFields)
             }
 
             fillEssence(character["data"]["essence"])
@@ -1811,21 +1869,30 @@
                   document.getElementById("notes").value = character["data"]["notes"];
             }
 
-            if (character["data"]["health"] != null) {
+            if (character["data"]["health"]["healthPoints"] != null) {
                   document.getElementById("health").innerHTML = ""
 
-                  var healthLength = character["data"]["health"].length;
+                  var healthLength = character["data"]["health"]["healthPoints"].length;
 
                   for (var i = 0; i < healthLength; i++) {
                         addRow(healthTemplate, "health", "health")
                   }
 
-                  fillMulti("health", character["data"]["health"], "health")
+                  fillMulti("health", character["data"]["health"]["healthPoints"], "health", healthFields)
 
             }
 
+            fillSingle("incapacitated", character["data"]["health"])
+
             fillSpecial(character);
 
+      }
+
+      function getHealthIncapacitated()
+      {
+            incapacitatedElement = document.getElementsByName("incapacitated")[0]
+
+            return incapacitatedElement.checked;
       }
 
       function fillSpecial(character) {
@@ -2062,16 +2129,12 @@
       var healthFields = {
             "fields": [
                   {
-                        "value": "hit",
-                        "type": "checkbox"
-                  },
-                  {
                         "value": "name",
                         "type": "input"
                   },
                   {
                         "value": "type",
-                        "type": "combo"
+                        "type": "radio"
                   }
             ]
       }
@@ -2199,21 +2262,20 @@
                               } else {
                                     object[field["value"]] = false
                               }
+
+                              return;
+                        }
+  
+
+                        var tryint = parseInt(data.get(realKey));
+
+                        if (!isNaN(tryint)) {
+
+                              object[field["value"]] = tryint;
                         }
                         else {
-
-                              var tryint = parseInt(data.get(realKey));
-
-                              if (!isNaN(tryint)) {
-
-                                    object[field["value"]] = tryint;
-                              }
-                              else {
-                                    object[field["value"]] = data.get(realKey);
-                              }
-
+                              object[field["value"]] = data.get(realKey);
                         }
-
                   });
 
                   jsonArray.push(object)
@@ -2231,6 +2293,12 @@
                   {
                         "normal": null,
                         "solar": null
+                  },
+
+                  "health" :
+                  {
+                        "healthPoints" : [],
+                        "incapacitated" : false
                   }
             }
 
@@ -2248,7 +2316,10 @@
             data["experience"]["solar"] = getJSONSingle("solar-experience");
             data["weapons"] = getJSONMulti("weapons", weaponsFields, "weapon");
             data["armors"] = getJSONMulti("armors", armorsFields, "armor");
-            data["health"] = getJSONMulti("health", healthFields, "health");
+            data["health"]["healthPoints"] = getJSONMulti("health", healthFields, "health");
+
+            data["health"]["incapacitated"] = getHealthIncapacitated();
+
             data["intimacies"] = getJSONMulti("intimacies", intimaciesFields, "intimacy")
             data["charms"] = getJSONMulti("charms", charmsFields, "charm")
             data["inventory"] = getJSONMulti("inventory", inventoryFields, "inventory")
@@ -2264,7 +2335,7 @@
 
 
 
-      getCharacterDataJSON()
+      //getCharacterDataJSON()
 
 
       // fetch character data and load it
