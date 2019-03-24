@@ -84,7 +84,15 @@
                                                       <b>Dice Penalty :</b>
                                                 </div> 
                                                 <div class="row">
-                                                      <input type="text" class="form-control" id="globalDicePenalty" onchange="calculateStats()" value="0">
+                                                      <input type="text" class="form-control" id="globalDicePenalty" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Ex. Envonmental Factor or charm">
+                                                </div>
+                                          </div>
+                                          <div class="col-4">
+                                                <div class="row">
+                                                      <b>Dice Bonus :</b>
+                                                </div> 
+                                                <div class="row">
+                                                      <input type="text" class="form-control" id="globalDiceBonus" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Bonus from stunt or excellency">
                                                 </div>
                                           </div>
                                     </div>
@@ -2472,6 +2480,15 @@
 // TODO - never go under 0
       function calculateStats() {
 
+            globalBonusDiceElem = document.getElementById("globalDiceBonus");
+
+            diceBonus = parseInt(globalBonusDiceElem.value);
+
+            if(isNaN(diceBonus))
+            {
+                  diceBonus = 0;
+            }
+
             globalDebuffElem = document.getElementById("globalDicePenalty");
 
             globalDebuff = parseInt(globalDebuffElem.value);
@@ -2480,9 +2497,6 @@
             {
                   globalDebuff = 0
             }
-
-            
-
 
             healthDebuff = getCharacterHealthDiceDebuff(charactar);
 
@@ -2563,9 +2577,9 @@
 
             joinBattle = charactar["data"]["attributes"]["wits"] + getAttribute(charactar, "awareness").value;
 
-            joinBattle = joinBattle - healthDebuff;
+            joinBattle = joinBattle - healthDebuff + diceBonus;
 
-            joinBattleElement.innerHTML = joinBattle + " + 3 successes"
+            joinBattleElement.innerHTML = ensureZero(joinBattle) + " + 3 successes"
 
             // =======================
 
@@ -2582,9 +2596,9 @@
 
             resolve = Math.ceil(resolve / 2);
 
-            resolve = resolve - healthDebuff;
+            resolve = resolve - healthDebuff + diceBonus;
 
-            resolveElement.innerHTML = resolve;
+            resolveElement.innerHTML = ensureZero(resolve);
             // =============================
 
 
@@ -2600,9 +2614,9 @@
 
             guile = Math.ceil(guile / 2)
 
-            guile = guile - healthDebuff;
+            guile = guile - healthDebuff + diceBonus;
 
-            guileElement.innerHTML = guile;
+            guileElement.innerHTML = ensureZero(guile);
             // =============
 
 
@@ -2620,9 +2634,9 @@
                   witheringAttackRoll = witheringAttackRoll + 1;
             }
 
-            witheringAttackRoll = witheringAttackRoll - healthDebuff
+            witheringAttackRoll = witheringAttackRoll - healthDebuff + diceBonus
 
-            witheringAttackRollElem.innerHTML = witheringAttackRoll;
+            witheringAttackRollElem.innerHTML = ensureZero(witheringAttackRoll);
 
             //======================================
 
@@ -2640,10 +2654,10 @@
                   witheringDamageRoll = witheringDamageRoll + charactar["data"]["attributes"]["strength"];
             }
 
-            witheringDamageRoll = witheringDamageRoll - healthDebuff
+            witheringDamageRoll = witheringDamageRoll - healthDebuff + diceBonus
 
             // TODO make something interactive that ask the user for the remaining infos
-            witheringDamageRollElem.innerHTML = witheringDamageRoll + "+  threshold successes (successes on the withering attack roll - enemy’s Defence) - Enemy Soak"
+            witheringDamageRollElem.innerHTML = ensureZero(witheringDamageRoll) + "+  threshold successes (successes on the withering attack roll - enemy’s Defence) - Enemy Soak"
 
             // NATURAL SOAK =============================
 
@@ -2653,9 +2667,9 @@
 
             naturalSoak = charactar["data"]["attributes"]["stamina"];
 
-            naturalSoak = naturalSoak - healthDebuff;
+            naturalSoak = naturalSoak - healthDebuff + diceBonus;
 
-            naturalSoakElem.innerHTML = naturalSoak;
+            naturalSoakElem.innerHTML = ensureZero(naturalSoak);
 
 
             //
@@ -2668,9 +2682,9 @@
 
             soak = charactar["data"]["attributes"]["stamina"] + currentArmor["soak"];
 
-            soak = soak - healthDebuff;
+            soak = soak - healthDebuff + diceBonus;
 
-            soakElem.innerHTML = soak + " + charms, defends against Withering attacks"
+            soakElem.innerHTML = ensureZero(soak) + " + charms, defends against Withering attacks"
 
 
 
@@ -2688,9 +2702,9 @@
                   decisiveAttackRoll = decisiveAttackRoll + 1;
             }
 
-            decisiveAttackRoll = decisiveAttackRoll - healthDebuff;
+            decisiveAttackRoll = decisiveAttackRoll - healthDebuff + diceBonus;
 
-            decisiveAttackRollElem.innerHTML = decisiveAttackRoll;
+            decisiveAttackRollElem.innerHTML = ensureZero(decisiveAttackRoll);
 
             // ===============================
 
@@ -2702,7 +2716,7 @@
             hardness = currentArmor["hardness"];
             // TODO - SHOULD WE DEBUFF WITH HEALTH
 
-            hardnessElem.innerHTML = "Best hardness value from Charm or Armor (" + hardness + "), if higher than a Decisive attack dice pool, the attack fails."
+            hardnessElem.innerHTML = "Best hardness value from Charm or Armor (" + ensureZero(hardness) + "), if higher than a Decisive attack dice pool, the attack fails."
 
             // ===============================
 
@@ -2714,9 +2728,9 @@
 
             parry = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, currentWeapon["combatAbility"]).value) / 2) + currentWeapon["defense"]
 
-            parry = parry - healthDebuff;
+            parry = parry - healthDebuff + diceBonus;
 
-            parryElem.innerHTML = parry;
+            parryElem.innerHTML = ensureZero(parry);
 
             // =========================
 
@@ -2727,9 +2741,9 @@
 
             evasion = Math.ceil((charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value) / 2) - currentArmor["mobilityPenalty"]
 
-            evasion = evasion - healthDebuff
+            evasion = evasion - healthDebuff + diceBonus
 
-            evasionElem.innerHTML = evasion;
+            evasionElem.innerHTML = ensureZero(evasion);
 
             // =========================
 
@@ -2747,7 +2761,7 @@
                   defense = parry;
             }
 
-            defenseElem.innerHTML = defense
+            defenseElem.innerHTML = ensureZero(defense)
 
             //==========================
 
@@ -2757,9 +2771,9 @@
 
             rush = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
 
-            rush = rush - healthDebuff;
+            rush = rush - healthDebuff + diceBonus;
 
-            rushElem.innerHTML = rush;
+            rushElem.innerHTML = ensureZero(rush);
 
             // ===================
 
@@ -2769,9 +2783,9 @@
 
             withdraw = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "athletics").value - currentArmor["mobilityPenalty"]
 
-            withdraw = withdraw - healthDebuff;
+            withdraw = withdraw - healthDebuff + diceBonus;
 
-            withdrawElem.innerHTML = withdraw;
+            withdrawElem.innerHTML = ensureZero(withdraw);
 
             //========================
 
@@ -2781,9 +2795,9 @@
 
             disengage = charactar["data"]["attributes"]["dexterity"] + getAttribute(charactar, "dodge").value - currentArmor["mobilityPenalty"]
 
-            disengage = disengage - healthDebuff;
+            disengage = disengage - healthDebuff + diceBonus;
 
-            disengageElem.innerHTML = disengage
+            disengageElem.innerHTML = ensureZero(disengage)
             //==========================
 
       }
@@ -2866,5 +2880,17 @@
 
             return Math.abs(value) // should change the name to a more significant one but too lazy
 
+      }
+
+      // Make sure the value is 0 if lower than 0
+      function ensureZero(value)
+      {
+
+            if(value < 0)
+            {
+                  return 0;
+            }
+
+            return value;
       }
 </script>
