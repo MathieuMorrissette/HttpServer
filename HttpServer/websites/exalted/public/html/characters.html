@@ -1,10 +1,8 @@
-<div class="container">
-	<div class="card" style="margin-top: 20px;">
+<div class="">
+	<div class="card" style="">
 		<div class="card-body">
 			<h4 class="card-title">Characters</h4>
-			<div class="list-group ">
-				<div id="charactersContainer">
-				</div>
+			<div id="charactersContainer">
 			</div>
 		</div>
 
@@ -71,15 +69,31 @@
 	function refresh() {
 		getUserCharacters(result => {
 			var characterRowTemplate = `
-		<a href="#" onclick="viewCharacterSheet('__CHARACTER_ID__')" class="list-group-item list-group-item-action">
-			__CHARACTER_NAME__ 
-			<div class="float-right">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteConfirmation__CHARACTER_ID__">
-					Delete
-				</button>
-				<button onclick="viewCharacterSheet('__CHARACTER_ID__')" class="btn btn-primary">View sheet</button>
+			<div class="row border mt-2 p-2 ">
+				<div class="col-12">
+					<div class="row   align-items-center ">
+						<div class="col-12">
+							<b>__CHARACTER_NAME__</b>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-6 text-left">
+							<button onclick="viewCharacterSheet('__CHARACTER_ID__')" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="View Sheet"><i class="fas fa-address-book"></i></button>
+						</div>
+						<div class="col-6 text-right">
+							<span data-toggle="tooltip" data-placement="top" title="Delete">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteConfirmation__CHARACTER_ID__" >
+										<i class="fas fa-trash-alt"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
-		</a>`;
+		
+		
+		`;
 
 			var modalTemplate = `
 	<div class="modal fade" id="deleteConfirmation__CHARACTER_ID__" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationTitle" aria-hidden="true">
