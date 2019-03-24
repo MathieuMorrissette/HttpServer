@@ -428,30 +428,6 @@
                                                 <button class="btn btn-outline-secondary" type="button">Search</button>
                                           </div>
                                     </div>
-                                    <div class="row">
-                                          <div class=" col-md-3">
-                                                Name
-                                          </div>
-                                          <div class=" col-md-1">
-                                                Type
-                                          </div>
-                                          <div class=" col-md-1">
-                                                Duration
-                                          </div>
-                                          <div class=" col-md-1">
-                                                Cost
-                                          </div>
-                                          <div class=" col-md-1">
-                                                Book
-                                          </div>
-                                          <div class=" col-md-1">
-                                                Page #
-                                          </div>
-                                          <div class=" col-md-3">
-                                                Effects
-                                          </div>
-
-                                    </div>
                                     <form id="charms">
                                     </form>
                                     <hr />
@@ -636,8 +612,8 @@
                                                 <h4 class="card-title">Health</h4>
                                                 <hr>
                                                 <form id="incapacitated">
-                                                      <label>Incapacitated</label><br>
-                                                      <input name="incapacitated" type="checkbox" onchange="setControlStates()">
+                                                      <label for="incapacitatedCheck">Incapacitated</label><br>
+                                                      <input id="incapacitatedCheck" name="incapacitated" type="checkbox" onchange="setControlStates()">
                                                 </form>
                                                 <hr>
                                                 <form id="health">
@@ -1263,20 +1239,20 @@
             <div class="row">
                   <div class="col-12">
                         <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="health__ID__-type" value="none" onchange="setControlStates()" checked>
-                              <label class="form-check-label">None</label>
+                              <input class="form-check-input" type="radio" id="health__ID__-type1" name="health__ID__-type" value="none" onchange="setControlStates()" checked>
+                              <label class="form-check-label" for="health__ID__-type1">None</label>
                         </div>
                         <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="bashing">
-                              <label class="form-check-label">Bashing</label>
+                              <input class="form-check-input" type="radio" id="health__ID__-type2" name="health__ID__-type" onchange="setControlStates()" value="bashing">
+                              <label class="form-check-label" for="health__ID__-type2" >Bashing</label>
                         </div>
                         <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="lethal">
-                              <label class="form-check-label">Lethal</label>
+                              <input class="form-check-input" type="radio" id="health__ID__-type3" name="health__ID__-type" onchange="setControlStates()" value="lethal">
+                              <label class="form-check-label" for="health__ID__-type3">Lethal</label>
                         </div>
                         <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="health__ID__-type" onchange="setControlStates()" value="aggrave">
-                              <label class="form-check-label">Aggrave</label>
+                              <input class="form-check-input" type="radio" id="health__ID__-type4" name="health__ID__-type" onchange="setControlStates()" value="aggrave">
+                              <label class="form-check-label" for="health__ID__-type4">Aggrave</label>
                         </div>
                   </div>
             </div>
@@ -1377,9 +1353,9 @@
                                     <input type="text" class="form-control" name="weapon__ID__-accuracy" onchange="setControlStates()">
                               </div>
                               <div id="weapon__ID__-hideArtifact">
-                                    <label>Artifact</label><br>
+                                    <label for="weapon__ID__-artifact1">Artifact</label><br>
                                     <div class="text-center" >
-                                          <input name="weapon__ID__-artifact"  type="checkbox" onchange="setControlStates()">
+                                          <input id="weapon__ID__-artifact1" name="weapon__ID__-artifact"  type="checkbox" onchange="setControlStates()">
                                     </div>
                               </div>
                         </div>
@@ -2170,11 +2146,15 @@
                         "type": "input"
                   },
                   {
-                        "value": "type",
+                        "value": "tree",
                         "type": "input"
                   },
                   {
-                        "value": "duration",
+                        "value": "essence",
+                        "type": "input"
+                  },
+                  {
+                        "value": "ability",
                         "type": "input"
                   },
                   {
@@ -2190,9 +2170,26 @@
                         "type": "input"
                   },
                   {
-                        "value": "effects",
+                        "value": "type",
                         "type": "input"
-                  }
+                  },
+                  {
+                        "value": "duration",
+                        "type": "input"
+                  },
+                  {
+                        "value": "keywords",
+                        "type": "input"
+                  },
+                  {
+                        "value": "requirements",
+                        "type": "input"
+                  },
+                  {
+                        "value": "description",
+                        "type": "input"
+                  },
+
             ]
 
       }
@@ -2419,32 +2416,99 @@
       }
 
       var charmTemplate = `
-<div class="form-row mt-3" id="charm__ID__">
-      <div class=" col-md-3">
-            <input type="text" class="form-control" name="charm__ID__-name" onchange="setControlStates()" placeholder="Name">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="charm__ID__-type" onchange="setControlStates()" placeholder="Type">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="charm__ID__-duration" onchange="setControlStates()" placeholder="Duration">
-      </div>
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="charm__ID__-cost" onchange="setControlStates()" placeholder="Cost">
-      </div>
+<div class="form-row mt-3 border p-2" id="charm__ID__">
+      <div class="col-12">
+            <div class="row">
+                  <div class="col-md-6">
+                        <div class="row">
+                              <div class=" col-md-12">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="charm__ID__-name" onchange="setControlStates()">
+                              </div>
+                        </div>
+                        <div class="row mt-1">
+                              <div class=" col-md-6">
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Ability Tree</label>
+                                                <input type="text" class="form-control" name="charm__ID__-tree" onchange="setControlStates()">
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Essence</label>
+                                                <input type="text" class="form-control" name="charm__ID__-essence" onchange="setControlStates()" >
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Ability</label>
+                                                <input type="text" class="form-control" name="charm__ID__-ability" onchange="setControlStates()" >
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Cost</label>
+                                                <input type="text" class="form-control" name="charm__ID__-cost" onchange="setControlStates()" >
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class=" col-md-6">
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Book</label>
+                                                <input type="text" class="form-control" name="charm__ID__-book" onchange="setControlStates()">
+                                          </div> 
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Page #</label>
+                                                <input type="text" class="form-control" name="charm__ID__-page" onchange="setControlStates()" >
+                                          </div> 
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Type</label>
+                                                <input type="text" class="form-control" name="charm__ID__-type" onchange="setControlStates()" >
+                                          </div> 
+                                    </div>
+                                    <div class="row">
+                                          <div class="col-12">
+                                                <label>Duration</label>
+                                                <input type="text" class="form-control" name="charm__ID__-duration" onchange="setControlStates()" >
+                                          </div> 
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class=" col-12">
+                                    <label>Keywords</label>
+                                    <input type="text" class="form-control" name="charm__ID__-keywords" onchange="setControlStates()" >
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class=" col-12">
+                                    <label>Requires</label>
+                                    <input type="text" class="form-control" name="charm__ID__-requirements" onchange="setControlStates()" >
+                              </div>
+                        </div>
 
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="charm__ID__-book" onchange="setControlStates()" placeholder="Book">
-      </div>
-
-      <div class=" col-md-1">
-            <input type="text" class="form-control" name="charm__ID__-page" onchange="setControlStates()" placeholder="Book Page">
-      </div>
-      <div class=" col-md-3">
-            <textarea class="form-control" name="charm__ID__-effects" rows="3" onchange="setControlStates()" placeholder="Effects"></textarea>
-      </div>
-      <div class="col-md-1">
-            <button type="button" class="btn btn-primary float-right mt-3" onclick="deleteRow('charm__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                  <div class="col-md-6">
+                        <div class="row">
+                              <div class="col-12">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="charm__ID__-description" rows="16" onchange="setControlStates()"></textarea>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="row">                  
+                  <div class="col-md-12">
+                        <hr>
+                        <button type="button" class="btn btn-primary " onclick="deleteRow('charm__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+            </div>
       </div>
 </div>
       `;
