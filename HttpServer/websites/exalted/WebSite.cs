@@ -37,6 +37,7 @@ namespace HttpServer.websites.exalted
             { "characters", () => new Characters() },
             { "character", () => new Sheet()},
             { "javascript", () => new FileProvider()},
+            { "dice-roller", () => new DiceRollerController()},
             { "css", () => new FileProvider()},
            // { "font", () => new FileProvider()},
             { "user", () => new UserController()},

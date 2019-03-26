@@ -1,0 +1,187 @@
+<div class="">
+      <div class="card">
+            <div class="card-body">
+                  <h4 class="card-title">Dice Roller 2000</h4>
+                  <div class="row">
+                        <div class="col-md-4">
+                              <label>Dice Count</label>
+                              <input type="input" class="form-control" value="0" id="diceCount">
+                        </div>
+                        <div class="col-md-4">
+                              <label for="inputState">Dice Type</label>
+                              <select id="inputState" class="form-control">
+                                    <option selected>10</option>
+                              </select>
+                        </div>
+                        <div class="col-md-4 text-center align-self-end mt-1">
+                              <span class="align-bottom"><button onclick="rollDices()" class="btn btn-primary">Roll!</button></span>
+                        </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-md-4">
+                              <label>Count Success From :</label>
+                              <input type="input" class="form-control" value="7" id="successFrom">
+                        </div>
+                        <div class="col-md-8 align-self-center">
+                              <label>Doubles :</label><br>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="doubleRadio1" name="doubleRadio" class="custom-control-input" value="99999">
+                                    <label class="custom-control-label" for="doubleRadio1">None</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="doubleRadio2" name="doubleRadio" class="custom-control-input" value="7">
+                                    <label class="custom-control-label" for="doubleRadio2">7</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="doubleRadio3" name="doubleRadio" class="custom-control-input" value="8">
+                                    <label class="custom-control-label" for="doubleRadio3">8</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="doubleRadio4" name="doubleRadio" class="custom-control-input" value="9">
+                                    <label class="custom-control-label" for="doubleRadio4">9</label>
+                              </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="doubleRadio5" name="doubleRadio" class="custom-control-input" value="10" checked>
+                                    <label class="custom-control-label" for="doubleRadio5">10</label>
+                              </div>
+                        </div>
+                  </div>
+
+                  <div class="row border p-2 mt-1">
+                        <div class="col-md-6" id="diceContainer">
+
+
+                        </div>
+                        <div id="successes" class="col-md-6 align-self-center" hidden>
+                              <h4>Successes : </h4><span id="successesResult" style="font-weight: bold;font-size:2em;"></span>
+                        </div>
+                  </div>
+
+            </div>
+      </div>
+</div>
+
+<script>
+
+      var results = [];
+
+      function rollDices() {
+            results = []
+
+            diceCountElem = document.getElementById("diceCount");
+
+            diceCount = parseInt(diceCountElem.value)
+
+            successFromElem = document.getElementById("successFrom");
+
+            successFrom = parseInt(successFromElem.value);
+
+            doubleValueElements = document.getElementsByName("doubleRadio")
+
+            doubleValue = null;
+
+            doubleValueElements.forEach(element => {
+
+                  if(element.checked)
+                  {
+                        doubleValue = parseInt(element.value);
+                  }
+            });
+
+
+            if (isNaN(successFrom)) {
+                  return;
+            }
+
+            if (isNaN(diceCount)) {
+                  return;
+            }
+
+            // Roll Dices
+            for (var i = 0; i < diceCount; i++) {
+                  result = Math.floor(Math.random() * 10) + 1 // 1-10 TODO Support multiple dices
+
+                  jsonRes = { "index": i, "result": result };
+
+                  results.push(jsonRes);
+            }
+
+
+
+            countJSON = [];
+
+            // Count
+            results.forEach(element => {
+
+                  matching = countJSON.filter(function (elem) {
+
+                        if ((elem["diceValue"] == element["result"])) {
+                              return elem;
+                        }
+
+                  });
+
+                  if (matching == null || matching.length == 0) {
+                        countJSON.push({ "diceValue": element["result"], "count": 1 })
+                        return;
+                  }
+
+                  matching[0]["count"] = matching[0]["count"] + 1;
+            });
+
+            countJSON.sort(function (a, b) {
+                  return b["diceValue"] < a["diceValue"] ? 1
+                        : b["diceValue"] > a["diceValue"] ? -1
+                              : 0;
+            })
+
+            diceTemplate = `
+<div class="row">
+      <div class="col-12">
+            <b>Dice Value :</b> __DICE_VALUE__ <b>Count :</b> __DICE_COUNT__
+      </div>
+</div>`;
+
+
+            diceContainerElem = document.getElementById("diceContainer");
+
+            diceContainerElem.innerHTML = "";
+
+            countJSON.forEach(item => {
+                  var tmp = diceTemplate.split("__DICE_VALUE__").join(item["diceValue"]);
+                  tmp = tmp.split("__DICE_COUNT__").join(item["count"]);
+
+                  diceContainerElem.innerHTML = diceContainerElem.innerHTML + tmp;
+
+            });
+
+            // calculate successes
+            successes = 0;
+
+            countJSON.forEach(diceValue => {
+                  if(diceValue["diceValue"] >= successFrom)
+                  {
+                        multiplicator = 1;
+
+                        if(diceValue["diceValue"] >= doubleValue)
+                        {
+                              multiplicator = 2;
+                        }
+
+                        successes = successes + (diceValue["count"] * multiplicator);
+                  }
+            });
+
+            console.log(successes)
+
+            successesElem = document.getElementById("successes")
+            successesElem.hidden = false;
+
+            successResult = document.getElementById("successesResult")
+
+            successResult.innerHTML = " " + successes;
+
+      }
+
+</script>

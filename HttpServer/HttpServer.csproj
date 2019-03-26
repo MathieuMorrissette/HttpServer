@@ -64,6 +64,7 @@
     <Compile Include="websites\exalted\api\responses\CharacterResponse.cs" />
     <Compile Include="websites\exalted\classes\ExaltedConfig.cs" />
     <Compile Include="websites\exalted\controllers\API.cs" />
+    <Compile Include="websites\exalted\controllers\DiceRollerController.cs" />
     <Compile Include="websites\exalted\controllers\UserController.cs" />
     <Compile Include="websites\exalted\controllers\Characters.cs" />
     <Compile Include="websites\exalted\controllers\FileProvider.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="websites\exalted\templates\Login_Template.cs" />
     <Compile Include="websites\exalted\templates\Register_Template.cs" />
     <Compile Include="websites\exalted\templates\RightMenu_Template.cs" />
+    <Compile Include="websites\exalted\templates\DiceRoller_Template.cs" />
     <Compile Include="websites\exalted\templates\Sheet_Template.cs" />
     <Compile Include="websites\exalted\WebSite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
@@ -158,6 +160,7 @@
     <EmbeddedResource Include="websites\exalted\api\default_character_json.txt" />
     <Content Include="websites\exalted\public\css\style.css" />
     <Content Include="websites\exalted\public\html\characters.html" />
+    <Content Include="websites\exalted\public\html\dice_roller.html" />
     <Content Include="websites\exalted\public\html\error_alert.html" />
     <Content Include="websites\exalted\public\html\footer.html" />
     <Content Include="websites\exalted\public\html\header.html" />
