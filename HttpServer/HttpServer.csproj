@@ -69,7 +69,7 @@
     <Compile Include="websites\exalted\controllers\Characters.cs" />
     <Compile Include="websites\exalted\controllers\FileProvider.cs" />
     <Compile Include="websites\exalted\controllers\Home.cs" />
-    <Compile Include="websites\exalted\controllers\Login.cs" />
+    <Compile Include="websites\exalted\controllers\LoginController.cs" />
     <Compile Include="websites\exalted\controllers\Register.cs" />
     <Compile Include="websites\exalted\controllers\Sheet.cs" />
     <Compile Include="websites\exalted\database\DatabaseInitialiser.cs" />
@@ -87,6 +87,7 @@
     <Compile Include="websites\exalted\templates\Home_Template.cs" />
     <Compile Include="websites\exalted\templates\Login_Template.cs" />
     <Compile Include="websites\exalted\templates\Register_Template.cs" />
+    <Compile Include="websites\exalted\templates\LeftMenu_Template.cs" />
     <Compile Include="websites\exalted\templates\RightMenu_Template.cs" />
     <Compile Include="websites\exalted\templates\DiceRoller_Template.cs" />
     <Compile Include="websites\exalted\templates\Sheet_Template.cs" />
@@ -164,8 +165,11 @@
     <Content Include="websites\exalted\public\html\error_alert.html" />
     <Content Include="websites\exalted\public\html\footer.html" />
     <Content Include="websites\exalted\public\html\header.html" />
+    <Content Include="websites\exalted\public\html\left_menu.html" />
+    <Content Include="websites\exalted\public\html\left_tools_menu.html" />
     <Content Include="websites\exalted\public\html\main_layout.html" />
     <Content Include="websites\exalted\public\html\left_sheet_menu.html" />
+    <Content Include="websites\exalted\public\html\right_menu_notlogged.html" />
     <Content Include="websites\exalted\public\html\right_menu.html" />
     <Content Include="websites\exalted\public\html\home.html" />
     <Content Include="websites\exalted\public\html\login.html" />

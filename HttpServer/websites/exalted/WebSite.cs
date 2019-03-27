@@ -22,7 +22,7 @@ namespace HttpServer.websites.exalted
 
         public class WebSite : BaseWebsite
         {
-            const string DEFAULT_ROUTE = "login";
+            const string DEFAULT_ROUTE = "home";
             public const string WEBSITE_ROOT_PATH = "../../websites/exalted/";
 
             public static BaseDatabase Database { get; private set; }
@@ -31,7 +31,7 @@ namespace HttpServer.websites.exalted
 
             private static Dictionary<string, Func<IController>> routes = new Dictionary<string, Func<IController>>
         {
-            { "login", () => new Login()},
+            { "login", () => new LoginController()},
             { "register", () => new Register()},
             { "home", () =>  new Home()},
             { "characters", () => new Characters() },

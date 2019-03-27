@@ -67,7 +67,9 @@ namespace HttpServer.websites.exalted.controllers
                 return;
             }
 
-            Register_Template registerTemplate = new Register_Template();
+            HttpServer.websites.exalted.model.User user = UserManager.GetUser(UserManager.GetUserID(client));
+
+            Register_Template registerTemplate = new Register_Template(user);
             registerTemplate.Errors = new Error[] { error };
             context.Send(registerTemplate.Render());
         }

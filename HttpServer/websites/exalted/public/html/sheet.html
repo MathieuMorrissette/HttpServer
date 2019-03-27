@@ -28,293 +28,297 @@
       <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="tab-quick" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Quick View</h4>
-                                    <div class="row border p-2" id="incapacitatedLabel" hidden>
-                                          <div class=" col-12 text-center">
-                                                <span style="color: red;">
-                                                      <h3><b>INCAPACITATED</b></h3>
-                                                </span>
-                                          </div>
-                                    </div>
-                                    <div class="row">
-                                          <div class="col-3">
-                                                <div class="form-group">
-                                                      <label for="currentWeapon">Current Weapon </label>
-                                                      <select class="form-control" id="currentWeapon" name="currentWeapon" onchange="calculateStats()">
-
-                                                      </select>
+                        <div class="col-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Quick View</h4>
+                                    <div class="card-body">
+                                          <div class="row border p-2" id="incapacitatedLabel" hidden>
+                                                <div class=" col-12 text-center">
+                                                      <span style="color: red;">
+                                                            <h3><b>INCAPACITATED</b></h3>
+                                                      </span>
                                                 </div>
                                           </div>
-                                          <div class="col-3">
-                                                <div class="form-group" id="currentRangeDiv" hidden>
-                                                      <label for="currentRange">Range :</label>
-                                                      <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
-                                                            <option>close</option>
-                                                            <option>short</option>
-                                                            <option>medium</option>
-                                                            <option>long</option>
-                                                            <option>extreme</option>
-                                                      </select>
+                                          <div class="row">
+                                                <div class="col-3">
+                                                      <div class="form-group">
+                                                            <label for="currentWeapon">Current Weapon </label>
+                                                            <select class="form-control" id="currentWeapon" name="currentWeapon" onchange="calculateStats()">
+
+                                                            </select>
+                                                      </div>
+                                                </div>
+                                                <div class="col-3">
+                                                      <div class="form-group" id="currentRangeDiv" hidden>
+                                                            <label for="currentRange">Range :</label>
+                                                            <select class="form-control" id="currentRange" name="currentRange" onchange="calculateStats()">
+                                                                  <option>close</option>
+                                                                  <option>short</option>
+                                                                  <option>medium</option>
+                                                                  <option>long</option>
+                                                                  <option>extreme</option>
+                                                            </select>
+                                                      </div>
+                                                </div>
+                                                <div class="col-6">
+                                                      <div class="form-group">
+                                                            <label for="currentArmor">Current Armor </label>
+                                                            <select class="form-control" id="currentArmor" name="currentArmor" onchange="calculateStats()">
+
+                                                            </select>
+                                                      </div>
+                                                </div>
+
+                                          </div>
+
+                                          <div class="row border p-2">
+                                                <div class="col-4">
+                                                      <div class="row">
+                                                            <b>Health Dice Penalty :</b>
+                                                      </div>
+                                                      <div class="row">
+                                                            <div id="healthPenalty"></div>
+                                                      </div>
+                                                </div>
+                                                <div class="col-4">
+                                                      <div class="row">
+                                                            <b>Dice Penalty :</b>
+                                                      </div>
+                                                      <div class="row">
+                                                            <input type="text" class="form-control" id="globalDicePenalty" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Ex. Envonmental Factor or charm">
+                                                      </div>
+                                                </div>
+                                                <div class="col-4">
+                                                      <div class="row">
+                                                            <b>Dice Bonus :</b>
+                                                      </div>
+                                                      <div class="row">
+                                                            <input type="text" class="form-control" id="globalDiceBonus" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Bonus from stunt or excellency">
+                                                      </div>
                                                 </div>
                                           </div>
-                                          <div class="col-6">
-                                                <div class="form-group">
-                                                      <label for="currentArmor">Current Armor </label>
-                                                      <select class="form-control" id="currentArmor" name="currentArmor" onchange="calculateStats()">
-
-                                                      </select>
-                                                </div>
-                                          </div>
-
-                                    </div>
-
-                                    <div class="row border p-2">
-                                          <div class="col-4">
-                                                <div class="row">
-                                                      <b>Health Dice Penalty :</b>
-                                                </div> 
-                                                <div class="row">
-                                                      <div id="healthPenalty"></div>
-                                                </div>
-                                          </div>
-                                          <div class="col-4">
-                                                <div class="row">
-                                                      <b>Dice Penalty :</b>
-                                                </div> 
-                                                <div class="row">
-                                                      <input type="text" class="form-control" id="globalDicePenalty" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Ex. Envonmental Factor or charm">
-                                                </div>
-                                          </div>
-                                          <div class="col-4">
-                                                <div class="row">
-                                                      <b>Dice Bonus :</b>
-                                                </div> 
-                                                <div class="row">
-                                                      <input type="text" class="form-control" id="globalDiceBonus" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Bonus from stunt or excellency">
-                                                </div>
-                                          </div>
-                                    </div>
 
 
-                                    <div class="row">
+                                          <div class="row">
 
-                                          <div class="col-6">
-                                                <div class="row border p-2 mt-1">
-                                                      <b>Join Battle :</b> <span id="joinBattle"></span>
-                                                </div>
+                                                <div class="col-6">
+                                                      <div class="row border p-2 mt-1">
+                                                            <b>Join Battle :</b> <span id="joinBattle"></span>
+                                                      </div>
 
 
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Withering Attack Roll :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <div id="witheringAttackRoll"></div>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
-                                                                        <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality
-                                                                                    Applies</i></label>
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Withering Attack Roll :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <div id="witheringAttackRoll"></div>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <div class="form-check form-check-inline">
+                                                                              <input class="form-check-input" type="checkbox" id="witheringAttackRollSpeciality" onchange="calculateStats()">
+                                                                              <label class="form-check-label" for="witheringAttackRollSpeciality"><i>Tick If Speciality
+                                                                                          Applies</i></label>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="row">
+                                                                        <b>Withering Damage Roll :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="witheringDamageRoll"></span>
                                                                   </div>
                                                             </div>
-
-                                                            <div class="row">
-                                                                  <b>Withering Damage Roll :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="witheringDamageRoll"></span>
-                                                            </div>
                                                       </div>
-                                                </div>
 
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Natural Soak :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="naturalSoakCalc"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Soak :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="soakCalc"></span>
-                                                            </div>
-                                                      </div>
-                                                </div>
-
-
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Parry : </b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="parryCalc"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Evasion : </b>
-                                                            </div>
-                                                            <div class="row"> 
-                                                                  <span id="evasionCalc"></span>
-                                                            </div>
-                                                            <div class="row"> 
-                                                                  <b>Defense : </b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="defenseCalc"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Onslaught Penalty:</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  Every time an opponent attacks a character, that
-                                                                  character suffers a cumulative -1 Defense penalty until his next turn.
-                                                            </div>
-                                                      </div>
-                                                </div>
-                                          </div>
-                                          <div class="col-6">
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Decisive Attack Roll :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="decisiveAttackRoll"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="checkbox" id="decisiveAttackRollSpeciality" onchange="calculateStats()">
-                                                                        <label class="form-check-label" for="decisiveAttackRollSpeciality"><i>Tick If Speciality
-                                                                                    Applies</i></label>
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Natural Soak :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="naturalSoakCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Soak :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="soakCalc"></span>
                                                                   </div>
                                                             </div>
-                                                            <div class="row">
-                                                                  <b>Decisive Damage Roll :</b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  Your Initiative
-                                                            </div>
                                                       </div>
-                                                </div>
-
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Hardness : </b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="hardnessCalc"></span>
-                                                            </div>
-                                                      </div>
-                                                </div>
-
-                                                <div class="row border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Rush : </b>
-                                                            </div> 
-                                                            <div class="row">
-                                                                  <span id="rushCalc"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Withdraw : </b>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <span id="withdrawCalc"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Disengage : </b>
-                                                            </div> 
-                                                            <div class="row">
-                                                                  <span id="disengageCalc"></span>
-                                                            </div>
-                                                      </div>
-                                                </div>
 
 
-                                                <div class="row  border p-2 mt-1">
-                                                      <div class="col-12">
-                                                            <div class="row">
-                                                                  <b>Resolve :</b>
-                                                            </div> 
-                                                            <div class="row">
-                                                                  <span id="resolve"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="checkbox" id="resolveSpeciality" onchange="calculateStats()">
-                                                                        <label class="form-check-label" for="resolveSpeciality"><i>Tick If
-                                                                                    Speciality Applies</i></label>
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Parry : </b>
                                                                   </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <b>Guile :</b>
-                                                            </div> 
-                                                            <div class="row">
-                                                                  <span id="guile"></span>
-                                                            </div>
-                                                            <div class="row">
-                                                                  <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="checkbox" id="guileSpeciality" onchange="calculateStats()">
-                                                                        <label class="form-check-label" for="guileSpeciality"><i>Tick If
-                                                                                    Speciality Applies</i></label>
+                                                                  <div class="row">
+                                                                        <span id="parryCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Evasion : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="evasionCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Defense : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="defenseCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Onslaught Penalty:</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        Every time an opponent attacks a character, that
+                                                                        character suffers a cumulative -1 Defense penalty until his next turn.
                                                                   </div>
                                                             </div>
                                                       </div>
                                                 </div>
+                                                <div class="col-6">
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Decisive Attack Roll :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="decisiveAttackRoll"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <div class="form-check form-check-inline">
+                                                                              <input class="form-check-input" type="checkbox" id="decisiveAttackRollSpeciality" onchange="calculateStats()">
+                                                                              <label class="form-check-label" for="decisiveAttackRollSpeciality"><i>Tick If Speciality
+                                                                                          Applies</i></label>
+                                                                        </div>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Decisive Damage Roll :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        Your Initiative
+                                                                  </div>
+                                                            </div>
+                                                      </div>
 
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Hardness : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="hardnessCalc"></span>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+
+                                                      <div class="row border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Rush : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="rushCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Withdraw : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="withdrawCalc"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Disengage : </b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="disengageCalc"></span>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+
+
+                                                      <div class="row  border p-2 mt-1">
+                                                            <div class="col-12">
+                                                                  <div class="row">
+                                                                        <b>Resolve :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="resolve"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <div class="form-check form-check-inline">
+                                                                              <input class="form-check-input" type="checkbox" id="resolveSpeciality" onchange="calculateStats()">
+                                                                              <label class="form-check-label" for="resolveSpeciality"><i>Tick If
+                                                                                          Speciality Applies</i></label>
+                                                                        </div>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <b>Guile :</b>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <span id="guile"></span>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                        <div class="form-check form-check-inline">
+                                                                              <input class="form-check-input" type="checkbox" id="guileSpeciality" onchange="calculateStats()">
+                                                                              <label class="form-check-label" for="guileSpeciality"><i>Tick If
+                                                                                          Speciality Applies</i></label>
+                                                                        </div>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+
+                                                </div>
                                           </div>
-                                    </div>
 
+                                    </div>
                               </div>
                         </div>
                   </div>
 
-                  <div class="row mt-5">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Reminders</h4>
-                                    • <b>Join Battle:</b> Wits + Awareness (plus 3 successes) <br><br>
+                  <div class="row mt-2">
+                        <div class="col-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Reminders</h4>
+                                    <div class="card-body">
+                                          • <b>Join Battle:</b> Wits + Awareness (plus 3 successes) <br><br>
 
-                                    • <b>Withering attack roll:</b> Dexterity + (Combat Ability) + weapon’s accuracy<br>
-                                    • <b>Withering damage roll:</b> weapon’s damage + (Strength or 4 for
-                                    firewand/crossbow) + threshold successes (successes on the attack roll - enemy’s
-                                    Defence) - Enemy Soak<br><br>
+                                          • <b>Withering attack roll:</b> Dexterity + (Combat Ability) + weapon’s accuracy<br>
+                                          • <b>Withering damage roll:</b> weapon’s damage + (Strength or 4 for
+                                          firewand/crossbow) + threshold successes (successes on the attack roll - enemy’s
+                                          Defence) - Enemy Soak<br><br>
 
-                                    • <b>Decisive attack roll:</b> Dexterity + (Combat Ability)<br>
-                                    • <b>Decisive damage roll:</b> roll your current initiative in dice. If you have
-                                    less initiative than the enemy has hardness and the enemy is not crashed, damage is
-                                    always 0.<br><br>
+                                          • <b>Decisive attack roll:</b> Dexterity + (Combat Ability)<br>
+                                          • <b>Decisive damage roll:</b> roll your current initiative in dice. If you have
+                                          less initiative than the enemy has hardness and the enemy is not crashed, damage is
+                                          always 0.<br><br>
 
-                                    • <b>Natural Soak:</b> (Stamina if Exalted) or (0 if Mortal)<br>
-                                    • <b>Soak:</b> Stamina + Charms + Armor Soak, defends against Withering
-                                    attacks<br><br>
+                                          • <b>Natural Soak:</b> (Stamina if Exalted) or (0 if Mortal)<br>
+                                          • <b>Soak:</b> Stamina + Charms + Armor Soak, defends against Withering
+                                          attacks<br><br>
 
-                                    • <b>Hardness:</b> Best hardness value from Charm or Armor, if higher than a
-                                    Decisive attack dice pool, the attack fails. <br><br>
+                                          • <b>Hardness:</b> Best hardness value from Charm or Armor, if higher than a
+                                          Decisive attack dice pool, the attack fails. <br><br>
 
-                                    • <b>Parry:</b> ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s
-                                    defense<br>
-                                    • <b>Evasion:</b> ([Dexterity + Dodge)] / 2, round up) - armor’s mobility
-                                    penalty<br>
-                                    • <b>Defense:</b> Higher of Parry or Evasion<br>
-                                    • <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that
-                                    character suffers a cumulative -1 Defense penalty until his next turn. <br><br>
+                                          • <b>Parry:</b> ([Dexterity + (Combat Ability)] / 2, round up) + weapon’s
+                                          defense<br>
+                                          • <b>Evasion:</b> ([Dexterity + Dodge)] / 2, round up) - armor’s mobility
+                                          penalty<br>
+                                          • <b>Defense:</b> Higher of Parry or Evasion<br>
+                                          • <b>Onslaught Penalty:</b> Every time an opponent attacks a character, that
+                                          character suffers a cumulative -1 Defense penalty until his next turn. <br><br>
 
-                                    • <b>Rush:</b> Dexterity + Athletics - armor’s mobility penalty<br>
-                                    • <b>Withdraw:</b> Dexterity + Athletics - armor’s mobility penalty<br>
-                                    • <b>Disengage:</b> Dexterity + Dodge - armor’s mobility penalty<br><br>
+                                          • <b>Rush:</b> Dexterity + Athletics - armor’s mobility penalty<br>
+                                          • <b>Withdraw:</b> Dexterity + Athletics - armor’s mobility penalty<br>
+                                          • <b>Disengage:</b> Dexterity + Dodge - armor’s mobility penalty<br><br>
 
-                                    • <b>Resolve:</b> ([Wits + Integrity + (1 if specialty applies)] / 2, round up)<br>
-                                    • <b>Guile:</b> ([Manipulation + Socialize + (1 if specialty applies)] / 2, round
-                                    up)<br>
+                                          • <b>Resolve:</b> ([Wits + Integrity + (1 if specialty applies)] / 2, round up)<br>
+                                          • <b>Guile:</b> ([Manipulation + Socialize + (1 if specialty applies)] / 2, round
+                                          up)<br>
+                                    </div>
                               </div>
                         </div>
                   </div>
@@ -322,44 +326,48 @@
 
             <div class="tab-pane fade" id="tab-weparm" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-
-                                    <h4 class="card-title">Weapons</h4>
-                                    <div class="input-group mb-3">
-                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
-                                          <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Weapons</h4>
+                                    <div class="card-body">
+                                          <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                                <div class="input-group-append">
+                                                      <button class="btn btn-outline-secondary" type="button">Search</button>
+                                                </div>
                                           </div>
+                                          <form id="weapons">
+
+                                          </form>
+
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
+
                                     </div>
-                                    <form id="weapons">
-
-                                    </form>
-
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
-
                               </div>
                         </div>
                   </div>
 
                   <div class="row">
-                        <div class="card col-sm-12" style="margin-top: 20px;">
-                              <div class="card-body">
-                                    <h4 class="card-title">Armors</h4>
-                                    <div class="row">
-                                          <div class=" col-md-3">Armor</div>
-                                          <div class=" col-md-2">Soak</div>
-                                          <div class=" col-md-2">Hard</div>
-                                          <div class=" col-md-2">MP</div>
-                                          <div class=" col-md-2">Tags</div>
+                        <div class="col-sm-12">
+                              <div class="card shadow mt-3">
+
+                                    <h4 class="card-header">Armors</h4>
+                                    <div class="card-body">
+                                          <div class="row">
+                                                <div class=" col-md-3">Armor</div>
+                                                <div class=" col-md-2">Soak</div>
+                                                <div class=" col-md-2">Hard</div>
+                                                <div class=" col-md-2">MP</div>
+                                                <div class=" col-md-2">Tags</div>
+                                          </div>
+                                          <form id="armors">
+
+                                          </form>
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
+
                                     </div>
-                                    <form id="armors">
-
-                                    </form>
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
-
                               </div>
                         </div>
                   </div>
@@ -369,12 +377,14 @@
 
             <div class="tab-pane fade" id="tab-notes" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Notes</h4>
-                                    <form>
-                                          <textarea class="form-control" id="notes" rows="30" onchange="setControlStates()"></textarea>
-                                    </form>
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Notes</h4>
+                                    <div class="card-body">
+                                          <form>
+                                                <textarea class="form-control" id="notes" rows="30" onchange="setControlStates()"></textarea>
+                                          </form>
+                                    </div>
                               </div>
                         </div>
                   </div>
@@ -384,17 +394,19 @@
 
             <div class="tab-pane fade" id="tab-intimacies" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Intimacies</h4>
-                                    <div class="row">
-                                          <div class="col-md-8">Intimacy</div>
-                                          <div class="col-md-4">Intensity</div>
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Intimacies</h4>
+                                    <div class="card-body">
+                                          <div class="row">
+                                                <div class="col-md-8">Intimacy</div>
+                                                <div class="col-md-4">Intensity</div>
+                                          </div>
+                                          <form id="intimacies">
+                                          </form>
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
                                     </div>
-                                    <form id="intimacies">
-                                    </form>
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(intimacyTemplate, 'intimacies', 'intimacy'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
@@ -403,14 +415,16 @@
 
             <div class="tab-pane fade" id="tab-inventory" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Inventory</h4>
-                                    <form id="inventory">
-                                    </form>
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Inventory</h4>
+                                    <div class="card-body">
+                                          <form id="inventory">
+                                          </form>
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(inventoryTemplate, 'inventory', 'inventory'); setControlStates();">Add</button>
 
+                                    </div>
                               </div>
                         </div>
                   </div>
@@ -419,361 +433,383 @@
 
             <div class="tab-pane fade" id="tab-charms" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">Charms</h4>
-                                    <div class="input-group mb-3">
-                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
-                                          <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button">Search</button>
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Charms</h4>
+                                    <div class="card-body">
+                                          <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                                <div class="input-group-append">
+                                                      <button class="btn btn-outline-secondary" type="button">Search</button>
+                                                </div>
                                           </div>
+                                          <form id="charms">
+                                          </form>
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
                                     </div>
-                                    <form id="charms">
-                                    </form>
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
                               </div>
                         </div>
                   </div>
             </div>
             <div class="tab-pane fade show active" id="sheet" role="tabpanel">
                   <div class="row">
-                        <div class="card col-sm-12">
-                              <div class="card-body">
-                                    <h4 class="card-title">General</h4>
-                                    <form id="general">
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Name</span>
+                        <div class="col-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">General</h4>
+                                    <div class="card-body">
+                                          <form id="general">
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Name</span>
+                                                            </div>
+                                                            <input type="text" name="name" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="name" class="form-control text-right" onchange="setControlStates()">
+
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Concept</span>
+                                                            </div>
+                                                            <input type="text" name="concept" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
                                                 </div>
 
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Concept</span>
+
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Player</span>
+                                                            </div>
+                                                            <input type="text" name="owner" class="form-control text-right" disabled onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="concept" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-                                          </div>
 
-
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Player</span>
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Anima</span>
+                                                            </div>
+                                                            <input type="text" name="anima" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="owner" class="form-control text-right" disabled onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Anima</span>
-                                                      </div>
-                                                      <input type="text" name="anima" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-
-
-
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Caste</span>
-                                                      </div>
-                                                      <input type="text" name="caste" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
 
-                                                <div class="input-group mb-3 col-sm-6">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Supernal Ability</span>
+
+
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Caste</span>
+                                                            </div>
+                                                            <input type="text" name="caste" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="supernalAbility" class="form-control text-right" onchange="setControlStates()">
+
+                                                      <div class="input-group mb-3 col-sm-6">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Supernal Ability</span>
+                                                            </div>
+                                                            <input type="text" name="supernalAbility" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
                                                 </div>
-                                          </div>
-                                    </form>
+                                          </form>
+                                    </div>
                               </div>
                         </div>
                   </div>
 
                   <div class="row">
-                        <div class="card col-sm-12" style="margin-top: 20px;">
-                              <div class="card-body">
-                                    <h4 class="card-title">Attributes</h4>
-                                    <form id="attributes">
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Strength</span>
+                        <div class="col-12">
+                              <div class="card shadow" style="margin-top: 20px;">
+                                    <h4 class="card-header">Attributes</h4>
+                                    <div class="card-body">
+                                          <form id="attributes">
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Strength</span>
+                                                            </div>
+                                                            <input type="text" name="strength" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="strength" class="form-control text-right" onchange="setControlStates()">
+
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Charisma</span>
+                                                            </div>
+                                                            <input type="text" name="charisma" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Perception</span>
+                                                            </div>
+                                                            <input type="text" name="perception" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
                                                 </div>
 
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Charisma</span>
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Dexterity</span>
+                                                            </div>
+                                                            <input type="text" name="dexterity" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="charisma" class="form-control text-right" onchange="setControlStates()">
+
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Manipulation</span>
+                                                            </div>
+                                                            <input type="text" name="manipulation" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Intelligence</span>
+                                                            </div>
+                                                            <input type="text" name="intelligence" class="form-control text-right" onchange="setControlStates()">
+                                                      </div>
                                                 </div>
 
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Perception</span>
-                                                      </div>
-                                                      <input type="text" name="perception" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-                                          </div>
 
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Dexterity</span>
+                                                <div class=" row">
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Stamina</span>
+                                                            </div>
+                                                            <input type="text" name="stamina" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="dexterity" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
 
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Manipulation</span>
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Appearance</span>
+                                                            </div>
+                                                            <input type="text" name="appearance" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="manipulation" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
 
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Intelligence</span>
+                                                      <div class="input-group mb-3 col-sm-4">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text">Wits</span>
+                                                            </div>
+                                                            <input type="text" name="wits" class="form-control text-right" onchange="setControlStates()">
                                                       </div>
-                                                      <input type="text" name="intelligence" class="form-control text-right" onchange="setControlStates()">
                                                 </div>
-                                          </div>
-
-
-                                          <div class=" row">
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Stamina</span>
-                                                      </div>
-                                                      <input type="text" name="stamina" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Appearance</span>
-                                                      </div>
-                                                      <input type="text" name="appearance" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="input-group mb-3 col-sm-4">
-                                                      <div class="input-group-prepend">
-                                                            <span class="input-group-text">Wits</span>
-                                                      </div>
-                                                      <input type="text" name="wits" class="form-control text-right" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-                                    </form>
+                                          </form>
+                                    </div>
                               </div>
                         </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row mt-3">
                         <div class="col-sm-4">
                               <div class="row">
-                                    <div class="card col-sm-12" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Abilities</h4>
-                                                <form id="abilities">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Abilities</h4>
+                                                <div class="card-body">
 
-                                                </form>
+                                                      <form id="abilities">
+
+                                                      </form>
+                                                </div>
                                           </div>
                                     </div>
                               </div>
-                              <div class="row">
-                                    <div class="card col-sm-12" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Additionnal Abilities</h4>
-                                                <form id="additionalAbilities">
+                              <div class="row mt-3">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Additionnal Abilities</h4>
+                                                <div class="card-body">
+                                                      <form id="additionalAbilities">
 
 
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
 
+                                                </div>
                                           </div>
                                     </div>
                               </div>
                         </div>
 
                         <div class="col-sm-8">
+                              <div class="row">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Health</h4>
+                                                <div class="card-body">
+                                                      <form id="incapacitated">
+                                                            <label for="incapacitatedCheck">Incapacitated</label><br>
+                                                            <input id="incapacitatedCheck" name="incapacitated" type="checkbox" onchange="setControlStates()">
+                                                      </form>
+                                                      <hr>
+                                                      <form id="health">
 
-                              <div class="row mt-3">
-                                    <div class="card col-12">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Health</h4>
-                                                <hr>
-                                                <form id="incapacitated">
-                                                      <label for="incapacitatedCheck">Incapacitated</label><br>
-                                                      <input id="incapacitatedCheck" name="incapacitated" type="checkbox" onchange="setControlStates()">
-                                                </form>
-                                                <hr>
-                                                <form id="health">
-
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                                </div>
                                           </div>
                                     </div>
                               </div>
 
                               <div class="row">
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Specializations</h4>
-                                                <form id="specializations">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Specializations</h4>
+                                                <div class="card-body">
+                                                      <form id="specializations">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
 
+                                                </div>
                                           </div>
                                     </div>
-
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Merits</h4>
-                                                <form id="merits">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
-
-                                          </div>
-                                    </div>
-                              </div>
-
-
-                              <div class="row">
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Willpower</h4>
-                                                <form id="willpower">
-                                                      <div class="form-row">
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Limit Break</h4>
-                                                <form id="limitBreak">
-                                                      <div class="form-row">
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-
-                              </div>
-
-                              <div class="row">
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Essence</h4>
-                                                <form id="essence">
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Essence
-                                                                              Level</span>
-                                                                  </div>
-                                                                  <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Personal</span>
-                                                                  </div>
-                                                                  <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Peripherical</span>
-                                                                  </div>
-                                                                  <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Commited</span>
-                                                                  </div>
-                                                                  <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-
-
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Limit Trigger</h4>
-                                                <form id="limitTrigger">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
-
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Merits</h4>
+                                                <div class="card-body">
+                                                      <form id="merits">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
+                                                </div>
                                           </div>
                                     </div>
                               </div>
 
 
                               <div class="row">
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Experience</h4>
-                                                <form id="normal-experience">
-                                                      <div class=" row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Willpower</h4>
+                                                <div class="card-body">
 
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
-
-                                                      </div>
-                                                </form>
+                                                      <form id="willpower">
+                                                            <div class="form-row">
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  </div>
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
                                           </div>
                                     </div>
 
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Limit Break</h4>
+                                                <div class="card-body">
+                                                      <form id="limitBreak">
+                                                            <div class="form-row">
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  </div>
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
 
-                                    <div class="card col-sm-6" style="margin-top: 20px;">
-                                          <div class="card-body">
-                                                <h4 class="card-title">Solar Experience</h4>
-                                                <form id="solar-experience">
+                              </div>
 
-                                                      <div class=" row">
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Essence</h4>
+                                                <div class="card-body">
+                                                      <form id="essence">
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Essence
+                                                                                    Level</span>
+                                                                        </div>
+                                                                        <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
 
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Personal</span>
+                                                                        </div>
+                                                                        <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                        <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
 
-                                                      </div>
-                                                </form>
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Peripherical</span>
+                                                                        </div>
+                                                                        <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                        <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Commited</span>
+                                                                        </div>
+                                                                        <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Limit Trigger</h4>
+                                                <div class="card-body">
+                                                      <form id="limitTrigger">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Experience</h4>
+                                                <div class="card-body">
+                                                      <form id="normal-experience">
+                                                            <div class=" row">
+
+                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Solar Experience</h4>
+                                                <div class="card-body">
+                                                      <form id="solar-experience">
+                                                            <div class=" row">
+
+                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+
+                                                            </div>
+                                                      </form>
+                                                </div>
                                           </div>
                                     </div>
                               </div>
@@ -1315,8 +1351,8 @@
       `;
 
       var weaponTemplate = `
-<div class="form-row mb-2" id="weapon__ID__" >
-      <div class="container border border border rounded p-2">
+<div class="form-row mb-3" id="weapon__ID__" >
+      <div class="container border border border rounded p-2 shadow">
             <div class="row">
                   <div class=" col-md-4">
                         <div class="form-group">
@@ -2355,8 +2391,7 @@
 
       var isRefreshing = false;
 
-      function afterRefresh(dataJSON)
-      {
+      function afterRefresh(dataJSON) {
             fillCharacter(dataJSON)
 
             isRefreshing = false;
@@ -2421,7 +2456,7 @@
       }
 
       var charmTemplate = `
-<div class="form-row mt-3 border p-2" id="charm__ID__">
+<div class="form-row mt-3 border p-2 shadow" id="charm__ID__">
       <div class="col-12">
             <div class="row">
                   <div class="col-md-6">
@@ -2553,8 +2588,7 @@
 
             diceBonus = parseInt(globalBonusDiceElem.value);
 
-            if(isNaN(diceBonus))
-            {
+            if (isNaN(diceBonus)) {
                   diceBonus = 0;
             }
 
@@ -2562,8 +2596,7 @@
 
             globalDebuff = parseInt(globalDebuffElem.value);
 
-            if(isNaN(globalDebuff))
-            {
+            if (isNaN(globalDebuff)) {
                   globalDebuff = 0
             }
 
@@ -2573,7 +2606,7 @@
                   incapacitatedLabel = document.getElementById("incapacitatedLabel");
 
                   incapacitatedLabel.hidden = false;
-                  
+
             }
             else {
                   incapacitatedLabel.hidden = true;
@@ -2741,17 +2774,13 @@
             naturalSoakElem.innerHTML = ensureZero(naturalSoak);
 
 
-            //
-
-
-
             // SOAK ===========================
 
             soakElem = document.getElementById("soakCalc");
 
             soak = charactar["data"]["attributes"]["stamina"] + currentArmor["soak"];
 
-            soak = soak - healthDebuff + diceBonus;
+            soak = soak + diceBonus;
 
             soakElem.innerHTML = ensureZero(soak) + " + charms, defends against Withering attacks"
 
@@ -2942,8 +2971,7 @@
 
             value = parseInt(lastDamagedHealthtPoint["name"])
 
-            if(isNaN(value))
-            {
+            if (isNaN(value)) {
                   return 0;
             }
 
@@ -2952,54 +2980,48 @@
       }
 
       // Make sure the value is 0 if lower than 0
-      function ensureZero(value)
-      {
+      function ensureZero(value) {
 
-            if(value < 0)
-            {
+            if (value < 0) {
                   return 0;
             }
 
             return value;
       }
 
-      function exportCharacter()
-      {
+      function exportCharacter() {
             download("character.txt", JSON.stringify(charactar["data"]));
       }
 
-      function importCharacter()
-      {
+      function importCharacter() {
             var input = document.createElement('input');
             input.type = 'file';
 
-            input.onchange = e => { 
+            input.onchange = e => {
 
-            // getting a hold of the file reference
-            var file = e.target.files[0]; 
+                  // getting a hold of the file reference
+                  var file = e.target.files[0];
 
-            // setting up the reader
-            var reader = new FileReader();
-            reader.readAsText(file,'UTF-8');
+                  // setting up the reader
+                  var reader = new FileReader();
+                  reader.readAsText(file, 'UTF-8');
 
-            // here we tell the reader what to do when it's done reading...
-            reader.onload = readerEvent => {
-                  var content = readerEvent.target.result; // this is the content!
-                  //console.log( content );
-                  try
-                  {
-                        charactar["data"] = JSON.parse(content)
+                  // here we tell the reader what to do when it's done reading...
+                  reader.onload = readerEvent => {
+                        var content = readerEvent.target.result; // this is the content!
+                        //console.log( content );
+                        try {
+                              charactar["data"] = JSON.parse(content)
 
-                        afterRefresh(charactar);
+                              afterRefresh(charactar);
 
-                        setControlStates();
+                              setControlStates();
 
+                        }
+                        catch (e) {
+                              alert(e); // error in the above string (in this case, yes)!
+                        }
                   }
-                   catch(e) 
-                   {
-                        alert(e); // error in the above string (in this case, yes)!
-                  }
-            }
 
             }
 
@@ -3008,17 +3030,17 @@
       }
 
       function download(filename, text) {
-    var pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    pom.setAttribute('download', filename);
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            pom.setAttribute('download', filename);
 
-    if (document.createEvent) {
-        var event = document.createEvent('MouseEvents');
-        event.initEvent('click', true, true);
-        pom.dispatchEvent(event);
-    }
-    else {
-        pom.click();
-    }
-}
+            if (document.createEvent) {
+                  var event = document.createEvent('MouseEvents');
+                  event.initEvent('click', true, true);
+                  pom.dispatchEvent(event);
+            }
+            else {
+                  pom.click();
+            }
+      }
 </script>

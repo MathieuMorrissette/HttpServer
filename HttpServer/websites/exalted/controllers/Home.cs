@@ -14,19 +14,7 @@ namespace HttpServer.websites.exalted.controllers
     {
         public bool HandleRequest(Client client, HttpListenerContext context, params string[] args)
         {
-            if (!UserManager.Connected(client))
-            {
-                context.Redirect("../login");
-                return true;
-            }
-
             HttpServer.websites.exalted.model.User user = UserManager.GetUser(UserManager.GetUserID(client));
-
-            if (user == null)
-            {
-                context.Redirect("../login");
-                return true;
-            }
 
             Home_Template template = new Home_Template(user);
             context.Send(template.Render());

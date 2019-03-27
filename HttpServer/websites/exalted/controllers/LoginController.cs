@@ -8,7 +8,7 @@ using System.Net;
 
 namespace HttpServer.websites.exalted.controllers
 {
-    public class Login : IController
+    public class LoginController : IController
     {
         private HttpListenerContext context;
 
@@ -60,7 +60,9 @@ namespace HttpServer.websites.exalted.controllers
                 return;
             }
 
-            Login_Template login_template = new Login_Template();
+            HttpServer.websites.exalted.model.User user = UserManager.GetUser(UserManager.GetUserID(client));
+
+            Login_Template login_template = new Login_Template(user);
             login_template.Errors = new Error[] { error };
             this.context.Send(login_template.Render());
         }

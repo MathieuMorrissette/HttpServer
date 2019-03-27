@@ -43,7 +43,7 @@ namespace HttpServer.websites.exalted.controllers
                 return false;
             }
 
-            Sheet_Template template = new Sheet_Template();
+            Sheet_Template template = new Sheet_Template(user);
             context.Send(template.Render());
 
             return true;
