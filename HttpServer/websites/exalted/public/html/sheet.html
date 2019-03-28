@@ -97,6 +97,16 @@
                                                       </div>
                                                 </div>
                                           </div>
+                                          <div class="row border p-2">
+                                                <div class="offset-8 col-4">
+                                                      <div class="row">
+                                                            <b>Initiative :</b>
+                                                      </div>
+                                                      <div class="row">
+                                                            <input type="text" class="form-control" id="initiative" onchange="calculateStats()" value="0" data-toggle="tooltip" data-placement="bottom" title="Your current ini">
+                                                      </div>
+                                                </div>
+                                          </div>
 
 
                                           <div class="row">
@@ -200,7 +210,7 @@
                                                                         <b>Decisive Damage Roll :</b>
                                                                   </div>
                                                                   <div class="row">
-                                                                        Your Initiative
+                                                                        <div id="iniCalc"></div>
                                                                   </div>
                                                             </div>
                                                       </div>
@@ -2584,6 +2594,16 @@
       // TODO ask for ini
       function calculateStats() {
 
+            initiativeElem = document.getElementById("initiative");
+
+            initiative = parseInt(initiativeElem.value);
+
+            if(isNaN(initiative))
+            {
+                  initiative = 0;
+            }
+
+
             globalBonusDiceElem = document.getElementById("globalDiceBonus");
 
             diceBonus = parseInt(globalBonusDiceElem.value);
@@ -2805,6 +2825,16 @@
             decisiveAttackRollElem.innerHTML = ensureZero(decisiveAttackRoll);
 
             // ===============================
+
+
+            // DECISIVE DAMAGE ROLL ==============
+            decisiveDamageRollElem = document.getElementById("iniCalc");
+
+
+            decisiveDamageRollElem.innerHTML = ensureZero(initiative);
+
+
+            // ========================
 
 
             // HARDNESS ======================
