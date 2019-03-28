@@ -41,7 +41,7 @@
                   </div>
 
                   <div class="row">
-                        <div class="col-md-4 align-self-center">
+                        <div class="col-md-4">
                               <label>Special Dice 10 Reroll  :</label><br>
                               <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="specialReroll1" name="specialRerollRadio" class="custom-control-input" checked>
@@ -52,23 +52,12 @@
                                     <label class="custom-control-label" for="specialReroll2">Non-Successes</label>
                               </div>
                         </div>
-                        <div class="col-md-8 ">
-                              <div class="row border m-3 p-2">
+                        <div class="col-md-8 ">                              
+                              <label>Rerolls</label>
+                              <div class="row border shadow m-3 p-2">
                                     <div class="col-12">
                                           <form id="reroll">
-                                                <div class="row" id="reroll__ID__">
-                                                      <div class="col-4">
-                                                            <label>Reroll Dice :</label>
-                                                            <input type="input" class="form-control" name="reroll__ID__-value" value="0">
-                                                      </div>
-                                                      <div class="col-4">
-                                                            <label for="reroll__ID__" data-toggle="tooltip" data-placement="bottom" title="Roll until no more">Recusive :</label><br>
-                                                            <input id="reroll__ID__" name="reroll__ID__-recursive" type="checkbox" onchange="setControlStates()">
-                                                      </div>
-                                                      <div class="col-4 align-self-center">
-                                                            <button type="button" class="btn btn-primary float-right" onclick="deleteRow('reroll__ID__');"><i class="fas fa-trash-alt"></i></button>
-                                                      </div>
-                                                </div>
+
                                           </form>
                                     </div>
                               </div>
@@ -100,16 +89,32 @@
       var rerollFields = {
             "fields" : [
                   {
-                        "name" : "value",
+                        "value" : "value",
                         "type" : "input"
                   },
                   {
-                        "name" : "recursive",
+                        "value" : "recursive",
                         "type" : "checkbox"
                   },
 
             ]
       }
+
+      var rerollTemplate = `                                                
+      <div class="row" id="reroll__ID__">
+            <div class="col-4">
+                  <label>Reroll Dice :</label>
+                  <input type="input" class="form-control" name="reroll__ID__-value" value="0">
+            </div>
+            <div class="col-4">
+                  <label for="reroll__ID__recursive" data-toggle="tooltip" data-placement="bottom" title="Roll until no more">Recusive :</label><br>
+                  <input id="reroll__ID__recursive" name="reroll__ID__-recursive" type="checkbox" >
+            </div>
+            <div class="col-4 align-self-center">
+                  <button type="button" class="btn btn-primary float-right" onclick="deleteRow('reroll__ID__');"><i class="fas fa-trash-alt"></i></button>
+            </div>
+      </div>
+      `;
 
       var results = [];
       var countJSON = [];
@@ -117,6 +122,172 @@
       var type = 10;
 
       var successes = 0;
+
+      function uniqueID() {
+
+            return Math.random().toString(36).substr(2, 9);
+      };
+
+      function deleteRow(elementId) {
+            var element = document.getElementById(elementId)
+
+            if (element == null) {
+                  return;
+            }
+
+            element.parentNode.removeChild(element);
+      }
+
+      function addReRollDiceRow()
+      {
+            var containerjquery = $("#reroll");
+
+            id = uniqueID();
+
+            var htmltoadd = rerollTemplate.split("__ID__").join(id)
+
+            containerjquery.append(htmltoadd);
+      }
+
+      function getRerollDice()
+      {
+            rerollDices = getJSONMulti("reroll", rerollFields, "reroll");
+
+            if(rerollDices == null || rerollDices.length == 0)
+            {
+                  return null;
+            }
+
+            rerollDicesUnique = [];
+
+            rerollDices.forEach(item => {
+                  containsFilter = rerollDicesUnique.filter(elem => 
+                  { 
+                        if(elem["value"] == item["value"])
+                        {
+                              return elem;
+                        }
+                  });
+                  if(containsFilter.length > 0)
+                  {
+                        return;
+                  }
+
+                  rerollDicesUnique.push(item);
+
+            });
+
+            return rerollDicesUnique;
+      }
+
+      function doRerolls(diceCount, depth, successFrom, doubleFrom)
+      {
+            dicesToReroll = getRerollDice();
+
+            countToReroll = 0;
+            // count the number of dice to rerolls
+            diceCount.forEach(element => {
+                  dicesToRerollContains = dicesToReroll.filter(rerollDice => 
+                  { 
+                        if(rerollDice["value"] == element["value"])
+                        {
+                              if(depth == 0)
+                              {
+                                    countToReroll = countToReroll + element["count"];
+                              }
+
+                              if(depth > 0 && rerollDice["recursive"])
+                              {
+                                    countToReroll = countToReroll + element["count"];
+                              }
+                        }
+                  })                  
+            });
+
+            if(countToReroll == 0)
+            {
+                  return;
+            }
+
+            newDiceCount = rollDices(countToReroll, 10);
+
+            rollSuccesses = getSuccesses(newDiceCount,successFrom,doubleFrom);
+
+            successes = successes + rollSuccesses;
+
+            message = "Rerolling " + countToReroll + " dices - Depth " + depth;
+
+            if(depth >= 9999999)
+            {
+                  message = "Special Rerolling " + countToReroll + " dices - Depth" + (depth - 9999999);
+            }
+
+            ShowRoll(newDiceCount, message, false, rollSuccesses);
+
+            
+            UpdateSuccesses(successes)
+
+            doRerolls(newDiceCount, depth + 1,successFrom, doubleFrom);
+      }
+
+      function getJSONMulti(form, fields, prepend) {
+            var form = document.getElementById(form);
+
+            var data = new FormData(form);
+
+            var jsonArray = [];
+
+            var items = [];
+
+            data.forEach(function (value, key) {
+
+                  isolatedKey = key.split("-")[0];
+
+                  if (items.indexOf(isolatedKey) == -1 && isolatedKey.indexOf(prepend) != -1) {
+                        items.push(isolatedKey);
+                  }
+            });
+
+
+            items.forEach(function (item, i) {
+
+                  var id = item.split(prepend)[1];
+
+                  var object = {}
+
+                  fields["fields"].forEach(function (field) {
+
+                        var realKey = prepend + id + "-" + field["value"];
+
+                        if (field["type"] == "checkbox") {
+                              if (data.has(realKey)) {
+                                    object[field["value"]] = true;
+                              } else {
+                                    object[field["value"]] = false
+                              }
+
+                              return;
+                        }
+
+
+                        var tryint = parseInt(data.get(realKey));
+
+                        if (!isNaN(tryint)) {
+
+                              object[field["value"]] = tryint;
+                        }
+                        else {
+                              object[field["value"]] = data.get(realKey);
+                        }
+                  });
+
+                  jsonArray.push(object)
+            });
+
+            return jsonArray
+
+      }
+
 
       function rollDicesbroken() {
             results = []
@@ -143,17 +314,19 @@
                   return;
             }
 
+            if(isNaN(doubleValue))
+            {
+                  doubleValue = 0;
+            }
+
             countJSON = rollDices(diceCount, 10);
-
-
-            ShowRoll(countJSON, "First Roll!", true);
 
             // calculate successes
             successes = getSuccesses(countJSON, successFrom, doubleValue)
 
+            ShowRoll(countJSON, "First Roll!", true, successes);
+
             UpdateSuccesses(successes)
-
-
 
            special10RollElements = document.getElementsByName("specialRerollRadio")
 
@@ -171,6 +344,8 @@
             {
                   reroll10LimitNonSuccess(successFrom, doubleValue);
             }
+
+            doRerolls(countJSON, 0, successFrom, doubleValue)
       }
 
 
@@ -204,11 +379,15 @@
 
             newDiceCount = rollDices(dicesToRoll, 10);
 
-            ShowRoll(newDiceCount, "Dice 10 Special Reroll",false);
+            rollSuccesses = getSuccesses(newDiceCount,successFrom,doubleFrom);
 
-            successes = successes + getSuccesses(newDiceCount,successFrom,doubleFrom)
+            successes = successes + rollSuccesses;
+
+            ShowRoll(newDiceCount, "Dice 10 Special Reroll",false, rollSuccesses);
 
             UpdateSuccesses(successes)
+
+            doRerolls(newDiceCount, 9999999, doubleFrom,successFrom);
 
       }
 
@@ -220,7 +399,7 @@
             diceContainerElem.innerHTML = "";
       }
 
-      function ShowRoll(diceCount, label, clear)
+      function ShowRoll(diceCount, label, clear, rollSuccesses)
       {
             if(clear)
             {
@@ -242,7 +421,13 @@
                  
             `;
 
-            diceFooter = `</div></div></div></div></div>`;
+            diceFooter = `
+                        <div class="row">
+                              <div class="col-12">
+                                    <b>Total successes for this roll:</b> __SUCCESSES__
+                              </div>
+                        </div>
+                        </div></div></div></div></div>`;
 
             diceContainerElem = document.getElementById("diceContainer");
 
@@ -256,7 +441,7 @@
                   htmlToAdd = htmlToAdd + tmp;
             });
 
-            diceContainerElem.innerHTML = diceContainerElem.innerHTML + htmlToAdd + diceFooter;
+            diceContainerElem.innerHTML = diceContainerElem.innerHTML + htmlToAdd + diceFooter.split("__SUCCESSES__").join(rollSuccesses);
       }
 
 
@@ -273,7 +458,7 @@
       function getSuccesses(diceCount, successFrom, doubleFrom)
       {
              // calculate successes
-             successes = 0;
+             successesLocal = 0;
 
              diceCount.forEach(diceValue => {
                   if(diceValue["value"] >= successFrom)
@@ -285,12 +470,14 @@
                               multiplicator = 2;
                         }
 
-                        successes = successes + (diceValue["count"] * multiplicator);
+                        successesLocal = successesLocal + (diceValue["count"] * multiplicator);
                   }
             });
 
-            return successes;
+            return successesLocal;
       }
+
+
 
       function rollDices(count)
       {
