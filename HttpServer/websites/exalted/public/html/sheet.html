@@ -19,6 +19,9 @@
                               <a class="nav-link" data-toggle="tab" href="#tab-intimacies" role="tab">Intimacies</a>
                         </li>
                         <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#tab-tracker" role="tab">Tracker</a>
+                        </li>
+                        <li class="nav-item">
                               <a class="nav-link" data-toggle="tab" href="#tab-inventory" role="tab">Inventory</a>
                         </li>
                         <li class="nav-item">
@@ -35,6 +38,29 @@
       </div>
 
       <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade" id="tab-tracker" role="tabpanel">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Character Tracker</h4>
+                                    <div class="card-body">
+                                               
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(trackerTemplate, 'tracker', 'track', true); setControlStates();">Add</button><br>
+                                          <hr />
+
+                                          <form id="tracker">
+                                                
+                                          </form>
+
+
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+
             <div class="tab-pane fade" id="tab-quick" role="tabpanel">
                   <div class="row">
                         <div class="col-12">
@@ -391,7 +417,6 @@
                         </div>
                   </div>
             </div>
-
 
 
             <div class="tab-pane fade" id="tab-notes" role="tabpanel">
@@ -1478,6 +1503,60 @@
 </div>
       `;
 
+
+      var trackerTemplate = `
+      <div class="form-row border rounded shadow p-2 mb-3" id="track__ID__">
+            <div class="container">
+                  <div class="row">
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Reason</label>
+                                    <input type="text" class="form-control" name="track__ID__-description" onchange="setControlStates()">
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Experience</label>
+                                    <input type="text" class="form-control" name="track__ID__-experience" onchange="setControlStates()" value="0">
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Solar Experience</label>
+                                    <input type="text" class="form-control" name="track__ID__-specialExperience" onchange="setControlStates()" value="0">
+                              </div>
+                        </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Game</label>
+                                    <input type="text" class="form-control" name="track__ID__-game" onchange="setControlStates()">
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Session</label>
+                                    <input type="text" class="form-control" name="track__ID__-session" onchange="setControlStates()">
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                              <div class="form-group">
+                                    <label>Essence</label>
+                                    <input type="text" class="form-control" name="track__ID__-essence" onchange="setControlStates()" value="0">
+                              </div>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-12">
+                              <button type="button" class="btn btn-primary float-right" onclick="deleteRow('track__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      `;
+
       // here we could add tag like : combat ability, social ability so we can sort their category
       var defaultAbilities =
       {
@@ -1941,6 +2020,19 @@
 
             }
 
+            if(character["data"]["tracker"] != null)
+            {
+                  document.getElementById("tracker").innerHTML = ""
+
+                  var trackerLength = character["data"]["tracker"].length;
+
+                  for (var i = trackerLength - 1 ; i >= 0; i--) {
+                        addRow(trackerTemplate, "tracker", "track")
+                  }
+
+                  fillMulti("tracker", character["data"]["tracker"], "track", trackerFields);
+            }
+
             fillSingle("incapacitated", character["data"]["health"])
 
             fillSpecial(character);
@@ -2094,6 +2186,36 @@
 
             return essence;
 
+      }
+
+      var trackerFields =
+      {
+            "fields": [
+                  {
+                        "value": "description",
+                        "type": "input"
+                  },
+                  {
+                        "value": "experience",
+                        "type": "input"
+                  },
+                  {
+                        "value": "specialExperience",
+                        "type": "input"
+                  },
+                  {
+                        "value": "game",
+                        "type": "input"
+                  },
+                  {
+                        "value": "session",
+                        "type": "input"
+                  },
+                  {
+                        "value": "essence",
+                        "type": "input"
+                  },
+            ]
       }
 
       var additionalFields = {
@@ -2452,7 +2574,9 @@
                   "more":
                   {
                         "lore": null
-                  }
+                  },
+
+                  "tracker": []
             }
 
             data["general"] = getJSONSingle("general");
@@ -2479,6 +2603,7 @@
 
             data["notes"] = document.getElementById("notes").value;
             data["more"]["lore"] = document.getElementById("loreBackground").value;
+            data["tracker"] = getJSONMulti("tracker", trackerFields, "track")
 
             var t1 = performance.now();
 
@@ -2676,7 +2801,7 @@
 </div>
       `;
 
-      function addRow(template, containerId, prepend) {
+      function addRow(template, containerId, prepend, beginning) {
             var containerjquery = $("#" + containerId);
             // var container = document.getElementById(containerId);
 
@@ -2685,6 +2810,12 @@
             id = uniqueID();
 
             var htmltoadd = template.split("__ID__").join(id)
+
+            if(beginning == true)
+            {
+                  containerjquery.prepend(htmltoadd);
+                  return;
+            }
 
             containerjquery.append(htmltoadd);
 
