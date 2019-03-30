@@ -7,20 +7,17 @@
                               <label>Dice Count</label>
                               <input type="input" class="form-control" value="0" id="diceCount">
                         </div>
-                        <div class="col-md-4">
+                        <div class="offset-md-4 col-md-4">
                               <label for="">Dice Type</label>
                               <select id="" class="form-control">
                                     <option selected>10</option>
                               </select>
                         </div>
-                        <div class="col-md-4 text-center align-self-end mt-1">
-                              <span class="align-bottom"><button onclick="rollDicesbroken()" class="btn btn-primary">Roll!</button></span>
-                        </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row mb-2">
                         <div class="col-md-4">
-                              <label>Count Success From :</label>
+                              <label>Count Success From</label>
                               <input type="input" class="form-control" value="7" id="successFrom">
                         </div>
                         <div class="col-md-8 align-self-center">
@@ -69,6 +66,12 @@
                         </div>
                   </div>
 
+                  <div class="row">
+                        <div class="col-12 align-self-center text-center">
+                              <button onclick="rollDicesbroken()" class="btn btn-primary">Roll!</button>
+                        </div>
+                  </div>
+
                   <div class="row border p-2 mt-1">
                               <div id="successes" class="col-md-12 text-center" hidden>
                                     <h4>Successes : </h4><span id="successesResult" style="font-weight: bold;font-size:2em;"></span>
@@ -103,11 +106,11 @@
       var rerollTemplate = `                                                
       <div class="row" id="reroll__ID__">
             <div class="col-4">
-                  <label>Reroll Dice :</label>
+                  <label>Reroll Dice</label>
                   <input type="input" class="form-control" name="reroll__ID__-value" value="0">
             </div>
             <div class="col-4">
-                  <label for="reroll__ID__recursive" data-toggle="tooltip" data-placement="bottom" title="Roll until no more">Recusive :</label><br>
+                  <label for="reroll__ID__recursive" data-toggle="tooltip" data-placement="bottom" title="Roll until no more">Recusive</label><br>
                   <input id="reroll__ID__recursive" name="reroll__ID__-recursive" type="checkbox" >
             </div>
             <div class="col-4 align-self-center">
@@ -147,6 +150,8 @@
             var htmltoadd = rerollTemplate.split("__ID__").join(id)
 
             containerjquery.append(htmltoadd);
+
+            fixToolTips();
       }
 
       function getRerollDice()
@@ -444,6 +449,12 @@
             diceContainerElem.innerHTML = diceContainerElem.innerHTML + htmlToAdd + diceFooter.split("__SUCCESSES__").join(rollSuccesses);
       }
 
+      function fixToolTips()
+      {
+            $(function () {
+		      $('[data-toggle="tooltip"]').tooltip()
+	      })
+      }
 
       function UpdateSuccesses(successes)
       {
