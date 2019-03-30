@@ -1260,7 +1260,7 @@
       var defaultAbilityTemplate = `
       <tr>
             <td ><input name="__ABILITY_NAME__-favorite" type="checkbox" onchange="setControlStates()"></td>
-            <td >__ABILITY_LABEL__</td>
+            <td ><span class="d-inline-block" data-toggle="tooltip" title="__ABILITY_NOTE__">__ABILITY_LABEL__</span></td>
             <td><input type="text" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()"></td>
       </tr>
 
@@ -1485,132 +1485,158 @@
                   {
                         "name": "archery",
                         "label": "Archery",
-                        "type": "combat"
+                        "type": "combat",
+                        "notes" : "Bows, Crossbows, Slings, Dart Blowers"
                   },
                   {
                         "name": "athletics",
                         "label": "Athletics",
-                        "type": ""
+                        "type": "",
+                        "notes" : "Speed, Acrobatics, Heavy lifting"
                   },
                   {
                         "name": "awareness",
                         "label": "Awareness",
-                        "type": ""
+                        "type": "",
+                        "notes": "Sight, Hearing, Touch, Taste, Smell"
                   },
                   {
                         "name": "brawl",
                         "label": "Brawl",
-                        "type": "combat"
+                        "type": "combat",
+                        "notes": "Fighting with fists, grapples, thrown furniture"
                   },
                   {
                         "name": "bureaucracy",
                         "label": "Bureaucracy",
-                        "type": ""
+                        "type": "",
+                        "notes" : "Business sense, Management, Planning"
                   },
                   {
                         "name": "craft",
                         "label": "Craft",
-                        "type": ""
+                        "type": "",
+                        "notes": "Craft, Build, Deconstruct, Repair"
                   },
                   {
                         "name": "dodge",
                         "label": "Dodge",
-                        "type": ""
+                        "type": "",
+                        "notes": "Avoid harm, seize initiative"
                   },
                   {
                         "name": "integrity",
                         "label": "Integrity",
-                        "type": ""
+                        "type": "",
+                        "notes": "Resist manipulation, Resist torture, Meditate, Force of Will"
                   },
                   {
                         "name": "investigation",
                         "label": "Investigation",
-                        "type": ""
+                        "type": "",
+                        "notes": "Solve crime, Detect human activity, Interrogate"
                   },
                   {
                         "name": "larceny",
                         "label": "Larceny",
-                        "type": ""
+                        "type": "",
+                        "notes": "Steal, Swindle, Disguise, Bypass, Perform Heist"
                   },
                   {
                         "name": "linguistics",
                         "label": "Linguistics",
-                        "type": ""
+                        "type": "",
+                        "notes": "Communicate, Translate, Read, Write, Manipulate with text"
                   },
                   {
                         "name": "lore",
                         "label": "Lore",
-                        "type": ""
+                        "type": "",
+                        "notes": "Affirm Knowledge, Teach, Manipulate Essence or the Wyld"
                   },
                   {
                         "name": "martialArts",
                         "label": "Martial Arts",
-                        "type": "combat"
+                        "type": "combat",
+                        "notes": "Learn Sidereal Martial Arts from a Mentor"
                   },
                   {
                         "name": "medecine",
                         "label": "Medecine",
-                        "type": ""
+                        "type": "",
+                        "notes": "Cure Poison/Sickness, Heal Wounds, Diagnose"
                   },
                   {
                         "name": "melee",
                         "label": "Melee",
-                        "type": "combat"
+                        "type": "combat",
+                        "notes": "Attack, Defend, Summon weapons, A few ranged Attacks"
                   },
                   {
                         "name": "occult",
                         "label": "Occult",
-                        "type": ""
+                        "type": "",
+                        "notes": "Mastery over Demons/Elementals/Gods/Fair Folk, Sorcery"
                   },
                   {
                         "name": "performance",
                         "label": "Performance",
-                        "type": ""
+                        "type": "",
+                        "notes": "Speeches, Dance/Music/Acting/Courting, Empowering Songs"
                   },
                   {
                         "name": "presence",
                         "label": "Presence",
-                        "type": ""
+                        "type": "",
+                        "notes": "Convince, Radiate Authority, Empower Followers"
                   },
                   {
                         "name": "resistance",
                         "label": "Resistance",
-                        "type": ""
+                        "type": "",
+                        "notes": "Toughness, Invincibility, Immunity, Rapid Healing"
                   },
                   {
                         "name": "ride",
                         "label": "Ride",
-                        "type": ""
+                        "type": "",
+                        "notes": "Mounted travel & combat"
                   },
                   {
                         "name": "sail",
                         "label": "Sail",
-                        "type": ""
+                        "type": "",
+                        "notes": "Ship travel & combat"
                   },
                   {
                         "name": "socialize",
                         "label": "Socialize",
-                        "type": ""
+                        "type": "",
+                        "notes": "Guard thoughts, Influence courts, Split own personality"
                   },
                   {
                         "name": "stealth",
                         "label": "Stealth",
-                        "type": ""
+                        "type": "",
+                        "notes": "Hide, Move undected, Assassinate"
                   },
                   {
                         "name": "survival",
                         "label": "Survival",
-                        "type": ""
+                        "type": "",
+                        "notes": "Survive in nature, Track prey, Tame and Empower Pet"
                   },
                   {
                         "name": "thrown",
                         "label": "Thrown",
-                        "type": "combat"
+                        "type": "combat",
+                        "notes": "Throwing Knives, Chakrams, Needles"
                   },
                   {
                         "name": "war",
                         "label": "War",
-                        "type": ""
+                        "type": "",
+                        "notes": "Command fighters, Command armies, Strategize"
                   }
             ]
       }
@@ -1624,6 +1650,7 @@
 
                   var tmp = defaultAbilityTemplate.split("__ABILITY_NAME__").join(ability["name"]);
                   tmp = tmp.split("__ABILITY_LABEL__").join(ability["label"]);
+                  tmp = tmp.split("__ABILITY_NOTE__").join(ability["notes"]);
 
                   abilitiesForm.innerHTML = abilitiesForm.innerHTML + tmp;
 
@@ -2275,6 +2302,75 @@
                         "type": "input"
                   }
             ]
+      }
+
+      var castes  = {
+            "solar" : {
+                  "dawn" : {
+                        "supernals" : [
+                              "archery",
+                              "awareness",
+                              "brawl",
+                              "dodge",
+                              "melee",
+                              "resistance",
+                              "thrown",
+                              "war"
+                        ]
+                  },
+
+                  "zenith" : {
+                        "supernals" : [
+                              "athletics",
+                              "integrity",
+                              "lore",
+                              "performance",
+                              "presence",
+                              "resistance",
+                              "survival",
+                              "war"
+                        ]
+                  },
+
+                  "twilight" : {
+                        "supernals" : [
+                              "bureaucracy",
+                              "craft",
+                              "integrity",
+                              "investigation",
+                              "linguistic",
+                              "lore",
+                              "medecine",
+                              "occult"
+                        ]
+                  },
+
+                  "night" : {
+                        "supernals" : [
+                              "athletics",
+                              "awareness",
+                              "dodge",
+                              "investigation",
+                              "larceny",
+                              "ride",
+                              "socialize",
+                              "stealth"
+                        ]
+                  },
+
+                  "eclipse" : {
+                        "supernals" : [
+                              "bureaucracy",
+                              "larceny",
+                              "linguistic",
+                              "occult",
+                              "presence",
+                              "ride",
+                              "sail",
+                              "socialize"
+                        ]
+                  },
+            }
       }
 
 
