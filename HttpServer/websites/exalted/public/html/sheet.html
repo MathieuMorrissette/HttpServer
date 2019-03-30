@@ -465,357 +465,368 @@
             </div>
 
 
-      <div class="tab-pane fade" id="tab-charms" role="tabpanel">
-            <div class="row">
-                  <div class="col-sm-12">
-                        <div class="card shadow">
-                              <h4 class="card-header">Charms</h4>
-                              <div class="card-body">
-                                    <div class="input-group mb-3">
-                                          <input type="text" class="form-control" placeholder="Search (not implemented)">
-                                          <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button">Search</button>
+            <div class="tab-pane fade" id="tab-charms" role="tabpanel">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">Charms</h4>
+                                    <div class="card-body">
+                                          <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="Search (not implemented)">
+                                                <div class="input-group-append">
+                                                      <button class="btn btn-outline-secondary" type="button">Search</button>
+                                                </div>
+                                          </div>
+                                          <form id="charms">
+                                          </form>
+                                          <hr />
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="tab-pane fade show active" id="sheet" role="tabpanel">
+                  <div class="row">
+                        <div class="col-12">
+                              <div class="card shadow">
+                                    <h4 class="card-header">General</h4>
+                                    <div class="card-body">
+                                          <form id="general">
+                                                <div class=" row">
+                                                      <div class="col-sm-6">
+                                                            <label>Name</label>
+                                                            <input type="text" name="name" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-6">
+                                                            <label>Concept</label>
+                                                            <input type="text" name="concept" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+                                                <div class="row">
+                                                      <div class="col-sm-6">
+                                                            <label>Player</label>
+                                                            <input type="text" name="owner" class="form-control" disabled onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-6">
+                                                            <label>Anima</label>
+                                                            <input type="text" name="anima" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+                                                <div class="row">
+                                                      <div class="col-sm-6">
+                                                            <label>Caste</label>
+                                                            <input type="text" name="caste" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-6">
+                                                            <label>Supernal Ability</label>
+                                                            <input type="text" name="supernalAbility" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+                                          </form>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+                  <div class="row">
+                        <div class="col-12">
+                              <div class="card shadow" style="margin-top: 20px;">
+                                    <h4 class="card-header">Attributes</h4>
+                                    <div class="card-body">
+                                          <form id="attributes">
+                                                <div class=" row">
+                                                      <div class="col-sm-4">
+                                                            <label>Strength</label>
+                                                            <input type="text" name="strength" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Charisma</label>
+                                                            <input type="text" name="charisma" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Perception</label>
+                                                            <input type="text" name="perception" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+
+                                                <div class=" row">
+                                                      <div class="col-sm-4">
+                                                            <label>Dexterity</label>
+                                                            <input type="text" name="dexterity" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Manipulation</label>
+                                                            <input type="text" name="manipulation" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Intelligence</label>
+                                                            <input type="text" name="intelligence" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+
+
+                                                <div class=" row">
+                                                      <div class="col-sm-4">
+                                                            <label>Stamina</label>
+                                                            <input type="text" name="stamina" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Appearance</label>
+                                                            <input type="text" name="appearance" class="form-control" onchange="setControlStates()">
+                                                      </div>
+
+                                                      <div class="col-sm-4">
+                                                            <label>Wits</label>
+                                                            <input type="text" name="wits" class="form-control" onchange="setControlStates()">
+                                                      </div>
+                                                </div>
+                                          </form>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+                  <div class="row mt-3">
+                        <div class="col-lg-5 col-xl-4">
+                              <div class="row">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Abilities</h4>
+                                                <div class="card-body">
+                                                      <form id="abilities" class="table-responsive">
+                                                            <table class="table">
+                                                                  <thead>
+                                                                        <tr>
+                                                                              <th scope="col">Fav</th>
+                                                                              <th scope="col">Name</th>
+                                                                              <th scope="col">Value</th>
+                                                                        </tr>
+                                                                  </thead>
+                                                                  <tbody id="abilitiesContainer">
+
+
+                                                                  </tbody>
+                                                            </table>
+                                                      </form>
+                                                </div>
                                           </div>
                                     </div>
-                                    <form id="charms">
-                                    </form>
-                                    <hr />
-                                    <button type="button" class="btn btn-primary float-right" onclick="addRow(charmTemplate, 'charms', 'charm'); setControlStates();">Add</button>
+                              </div>
+                              <div class="row mt-3">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Additionnal Abilities</h4>
+                                                <div class="card-body">
+                                                      <form id="additionalAbilities">
+
+
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
+
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+
+                        <div class="col-lg-7 col-xl-8">
+                              <div class="row">
+                                    <div class="col-12">
+                                          <div class="card shadow">
+                                                <h4 class="card-header">Health</h4>
+                                                <div class="card-body">
+                                                      <form id="incapacitated">
+                                                            <label for="incapacitatedCheck">Incapacitated</label><br>
+                                                            <input id="incapacitatedCheck" name="incapacitated" type="checkbox" onchange="setControlStates()">
+                                                      </form>
+                                                      <hr>
+                                                      <form id="health">
+
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Specializations</h4>
+                                                <div class="card-body">
+                                                      <form id="specializations">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
+
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Merits</h4>
+                                                <div class="card-body">
+                                                      <form id="merits">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Willpower</h4>
+                                                <div class="card-body">
+
+                                                      <form id="willpower">
+                                                            <div class="form-row">
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  </div>
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Limit Break</h4>
+                                                <div class="card-body">
+                                                      <form id="limitBreak">
+                                                            <div class="form-row">
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                  </div>
+                                                                  <div class="col-6">
+                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                              </div>
+
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Essence</h4>
+                                                <div class="card-body">
+                                                      <form id="essence">
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Essence
+                                                                                    Level</span>
+                                                                        </div>
+                                                                        <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Personal</span>
+                                                                        </div>
+                                                                        <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                        <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Peripherical</span>
+                                                                        </div>
+                                                                        <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                        <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+
+                                                            <div class=" row">
+                                                                  <div class="input-group col-sm-12">
+                                                                        <div class="input-group-prepend">
+                                                                              <span class="input-group-text">Commited</span>
+                                                                        </div>
+                                                                        <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
+                                                                  </div>
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Limit Trigger</h4>
+                                                <div class="card-body">
+                                                      <form id="limitTrigger">
+                                                      </form>
+                                                      <hr />
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+
+
+                              <div class="row">
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Experience</h4>
+                                                <div class="card-body">
+                                                      <form id="normal-experience">
+                                                            <div class=" row">
+
+                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <div class="card shadow mt-3">
+                                                <h4 class="card-header">Solar Experience</h4>
+                                                <div class="card-body">
+                                                      <form id="solar-experience">
+                                                            <div class=" row">
+
+                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
+                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
+
+                                                            </div>
+                                                      </form>
+                                                </div>
+                                          </div>
+                                    </div>
                               </div>
                         </div>
                   </div>
             </div>
       </div>
-      <div class="tab-pane fade show active" id="sheet" role="tabpanel">
-            <div class="row">
-                  <div class="col-12">
-                        <div class="card shadow">
-                              <h4 class="card-header">General</h4>
-                              <div class="card-body">
-                                    <form id="general">
-                                          <div class=" row">
-                                                <div class="col-sm-6">
-                                                      <label>Name</label>
-                                                      <input type="text" name="name" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                      <label>Concept</label>
-                                                      <input type="text" name="concept" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-                                          <div class="row">
-                                                <div class="col-sm-6">
-                                                      <label>Player</label>
-                                                      <input type="text" name="owner" class="form-control" disabled onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                      <label>Anima</label>
-                                                      <input type="text" name="anima" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-                                          <div class="row">
-                                                <div class="col-sm-6">
-                                                      <label>Caste</label>
-                                                      <input type="text" name="caste" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                      <label>Supernal Ability</label>
-                                                      <input type="text" name="supernalAbility" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-                                    </form>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-
-            <div class="row">
-                  <div class="col-12">
-                        <div class="card shadow" style="margin-top: 20px;">
-                              <h4 class="card-header">Attributes</h4>
-                              <div class="card-body">
-                                    <form id="attributes">
-                                          <div class=" row">
-                                                <div class="col-sm-4">
-                                                      <label>Strength</label>
-                                                      <input type="text" name="strength" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Charisma</label>
-                                                      <input type="text" name="charisma" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Perception</label>
-                                                      <input type="text" name="perception" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-
-                                          <div class=" row">
-                                                <div class="col-sm-4">
-                                                      <label>Dexterity</label>
-                                                      <input type="text" name="dexterity" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Manipulation</label>
-                                                      <input type="text" name="manipulation" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Intelligence</label>
-                                                      <input type="text" name="intelligence" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-
-
-                                          <div class=" row">
-                                                <div class="col-sm-4">
-                                                      <label>Stamina</label>
-                                                      <input type="text" name="stamina" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Appearance</label>
-                                                      <input type="text" name="appearance" class="form-control" onchange="setControlStates()">
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                      <label>Wits</label>
-                                                      <input type="text" name="wits" class="form-control" onchange="setControlStates()">
-                                                </div>
-                                          </div>
-                                    </form>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-
-            <div class="row mt-3">
-                  <div class="col-sm-4">
-                        <div class="row">
-                              <div class="col-12">
-                                    <div class="card shadow">
-                                          <h4 class="card-header">Abilities</h4>
-                                          <div class="card-body">
-
-                                                <form id="abilities">
-
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                        <div class="row mt-3">
-                              <div class="col-12">
-                                    <div class="card shadow">
-                                          <h4 class="card-header">Additionnal Abilities</h4>
-                                          <div class="card-body">
-                                                <form id="additionalAbilities">
-
-
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
-
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-
-                  <div class="col-sm-8">
-                        <div class="row">
-                              <div class="col-12">
-                                    <div class="card shadow">
-                                          <h4 class="card-header">Health</h4>
-                                          <div class="card-body">
-                                                <form id="incapacitated">
-                                                      <label for="incapacitatedCheck">Incapacitated</label><br>
-                                                      <input id="incapacitatedCheck" name="incapacitated" type="checkbox" onchange="setControlStates()">
-                                                </form>
-                                                <hr>
-                                                <form id="health">
-
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(healthTemplate, 'health', 'health'); setControlStates();">Add</button>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-
-                        <div class="row">
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Specializations</h4>
-                                          <div class="card-body">
-                                                <form id="specializations">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
-
-                                          </div>
-                                    </div>
-                              </div>
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Merits</h4>
-                                          <div class="card-body">
-                                                <form id="merits">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-
-
-                        <div class="row">
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Willpower</h4>
-                                          <div class="card-body">
-
-                                                <form id="willpower">
-                                                      <div class="form-row">
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Limit Break</h4>
-                                          <div class="card-body">
-                                                <form id="limitBreak">
-                                                      <div class="form-row">
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                  <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-
-                        </div>
-
-                        <div class="row">
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Essence</h4>
-                                          <div class="card-body">
-                                                <form id="essence">
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Essence
-                                                                              Level</span>
-                                                                  </div>
-                                                                  <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Personal</span>
-                                                                  </div>
-                                                                  <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Peripherical</span>
-                                                                  </div>
-                                                                  <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-
-                                                      <div class=" row">
-                                                            <div class="input-group col-sm-12">
-                                                                  <div class="input-group-prepend">
-                                                                        <span class="input-group-text">Commited</span>
-                                                                  </div>
-                                                                  <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
-                                                            </div>
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Limit Trigger</h4>
-                                          <div class="card-body">
-                                                <form id="limitTrigger">
-                                                </form>
-                                                <hr />
-                                                <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-
-
-                        <div class="row">
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Experience</h4>
-                                          <div class="card-body">
-                                                <form id="normal-experience">
-                                                      <div class=" row">
-
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
-
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-
-                              <div class="col-sm-6">
-                                    <div class="card shadow mt-3">
-                                          <h4 class="card-header">Solar Experience</h4>
-                                          <div class="card-body">
-                                                <form id="solar-experience">
-                                                      <div class=" row">
-
-                                                            <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                            <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
-
-                                                      </div>
-                                                </form>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-      </div>
-</div>
 </div>
 
 <script>
@@ -1247,19 +1258,12 @@
 
 
       var defaultAbilityTemplate = `
-      <div class="form-row">
-            <div class="col-12">
-                  <div class="input-group">
-                        <div class="input-group-text">
-                              <input name="__ABILITY_NAME__-favorite" type="checkbox" onchange="setControlStates()">
-                        </div>
-                        <div class="input-group-prepend">
-                              <span class="input-group-text">__ABILITY_LABEL__</span>
-                        </div>
-                        <input type="text" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()">
-                  </div>
-            </div>
-      </div>
+      <tr>
+            <td ><input name="__ABILITY_NAME__-favorite" type="checkbox" onchange="setControlStates()"></td>
+            <td >__ABILITY_LABEL__</td>
+            <td><input type="text" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()"></td>
+      </tr>
+
       `;
 
       var healthTemplate = `
@@ -1612,7 +1616,7 @@
       }
 
       function createDefaultAbilities() {
-            abilitiesForm = document.getElementById("abilities");
+            abilitiesForm = document.getElementById("abilitiesContainer");
 
             abilitiesForm.innerHTML = ""
 
