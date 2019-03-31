@@ -1,10 +1,10 @@
 ﻿{
         "general": {
             "name": "__NAME__",
-            "caste": "",
+            "caste": "mortal",
             "concept": "",
             "anima": "",
-            "supernalAbility": "Athletics"
+            "supernalAbility": "none"
         },
 
         "attributes": {
@@ -193,18 +193,6 @@
 
         "limitTrigger": [
         ],
-
-        "experience": {
-            "normal": {
-                    "current": 0,
-                    "total": 0
-            },
-
-            "solar": {
-                    "current": 0,
-                    "total": 0
-            }
-        },
 
         "weapons": [
         ],

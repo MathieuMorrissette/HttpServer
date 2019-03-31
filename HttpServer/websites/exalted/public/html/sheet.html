@@ -40,17 +40,56 @@
       <div class="tab-content" id="myTabContent">
 
             <div class="tab-pane fade" id="tab-tracker" role="tabpanel">
+                  <div class="row mb-3">
+                        <div class="col-sm-6">
+                              <div class="card shadow mt-3">
+                                    <h4 class="card-header">Experience</h4>
+                                    <div class="card-body">
+                                          <div class="row">
+                                                <div class="col-sm-6">
+                                                      <label>Current</label>
+                                                      <input readonly type="number" id="currentExperience" class="form-control" value="0">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                      <label>Total</label>
+                                                      <input readonly type="number" id="totalExperience" class="form-control" value="0">
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                              <div class="card shadow mt-3">
+                                    <h4 class="card-header">Solar Experience</h4>
+                                    <div class="card-body">
+                                          <div class=" row">
+                                                <div class="col-sm-6">
+                                                      <label>Current</label>
+                                                      <input readonly type="number" id="currentSpecial" class="form-control" value="0">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                      <label>Total</label>
+                                                      <input readonly type="number" id="totalSpecial" class="form-control" value="0">
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+
                   <div class="row">
                         <div class="col-sm-12">
                               <div class="card shadow">
                                     <h4 class="card-header">Character Tracker</h4>
                                     <div class="card-body">
-                                               
+
                                           <button type="button" class="btn btn-primary float-right" onclick="addRow(trackerTemplate, 'tracker', 'track', true); setControlStates();">Add</button><br>
                                           <hr />
 
                                           <form id="tracker">
-                                                
+
                                           </form>
 
 
@@ -543,12 +582,15 @@
                                                 <div class="row">
                                                       <div class="col-sm-6">
                                                             <label>Caste</label>
-                                                            <input type="text" name="caste" class="form-control" onchange="setControlStates()">
+                                                            <select class="form-control" id="casteCombo" name="caste" onchange="setControlStates(); updateSupernals();">
+                                                            </select>
                                                       </div>
 
                                                       <div class="col-sm-6">
                                                             <label>Supernal Ability</label>
-                                                            <input type="text" name="supernalAbility" class="form-control" onchange="setControlStates()">
+                                                            <select class="form-control" id="supernalCombo" name="supernalAbility" onchange="setControlStates();">
+                                                                  
+                                                            </select>
                                                       </div>
                                                 </div>
                                           </form>
@@ -566,34 +608,34 @@
                                                 <div class=" row">
                                                       <div class="col-sm-4">
                                                             <label>Strength</label>
-                                                            <input type="text" name="strength" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="strength" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Charisma</label>
-                                                            <input type="text" name="charisma" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="charisma" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Perception</label>
-                                                            <input type="text" name="perception" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="perception" class="form-control" onchange="setControlStates()">
                                                       </div>
                                                 </div>
 
                                                 <div class=" row">
                                                       <div class="col-sm-4">
                                                             <label>Dexterity</label>
-                                                            <input type="text" name="dexterity" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="dexterity" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Manipulation</label>
-                                                            <input type="text" name="manipulation" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="manipulation" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Intelligence</label>
-                                                            <input type="text" name="intelligence" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="intelligence" class="form-control" onchange="setControlStates()">
                                                       </div>
                                                 </div>
 
@@ -601,17 +643,17 @@
                                                 <div class=" row">
                                                       <div class="col-sm-4">
                                                             <label>Stamina</label>
-                                                            <input type="text" name="stamina" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="stamina" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Appearance</label>
-                                                            <input type="text" name="appearance" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="appearance" class="form-control" onchange="setControlStates()">
                                                       </div>
 
                                                       <div class="col-sm-4">
                                                             <label>Wits</label>
-                                                            <input type="text" name="wits" class="form-control" onchange="setControlStates()">
+                                                            <input type="number" name="wits" class="form-control" onchange="setControlStates()">
                                                       </div>
                                                 </div>
                                           </form>
@@ -666,7 +708,7 @@
 
                         <div class="col-lg-7 col-xl-8">
                               <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-sm-6">
                                           <div class="card shadow">
                                                 <h4 class="card-header">Health</h4>
                                                 <div class="card-body">
@@ -683,170 +725,151 @@
                                                 </div>
                                           </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                          <div class="row mb-3">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Specializations</h4>
+                                                            <div class="card-body">
+                                                                  <form id="specializations">
+                                                                  </form>
+                                                                  <hr />
+                                                                  <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
+
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+                                          <div class="row mb-3">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Merits</h4>
+                                                            <div class="card-body">
+                                                                  <form id="merits">
+                                                                  </form>
+                                                                  <hr />
+                                                                  <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+                                          <div class="row mb-3">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Willpower</h4>
+                                                            <div class="card-body">            
+                                                                  <form id="willpower">
+                                                                        <div class="form-row">
+                                                                              <div class="col-6">
+                                                                                    <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                              </div>
+                                                                              <div class="col-6">
+                                                                                    <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+                                                                  </form>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+
+                                          <div class="row mb-3">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Limit Break</h4>
+                                                            <div class="card-body">
+                                                                  <form id="limitBreak">
+                                                                        <div class="form-row">
+                                                                              <div class="col-6">
+                                                                                    <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
+                                                                              </div>
+                                                                              <div class="col-6">
+                                                                                    <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+                                                                  </form>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+                                          <div class="row mb-3">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Limit Trigger</h4>
+                                                            <div class="card-body">
+                                                                  <form id="limitTrigger">
+                                                                  </form>
+                                                                  <hr />
+                                                                  <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+                                          <div class="row">
+                                                <div class="col-12">
+                                                      <div class="card shadow">
+                                                            <h4 class="card-header">Essence</h4>
+                                                            <div class="card-body">
+                                                                  <form id="essence">
+                                                                        <div class=" row">
+                                                                              <div class="input-group col-sm-12">
+                                                                                    <div class="input-group-prepend">
+                                                                                          <span class="input-group-text">Essence
+                                                                                                Level</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+            
+                                                                        <div class=" row">
+                                                                              <div class="input-group col-sm-12">
+                                                                                    <div class="input-group-prepend">
+                                                                                          <span class="input-group-text">Personal</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                                    <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+            
+                                                                        <div class=" row">
+                                                                              <div class="input-group col-sm-12">
+                                                                                    <div class="input-group-prepend">
+                                                                                          <span class="input-group-text">Peripherical</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
+                                                                                    <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+            
+                                                                        <div class=" row">
+                                                                              <div class="input-group col-sm-12">
+                                                                                    <div class="input-group-prepend">
+                                                                                          <span class="input-group-text">Commited</span>
+                                                                                    </div>
+                                                                                    <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
+                                                                              </div>
+                                                                        </div>
+                                                                  </form>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+
+
+                                    </div>
                               </div>
+
 
                               <div class="row">
                                     <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Specializations</h4>
-                                                <div class="card-body">
-                                                      <form id="specializations">
-                                                      </form>
-                                                      <hr />
-                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(specializationTemplate, 'specializations', 'specialization'); setControlStates();">Add</button>
-
-                                                </div>
-                                          </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Merits</h4>
-                                                <div class="card-body">
-                                                      <form id="merits">
-                                                      </form>
-                                                      <hr />
-                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(meritTemplate, 'merits', 'merit'); setControlStates();">Add</button>
-                                                </div>
-                                          </div>
-                                    </div>
-                              </div>
-
-
-                              <div class="row">
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Willpower</h4>
-                                                <div class="card-body">
-
-                                                      <form id="willpower">
-                                                            <div class="form-row">
-                                                                  <div class="col-6">
-                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                                  </div>
-                                                                  <div class="col-6">
-                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </form>
-                                                </div>
-                                          </div>
+                                          
                                     </div>
 
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Limit Break</h4>
-                                                <div class="card-body">
-                                                      <form id="limitBreak">
-                                                            <div class="form-row">
-                                                                  <div class="col-6">
-                                                                        <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
-                                                                  </div>
-                                                                  <div class="col-6">
-                                                                        <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </form>
-                                                </div>
-                                          </div>
-                                    </div>
-
-                              </div>
-
-                              <div class="row">
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Essence</h4>
-                                                <div class="card-body">
-                                                      <form id="essence">
-                                                            <div class=" row">
-                                                                  <div class="input-group col-sm-12">
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Essence
-                                                                                    Level</span>
-                                                                        </div>
-                                                                        <input type="text" name="essenceLevel" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class=" row">
-                                                                  <div class="input-group col-sm-12">
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Personal</span>
-                                                                        </div>
-                                                                        <input type="text" name="current-personal" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                        <input type="text" name="max-personal" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class=" row">
-                                                                  <div class="input-group col-sm-12">
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Peripherical</span>
-                                                                        </div>
-                                                                        <input type="text" name="current-peripherical" class="form-control text-right" placeholder="Current" onchange="setControlStates()">
-                                                                        <input type="text" name="max-peripherical" class="form-control text-right" placeholder="Max" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class=" row">
-                                                                  <div class="input-group col-sm-12">
-                                                                        <div class="input-group-prepend">
-                                                                              <span class="input-group-text">Commited</span>
-                                                                        </div>
-                                                                        <input type="text" name="commited" class="form-control text-right" onchange="setControlStates()">
-                                                                  </div>
-                                                            </div>
-                                                      </form>
-                                                </div>
-                                          </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Limit Trigger</h4>
-                                                <div class="card-body">
-                                                      <form id="limitTrigger">
-                                                      </form>
-                                                      <hr />
-                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(limitTriggerTemplate, 'limitTrigger', 'limitTrigger'); setControlStates();">Add</button>
-                                                </div>
-                                          </div>
-                                    </div>
-                              </div>
-
-
-                              <div class="row">
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Experience</h4>
-                                                <div class="card-body">
-                                                      <form id="normal-experience">
-                                                            <div class=" row">
-
-                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
-
-                                                            </div>
-                                                      </form>
-                                                </div>
-                                          </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                          <div class="card shadow mt-3">
-                                                <h4 class="card-header">Solar Experience</h4>
-                                                <div class="card-body">
-                                                      <form id="solar-experience">
-                                                            <div class=" row">
-
-                                                                  <input type="text" name="current" class="form-control text-right col-6" placeholder="Current" onchange="setControlStates()">
-                                                                  <input type="text" name="total" class="form-control text-right col-6" placeholder="Max" onchange="setControlStates()">
-
-                                                            </div>
-                                                      </form>
-                                                </div>
-                                          </div>
-                                    </div>
                               </div>
                         </div>
                   </div>
@@ -1286,7 +1309,7 @@
       <tr>
             <td ><input name="__ABILITY_NAME__-favorite" type="checkbox" onchange="setControlStates()"></td>
             <td ><span class="d-inline-block" data-toggle="tooltip" title="__ABILITY_NOTE__">__ABILITY_LABEL__</span></td>
-            <td><input type="text" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()"></td>
+            <td><input type="number" name="__ABILITY_NAME__" class="form-control text-right" onchange="setControlStates()"></td>
       </tr>
 
       `;
@@ -1294,14 +1317,12 @@
       var healthTemplate = `
       <div class="row border border rounded p-2 mt-2" id="health__ID__">
             <div class="col-12">
-            <div class="row">
-                  <div class="col-12">
+            <div class="row mb-1">
+                  <div class="col-sm-5">
                         <label>Dice Value</label>
-                        <input type="text" name="health__ID__-name" class="form-control " onchange="setControlStates()" placeholder="" value="0">
+                        <input type="number" name="health__ID__-name" class="form-control " onchange="setControlStates()" placeholder="" value="0">
                   </div>
-            </div>
-            <div class="row">
-                  <div class="col-12">
+                  <div class="col-sm-7 rounded align-self-end">
                         <div class="form-check form-check-inline">
                               <input class="form-check-input" type="radio" id="health__ID__-type1" name="health__ID__-type" value="none" onchange="setControlStates()" checked>
                               <label class="form-check-label" for="health__ID__-type1">None</label>
@@ -1322,7 +1343,7 @@
             </div>
             <div class="row">
                   <div class="col-12">
-                              <button type="button" class="btn btn-primary float-right" onclick="deleteRow('health__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-primary float-right" onclick="deleteRow('health__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
                   </div>
             </div>
             </div>
@@ -1516,14 +1537,14 @@
                         </div>
                         <div class="col-md-4">
                               <div class="form-group">
-                                    <label>Experience</label>
-                                    <input type="text" class="form-control" name="track__ID__-experience" onchange="setControlStates()" value="0">
+                                    <label data-toggle="tooltip" data-placement="top" title="Experience gained or spent/lost Ex: -20 or 20" >Experience</label>
+                                    <input type="text" class="form-control" name="track__ID__-experience" onchange="setControlStates(); updateExperience();" value="0">
                               </div>
                         </div>
                         <div class="col-md-4">
                               <div class="form-group">
-                                    <label>Solar Experience</label>
-                                    <input type="text" class="form-control" name="track__ID__-specialExperience" onchange="setControlStates()" value="0">
+                                    <label data-toggle="tooltip" data-placement="top" title="Experience gained or spent/lost Ex: -20 or 20">Solar Experience</label>
+                                    <input type="text" class="form-control" name="track__ID__-specialExperience" onchange="setControlStates(); updateExperience();" value="0">
                               </div>
                         </div>
                   </div>
@@ -1565,13 +1586,13 @@
                         "name": "archery",
                         "label": "Archery",
                         "type": "combat",
-                        "notes" : "Bows, Crossbows, Slings, Dart Blowers"
+                        "notes": "Bows, Crossbows, Slings, Dart Blowers"
                   },
                   {
                         "name": "athletics",
                         "label": "Athletics",
                         "type": "",
-                        "notes" : "Speed, Acrobatics, Heavy lifting"
+                        "notes": "Speed, Acrobatics, Heavy lifting"
                   },
                   {
                         "name": "awareness",
@@ -1589,7 +1610,7 @@
                         "name": "bureaucracy",
                         "label": "Bureaucracy",
                         "type": "",
-                        "notes" : "Business sense, Management, Planning"
+                        "notes": "Business sense, Management, Planning"
                   },
                   {
                         "name": "craft",
@@ -1762,6 +1783,11 @@
                         input.value = data[k];
                   }
 
+
+                  if(input.onchange != null)
+                  {
+                        input.onchange();
+                  }
             });
       }
 
@@ -1840,6 +1866,11 @@
                               }
 
                               input.checked = item[k["value"]]
+                        }
+
+                        if(input.onchange != null)
+                        {
+                              input.onchange();
                         }
                   });
             });
@@ -1992,13 +2023,6 @@
 
             fillEssence(character["data"]["essence"])
 
-            if (character["data"]["experience"] != null) {
-
-                  fillSingle("normal-experience", character["data"]["experience"]["normal"])
-                  fillSingle("solar-experience", character["data"]["experience"]["solar"])
-
-            }
-
             if (character["data"]["notes"] != null) {
                   document.getElementById("notes").value = character["data"]["notes"];
             }
@@ -2020,13 +2044,12 @@
 
             }
 
-            if(character["data"]["tracker"] != null)
-            {
+            if (character["data"]["tracker"] != null) {
                   document.getElementById("tracker").innerHTML = ""
 
                   var trackerLength = character["data"]["tracker"].length;
 
-                  for (var i = trackerLength - 1 ; i >= 0; i--) {
+                  for (var i = trackerLength - 1; i >= 0; i--) {
                         addRow(trackerTemplate, "tracker", "track")
                   }
 
@@ -2426,74 +2449,106 @@
             ]
       }
 
-      var castes  = {
-            "solar" : {
-                  "dawn" : {
-                        "supernals" : [
-                              "archery",
-                              "awareness",
-                              "brawl",
-                              "dodge",
-                              "melee",
-                              "resistance",
-                              "thrown",
-                              "war"
-                        ]
-                  },
 
-                  "zenith" : {
-                        "supernals" : [
-                              "athletics",
-                              "integrity",
-                              "lore",
-                              "performance",
-                              "presence",
-                              "resistance",
-                              "survival",
-                              "war"
-                        ]
-                  },
+      var characterTypes = [
+                        {
+                              "name" : "dawn",
+                              "label" : "Dawn",
+                              "caste" : "solar",
+                              "supernals": [
+                                    { "name" : "archery", "label" : "Archery" },
+                                    { "name" : "awareness", "label" : "Awareness" },
+                                    { "name" : "brawl", "label" : "Brawl" },
+                                    { "name" : "dodge", "label" : "Dodge" },
+                                    { "name" : "melee", "label" : "Melee" },
+                                    { "name" : "resistance", "label" : "Resistance"},
+                                    { "name" : "thrown", "label" : "Thrown" },
+                                    { "name" : "war", "label" : "War" }
+                              ]
+                        },
 
-                  "twilight" : {
-                        "supernals" : [
-                              "bureaucracy",
-                              "craft",
-                              "integrity",
-                              "investigation",
-                              "linguistic",
-                              "lore",
-                              "medecine",
-                              "occult"
-                        ]
-                  },
+                        {     "name" : "zenith",
+                              "label" : "Zenith",
+                              "caste" : "solar",
+                              "supernals": [
+                                    { "name" : "athletics", "label" : "Athletics" },
+                                    { "name" : "integrity", "label" : "Integrity" },
+                                    { "name" : "lore", "label" : "Lore"},
+                                    { "name" : "performance", "label" : "Performance" },
+                                    { "name" : "presence", "label" : "Presence" },
+                                    { "name" : "resistance", "label" : "Resistance"},
+                                    { "name" : "survival", "label" : "Survival" },
+                                    { "name" : "war", "label" : "War" }
+                              ]
+                        },
 
-                  "night" : {
-                        "supernals" : [
-                              "athletics",
-                              "awareness",
-                              "dodge",
-                              "investigation",
-                              "larceny",
-                              "ride",
-                              "socialize",
-                              "stealth"
-                        ]
-                  },
+                        {     "name": "twilight",
+                              "label" : "Twilight",
+                              "caste" : "solar",
+                              "supernals": [
+                                    { "name" : "bureaucracy", "label" : "Bureaucracy" },
+                                    { "name" : "craft", "label" : "Craft" },
+                                    { "name" : "integrity", "label" : "Integrity" },
+                                    { "name" : "investigation", "label" : "Investigation" },
+                                    { "name" : "linguistic", "label" : "Linguistic" },
+                                    { "name" : "lore", "label" : "Lore"},
+                                    { "name" : "medecine", "label" : "Medecine" },
+                                    { "name" : "occult", "label" : "Occult" },
+                              ]
+                        },
 
-                  "eclipse" : {
-                        "supernals" : [
-                              "bureaucracy",
-                              "larceny",
-                              "linguistic",
-                              "occult",
-                              "presence",
-                              "ride",
-                              "sail",
-                              "socialize"
-                        ]
-                  },
-            }
-      }
+                       {
+                              "name" : "night",
+                              "label" : "Night",
+                              "caste" : "solar",
+                              "supernals": [
+                                    { "name" : "athletics", "label" : "Athletics" },
+                                    { "name" : "awareness", "label" : "Awareness" },
+                                    { "name" : "dodge", "label" : "Dodge" },
+                                    { "name" : "investigation", "label" : "Investigation" },
+                                    { "name" : "larceny", "label" : "Larceny" },
+                                    { "name" : "ride", "label" : "Ride" },
+                                    { "name" : "socialize", "label" : "Socialize" },
+                                    { "name" : "stealth", "label" : "Stealth" },
+                              ]
+                        },
+
+                        {     
+                              "name" : "eclipse",
+                              "label" : "Eclipse",
+                              "caste" : "solar",
+                              "supernals": [
+                                    { "name" : "bureaucracy", "label" : "Bureaucracy" },
+                                    { "name" : "larceny", "label" : "Larceny" },
+                                    { "name" : "linguistic", "label" : "Linguistic" },
+                                    { "name" : "occult", "label" : "Occult" },
+                                    { "name" : "presence", "label" : "Presence" },
+                                    { "name" : "ride", "label" : "Ride" },
+                                    { "name" : "sail", "label" : "Sail" },
+                                    { "name" : "socialize", "label" : "Socialize" },
+                              ]
+                        },
+
+                        /*{
+                              "name" : "dusk",
+                              "label" : "Dusk",
+                              "caste" : "celestial,abyssal",
+                        },
+
+                        
+                        {
+                              "name" : "full-moon",
+                              "label" : "Full Moon",
+                              "caste" : "celestial,lunar",
+                        }*/
+
+                        {
+                              "name" : "mortal",
+                              "label" : "Mortal",
+                              "caste" : "none"
+                        }
+                  ]
+      
 
 
 
@@ -2559,12 +2614,6 @@
             var t0 = performance.now();
 
             var data = {
-                  "experience":
-                  {
-                        "normal": null,
-                        "solar": null
-                  },
-
                   "health":
                   {
                         "healthPoints": [],
@@ -2589,8 +2638,6 @@
             data["limitBreak"] = getJSONSingle("limitBreak");
             data["essence"] = getJSONEssence("essence");
             data["limitTrigger"] = getJSONMulti("limitTrigger", limitTrigggerFields, "limitTrigger")
-            data["experience"]["normal"] = getJSONSingle("normal-experience");
-            data["experience"]["solar"] = getJSONSingle("solar-experience");
             data["weapons"] = getJSONMulti("weapons", weaponsFields, "weapon");
             data["armors"] = getJSONMulti("armors", armorsFields, "armor");
             data["health"]["healthPoints"] = getJSONMulti("health", healthFields, "health");
@@ -2636,11 +2683,85 @@
 
             // at the end cuz it can explode if no weapons and shitzel
             calculateStats();
+            updateExperience();
+            fixToolTips();
+      }
+
+      function fixToolTips() {
+            $(function () {
+                  $('[data-toggle="tooltip"]').tooltip()
+            })
+      }
+
+      function createControls()
+      {
+            fillCharacterTypesCombo();
+      }
+
+      function fillCharacterTypesCombo()
+      {
+            casteCombo = document.getElementById("casteCombo");
+
+            casteCombo.innerHTML = "";
+
+            characterTypes.forEach(type => {
+
+                  var opt = document.createElement('option');
+
+                  opt.appendChild(document.createTextNode(type["label"]));
+
+                  opt.value = type["name"]
+
+                  casteCombo.appendChild(opt);
+            });
+
+            casteCombo.selectedIndex = 0;
+      }
+
+      function updateSupernals()
+      {
+            supernalCombo = document.getElementById("supernalCombo");
+            casteCombo = document.getElementById("casteCombo");
+
+            supernalCombo.innerHTML = "<option value=\"none\">None</option>"
+
+            characterTypesFiltered = characterTypes.filter(function (item) {
+                  if(item["name"] == casteCombo.value)
+                  {
+                        return item;
+                  }
+            });
+
+            if(characterTypesFiltered == null || characterTypesFiltered.length == 0)
+            {
+                  return;
+            }
+
+            characterType = characterTypesFiltered[0];
+
+            if( !("supernals" in characterType))
+            {
+                  return;
+            }
+
+            characterType["supernals"].forEach(supernal => {
+                  var opt = document.createElement('option');
+
+                  opt.appendChild(document.createTextNode(supernal["label"]));
+
+                  opt.value = supernal["name"]
+
+                  supernalCombo.appendChild(opt);
+            });
+
       }
 
       function refresh() {
 
             isRefreshing = true;
+
+            createControls();
+
             sendHttpGetRequest("/api/character/" + splitresult[splitresult.length - 1], function (data) {
 
                   dataJSON = JSON.parse(data);
@@ -2811,8 +2932,7 @@
 
             var htmltoadd = template.split("__ID__").join(id)
 
-            if(beginning == true)
-            {
+            if (beginning == true) {
                   containerjquery.prepend(htmltoadd);
                   return;
             }
@@ -3014,9 +3134,14 @@
 
             naturalSoakElem = document.getElementById("naturalSoakCalc");
 
-            // not sure how I want to handle mortal sheet so not yet supported 
-
-            naturalSoak = charactar["data"]["attributes"]["stamina"];
+            if(charactar["data"]["caste"] == "mortal")
+            {
+                  naturalSoak = 0;
+            }
+            else
+            {       
+                  naturalSoak = charactar["data"]["attributes"]["stamina"];
+            }
 
             naturalSoak = naturalSoak - healthDebuff + diceBonus;
 
@@ -3302,4 +3427,55 @@
                   pom.click();
             }
       }
+
+      function updateExperience() {
+            char = getCharacterDataJSON();
+
+            totalExperience = 0;
+            currentExperience = 0;
+
+            totalSpecialExperience = 0;
+            currentSpecialExperience = 0;
+
+            if (char["tracker"] == null || char["tracker"].length == 0) {
+                  return;
+            }
+
+
+            totalSpentExperience = 0;
+            totalSpentSpecialExperience = 0;
+
+            char["tracker"].forEach(track => {
+                  experience = track["experience"];
+
+                  // spent xp
+                  if (experience < 0) {
+                        totalSpentExperience = totalSpentExperience + Math.abs(experience);
+                        return;
+                  }
+
+                  totalExperience = totalExperience + experience;
+
+                  specialExperience = track["specialExperience"];
+
+                  // spent special
+                  if (specialExperience < 0) {
+                        totalSpentSpecialExperience = totalSpentSpecialExperience + Math.abs(specialExperience);
+                        return;
+                  }
+
+                  totalSpecialExperience = totalSpecialExperience + specialExperience;
+
+            });
+
+            currentExperience = totalExperience - totalSpentExperience;
+            currentSpecialExperience = totalSpecialExperience - totalSpentSpecialExperience;
+
+            document.getElementById("currentExperience").value = currentExperience;
+            document.getElementById("totalExperience").value = totalExperience;
+
+            document.getElementById("currentSpecial").value = currentSpecialExperience;
+            document.getElementById("totalSpecial").value = totalSpecialExperience;
+      }
+
 </script>
