@@ -39,10 +39,11 @@ namespace HttpServer.websites.exalted
             { "javascript", () => new FileProvider()},
             { "dice-roller", () => new DiceRollerController()},
             { "css", () => new FileProvider()},
-           // { "font", () => new FileProvider()},
+            { "images", () => new FileProvider()},
             { "user", () => new UserController()},
+            { "map", () =>  new MapController()},
            // { "friends", () => new Friends()},
-         //   { "chat", () => new Chat()},
+           //   { "chat", () => new Chat()},
             { "api", () => new API()}
         };
 
