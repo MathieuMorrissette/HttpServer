@@ -74,12 +74,15 @@
       map.fitBounds(bounds);
 
       var speeds = {
-				'Horse':[4,10],
-				'Merchant Ship':[6,24],
+				'Horse':[4,10],    // 4 miles per hour for 10 hours
+				'Merchant Ship':[6,24], // 6 miles per hour for 24 hours
 				'Cirrus Skiff (Ess 1)':[6,24],
-				'Agata':[30,10],
-				'Stormwind Rider':[100,10]
+				'Agata':[30,10], // 30 miles per hour for 24 hours
+				'Stormwind Rider':[100,10] // 100 miles per hour for 24 hours
                   }
+
+      // well trained horse is able to do 40 miles a day
+      // average speed of ancient merchant ship is around 5 knots which means about 6 miles per hour
 
       var popup = L.popup();
 
