@@ -6,6 +6,8 @@
             <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
             <style>            
                   #mapid { height: 100%; width:100%}
             </style>            
@@ -14,6 +16,14 @@
                   <div id="mapid"></div>
       </body>
       <script>
+
+      var objects = [];
+
+      var lastMarker = null;
+
+      var totalDistance = 0;
+
+
       // create the slippy map
       var map = L.map('mapid', {
             minZoom: -1,
@@ -23,12 +33,26 @@
             crs: L.CRS.Simple
       });
 
+      $(document).keyup(function(e) {
+            if (e.key === "Escape") { 
+                  objects.forEach(object => {
+                        map.removeLayer(object);                        
+                  });
+
+                  lastMarker = null;
+
+                  totalDistance = 0;
+            }
+      });
       
       // dimensions of the image
      /* var w = 11560,
       h = 7480,
       url = './map.jpg';*/
       
+      // 70 points == 500 miles
+      // 1 point == 7.5 mile 
+      // 1 point == 12 kilometers
       var w = 5780,
       h = 3740,
       url = '/images/creation.jpg';
@@ -49,35 +73,63 @@
       //map.setMaxBounds(bounds);
       map.fitBounds(bounds);
 
+      var speeds = {
+				'Horse':[4,10],
+				'Merchant Ship':[6,24],
+				'Cirrus Skiff (Ess 1)':[6,24],
+				'Agata':[30,10],
+				'Stormwind Rider':[100,10]
+                  }
+
       var popup = L.popup();
 
       function onMapClick(e) {
-      popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
+
+
+            var tmpMarker = null;
+
+            if(lastMarker != null)
+            {
+                  tmpMarker = lastMarker;
+            }
+            // add marker
+            lastMarker = L.marker(e.latlng);
+            
+            lastMarker.addTo(map).bindPopup('Sol');
+
+            objects.push(lastMarker);
+
+            if(tmpMarker != null)
+            {
+                  line = L.polyline([lastMarker.getLatLng(), tmpMarker.getLatLng()]);
+
+                  objects.push(line);
+
+                  line.addTo(map);
+
+                  distance = map.distance(lastMarker.getLatLng(), tmpMarker.getLatLng());
+
+                  totalDistance = totalDistance + distance;
+
+                  miles = (totalDistance * 7.5)
+
+                  var text = Math.floor(miles) + " Miles<br>" + Math.floor(miles * 1.609) + " Kilometers";
+
+                  for (var k in speeds) 
+                  {
+                                    var days = Math.floor((miles / (speeds[k][0] * speeds[k][1])) * 10) / 10;
+                                    var hours = Math.floor((days - Math.floor(days)) * speeds[k][1])
+                                    if (days >= 1) var dur = Math.floor(days) + ' day' + (Math.floor(days) == 1 ? '' : 's');
+                                    else var dur = hours + ' hour' + (hours == 1 ? '' : 's');
+                                    text += "<br>" + k + ": " + dur;
+                  }
+
+                  popup.setLatLng(e.latlng).setContent(text).openOn(map);
+            }
+      
       }
 
       map.on('click', onMapClick);
 
-      var yx = L.latLng;
-
-var xy = function(x, y) {
-    if (L.Util.isArray(x)) {    // When doing xy([x, y]);
-        return yx(x[1], x[0]);
-    }
-    return yx(y, x);  // When doing xy(x, y);
-};
-      var sol      = xy(175.2, 145.0);
-var mizar    = xy( 41.6, 130.1);
-var kruegerZ = xy( 13.4,  56.5);
-var deneb    = xy(218.7,   8.3);
-
-L.marker(     sol).addTo(map).bindPopup(      'Sol');
-L.marker(   mizar).addTo(map).bindPopup(    'Mizar');
-L.marker(kruegerZ).addTo(map).bindPopup('Krueger-Z');
-L.marker(   deneb).addTo(map).bindPopup(    'Deneb');
-
-var travel = L.polyline([sol, deneb]).addTo(map);
       </script>
 </html>
