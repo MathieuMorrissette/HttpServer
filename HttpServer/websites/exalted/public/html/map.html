@@ -1,5 +1,8 @@
 <html>
       <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+            <link rel="stylesheet" href="/css/style.css">
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
             integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
             crossorigin=""/>
@@ -8,12 +11,24 @@
             crossorigin=""></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-            <style>            
+            <style>     
+                  html, body { margin: 0; padding:0;}       
                   #mapid { height: 100%; width:100%}
-            </style>            
+            </style>   
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">         
       </head>
       <body>
                   <div id="mapid"></div>
+                  <nav class="navbar fixed-bottom navbar-light bg-light">
+                              <span data-toggle="tooltip" data-placement="top" title="Measure mode">
+                                    <button type="button" id="measure" class="btn btn-outline-primary active shadow-none" data-toggle="button"><i class="fas fa-ruler"></i></button>
+                              </span>
+                              <!--<button type="button" class="btn btn-outline-primary shadow-none" data-toggle="button">_NOT_IMPL_</button>
+                              <button type="button" class="btn btn-outline-primary shadow-none" data-toggle="button">_NOT_IMPL_</button>-->
+                              <span data-toggle="tooltip" data-placement="top" title="Clear Markers">
+                                    <button type="button" class="btn btn-primary"  onclick="clearthings()"><i class="fas fa-trash-alt"></i></button>
+                              </span>
+                  </nav>
       </body>
       <script>
 
@@ -33,15 +48,21 @@
             crs: L.CRS.Simple
       });
 
-      $(document).keyup(function(e) {
-            if (e.key === "Escape") { 
-                  objects.forEach(object => {
+
+      function clearthings()
+      {
+            objects.forEach(object => {
                         map.removeLayer(object);                        
                   });
 
                   lastMarker = null;
 
                   totalDistance = 0;
+      }
+
+      $(document).keyup(function(e) {
+            if (e.key === "Escape") { 
+                  clearthings();
             }
       });
       
@@ -52,7 +73,7 @@
       
       // 70 points == 500 miles
       // 1 point == 7.5 mile 
-      // 1 point == 12 kilometers
+      // 1 point == ~12 kilometers
       var w = 5780,
       h = 3740,
       url = '/images/creation.jpg';
@@ -87,7 +108,12 @@
       var popup = L.popup();
 
       function onMapClick(e) {
+            var mode = document.getElementById("measure");
 
+            if(!mode.classList.contains("active"))
+            {
+                  return;
+            }
 
             var tmpMarker = null;
 
@@ -98,7 +124,7 @@
             // add marker
             lastMarker = L.marker(e.latlng);
             
-            lastMarker.addTo(map).bindPopup('Sol');
+            lastMarker.addTo(map);
 
             objects.push(lastMarker);
 
@@ -128,11 +154,22 @@
                   }
 
                   popup.setLatLng(e.latlng).setContent(text).openOn(map);
+
+                  objects.push(popup);
             }
       
       }
 
       map.on('click', onMapClick);
 
+
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+
       </script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
 </html>

@@ -73,6 +73,8 @@ namespace HttpServer
                             httpListenerContext.Send("error");
                         }
 
+                        httpListenerContext.Response.AddHeader("Server", "troll");
+
                         httpListenerContext.Response.Close();
                     }
                     catch (Exception ex)
