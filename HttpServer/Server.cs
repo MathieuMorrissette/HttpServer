@@ -49,6 +49,10 @@ namespace HttpServer
                 {
                     try
                     {
+                        // Hide server header hack
+                        httpListenerContext.Response.Headers.Add("Server", "\r\n\r\n");
+
+
                         Client client = this.GetClient(httpListenerContext);
 
                         string hostName = httpListenerContext.Request.Url.Host;
