@@ -145,7 +145,7 @@ namespace HttpServer
                 Server.Clients.Add(client);
                 client.Dictionary.Add("index", Server.Clients.IndexOf(client));
 
-                Cookie cook = new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddHours(Server.SESSION_EXPIRE_TIME) }
+                Cookie cook = new Cookie(COOKIE_SESSION_ID, client.ID.ToString()) { Expires = DateTime.Now.AddHours(Server.SESSION_EXPIRE_TIME) };
 
                 cook.HttpOnly = true;
 
