@@ -694,11 +694,22 @@
                                                 <h4 class="card-header">Additionnal Abilities</h4>
                                                 <div class="card-body">
                                                       <form id="additionalAbilities">
+                                                            <table class="table">
+                                                                  <thead>
+                                                                        <tr>
+                                                                              <th scope="col">Fav</th>
+                                                                              <th scope="col">Name</th>
+                                                                              <th scope="col">Value</th>
+                                                                        </tr>
+                                                                  </thead>
+                                                                  <tbody id="additionalAbilitiesContainer">
 
 
+                                                                  </tbody>
+                                                            </table>
                                                       </form>
                                                       <hr />
-                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilities', 'additional'); setControlStates();">Add</button>
+                                                      <button type="button" class="btn btn-primary float-right" onclick="addRow(additionalTemplate, 'additionalAbilitiesContainer', 'additional'); setControlStates();">Add</button>
 
                                                 </div>
                                           </div>
@@ -1481,8 +1492,8 @@
 </div>
       `;
 
-      var additionalTemplate = `
-<div class="form-row" id="additional__ID__">
+
+/* <!--<div class="form-row" id="additional__ID__">
       <div class="col-md-10">
             <div class="input-group">
                   <div class="input-group-text">
@@ -1494,10 +1505,17 @@
                   <input type="text" name="additional__ID__-value" class="form-control text-right" onchange="setControlStates()">
             </div>
       </div>
-      <div class="col-md-2">
-            <button type="button" class="btn btn-primary float-right" onclick="deleteRow('additional__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+      <div class="col-2">
+            
       </div>
-</div>
+</div>-->*/
+      var additionalTemplate = `
+      <tr id="additional__ID__">
+            <td><input name="additional__ID__-favorite" type="checkbox" onchange="setControlStates()"></td>
+            <td ><input type="text" name="additional__ID__-name" class="form-control" onchange="setControlStates()"></td>
+            <td><input type="number" name="additional__ID__-value" class="form-control text-right" onchange="setControlStates()"></td>
+            <td><button type="button" class="btn btn-primary float-right" onclick="deleteRow('additional__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button></td>
+      </tr>
       `;
 
       var armorTemplate = `
@@ -1904,12 +1922,12 @@
             fillAbilities(character["data"]["abilities"]);
 
             if (character["data"]["additionalAbilities"] != null) {
-                  document.getElementById("additionalAbilities").innerHTML = ""
+                  document.getElementById("additionalAbilitiesContainer").innerHTML = ""
 
                   var additionalLength = character["data"]["additionalAbilities"].length;
 
                   for (var i = 0; i < additionalLength; i++) {
-                        addRow(additionalTemplate, "additionalAbilities", "additional")
+                        addRow(additionalTemplate, "additionalAbilitiesContainer", "additional")
                   }
 
                   fillMulti("additionalAbilities", character["data"]["additionalAbilities"], "additional", additionalFields)
