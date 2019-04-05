@@ -37,11 +37,13 @@ namespace HttpServer.websites.exalted
             { "characters", () => new Characters() },
             { "character", () => new Sheet()},
             { "javascript", () => new FileProvider()},
+            { "json", () => new FileProvider()},
             { "dice-roller", () => new DiceRollerController()},
             { "css", () => new FileProvider()},
             { "images", () => new FileProvider()},
             { "user", () => new UserController()},
             { "map", () =>  new MapController()},
+            { "charms", () =>  new CharmsController()},
            // { "friends", () => new Friends()},
            //   { "chat", () => new Chat()},
             { "api", () => new API()}

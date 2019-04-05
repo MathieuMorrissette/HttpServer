@@ -425,7 +425,7 @@
                                           </form>
 
                                           <hr />
-                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay();">Add</button>
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(weaponTemplate, 'weapons', 'weapon'); setControlStates(); updateWeaponsDisplay(); fixToolTips();">Add</button>
 
                                     </div>
                               </div>
@@ -438,18 +438,11 @@
 
                                     <h4 class="card-header">Armors</h4>
                                     <div class="card-body">
-                                          <div class="row">
-                                                <div class=" col-md-3">Armor</div>
-                                                <div class=" col-md-2">Soak</div>
-                                                <div class=" col-md-2">Hard</div>
-                                                <div class=" col-md-2">MP</div>
-                                                <div class=" col-md-2">Tags</div>
-                                          </div>
                                           <form id="armors">
 
                                           </form>
                                           <hr />
-                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates();">Add</button>
+                                          <button type="button" class="btn btn-primary float-right" onclick="addRow(armorTemplate, 'armors', 'armor'); setControlStates(); fixToolTips();">Add</button>
 
                                     </div>
                               </div>
@@ -481,10 +474,6 @@
                               <div class="card shadow">
                                     <h4 class="card-header">Intimacies</h4>
                                     <div class="card-body">
-                                          <div class="row">
-                                                <div class="col-md-8">Intimacy</div>
-                                                <div class="col-md-4">Intensity</div>
-                                          </div>
                                           <form id="intimacies">
                                           </form>
                                           <hr />
@@ -774,9 +763,11 @@
                                                                   <form id="willpower">
                                                                         <div class="form-row">
                                                                               <div class="col-6">
+                                                                                    <label>Current</label>
                                                                                     <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
                                                                               </div>
                                                                               <div class="col-6">
+                                                                                    <label>Total</label>
                                                                                     <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
                                                                               </div>
                                                                         </div>
@@ -795,9 +786,11 @@
                                                                   <form id="limitBreak">
                                                                         <div class="form-row">
                                                                               <div class="col-6">
+                                                                                    <label>Current</label>
                                                                                     <input type="text" class="form-control" name="current" placeholder="current" onchange="setControlStates()">
                                                                               </div>
                                                                               <div class="col-6">
+                                                                                    <label>Total</label>
                                                                                     <input type="text" class="form-control" name="max" placeholder="max" onchange="setControlStates()">
                                                                               </div>
                                                                         </div>
@@ -1433,7 +1426,7 @@
                   </div>
                   <div class="col-md-4">
                         <div class="form-group">
-                              <label>Withering</label>
+                              <label data-toggle="tooltip" data-placement="top" title="Strength or 4 for firewand/crossbow">Withering</label>
                               <select class="form-control" name="weapon__ID__-withering" onchange="setControlStates()">
                                     <option value="strength">Strength</option>
                                     <option value="4">4 Dices</option>
@@ -1492,23 +1485,6 @@
 </div>
       `;
 
-
-/* <!--<div class="form-row" id="additional__ID__">
-      <div class="col-md-10">
-            <div class="input-group">
-                  <div class="input-group-text">
-                        <input name="additional__ID__-favorite" type="checkbox" onchange="setControlStates()">
-                  </div>
-                  <div class="input-group-prepend">
-                        <input type="text" name="additional__ID__-name" class="form-control" onchange="setControlStates()">
-                  </div>
-                  <input type="text" name="additional__ID__-value" class="form-control text-right" onchange="setControlStates()">
-            </div>
-      </div>
-      <div class="col-2">
-            
-      </div>
-</div>-->*/
       var additionalTemplate = `
       <tr id="additional__ID__">
             <td><input name="additional__ID__-favorite" type="checkbox" onchange="setControlStates()"></td>
@@ -1519,25 +1495,37 @@
       `;
 
       var armorTemplate = `
-<div class="row" id="armor__ID__">
-      <div class=" col-md-3">
-            <input type="text" class="form-control" name="armor__ID__-name" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-2">
-            <input type="text" class="form-control" name="armor__ID__-soak" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-2">
-            <input type="text" class="form-control" name="armor__ID__-hardness" onchange="setControlStates()">
-      </div>
+<div class="row border rounded shadow mt-3 p-2" id="armor__ID__">
+      <div class="col-12">
+            <div class="row">
+                  <div class=" col-md-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="armor__ID__-name" onchange="setControlStates()">
+                  </div>
+                  <div class=" col-md-2">
+                        <label>Soak</label>
+                        <input type="text" class="form-control" name="armor__ID__-soak" onchange="setControlStates()">
+                  </div>
+                  <div class=" col-md-2">
+                        <label>Hardness</label>
+                        <input type="text" class="form-control" name="armor__ID__-hardness" onchange="setControlStates()">
+                  </div>
 
-      <div class=" col-md-2">
-            <input type="text" class="form-control" name="armor__ID__-mobilityPenalty" onchange="setControlStates()">
-      </div>
-      <div class=" col-md-2">
-            <input type="text" class="form-control" name="armor__ID__-tags" onchange="setControlStates()">
-      </div>
-      <div class="col-sm-1">
-            <button type="button" class="btn btn-primary float-right" onclick="deleteRow('armor__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
+                  <div class=" col-md-2">
+                        <label data-toggle="tooltip" data-placement="top" title="Mobility Penalty">MP</label>
+                        <input type="text" class="form-control" name="armor__ID__-mobilityPenalty" onchange="setControlStates()">
+                  </div>
+                  <div class=" col-md-3">
+                        <label>Tags</label>
+                        <input type="text" class="form-control" name="armor__ID__-tags" onchange="setControlStates()">
+                  </div>
+
+            </div>
+            <div class="row mt-2">
+                  <div class="col-12 d-flex flex-row-reverse">
+                        <button type="button" class="btn btn-primary float-right" onclick="deleteRow('armor__ID__'); setControlStates(); fixToolTips();"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+            </div>
       </div>
 </div>
       `;
@@ -2929,12 +2917,14 @@
       var intimacyTemplate = `
 <div class="form-row" id="intimacy__ID__">
       <div class=" col-md-8">
+            <label>Name</label>
             <input type="text" class="form-control" name="intimacy__ID__-name" onchange="setControlStates()">
       </div>
       <div class=" col-md-3">
+            <label>Intensity</label>
             <input type="text" class="form-control" name="intimacy__ID__-intensity" onchange="setControlStates()">
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1 align-self-end">
             <button type="button" class="btn btn-primary float-right" onclick="deleteRow('intimacy__ID__'); setControlStates();"><i class="fas fa-trash-alt"></i></button>
       </div>
 </div>

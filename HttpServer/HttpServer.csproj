@@ -65,6 +65,7 @@
     <Compile Include="websites\exalted\classes\ExaltedConfig.cs" />
     <Compile Include="websites\exalted\controllers\API.cs" />
     <Compile Include="websites\exalted\controllers\DiceRollerController.cs" />
+    <Compile Include="websites\exalted\controllers\CharmsController.cs" />
     <Compile Include="websites\exalted\controllers\MapController.cs" />
     <Compile Include="websites\exalted\controllers\UserController.cs" />
     <Compile Include="websites\exalted\controllers\Characters.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="websites\exalted\templates\Characters_Template.cs" />
     <Compile Include="websites\exalted\templates\Home_Template.cs" />
     <Compile Include="websites\exalted\templates\Login_Template.cs" />
+    <Compile Include="websites\exalted\templates\Charms_Template.cs" />
     <Compile Include="websites\exalted\templates\Register_Template.cs" />
     <Compile Include="websites\exalted\templates\LeftMenu_Template.cs" />
     <Compile Include="websites\exalted\templates\RightMenu_Template.cs" />
@@ -195,6 +197,7 @@
     <Content Include="websites\mathieu_morrissette\public\images\banner.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="websites\exalted\public\json\" />
     <Folder Include="websites\mathieu_morrissette\helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
