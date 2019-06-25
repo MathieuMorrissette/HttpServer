@@ -110,6 +110,9 @@
     <Compile Include="websites\exalted\templates\Sheet_Template.cs" />
     <Compile Include="websites\exalted\WebSite.cs" />
     <Compile Include="websites\hack\WebSite.cs" />
+    <Compile Include="websites\key\controllers\Home.cs" />
+    <Compile Include="websites\key\templates\Home_Template.cs" />
+    <Compile Include="websites\key\WebSite.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendRequestsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\FriendsHandler.cs" />
     <Compile Include="websites\mathieu_morrissette\api\handlers\PostsHandler.cs" />
@@ -197,6 +200,7 @@
     <Content Include="websites\exalted\public\javascript\character-helper.js" />
     <Content Include="websites\exalted\public\javascript\user-helper.js" />
     <Content Include="websites\exalted\public\javascript\network-helper.js" />
+    <Content Include="websites\key\public\html\sender.html" />
     <Content Include="websites\mathieu_morrissette\public\css\style.css" />
     <Content Include="websites\mathieu_morrissette\public\html\chat.html" />
     <Content Include="websites\mathieu_morrissette\public\html\error_alert.html" />
